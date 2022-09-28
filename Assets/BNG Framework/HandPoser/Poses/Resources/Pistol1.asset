@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d095236d72305f645a71d717903e9d8f, type: 3}
-  m_Name: Pistol
+  m_Name: Pistol1
   m_EditorClassIdentifier: 
   PoseName: Default
   Joints:
@@ -34,39 +34,39 @@ MonoBehaviour:
     IndexJoints:
     - TransformName: hands:b_r_index1
       LocalPosition: {x: -0.08707797, y: 0.035099972, z: 0.0068147103}
-      LocalRotation: {x: -0.04358909, y: 0.62291706, z: 0.78096825, w: -0.012764831}
+      LocalRotation: {x: -0.048261262, y: 0.62397176, z: 0.7799224, w: -0.0071598706}
     - TransformName: hands:b_r_index2
       LocalPosition: {x: 0.04157489, y: -0.0000002622628, z: -0.00000038978715}
-      LocalRotation: {x: -0.014783986, y: -0.024759704, z: -0.7236101, w: 0.68960625}
+      LocalRotation: {x: 0, y: 0, z: -0.7993452, w: 0.6008721}
     - TransformName: hands:b_r_index3
       LocalPosition: {x: 0.022152938, y: -0.00000022278307, z: -0.000000035388048}
-      LocalRotation: {x: 0.053880177, y: -0.02451235, z: -0.490911, w: 0.8691964}
+      LocalRotation: {x: 0.11518, y: -0.05240146, z: -0.21144533, w: 0.9691639}
     - TransformName: hands:b_r_index_ignore
       LocalPosition: {x: 0.029121783, y: 0.0000002658625, z: 0.0000010456445}
       LocalRotation: {x: 0, y: 0, z: 9.664536e-39, w: 1}
     MiddleJoints:
     - TransformName: hands:b_r_middle1
       LocalPosition: {x: -0.09142202, y: 0.009532635, z: 0.010838787}
-      LocalRotation: {x: -0.37059703, y: 0.48079795, z: 0.68246293, w: 0.40710622}
+      LocalRotation: {x: -0.41261965, y: 0.46520138, z: 0.6455781, w: 0.4433528}
     - TransformName: hands:b_r_middle2
       LocalPosition: {x: 0.04596702, y: -6.4383804e-10, z: -0.00000003982895}
-      LocalRotation: {x: 0.011290758, y: -0.0107821515, z: -0.8050874, w: 0.5929508}
+      LocalRotation: {x: 0.03509878, y: -0.03351717, z: -0.730565, w: 0.68111634}
     - TransformName: hands:b_r_middle3
       LocalPosition: {x: 0.029590234, y: -0.00000017799228, z: -0.000000063619794}
-      LocalRotation: {x: 0.10477878, y: -0.00065040216, z: -0.08471244, w: 0.9908809}
+      LocalRotation: {x: 0.044743683, y: -0.015389772, z: -0.06384121, w: 0.99683774}
     - TransformName: hands:b_r_middle_ignore
       LocalPosition: {x: 0.026469523, y: 0.0000004068423, z: 0.00000019527813}
       LocalRotation: {x: 4e-45, y: 4e-45, z: -6.958466e-38, w: 1}
     RingJoints:
     - TransformName: hands:b_r_ring1
       LocalPosition: {x: -0.089531094, y: -0.012713966, z: 0.0018533061}
-      LocalRotation: {x: -0.45886546, y: 0.36775163, z: 0.6192545, w: 0.5203125}
+      LocalRotation: {x: -0.43653992, y: 0.36756486, z: 0.7183183, w: 0.39792955}
     - TransformName: hands:b_r_ring2
       LocalPosition: {x: 0.03857198, y: 0.000000019344908, z: -0.00000011757956}
-      LocalRotation: {x: 0.02351829, y: -0.06436061, z: -0.71743375, w: 0.6932486}
+      LocalRotation: {x: 0.08478883, y: -0.051485907, z: -0.7369126, w: 0.6686703}
     - TransformName: hands:b_r_ring3
       LocalPosition: {x: 0.025775367, y: 0.00000023005764, z: 0.00000026507698}
-      LocalRotation: {x: -0.21602353, y: 0.08717758, z: -0.16738872, w: 0.95797443}
+      LocalRotation: {x: -0.035339475, y: 0.012390605, z: -0.21426749, w: 0.97605693}
     - TransformName: hands:b_r_ring_ignore
       LocalPosition: {x: 0.024214193, y: -0.00000003789957, z: 0.00000001870374}
       LocalRotation: {x: 4.272458e-15, y: -1.9643966e-14, z: 5.1618946e-15, w: 1}
@@ -76,13 +76,13 @@ MonoBehaviour:
       LocalRotation: {x: -0.47129497, y: -0.061776705, z: 0.07527019, w: 0.8765838}
     - TransformName: hands:b_r_pinky1
       LocalPosition: {x: -0.05356621, y: -0.0024395068, z: 0.0014644878}
-      LocalRotation: {x: -0.12996045, y: -0.034797445, z: 0.63273835, w: 0.7625888}
+      LocalRotation: {x: -0.13066657, y: -0.011481098, z: 0.8070926, w: 0.57567006}
     - TransformName: hands:b_r_pinky2
       LocalPosition: {x: 0.033355847, y: 0.0000004193135, z: 0.00000030447453}
-      LocalRotation: {x: 0.113417074, y: -0.0027498328, z: -0.72375613, w: 0.6806659}
+      LocalRotation: {x: -6.1387006e-17, y: 5.7948416e-17, z: -0.8302406, w: 0.5574052}
     - TransformName: hands:b_r_pinky3
       LocalPosition: {x: 0.017418418, y: -0.00000049037294, z: -0.00000080218643}
-      LocalRotation: {x: 0.044188976, y: 0.018167304, z: 0.06079297, w: 0.9970063}
+      LocalRotation: {x: 0.12987056, y: 0.07424371, z: 0.016658688, w: 0.98860705}
     - TransformName: hands:b_r_pinky_ignore
       LocalPosition: {x: 0.01944108, y: 0.00000018051705, z: 0.000000684117}
       LocalRotation: {x: 2.577212e-39, y: -1e-45, z: -7.868549e-38, w: 1}

@@ -9,7 +9,6 @@ using UnityEngine;
 public class GunRoot : MonoBehaviour
 {
     [Header ("Gun Info")]
-    public int ammo; //declare int for gun ammo
     public Transform gunBarrel; //declare transform for positon of gun barrel
     public float damageDealt;//declare float for damage of the gun
     // Start is called before the first frame update
@@ -18,18 +17,10 @@ public class GunRoot : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        //gunBehaviour();
-        
-    }
-
     /// <summary>
     /// root function for gun
     /// </summary>
-    public virtual void gunBehaviour() 
+    public virtual void GunBehaviour() 
     {
         //creating raycast hit to get information
         RaycastHit rayHit;

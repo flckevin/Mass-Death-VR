@@ -8,10 +8,10 @@ using UnityEngine;
  **************************************/
 public class Pistol : GunRoot
 {
-    public override void gunBehaviour()
+    public override void GunBehaviour()
     {
         
-        base.gunBehaviour();
+        base.GunBehaviour();
         
         
     }

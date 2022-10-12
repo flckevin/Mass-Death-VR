@@ -30,11 +30,13 @@ public class GunRoot : MonoBehaviour
         //checking whether raycast has hit something and making sure that gun barrel does exist
         if(Physics.Raycast(gunBarrel.position,gunBarrel.forward, out rayHit, Mathf.Infinity) && gunBarrel != null) 
         { 
-            //if raycast hit object has enemy tag
-            if(rayHit.transform.gameObject.tag == "Enemy") 
+            //if raycast hit object has tag that be able to damage
+            if(rayHit.transform.gameObject.tag == "Damageable") 
             {
-                //get enemy component and call function to cause damage to enemy
-                rayHit.transform.GetComponent<EnemyBehaviour>().DamageReceiver(damageDealt, rayHit);
+                //get component of damage able interface
+                IDamageable damageAble = rayHit.transform.GetComponent<IDamageable>();
+                //call damageable function
+                damageAble.Damage(damageDealt, rayHit);
             }
             
         }

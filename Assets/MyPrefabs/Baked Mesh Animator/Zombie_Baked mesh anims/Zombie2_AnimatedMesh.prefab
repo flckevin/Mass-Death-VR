@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5596196154106287565}
   m_Layer: 0
   m_Name: Zombie2_AnimatedMesh
-  m_TagString: Untagged
+  m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,8 @@ MonoBehaviour:
   meshFilter: {fileID: 6606683905280860885}
   meshRenderer: {fileID: 5519042137236817944}
   currentAnimation: {fileID: 11400000, guid: 4ac447684b8d7244e9d88dfaaf32efee, type: 2}
-  defaultMeshAnimation: {fileID: 11400000, guid: 4ac447684b8d7244e9d88dfaaf32efee, type: 2}
+  defaultMeshAnimation: {fileID: 11400000, guid: 4ac447684b8d7244e9d88dfaaf32efee,
+    type: 2}
   meshAnimations:
   - {fileID: 11400000, guid: a3343b653907c014a8f39940d63ed280, type: 2}
   - {fileID: 11400000, guid: 4ac447684b8d7244e9d88dfaaf32efee, type: 2}

@@ -8,7 +8,7 @@ using UnityEngine.AI;
  * Object hold: Every enemy 
  * Content: Behaviour of zombie in game
  **************************************/
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour,IDamageable
 {
     [Header("Zombie Info")]
     public float zombieHealth;//declare float for zombie health
@@ -99,5 +99,8 @@ public class EnemyBehaviour : MonoBehaviour
         #endregion
     }
 
-
+    public void Damage(float amount, RaycastHit effect)
+    {
+        DamageReceiver(amount, effect);
+    }
 }

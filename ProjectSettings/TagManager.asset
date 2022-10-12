@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - DeadEnemy
+  - Damageable
+  - PlaceableFloor
   layers:
   - Default
   - TransparentFX

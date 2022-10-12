@@ -13912,7 +13912,9 @@ MonoBehaviour:
   SecondaryLookOffset: {x: 0, y: 0, z: 0}
   SecondaryLookAtTransform: {fileID: 0}
   LocalOffsetTransform: {fileID: 0}
-  GrabPoints: []
+  GrabPoints:
+  - {fileID: 1706886984}
+  - {fileID: 2133101650}
   UseCustomInspector: 1
   lastFlickTime: 0
   FlickForce: 1
@@ -14028,7 +14030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounded: 0
   Weapon: {fileID: 1439195875}
-  weaponCanvas: {fileID: 0}
+  weaponCanvas: {fileID: 931227289}
 --- !u!1001 &755054116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32377,7 +32379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPoseType: 1
-  SelectedHandPose: {fileID: 0}
+  SelectedHandPose: {fileID: 11400000, guid: bdfd0c22b697f3a4fb37009f2f0cbd5a, type: 2}
   HandPose: 0
   LeftHandIsValid: 0
   RightHandIsValid: 1
@@ -40705,7 +40707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPoseType: 1
-  SelectedHandPose: {fileID: 0}
+  SelectedHandPose: {fileID: 11400000, guid: bdfd0c22b697f3a4fb37009f2f0cbd5a, type: 2}
   HandPose: 0
   LeftHandIsValid: 1
   RightHandIsValid: 0

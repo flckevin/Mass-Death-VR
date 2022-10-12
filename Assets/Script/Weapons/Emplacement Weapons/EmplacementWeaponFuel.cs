@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /***************************************
- * Authour: HAN
- * Object hold:
- * Content:
+ * Authour: HAN 18080038
+ * Object hold: fuel can
+ * Content: fuel can behaviour
  **************************************/
 public class EmplacementWeaponFuel : MonoBehaviour
 {

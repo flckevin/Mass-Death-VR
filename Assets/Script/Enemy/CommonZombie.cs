@@ -11,7 +11,7 @@ public class CommonZombie : EnemyBehaviour
     public override void Behaviour()
     {
         //if player does exist and player still alive and zombie still alive
-        if (GameManagerClass.gameManaInstance.player_G != null && GameManagerClass.gameManaInstance.playerIsDead == false && zombieHealth > 1)
+        if (GameManagerClass.gameManaInstance.player_G != null && GameManagerClass.gameManaInstance.playerIsDead_B == false && zombieHealth > 1)
         {
             //if speed of nav agent been changed
             if (navAgent.speed != defaultZombieSpeed)
@@ -25,7 +25,7 @@ public class CommonZombie : EnemyBehaviour
             meshAnimsBase.Play("Z_Run_InPlace");
         }
         //if player does exist and player still alive and zombie near the player and zombie still alive
-        else if (GameManagerClass.gameManaInstance.player_G != null && GameManagerClass.gameManaInstance.playerIsDead == false && navAgent.remainingDistance == 1 && zombieHealth > 1)
+        else if (GameManagerClass.gameManaInstance.player_G != null && GameManagerClass.gameManaInstance.playerIsDead_B == false && navAgent.remainingDistance == 1 && zombieHealth > 1)
         {
             //play attack animation
             meshAnimsBase.Play("Z_Attack");

@@ -7,11 +7,13 @@ using UnityEngine.UI;
  * Object hold: every item in shop
  * Content: item content in shop
  **************************************/
-public class ShopItem : MonoBehaviour
+public class ShopItemBehaviour : MonoBehaviour
 {
-    public Image shopItemImg;
-    public string shopItemName;
-
+    public Sprite shopItemImg;//declare image for Item image to display on shop
+    public string shopItemName;//declare string for item name
+    public GameObject[] itemToSpawn;//declare array of gameobject pool
+    public int currentItemToSpawnID;//declare int to store the current id that being assign to spawn item from array
+    public int price;//declare int for price of the item
     private void Start()
     {
         //checking whether shop item name is empty

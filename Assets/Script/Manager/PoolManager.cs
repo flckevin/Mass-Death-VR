@@ -18,10 +18,7 @@ public class PoolManager : MonoBehaviour
     [Header("Blood_Info")]
     public GameObject[] blood_G;
     public int bloodID_Int;
-    [Space(10)]
+   
 
-    [Header("Shop Info")]
-    public GameObject[] gun_Shop;
-    public GameObject[] consumable_Shop;
-    public GameObject[] emplacementWeapons_Shop;
+    
 }

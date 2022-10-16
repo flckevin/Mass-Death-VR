@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /***************************************
- * Authour: HAN
- * Object hold:
- * Content:
+ * Authour: HAN 18080038
+ * Object hold: GameManager
+ * Content: hold the varible that use alot in game
  **************************************/
 public class GameManagerClass : MonoBehaviour
 {
@@ -20,6 +20,6 @@ public class GameManagerClass : MonoBehaviour
 
     [Header("Player_Info")]
     public GameObject player_G;
-    public bool playerIsDead = false;
-   
+    public bool playerIsDead_B = false;
+    public CreditCard playerCreditCard_Class;
 }

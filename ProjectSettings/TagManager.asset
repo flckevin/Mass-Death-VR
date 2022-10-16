@@ -8,6 +8,7 @@ TagManager:
   - DeadEnemy
   - Damageable
   - PlaceableFloor
+  - CreditCard
   layers:
   - Default
   - TransparentFX

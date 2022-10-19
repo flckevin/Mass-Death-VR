@@ -8,12 +8,13 @@ using UnityEngine;
  **************************************/
 public class EmplacementWeaponFuel : MonoBehaviour
 {
-    private EmplacementWeaponBehaviour emplacementWeapon;//declare emplacement weapon behaviour to refill fuel
+    private EmplacementWeaponBehaviourBase _emplacementWeapon;//declare emplacement weapon behaviour to refill fuel
+    private OilCanBehaviour _oil;//declare oil to store current oil
     // Start is called before the first frame update
     void Start()
     {
         //storing emplacement weapon class into this class
-        emplacementWeapon = this.gameObject.GetComponentInParent<EmplacementWeaponBehaviour>();
+        _emplacementWeapon = this.gameObject.GetComponentInParent<EmplacementWeaponBehaviourBase>();
     }
 
     private void OnTriggerEnter(Collider fuelTank)
@@ -21,10 +22,15 @@ public class EmplacementWeaponFuel : MonoBehaviour
         //if fuel can enter to fuel tank
         if (fuelTank.CompareTag("FuelTank")) 
         {
-            //decrease oil value from fuel can
-            fuelTank.GetComponent<Oil>().OilValue--;
+            if(_oil == null) 
+            {
+                //decrease oil value from fuel can
+                _oil = fuelTank.GetComponent<OilCanBehaviour>();
+            }
             //increase fuel left in emplacement weapons
-            emplacementWeapon.fuelLeft++;
+            _emplacementWeapon.fuelLeft++;
+            //decrease oil value from oil can
+            _oil.OilValue--;
         }
     }
 
@@ -33,10 +39,25 @@ public class EmplacementWeaponFuel : MonoBehaviour
         //if fuel can enter to fuel tank
         if (fuelTank.CompareTag("FuelTank"))
         {
-            //decrease oil value from fuel can
-            fuelTank.GetComponent<Oil>().OilValue--;
+            if (_oil == null)
+            {
+                //decrease oil value from fuel can
+                _oil = fuelTank.GetComponent<OilCanBehaviour>();
+            }
             //increase fuel left in emplacement weapons
-            emplacementWeapon.fuelLeft++;
+            _emplacementWeapon.fuelLeft++;
+            //decrease oil value from oil can
+            _oil.OilValue--;
+        }
+    }
+
+    private void OnTriggerExit(Collider fuelTank)
+    {
+        //if fuel can enter to fuel tank
+        if (fuelTank.CompareTag("FuelTank"))
+        {
+            //set current oil can to be empty
+            _oil = null;
         }
     }
 

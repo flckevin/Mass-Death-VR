@@ -13,16 +13,7 @@ public class EmplacementWeaponPlatformBehavoiur : MonoBehaviour
     public GameObject Weapon;//declare gameobject to activate emplacement weapons
     public GameObject weaponCanvas;//declare gameobject to disable weapon canvas
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider obj)
-    {
-        
-    }
-
+ 
     private void OnCollisionEnter(Collision collision)
     {
         //if object has floor tag
@@ -56,11 +47,11 @@ public class EmplacementWeaponPlatformBehavoiur : MonoBehaviour
             Weapon.SetActive(true);
             //play fall from sky animation
             //activate all emplacement weapon behaviour
-            Weapon.GetComponent<EmplacementWeaponBehaviour>().enabled = true;
+            Weapon.GetComponent<EmplacementWeaponBehaviourBase>().enabled = true;
             //disable grabble component
             this.gameObject.GetComponent<Grabbable>().enabled = false;
             //disable rigibody
-            this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             //disable weapon canvas
             weaponCanvas.SetActive(false);
             //disable emplacement platform behaviour class

@@ -22,7 +22,7 @@ public class ShopBehaviour : MonoBehaviour
     public GameObject shopBanner;//declare gameobject for shop banner
 
 
-    private int currentItemId = 0;//declare int to store current id
+    private int _currentItemId = 0;//declare int to store current id
    
 
     // Start is called before the first frame update
@@ -63,7 +63,7 @@ public class ShopBehaviour : MonoBehaviour
         }
         //change to first item of the shop to update
         //to the player that they have moved to a new item shop
-        currentItemId = 0;
+        _currentItemId = 0;
         //change shop item
         ChangeItem();
     }
@@ -75,15 +75,15 @@ public class ShopBehaviour : MonoBehaviour
     public void ChangeNextItem() 
     {
         //if increased current iteam id not exceed limit of item shop array
-        if(currentItemId + 1 < items_Shop.Length) 
+        if(_currentItemId + 1 < items_Shop.Length) 
         {
             //increase item id
-            currentItemId++;
+            _currentItemId++;
         }
         else //if it exceed limitation of item in shop array
         {
             //set currentitem id to 0
-            currentItemId = 0;
+            _currentItemId = 0;
         }
         //change shop item 
         ChangeItem();
@@ -97,10 +97,10 @@ public class ShopBehaviour : MonoBehaviour
     public void ChangePreviousItem() 
     { 
         //if decreased item id does not equal to 0
-        if(currentItemId - 1 != 0) 
+        if(_currentItemId - 1 != 0) 
         {
             //set current item id to be 0
-            currentItemId = 0;
+            _currentItemId = 0;
         }
         //change item
         ChangeItem();
@@ -115,9 +115,9 @@ public class ShopBehaviour : MonoBehaviour
     public void ChangeItem() 
     {
         //chanmge shop item name for display
-        itemName_Text.text = items_Shop[currentItemId].name;
+        itemName_Text.text = items_Shop[_currentItemId].name;
         //change shop item image for display
-        shopItemImage_UI.sprite = items_Shop[currentItemId].shopItemImg;
+        shopItemImage_UI.sprite = items_Shop[_currentItemId].shopItemImg;
 
     }
 
@@ -128,24 +128,24 @@ public class ShopBehaviour : MonoBehaviour
     public void BuyItem() 
     { 
         //checking whether the id have exceed the array of item 
-        if(items_Shop[currentItemId].currentItemToSpawnID < items_Shop[currentItemId].itemToSpawn.Length) 
+        if(items_Shop[_currentItemId].currentItemToSpawnID < items_Shop[_currentItemId].itemToSpawn.Length) 
         {
             //if it not
             //increase the ID
-            items_Shop[currentItemId].currentItemToSpawnID++;
+            items_Shop[_currentItemId].currentItemToSpawnID++;
         }
         else //if it exceed
         {
             //set item id back to 0
-            items_Shop[currentItemId].currentItemToSpawnID = 0;
+            items_Shop[_currentItemId].currentItemToSpawnID = 0;
         }
         
-        if(GameManagerClass.gameManaInstance.playerCreditCard_Class.moneyAmont >= items_Shop[currentItemId].price) 
+        if(GameManagerClass.gameManaInstance.playerCreditCard_Class.moneyAmont >= items_Shop[_currentItemId].price) 
         {
             //set position of item to spawn position to be at the spawn position
-            items_Shop[currentItemId].itemToSpawn[currentItemId].gameObject.transform.localPosition = posToSpawnItem.position;
+            items_Shop[_currentItemId].itemToSpawn[_currentItemId].gameObject.transform.position = posToSpawnItem.position;
             //activate the bought item
-            items_Shop[currentItemId].itemToSpawn[currentItemId].gameObject.SetActive(true);
+            items_Shop[_currentItemId].itemToSpawn[_currentItemId].gameObject.SetActive(true);
         }
         else 
         {
@@ -164,7 +164,7 @@ public class ShopBehaviour : MonoBehaviour
         //activate banner
         shopBanner.SetActive(true);
         //release card
-        StartCoroutine(CreditCardReleaser(GameManagerClass.gameManaInstance.playerCreditCard_Class.gameObject.GetComponent<Rigidbody>()));
+        GameManagerClass.gameManaInstance.playerCreditCard_Class.gameObject.SetActive(true);
         //disable vr canvas
         vrCanvas.enabled = false;
     }
@@ -175,32 +175,14 @@ public class ShopBehaviour : MonoBehaviour
         //checking whether gameobject has tag "credit card"
         if (card.CompareTag("CreditCard")) 
         {
-            //disbale rigibody 
-            GameManagerClass.gameManaInstance.playerCreditCard_Class.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            
             //set credit card at correct postion
             GameManagerClass.gameManaInstance.playerCreditCard_Class.gameObject.transform.position = creditCardPos.position;
             shopBanner.SetActive(false);
-            //enable vr canvas
-            vrCanvas.enabled = true;
-            GameManagerClass.gameManaInstance.playerCreditCard_Class.gameObject.layer = LayerMask.NameToLayer("Default");
+            GameManagerClass.gameManaInstance.playerCreditCard_Class.gameObject.SetActive(false);
         }
     }
 
 
-    /// <summary>
-    /// function to shoot credit card
-    /// </summary>
-    /// <param name="card"> rigibody of the inserted credit card </param>
-    /// <returns></returns>
-    IEnumerator CreditCardReleaser(Rigidbody card) 
-    {
-        //wait for 1 second
-        yield return new WaitForSeconds(1f);
-        //set card kinimatic to false
-        card.isKinematic = false;
-        //add force to card to shoot it out
-        card.AddForce(this.gameObject.transform.position - card.gameObject.transform.position * 10);
-        //change layer to grabble
-        card.gameObject.layer = LayerMask.NameToLayer("Grabble");
-    }
+    
 }

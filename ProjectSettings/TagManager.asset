@@ -9,6 +9,8 @@ TagManager:
   - Damageable
   - PlaceableFloor
   - CreditCard
+  - FuelTank
+  - Floor
   layers:
   - Default
   - TransparentFX

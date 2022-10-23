@@ -8,5 +8,5 @@ using UnityEngine;
  **************************************/
 public interface IDamageable 
 {
-    void Damage(float amount, RaycastHit effect);
+    void Damage(float amount, RaycastHit effect,bool deactivateObjectInstant);
 }

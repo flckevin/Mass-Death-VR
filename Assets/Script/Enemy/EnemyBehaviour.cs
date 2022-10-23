@@ -48,7 +48,7 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
     /// </summary>
     /// <param name="damageDealt"> Value to deal damage to zombie </param>
     /// /// <param name="posToSquirtBloodRaycast"> Position to squirt out of blood </param>
-    public void DamageReceiver(float damageDealt,RaycastHit posToSquirtBloodRaycast) 
+    public void DamageReceiver(float damageDealt,RaycastHit posToSquirtBloodRaycast,bool deactivateObject) 
     {
 
         #region Blood Squirting
@@ -97,10 +97,15 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
             this.enabled = false;
         }
         #endregion
+
+        if(deactivateObject == true) 
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
-    public void Damage(float amount, RaycastHit effect)
+    public void Damage(float amount, RaycastHit effect, bool deactivateObjectInstant)
     {
-        DamageReceiver(amount, effect);
+        DamageReceiver(amount, effect, deactivateObjectInstant);
     }
 }

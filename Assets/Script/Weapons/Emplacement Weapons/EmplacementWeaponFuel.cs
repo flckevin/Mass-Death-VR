@@ -31,6 +31,8 @@ public class EmplacementWeaponFuel : MonoBehaviour
             _emplacementWeapon.fuelLeft++;
             //decrease oil value from oil can
             _oil.OilValue--;
+            //update oil value
+            _emplacementWeapon.SliderValueChange();
         }
     }
 
@@ -48,6 +50,8 @@ public class EmplacementWeaponFuel : MonoBehaviour
             _emplacementWeapon.fuelLeft++;
             //decrease oil value from oil can
             _oil.OilValue--;
+            //update oil value
+            _emplacementWeapon.SliderValueChange();
         }
     }
 

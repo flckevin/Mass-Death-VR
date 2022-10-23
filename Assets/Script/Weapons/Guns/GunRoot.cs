@@ -36,7 +36,7 @@ public class GunRoot : MonoBehaviour
                 //get component of damage able interface
                 IDamageable damageAble = rayHit.transform.GetComponent<IDamageable>();
                 //call damageable function
-                damageAble.Damage(damageDealt, rayHit);
+                damageAble.Damage(damageDealt, rayHit,false);
             }
             
         }

@@ -10,7 +10,7 @@ public class ItemBase : MonoBehaviour
 {
 
     // Start is called before the first frame update
-    protected bool _ableToUse;//declare bool to check wheter be able to use
+   [SerializeField] protected bool _ableToUse;//declare bool to check wheter be able to use
     protected bool _used;//declare bool to check whether player have used item
     void Start()
     {

@@ -8,39 +8,19 @@ using UnityEngine;
  **************************************/
 public class CommonZombie : EnemyBehaviour
 {
+    //====================== ZOMBIE STATES ========================
+    public ChaseState_Common chaseState = new ChaseState_Common();
+    public AttackState_Common attackState = new AttackState_Common();
+
+    /// <summary>
+    /// zombie behaviour funcions
+    /// </summary>
     public override void Behaviour()
     {
-        //if player does exist and player still alive and zombie still alive
-        if (GameManagerClass.gameManaInstance.player_G != null && GameManagerClass.gameManaInstance.playerIsDead_B == false && zombieHealth > 1)
-        {
-            //if speed of nav agent been changed
-            if (navAgent.speed != defaultZombieSpeed)
-            {
-                //set speed back to default
-                navAgent.speed = defaultZombieSpeed;
-            }
-            //chase player
-            navAgent.SetDestination(GameManagerClass.gameManaInstance.player_G.transform.position);
-            //play run animation
-            meshAnimsBase.Play("Z_Run_InPlace");
-        }
-        //if player does exist and player still alive and zombie near the player and zombie still alive
-        else if (GameManagerClass.gameManaInstance.player_G != null && GameManagerClass.gameManaInstance.playerIsDead_B == false && navAgent.remainingDistance == 1 && zombieHealth > 1)
-        {
-            //play attack animation
-            meshAnimsBase.Play("Z_Attack");
-            navAgent.speed = 0;
-            //hurt player
-        }
-        else //player is dead or there is no player
-        {
-            //if zombie still alive
-            if (zombieHealth > 1)
-            {
-                //play idle animation
-                meshAnimsBase.Play("Z_Idle");
-            }
-
-        }
+      
+        _currentState = chaseState;
+        //run the current state
+        _currentState.DoState(this);
+        base.Behaviour();
     }
 }

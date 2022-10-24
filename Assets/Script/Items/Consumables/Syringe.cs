@@ -13,15 +13,9 @@ public class Syringe : ItemBase
     
     private void OnCollisionEnter(Collision player)
     {
-        //checking whether the object collide to the player
-        if(player.gameObject.CompareTag("Player"))
-        {
-            //set able to use to true
-            _ableToUse = true;
-            Debug.Log("Player");
-        }
+        
         //check whether the object collide with the floor
-        else if (player.gameObject.CompareTag("Floor") || player.gameObject.CompareTag("PlaceableFloor")) 
+        if (player.gameObject.CompareTag("Floor") || player.gameObject.CompareTag("PlaceableFloor")) 
         { 
             //if the object been used
             if(_used == true) 
@@ -29,6 +23,11 @@ public class Syringe : ItemBase
                 //deactivate object
                 this.gameObject.SetActive(false);
             }
+        }
+        else if (player.gameObject.CompareTag("Player")) 
+        {
+            //set able to use to true
+            _ableToUse = true;
         }
     }
 
@@ -49,16 +48,14 @@ public class Syringe : ItemBase
     {
         
         //if player able to use item
-        if (_ableToUse == true)
+        if (_ableToUse == true && _used == false)
         {
             //add health to the player
-            //this.gameObject.GetComponent<PlayerStats>().health += healthAddAmount;
+            GameManagerClass.gameManaInstance.playerStat.health += healthAddAmount;
             //set used to true
             _used = true;
-            Debug.Log("Healed");
             base.Onsue();
         }
     }
-
    
 }

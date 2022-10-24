@@ -22,4 +22,5 @@ public class GameManagerClass : MonoBehaviour
     public GameObject player_G;
     public bool playerIsDead_B = false;
     public CreditCard playerCreditCard_Class;
+    public PlayerStats playerStat;
 }

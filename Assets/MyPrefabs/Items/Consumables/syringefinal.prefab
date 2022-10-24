@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1082662357921328769}
   - component: {fileID: 2802350560779512127}
   - component: {fileID: 1268798622021818969}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: adapter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3891827409956198944}
   - component: {fileID: 3891827409956198947}
   - component: {fileID: 3891827409956198946}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: syringefinal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de9143831cd20f4d98d37f1c3e12e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ableToUse: 0
   healthAddAmount: 10
 --- !u!114 &3891827409956198947
 MonoBehaviour:
@@ -201,6 +202,9 @@ MonoBehaviour:
       m_Calls: []
   onTrigger:
     m_PersistentCalls:
+      m_Calls: []
+  onTriggerDown:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3891827409956198944}
         m_TargetAssemblyTypeName: Syringe, Assembly-CSharp
@@ -214,9 +218,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onTriggerDown:
-    m_PersistentCalls:
-      m_Calls: []
   onTriggerUp:
     m_PersistentCalls:
       m_Calls: []
@@ -324,7 +325,7 @@ GameObject:
   - component: {fileID: 7218831779324107727}
   - component: {fileID: 6533229575607170649}
   - component: {fileID: 8461278007954396833}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: plunger_rubber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +408,7 @@ GameObject:
   - component: {fileID: 983831680261064098}
   - component: {fileID: 5710021304638131031}
   - component: {fileID: 8040235187845614682}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: plunger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +491,7 @@ GameObject:
   - component: {fileID: 3206072871163266953}
   - component: {fileID: 7921273048815057492}
   - component: {fileID: 1027684033192074083}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +574,7 @@ GameObject:
   - component: {fileID: 2514683762450261367}
   - component: {fileID: 7562971582278465417}
   - component: {fileID: 5291950218071583161}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: needle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,30 +14,27 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
     public float zombieHealth;//declare float for zombie health
     [HideInInspector]public float defaultZombieSpeed;//declare float to store default nav agent speed
     [Header("Zombie Component")]
-    [HideInInspector]public MeshAnimatorBase meshAnimsBase;//declare mesh animator base to controll animation
-    [HideInInspector]public NavMeshAgent navAgent;//declare nav mesh agent to chase to target
+    [HideInInspector] public MeshAnimatorBase _meshAnimsBase;//declare mesh animator base to controll animation
+    [HideInInspector] public NavMeshAgent _navAgent;//declare nav mesh agent to chase to target
+    protected IZombieStateBase _currentState;//declare zombie state interface to change state of zombie
     // Start is called before the first frame update
     void Start()
     {
         //storing navmesh agent class into this class
-        navAgent = this.gameObject.GetComponent<NavMeshAgent>();
+        _navAgent = this.gameObject.GetComponent<NavMeshAgent>();
         //storing meshanimatorbase class into this class
-        meshAnimsBase = this.gameObject.GetComponent<MeshAnimatorBase>();
+        _meshAnimsBase = this.gameObject.GetComponent<MeshAnimatorBase>();
         //storing default speed
-        defaultZombieSpeed = navAgent.speed;
+        defaultZombieSpeed = _navAgent.speed;
 
         //DamageReceiver(100);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Behaviour();
     }
 
-    /// <summary>
-    /// function for behaviour of a enemy
-    /// </summary>
     public virtual void Behaviour() 
     { 
     
@@ -89,9 +86,9 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
         if (zombieHealth <= 0) 
         {
             //dsiable navmesh agent
-            navAgent.enabled = false;
+            _navAgent.enabled = false;
             //play zombie death animation
-            meshAnimsBase.Play("Z_FallingBack");
+            _meshAnimsBase.Play("Z_FallingBack");
             this.gameObject.tag = "DeadEnemy";
             //disable enemy script
             this.enabled = false;

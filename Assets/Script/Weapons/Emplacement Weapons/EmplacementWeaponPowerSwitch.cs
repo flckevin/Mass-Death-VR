@@ -15,10 +15,10 @@ public class EmplacementWeaponPowerSwitch : MonoBehaviour
     private void Awake()
     {
         //checking whether weapon switcher does exist
-        if(weapon.weponSwitcher == null) 
+        if(weapon.weaponSwitcher == null) 
         {
             //assign weapon switcher to weapon
-            weapon.weponSwitcher = this;
+            weapon.weaponSwitcher = this;
         }
     }
 
@@ -30,21 +30,23 @@ public class EmplacementWeaponPowerSwitch : MonoBehaviour
         //if power switcher is being turn off
         if(weapon.enabled == false) 
         {
-            //enable pipe coliision
-            pipeCollision.enabled = true;
+            
             //open the cap
-            LeanTween.rotateX(fuelCap, -10.302f, 1);
+            LeanTween.rotateLocal(fuelCap, new Vector3(-10.302f,0,0), 1);
             //turn on weapon
             weapon.enabled = true;
+            //enable pipe coliision
+            pipeCollision.enabled = false;
         }
         else //power switcher is already on 
         {
-            //enable pipe coliision
-            pipeCollision.enabled = false;
+            
             //open the cap
-            LeanTween.rotateX(fuelCap, 145, 1);
+            LeanTween.rotateLocal(fuelCap, new Vector3(145,0,0), 1);
             //turn off weapon
             weapon.enabled = false;
+            //enable pipe coliision
+            pipeCollision.enabled = true;
         }
     }
 

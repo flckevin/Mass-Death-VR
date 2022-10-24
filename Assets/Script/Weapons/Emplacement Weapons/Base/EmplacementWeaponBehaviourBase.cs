@@ -13,7 +13,7 @@ public class EmplacementWeaponBehaviourBase : MonoBehaviour
     public float fuelLeft = 100;//declare float for fuel left
     public int damageAmount;//declare int for damage amount
     public Slider fuelSlier;//declare slider for fuel slider
-    public EmplacementWeaponPowerSwitch weponSwitcher;//declare emplacement weapon switch to switch power on and off
+    public EmplacementWeaponPowerSwitch weaponSwitcher;//declare emplacement weapon switch to switch power on and off
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +33,7 @@ public class EmplacementWeaponBehaviourBase : MonoBehaviour
         else //fuel reach to 0
         {
             //turn off weapon
-            weponSwitcher.SwitchFunc();
+            weaponSwitcher.SwitchFunc();
         }
            
     }

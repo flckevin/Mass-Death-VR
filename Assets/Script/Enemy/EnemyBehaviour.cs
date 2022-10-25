@@ -30,15 +30,6 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
         //DamageReceiver(100);
     }
 
-    private void Update()
-    {
-        Behaviour();
-    }
-
-    public virtual void Behaviour() 
-    { 
-    
-    }
 
     /// <summary>
     /// Function to deal damage to zombie

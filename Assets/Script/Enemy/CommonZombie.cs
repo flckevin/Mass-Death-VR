@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZombieStates;
 /***************************************
  * Authour: HAN18080038
  * Object hold: Every common zombie in game
@@ -9,18 +10,17 @@ using UnityEngine;
 public class CommonZombie : EnemyBehaviour
 {
     //====================== ZOMBIE STATES ========================
-    public ChaseState_Common chaseState = new ChaseState_Common();
-    public AttackState_Common attackState = new AttackState_Common();
+    public Common_Chase chaseState = new Common_Chase();
+    public Common_Attack attackState = new Common_Attack();
 
     /// <summary>
     /// zombie behaviour funcions
     /// </summary>
-    public override void Behaviour()
+    private void Update()
     {
-      
         _currentState = chaseState;
         //run the current state
         _currentState.DoState(this);
-        base.Behaviour();
+       
     }
 }

@@ -140,7 +140,7 @@ public class ShopBehaviour : MonoBehaviour
             items_Shop[_currentItemId].currentItemToSpawnID = 0;
         }
         
-        if(GameManagerClass.gameManaInstance.playerCreditCard_Class.moneyAmont >= items_Shop[_currentItemId].price) 
+        if(GameManagerClass.instanceT.playerCreditCard_Class.moneyAmont >= items_Shop[_currentItemId].price) 
         {
             //set position of item to spawn position to be at the spawn position
             items_Shop[_currentItemId].itemToSpawn[_currentItemId].gameObject.transform.position = posToSpawnItem.position;
@@ -164,7 +164,7 @@ public class ShopBehaviour : MonoBehaviour
         //activate banner
         shopBanner.SetActive(true);
         //release card
-        GameManagerClass.gameManaInstance.playerCreditCard_Class.gameObject.SetActive(true);
+        GameManagerClass.instanceT.playerCreditCard_Class.gameObject.SetActive(true);
         //disable vr canvas
         vrCanvas.enabled = false;
     }
@@ -177,9 +177,9 @@ public class ShopBehaviour : MonoBehaviour
         {
             
             //set credit card at correct postion
-            GameManagerClass.gameManaInstance.playerCreditCard_Class.gameObject.transform.position = creditCardPos.position;
+            GameManagerClass.instanceT.playerCreditCard_Class.gameObject.transform.position = creditCardPos.position;
             shopBanner.SetActive(false);
-            GameManagerClass.gameManaInstance.playerCreditCard_Class.gameObject.SetActive(false);
+            GameManagerClass.instanceT.playerCreditCard_Class.gameObject.SetActive(false);
         }
     }
 

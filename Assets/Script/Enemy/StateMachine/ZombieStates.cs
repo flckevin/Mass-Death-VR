@@ -14,7 +14,7 @@ namespace ZombieStates
         public void DoState(EnemyBehaviour commonZombie)
         {
             //if player does exist and player still alive and zombie still alive
-            if (GameManagerClass.gameManaInstance.player_G != null && GameManagerClass.gameManaInstance.playerIsDead_B == false && commonZombie.zombieHealth > 1)
+            if (GameManagerClass.instanceT.player_G != null && GameManagerClass.instanceT.playerIsDead_B == false && commonZombie.zombieHealth > 1)
             {
                 //if speed of nav agent been changed
                 if (commonZombie._navAgent.speed != commonZombie.defaultZombieSpeed)
@@ -23,12 +23,12 @@ namespace ZombieStates
                     commonZombie._navAgent.speed = commonZombie.defaultZombieSpeed;
                 }
                 //chase player
-                commonZombie._navAgent.SetDestination(GameManagerClass.gameManaInstance.player_G.transform.position);
+                commonZombie._navAgent.SetDestination(GameManagerClass.instanceT.player_G.transform.position);
                 //play run animation
                 commonZombie._meshAnimsBase.Play("Z_Run_InPlace");
             }
             //if player does exist and player still alive and zombie near the player and zombie still alive
-            else if (GameManagerClass.gameManaInstance.player_G != null && GameManagerClass.gameManaInstance.playerIsDead_B == false && commonZombie._navAgent.remainingDistance == 1 && commonZombie.zombieHealth > 1)
+            else if (GameManagerClass.instanceT.player_G != null && GameManagerClass.instanceT.playerIsDead_B == false && commonZombie._navAgent.remainingDistance == 1 && commonZombie.zombieHealth > 1)
             {
                 //play attack animation
                 commonZombie._meshAnimsBase.Play("Z_Attack");

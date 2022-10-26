@@ -44,32 +44,32 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
         zombieHealth -= damageDealt;
         //squirt blood
         //if blood id is exceed from the blood array length
-        if(PoolManager.poolInstance.bloodID_Int > PoolManager.poolInstance.blood_G.Length - 1) 
+        if(PoolManager.instanceT.bloodID_Int > PoolManager.instanceT.blood_G.Length - 1) 
         {
             //set blood id back to 0 (from beginning)
-            PoolManager.poolInstance.bloodID_Int = 0;
+            PoolManager.instanceT.bloodID_Int = 0;
         }
 
         //if that blood pool does exist
-        if(PoolManager.poolInstance.blood_G[PoolManager.poolInstance.bloodID_Int] != null) 
+        if(PoolManager.instanceT.blood_G[PoolManager.instanceT.bloodID_Int] != null) 
         {
             //deactivate blood object to replay squirting blood
-            PoolManager.poolInstance.blood_G[PoolManager.poolInstance.bloodID_Int].SetActive(false);
+            PoolManager.instanceT.blood_G[PoolManager.instanceT.bloodID_Int].SetActive(false);
             //set position to squirt out of blood
-            PoolManager.poolInstance.blood_G[PoolManager.poolInstance.bloodID_Int].transform.position = posToSquirtBloodRaycast.point;
+            PoolManager.instanceT.blood_G[PoolManager.instanceT.bloodID_Int].transform.position = posToSquirtBloodRaycast.point;
 
             //getting correct angle to squirt blood
             float angle = Mathf.Atan2(posToSquirtBloodRaycast.normal.x, posToSquirtBloodRaycast.normal.z) * Mathf.Rad2Deg + 180;
             //setting correct rotation to squirt blood
-            PoolManager.poolInstance.blood_G[PoolManager.poolInstance.bloodID_Int].transform.rotation = Quaternion.Euler(0, angle + 90, 0);
+            PoolManager.instanceT.blood_G[PoolManager.instanceT.bloodID_Int].transform.rotation = Quaternion.Euler(0, angle + 90, 0);
 
             //activate blood object to play squirting blood
-            PoolManager.poolInstance.blood_G[PoolManager.poolInstance.bloodID_Int].SetActive(true);
+            PoolManager.instanceT.blood_G[PoolManager.instanceT.bloodID_Int].SetActive(true);
             
         }
 
         //increase blood id to move to next blood object
-        PoolManager.poolInstance.bloodID_Int++;
+        PoolManager.instanceT.bloodID_Int++;
         #endregion
 
         #region Decrease Health

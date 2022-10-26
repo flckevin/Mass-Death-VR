@@ -23,13 +23,20 @@ public class ParticleLiquid : MonoBehaviour
         {
             Debug.Log("Play");
             //play particle
-            particle.Play();
+            if (!particle.isPlaying) 
+            {
+                particle.Play();
+            }
         }
         else 
         {
             Debug.Log("stop");
             //stop the particle
-            particle.Stop();
+            if (particle.isPlaying) 
+            {
+                particle.Stop();
+            }
+           
         }
     }
 }

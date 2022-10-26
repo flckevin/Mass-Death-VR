@@ -51,7 +51,7 @@ public class Syringe : ItemBase
         if (_ableToUse == true && _used == false)
         {
             //add health to the player
-            GameManagerClass.gameManaInstance.playerStat.health += healthAddAmount;
+            GameManagerClass.instanceT.playerStat.health += healthAddAmount;
             //set used to true
             _used = true;
             base.Onsue();

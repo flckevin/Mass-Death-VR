@@ -6,11 +6,16 @@ using UnityEngine;
  * Object hold: syringe
  * Content: syringe behaviour
  **************************************/
-public class Syringe : ItemBase
+public class Syringe : ConsumableItemBase
 {
     [Header("Syringe_Info")]
     public float healthAddAmount;//declare float for amount to add to player health
-    
+
+    private void Start()
+    {
+        _ableToUse = false;
+    }
+
     private void OnCollisionEnter(Collision player)
     {
         

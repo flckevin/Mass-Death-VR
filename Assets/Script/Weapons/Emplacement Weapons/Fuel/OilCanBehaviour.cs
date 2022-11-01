@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(ParticleLiquid))]
+
 /***************************************
  * Authour: HAN 18080038
  * Object hold: fuel can
@@ -10,28 +10,36 @@ using UnityEngine;
 public class OilCanBehaviour : MonoBehaviour
 {
     public float OilValue = 100;//declare float for oil left inside of the oil can
+    public ParticleSystem particle;//declare particle for particle to be play
     public GameObject cap;//declare gameobject for cap of the fuel
-    private ParticleLiquid _partLiq;//declare particle liquid to play particle when player pour the gas
     private void Awake()
     {
         //change tag of object holding this class
         this.gameObject.tag = "FuelTank";
     }
 
-    /// <summary>
-    /// function for grab event
-    /// </summary>
-    /// <param name="Grabbed"> bool param for activation </param>
-    public void Switch(bool Grabbed) 
+    public void OntriggerEvent()
     {
-        //activate/deactivate object
-        cap.SetActive(Grabbed);
-        //activate and deactivate particle liquid
-        _partLiq.enabled = Grabbed;
-        
+        if (!particle.isPlaying)
+        {
+            particle.Play();
+
+            if (cap.activeInHierarchy == false)
+            {
+                cap.SetActive(false);
+            }
+        }
     }
 
-    
+    public void OntriggerUp()
+    {
+        if (particle.isPlaying)
+        {
+            particle.Stop();
 
-    
+            cap.SetActive(true);
+        }
+    }
+
+
 }

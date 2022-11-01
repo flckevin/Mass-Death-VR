@@ -10,9 +10,10 @@ using CorePattern;
 public class PoolManager : Singleton<PoolManager>
 {
     [Header("Blood_Info")]
-    public GameObject[] blood_G;
-    public int bloodID_Int;
-   
+    public GameObject[] bloodG_Blood;
+    public int bloodID_Blood;
 
-    
+    [Header("SupplyDrop_Infor")]
+    public GameObject[] supplyDropG_Supply;
+    public int supplyDropID_Supply;
 }

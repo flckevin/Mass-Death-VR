@@ -32,7 +32,15 @@ public class ShopBehaviour : MonoBehaviour
         items_Shop = ShopItemManager.shopInstance.gun_Shop;
         //change default shop type to gun on start
         ChangeItemType("Guns");
-        
+        //if vr canvas does not exist
+        if(vrCanvas == null) 
+        {
+            //store vr canvas component
+            vrCanvas = this.GetComponent<VRCanvas>();
+            
+        }
+        //disable vr canvas script
+        vrCanvas.enabled = false;
     }
 
 

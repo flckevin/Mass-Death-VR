@@ -23,7 +23,7 @@ public class Turret : EmplacementWeaponBehaviourBase
             if (ray.transform.CompareTag("Damageable"))
             {
                 //damage to the enemy
-                ray.transform.GetComponent<IDamageable>().Damage(damageAmount, ray, false);
+                ray.transform.GetComponent<IDamageable>().RaycastDamage(damageAmount, ray, false);
             }
         }
         base.WeaponBehaviour();

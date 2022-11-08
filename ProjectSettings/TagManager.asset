@@ -11,6 +11,7 @@ TagManager:
   - CreditCard
   - FuelTank
   - Floor
+  - PlayerHand
   layers:
   - Default
   - TransparentFX

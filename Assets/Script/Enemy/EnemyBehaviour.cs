@@ -36,12 +36,11 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
     /// </summary>
     /// <param name="damageDealt"> Value to deal damage to zombie </param>
     /// /// <param name="posToSquirtBloodRaycast"> Position to squirt out of blood </param>
-    public void DamageReceiver(float damageDealt,RaycastHit posToSquirtBloodRaycast,bool deactivateObject) 
+    public void SquirtBlood(float damageDealt,RaycastHit posToSquirtBloodRaycast,bool deactivateObject) 
     {
 
         #region Blood Squirting
-        //decreasing zombie health
-        zombieHealth -= damageDealt;
+
         //squirt blood
         //if blood id is exceed from the blood array length
         if(PoolManager.instanceT.bloodID_Blood > PoolManager.instanceT.bloodG_Blood.Length - 1) 
@@ -71,8 +70,15 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
         //increase blood id to move to next blood object
         PoolManager.instanceT.bloodID_Blood++;
         #endregion
+        //calling damage function to damage zombie itself
+        DamageReceiver(damageDealt,deactivateObject);
+    }
 
+    public void DamageReceiver(float damageDealt,bool instantDeactivation)
+    {
         #region Decrease Health
+        //decreasing zombie health
+        zombieHealth -= damageDealt;
         //if zombie health is less than 0
         if (zombieHealth <= 0) 
         {
@@ -86,14 +92,24 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
         }
         #endregion
 
-        if(deactivateObject == true) 
+        //if need to deactivate object instantly
+        if(instantDeactivation == true) 
         {
+            //deactivate object
             this.gameObject.SetActive(false);
         }
     }
 
-    public void Damage(float amount, RaycastHit effect, bool deactivateObjectInstant)
+
+
+
+    public void RaycastDamage(float amount, RaycastHit effect, bool deactivateObjectInstant)
     {
-        DamageReceiver(amount, effect, deactivateObjectInstant);
+        SquirtBlood(amount, effect, deactivateObjectInstant);
+    }
+
+    public void Damage(float amount, bool instantDeactivate)
+    {
+        DamageReceiver(amount,instantDeactivate);
     }
 }

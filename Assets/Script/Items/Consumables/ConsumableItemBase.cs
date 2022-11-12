@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 /***************************************
  * Authour: HAN 18080038
- * Object hold: every items
+ * Object hold: every consumable items
  * Content:base for items
  **************************************/
-public class ConsumableItemBase : MonoBehaviour
+public class ConsumableItemNNoneGasEMplaceWeaponBase : MonoBehaviour
 {
 
     // Start is called before the first frame update

@@ -18,16 +18,16 @@ public class TurretPlatform : EmplacementWeaponPlatformBase
         if (grounded == true)
         {
             //activate emplacement wepaon
-            Weapon.SetActive(true);
+            WeaponToActivate.SetActive(true);
             //play fall from sky animation
             //activate all emplacement weapon behaviour
-            Weapon.GetComponent<EmplacementWeaponBehaviourBase>().enabled = true;
+            WeaponToActivate.GetComponent<EmplacementWeaponBehaviourBaseWithGas>().enabled = true;
             //disable grabble component
             this.gameObject.GetComponent<Grabbable>().enabled = false;
             //disable rigibody
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             //disable weapon canvas
-            weaponCanvas.SetActive(false);
+            weaponCanvasToDisable.SetActive(false);
             //disable emplacement platform behaviour class
             this.enabled = false;
         }

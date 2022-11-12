@@ -10,7 +10,7 @@ using UnityEngine;
 public class EmplacementWeaponPowerSwitch : MonoBehaviour
 {
     public BoxCollider pipeCollision;//declare pipe collision to enable trigger
-    public EmplacementWeaponBehaviourBase weapon; //declare emplacement wepaon to toggle on and off'
+    public EmplacementWeaponBehaviourBaseWithGas weapon; //declare emplacement wepaon to toggle on and off'
     public GameObject fuelCap;//declare fuel cap to open them 
     private void Awake()
     {
@@ -20,6 +20,7 @@ public class EmplacementWeaponPowerSwitch : MonoBehaviour
             //assign weapon switcher to weapon
             weapon.weaponSwitcher = this;
         }
+        
     }
 
     /// <summary>

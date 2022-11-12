@@ -12,28 +12,38 @@ public class AmmoCrateBehaviour : MonoBehaviour
     //function when player grab
     public void OnSpawn(Transform _spawnPos)
     {
-        //checking which hand contain gun
-        Grabber _handGrab = GameManagerClass.instanceT.rightGrab ?? GameManagerClass.instanceT.leftGrab;
-        //declearing gun root to store gun from the hand that holding the gun
-        GunRoot _gunMag = null;
-
-        //if hand that grabbing ammo case is right arm
-        if(_handGrab == GameManagerClass.instanceT.rightGrab)
-        {
-            //set gun root to be gun at left hand
-            _gunMag = GameManagerClass.instanceT.leftGrab.HeldGrabbable.GetComponent<GunRoot>();
-        }
-        else //if hand that grabbing ammo case is left arm
-        {
-            //set gun root to be gun at right hand
-            _gunMag = GameManagerClass.instanceT.rightGrab.HeldGrabbable.GetComponent<GunRoot>();
-        }
-
-        //if player not holding any gun
-        if(_gunMag == null) return;
-        //spawn mag at given position
-        _gunMag.gunMagsAmmoBoxStorage[_gunMag.gunMagAmmoBoxStorageID].transform.position = _spawnPos.position;
+        //declaring new gun root varible to store gun ammo
+        GunRoot gun = null;
         
+        //looping every grab in array
+        for(int i = 0;i<GameManagerClass.instanceT.grab.Length; i++)
+        {
+            //if grabber holding something and that object has tag gun
+            if(GameManagerClass.instanceT.grab[i].HeldGrabbable != null && GameManagerClass.instanceT.grab[i].HeldGrabbable.gameObject.tag == "Gun")
+            {
+                //get gun component from the grabber
+                gun = GameManagerClass.instanceT.grab[i].HeldGrabbable.GetComponent<GunRoot>();
+            }
+            
+            //if gun does exist, stop the loop
+            if(gun!=null) break;
+            
+        }
+        
+        //if gun does not exist then stop logic
+        if(gun == null) return;
+        //checking whether gun ID has exceed length of gun storage array
+        if(gun.gunMagAmmoBoxStorageID + 1 < gun.gunMagsAmmoBoxStorage.Length)
+        {
+            //if it does
+            //set gun back to beginning
+            gun.gunMagAmmoBoxStorageID = 0;
+        }
+
+        //spawn gun mag at correct posiiton
+        gun.gunMagsAmmoBoxStorage[gun.gunMagAmmoBoxStorageID].transform.position = _spawnPos.position;
+        //increase ammmo box storage id
+        gun.gunMagAmmoBoxStorageID++;
         
     }
 }

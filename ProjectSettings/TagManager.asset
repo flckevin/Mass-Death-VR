@@ -12,6 +12,7 @@ TagManager:
   - FuelTank
   - Floor
   - PlayerHand
+  - Gun
   layers:
   - Default
   - TransparentFX

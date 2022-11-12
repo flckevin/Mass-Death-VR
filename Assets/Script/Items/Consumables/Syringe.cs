@@ -6,7 +6,7 @@ using UnityEngine;
  * Object hold: syringe
  * Content: syringe behaviour
  **************************************/
-public class Syringe : ConsumableItemBase
+public class Syringe : ConsumableItemNNoneGasEMplaceWeaponBase
 {
     [Header("Syringe_Info")]
     public float healthAddAmount;//declare float for amount to add to player health

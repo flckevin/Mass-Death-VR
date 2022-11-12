@@ -103,7 +103,7 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
 
 
 
-    public void RaycastDamage(float amount, RaycastHit effect, bool deactivateObjectInstant)
+    public void Damage(float amount, RaycastHit effect, bool deactivateObjectInstant)
     {
         SquirtBlood(amount, effect, deactivateObjectInstant);
     }

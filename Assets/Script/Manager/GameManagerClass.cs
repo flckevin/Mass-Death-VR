@@ -16,6 +16,6 @@ public class GameManagerClass : Singleton<GameManagerClass>
     public bool playerIsDead_B = false;
     public CreditCard playerCreditCard_Class;
     public PlayerStats playerStat;
-    public Grabber leftGrab;
-    public Grabber rightGrab;
+    public Grabber[] grab;
+    
 }

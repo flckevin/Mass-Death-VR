@@ -6,7 +6,7 @@ using UnityEngine;
  * Object hold: falre
  * Content: falre behaviour
  **************************************/
-public class FlareSupplyDrop : ConsumableItemBase
+public class FlareSupplyDrop : ConsumableItemNNoneGasEMplaceWeaponBase
 {
     private bool _dropped; //declare bool to check whether flare have been dropped on the ground
     public GameObject cap;//declare gameobject to store cap of the flare

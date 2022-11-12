@@ -9,8 +9,8 @@ using UnityEngine;
 public class EmplacementWeaponPlatformBase : MonoBehaviour
 {
     protected bool grounded;//declare bool to check whether platform is grounded
-    public GameObject Weapon;//declare gameobject to activate emplacement weapons
-    public GameObject weaponCanvas;//declare gameobject to disable weapon canvas
+    public GameObject WeaponToActivate;//declare gameobject to activate emplacement weapons
+    public GameObject weaponCanvasToDisable;//declare gameobject to disable weapon canvas
                                       // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {

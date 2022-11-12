@@ -1570,9 +1570,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelLeft: 100
+  fuelToDecrease: 0
   damageAmount: 2
   fuelSlier: {fileID: 306223382}
-  weponSwitcher: {fileID: 0}
+  weaponSwitcher: {fileID: 8789742770613781022}
   barrel: {fileID: 3609453443070349208}
   fireRate: 2
 --- !u!1 &1780249077053844583
@@ -2135,8 +2136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7724ba072aec22541899661de1efe7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 533164142105620068}
-  weaponCanvas: {fileID: 931227289}
+  WeaponToActivate: {fileID: 0}
+  weaponCanvasToDisable: {fileID: 0}
 --- !u!54 &8789742770613781021
 Rigidbody:
   m_ObjectHideFlags: 0

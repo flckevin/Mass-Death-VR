@@ -6,7 +6,7 @@ using UnityEngine;
  * Object hold:
  * Content:
  **************************************/
-public class Turret : EmplacementWeaponBehaviourBase
+public class Turret : EmplacementWeaponBehaviourBaseWithGas
 {
     [Header("Turret Info")]
     public Transform barrel;//declare transform for gun barrel positon
@@ -23,7 +23,7 @@ public class Turret : EmplacementWeaponBehaviourBase
             if (ray.transform.CompareTag("Damageable"))
             {
                 //damage to the enemy
-                ray.transform.GetComponent<IDamageable>().RaycastDamage(damageAmount, ray, false);
+                ray.transform.GetComponent<IDamageable>().Damage(damageAmount, ray, false);
             }
         }
         base.WeaponBehaviour();

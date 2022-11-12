@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 /***************************************
  * Authour: HAN 18080038
  * Object hold: every emplacement weapon in game
  * Content:root of every emplacement weapons
  **************************************/
-public class EmplacementWeaponBehaviourBase : MonoBehaviour
+public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour
 {
     [Header("General emplacement weapon info")]
     public float fuelLeft = 100;//declare float for fuel left
+    public float fuelToDecrease;//declare float for fuel to decrease
     public int damageAmount;//declare int for damage amount
     public Slider fuelSlier;//declare slider for fuel slider
     public EmplacementWeaponPowerSwitch weaponSwitcher;//declare emplacement weapon switch to switch power on and off
@@ -41,7 +43,7 @@ public class EmplacementWeaponBehaviourBase : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    public virtual void WeaponBehaviour(){ fuelLeft-=10*Time.deltaTime; }
+    public virtual void WeaponBehaviour(){ fuelLeft-=fuelToDecrease*Time.deltaTime; }
 
     public virtual void OnShutDown(){ }
 

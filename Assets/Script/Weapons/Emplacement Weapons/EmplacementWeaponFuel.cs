@@ -8,13 +8,13 @@ using UnityEngine;
  **************************************/
 public class EmplacementWeaponFuel : MonoBehaviour
 {
-    private EmplacementWeaponBehaviourBase _emplacementWeapon;//declare emplacement weapon behaviour to refill fuel
+    private EmplacementWeaponBehaviourBaseWithGas _emplacementWeapon;//declare emplacement weapon behaviour to refill fuel
     private OilCanBehaviour _oil;//declare oil to store current oil
     // Start is called before the first frame update
     void Start()
     {
         //storing emplacement weapon class into this class
-        _emplacementWeapon = this.gameObject.GetComponentInParent<EmplacementWeaponBehaviourBase>();
+        _emplacementWeapon = this.gameObject.GetComponentInParent<EmplacementWeaponBehaviourBaseWithGas>();
     }
 
     private void OnTriggerEnter(Collider fuelTank)

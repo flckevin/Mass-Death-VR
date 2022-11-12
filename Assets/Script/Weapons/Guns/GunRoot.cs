@@ -16,7 +16,10 @@ public class GunRoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(this.gameObject.tag != "Gun")
+        {
+            this.gameObject.tag = "Gun";
+        }
     }
 
     /// <summary>
@@ -38,7 +41,7 @@ public class GunRoot : MonoBehaviour
                 //get component of damage able interface
                 IDamageable damageAble = rayHit.transform.GetComponent<IDamageable>();
                 //call damageable function
-                damageAble.RaycastDamage(damageDealt, rayHit,false);
+                damageAble.Damage(damageDealt, rayHit,false);
             }
             
         }

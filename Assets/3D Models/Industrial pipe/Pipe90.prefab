@@ -143,7 +143,6 @@ GameObject:
   - component: {fileID: 8238059818366773875}
   - component: {fileID: 5757187749993632762}
   - component: {fileID: 5242591262416276235}
-  - component: {fileID: 1547818988074154851}
   m_Layer: 0
   m_Name: Pipe90
   m_TagString: Untagged
@@ -160,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 7589563392839650214}
   m_LocalRotation: {x: 0.08386911, y: 0, z: 0, w: 0.9964768}
   m_LocalPosition: {x: 1.7721874, y: 0.469, z: -1.126}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3465927471943635333}
@@ -225,8 +224,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7589563392839650214}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.010289832, y: 0.008614029, z: 0.013383656}
   m_Center: {x: -0.00013144557, y: 0.017137399, z: 0.0043621645}
@@ -242,23 +241,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4914551be31e2445a180e67ca6e3632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1547818988074154851
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7589563392839650214}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: df6112d7480efd94c94c1fef8f5f640b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

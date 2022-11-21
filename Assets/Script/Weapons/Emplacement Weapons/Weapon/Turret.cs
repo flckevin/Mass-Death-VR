@@ -13,14 +13,17 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
     public float fireRate;
     private float _nextFire = 0f;
 
+
+   
     public override void WeaponBehaviour()
     {
         //checking whether ray cast hit anything
         if (Physics.Raycast(barrel.position, barrel.forward, out RaycastHit ray, Mathf.Infinity) && Time.time > _nextFire)
         {
+            Debug.Log(ray.transform.gameObject.name);
             _nextFire = Time.time + fireRate;
             //checking tag whether is a damage able object
-            if (ray.transform.CompareTag("Damageable"))
+            if (ray.transform.CompareTag("Zombie"))
             {
                 //damage to the enemy
                 ray.transform.GetComponent<IDamageable>().Damage(damageAmount, ray, false);
@@ -29,5 +32,11 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
         base.WeaponBehaviour();
     }
 
-    
+    public override void OnDisableWeapon()
+    {
+        //disable weapon behaviour
+        this.enabled = false;
+        base.OnDisableWeapon();
+    }
+
 }

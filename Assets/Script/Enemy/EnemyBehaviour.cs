@@ -14,18 +14,18 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
     public float zombieHealth;//declare float for zombie health
     [HideInInspector]public float defaultZombieSpeed;//declare float to store default nav agent speed
     [Header("Zombie Component")]
-    [HideInInspector] public MeshAnimatorBase _meshAnimsBase;//declare mesh animator base to controll animation
-    [HideInInspector] public NavMeshAgent _navAgent;//declare nav mesh agent to chase to target
+    [HideInInspector] public MeshAnimatorBase meshAnimsBase;//declare mesh animator base to controll animation
+    [HideInInspector] public NavMeshAgent navAgent;//declare nav mesh agent to chase to target
     protected IZombieStateBase _currentState;//declare zombie state interface to change state of zombie
     // Start is called before the first frame update
     void Start()
     {
         //storing navmesh agent class into this class
-        _navAgent = this.gameObject.GetComponent<NavMeshAgent>();
+        navAgent = this.gameObject.GetComponent<NavMeshAgent>();
         //storing meshanimatorbase class into this class
-        _meshAnimsBase = this.gameObject.GetComponent<MeshAnimatorBase>();
+        meshAnimsBase = this.gameObject.GetComponent<MeshAnimatorBase>();
         //storing default speed
-        defaultZombieSpeed = _navAgent.speed;
+        defaultZombieSpeed = navAgent.speed;
 
         //DamageReceiver(100);
     }
@@ -83,9 +83,9 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
         if (zombieHealth <= 0) 
         {
             //dsiable navmesh agent
-            _navAgent.enabled = false;
+            navAgent.enabled = false;
             //play zombie death animation
-            _meshAnimsBase.Play("Z_FallingBack");
+            meshAnimsBase.Play("Z_FallingBack");
             this.gameObject.tag = "DeadEnemy";
             //disable enemy script
             this.enabled = false;
@@ -99,8 +99,6 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
             this.gameObject.SetActive(false);
         }
     }
-
-
 
 
     public void Damage(float amount, RaycastHit effect, bool deactivateObjectInstant)

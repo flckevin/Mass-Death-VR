@@ -20,7 +20,7 @@ public class Landmine : ConsumableItemNNoneGasEMplaceWeaponBase
         }
 
         //if object has tag damageable
-        if(obj.gameObject.CompareTag("Damageable") && _ableToUse == true)
+        if(obj.gameObject.CompareTag("Zombie") && _ableToUse == true)
         {
             //create a new overlap collider
             Collider[] damageableCollide = Physics.OverlapSphere(this.transform.position,4f);
@@ -28,7 +28,7 @@ public class Landmine : ConsumableItemNNoneGasEMplaceWeaponBase
             for(int i =0;i< damageableCollide.Length;i++)
             {
                 //if the gameobject has tag damageable
-                if(damageableCollide[i].gameObject.tag == "Damageable")
+                if(damageableCollide[i].gameObject.tag == "Zombie" || damageableCollide[i].gameObject.tag == "Damageable")
                 {
                     //call damage function
                     damageableCollide[i].GetComponent<IDamageable>().Damage(99999,true);

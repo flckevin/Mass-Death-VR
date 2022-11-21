@@ -35,7 +35,7 @@ public class EmplacementWeaponPowerSwitch : MonoBehaviour
             //open the cap
             LeanTween.rotateLocal(fuelCap, new Vector3(-10.302f,0,0), 1);
             //turn on weapon
-            weapon.enabled = true;
+            weapon.OnDisableWeapon();
             //enable pipe coliision
             pipeCollision.enabled = false;
         }
@@ -45,7 +45,7 @@ public class EmplacementWeaponPowerSwitch : MonoBehaviour
             //open the cap
             LeanTween.rotateLocal(fuelCap, new Vector3(145,0,0), 1);
             //turn off weapon
-            weapon.enabled = false;
+            weapon.OnDisableWeapon();
             //enable pipe coliision
             pipeCollision.enabled = true;
         }

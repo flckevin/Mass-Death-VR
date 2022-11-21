@@ -16,4 +16,6 @@ public class PoolManager : Singleton<PoolManager>
     [Header("SupplyDrop_Infor")]
     public GameObject[] supplyDropG_Supply;
     public int supplyDropID_Supply;
+    [Header("Weapon Effects")]
+    public GameObject oil;
 }

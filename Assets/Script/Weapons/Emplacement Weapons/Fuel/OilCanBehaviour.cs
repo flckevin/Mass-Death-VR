@@ -20,25 +20,16 @@ public class OilCanBehaviour : MonoBehaviour
 
     public void OntriggerEvent()
     {
-        if (!particle.isPlaying)
-        {
-            particle.Play();
+        particle.Play();
 
-            if (cap.activeInHierarchy == false)
-            {
-                cap.SetActive(false);
-            }
-        }
+        cap.SetActive(false);
     }
 
     public void OntriggerUp()
     {
-        if (particle.isPlaying)
-        {
-            particle.Stop();
+        particle.Stop();
 
-            cap.SetActive(true);
-        }
+        cap.SetActive(true);
     }
 
 

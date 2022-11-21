@@ -36,7 +36,7 @@ public class GunRoot : MonoBehaviour
         if(Physics.Raycast(gunBarrel.position,gunBarrel.forward, out rayHit, Mathf.Infinity) && gunBarrel != null) 
         { 
             //if raycast hit object has tag that be able to damage
-            if(rayHit.transform.gameObject.tag == "Damageable") 
+            if(rayHit.transform.gameObject.tag == "Zombie" || rayHit.transform.gameObject.tag == "Damageable") 
             {
                 //get component of damage able interface
                 IDamageable damageAble = rayHit.transform.GetComponent<IDamageable>();

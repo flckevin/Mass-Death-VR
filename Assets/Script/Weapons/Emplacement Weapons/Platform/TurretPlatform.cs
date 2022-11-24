@@ -10,12 +10,11 @@ using UnityEngine;
 public class TurretPlatform : EmplacementWeaponPlatformBase
 {
 
-  
-    public override void EmplacementWepaonActivation()
-    {
-       
-    }
 
+    public override void EmplacementWepaonActivation(bool hasGas)
+    {
+        base.EmplacementWepaonActivation(hasGas);
+    }
 
 
 

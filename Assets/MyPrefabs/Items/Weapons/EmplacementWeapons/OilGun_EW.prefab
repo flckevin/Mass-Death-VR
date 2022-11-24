@@ -614,14 +614,14 @@ MonoBehaviour:
       - m_Target: {fileID: 5173173627470953885}
         m_TargetAssemblyTypeName: TurretPlatform, Assembly-CSharp
         m_MethodName: EmplacementWepaonActivation
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &2630150761776415159
 GameObject:
@@ -955,9 +955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7724ba072aec22541899661de1efe7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionLimit: {fileID: 905706808681133249}
   WeaponToActivate: {fileID: 7837466395737874815}
   weaponCanvasToDisable: {fileID: 2630150761446071651}
-  collisionLimit: {fileID: 905706808681133249}
 --- !u!54 &4227633986338926226
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22026,6 +22026,9 @@ MonoBehaviour:
   fuelSlier: {fileID: 7777765794289682602}
   fuelCap: {fileID: 2485062374681735983}
   pipeCol: {fileID: 7922690535748985190}
+  stage: 0
+  stages_G: []
+  ewFuel: {fileID: 0}
   delay: 5
   oilParticle: {fileID: 5012957049119213382}
   gunBarrel: {fileID: 6464868976978027148}
@@ -22136,6 +22139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4914551be31e2445a180e67ca6e3632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emplacementWeapon: {fileID: 0}
+  timePassedMark: 0
+  fuelLeftEW: 0
 --- !u!65 &7922690535748985190
 BoxCollider:
   m_ObjectHideFlags: 0

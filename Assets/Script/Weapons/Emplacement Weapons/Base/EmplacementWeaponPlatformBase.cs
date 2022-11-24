@@ -63,7 +63,7 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
     /// <summary>
     /// emplacement weapon activation
     /// </summary>
-    public virtual void EmplacementWepaonActivation()
+    public virtual void EmplacementWepaonActivation(bool hasGas)
     {
         //cehcking whether emplacement weapon is grounded and be able to place down
         if ( _abletoPlace == true && grounded == true)
@@ -71,8 +71,11 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
             //activate emplacement wepaon
             WeaponToActivate.SetActive(true);
             //play fall from sky animation
-            //activate all emplacement weapon behaviour
-            WeaponToActivate.GetComponent<EmplacementWeaponBehaviourBaseWithGas>().enabled = true;
+            if(hasGas == true)
+            {
+                //activate all emplacement weapon behaviour
+                WeaponToActivate.GetComponent<EmplacementWeaponBehaviourBaseWithGas>().enabled = true;
+            }
             //disable grabble component
             this.gameObject.GetComponent<Grabbable>().enabled = false;
             //disable rigibody

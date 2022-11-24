@@ -13,6 +13,7 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
     public float fireRate;
     private float _nextFire = 0f;
 
+    public int damageAmount;//declare int for damage amount
 
    
     public override void WeaponBehaviour()
@@ -32,11 +33,11 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
         base.WeaponBehaviour();
     }
 
-    public override void OnDisableWeapon()
+    public override void OnBeforeDisableWeapon()
     {
         //disable weapon behaviour
         this.enabled = false;
-        base.OnDisableWeapon();
+        base.OnBeforeDisableWeapon();
     }
 
 }

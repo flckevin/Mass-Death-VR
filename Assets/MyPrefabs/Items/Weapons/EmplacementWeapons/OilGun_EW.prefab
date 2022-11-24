@@ -986,9 +986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c87b84c3f970e49a45ceb252cac751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipeCollision: {fileID: 7922690535748985190}
-  weapon: {fileID: 520649771497129472}
-  fuelCap: {fileID: 4076296157530013609}
 --- !u!1 &4464003318317204963
 GameObject:
   m_ObjectHideFlags: 0
@@ -21568,10 +21565,11 @@ MonoBehaviour:
       - m_Target: {fileID: 3513536890260854420}
         m_TargetAssemblyTypeName: EmplacementWeaponPowerSwitch, Assembly-CSharp
         m_MethodName: SwitchFunc
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 520649771497129472}
+          m_ObjectArgumentAssemblyTypeName: EmplacementWeaponBehaviourBaseWithGas,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -22024,11 +22022,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316c6d4863ab2784f88ebf0f53577b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelLeft: 100
-  fuelToDecrease: 0
-  damageAmount: 0
+  emplacementStats: {fileID: 11400000, guid: f5fad134848668541a46794db76a80fd, type: 2}
   fuelSlier: {fileID: 7777765794289682602}
-  weaponSwitcher: {fileID: 3513536890260854420}
+  fuelCap: {fileID: 2485062374681735983}
+  pipeCol: {fileID: 7922690535748985190}
   delay: 5
   oilParticle: {fileID: 5012957049119213382}
   gunBarrel: {fileID: 6464868976978027148}

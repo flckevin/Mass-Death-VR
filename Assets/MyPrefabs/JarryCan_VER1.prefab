@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4261126958739771842}
   - component: {fileID: 1058186253359405055}
   m_Layer: 0
-  m_Name: JarryCan
+  m_Name: JarryCan_VER1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,25 +8,39 @@ using UnityEngine.UI;
  * Object hold: every emplacement weapon in game
  * Content:root of every emplacement weapons
  **************************************/
-public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour
+public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IEmplacementWeapons
 {
     [Header("General emplacement weapon info")]
-    public float fuelLeft = 100;//declare float for fuel left
-    public float fuelToDecrease;//declare float for fuel to decrease
-    public int damageAmount;//declare int for damage amount
+
+    public EWStats emplacementStats;//declare scriptable object to store weapon stats
     public Slider fuelSlier;//declare slider for fuel slider
-    public EmplacementWeaponPowerSwitch weaponSwitcher;//declare emplacement weapon switch to switch power on and off
-    // Start is called before the first frame update
-    void Start()
+    public GameObject fuelCap;
+    public BoxCollider pipeCol;
+    public int stage;
+    public int Stage
     {
-        
+        get{return stage;}
+        set{if(stage > stage + 1)stage = stages_G.Length;}
+    }
+    public GameObject[] stages_G;
+    
+
+    public EmplacementWeaponFuel ewFuel;
+
+    // Start is called before the first frame update
+    public virtual void Start(){}
+
+    private void OnEnable() 
+    {
+        //update new gas value
+       ewFuel.UpdateGasOnTime();
     }
 
     // Update is called once per frame
     void Update()
     {
         //if fuel is larger than 0
-        if(fuelLeft >= 0) 
+        if(ewFuel.fuelLeftEW >= 0) 
         {
             //continue on weapon behaviour
             WeaponBehaviour();
@@ -35,30 +49,43 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour
         else //fuel reach to 0
         {
             //turn off weapon
-            weaponSwitcher.SwitchFunc();
+            EmplacementWeaponPowerSwitch weaponSwitch = new EmplacementWeaponPowerSwitch();
+            weaponSwitch.SwitchFunc(this);
         }
            
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public virtual void WeaponBehaviour(){ fuelLeft-=fuelToDecrease*Time.deltaTime; }
+    public virtual void UpgradeEW()
+    {
+        //increase stage of upgrade
+        stage++;
+        if(stage >= emplacementStats.amountToUpgrade)
+        {
+            //deactivate last stage
+            stages_G[stage-1].SetActive(false);
+            //activate next stage
+            stages_G[stage].SetActive(true);
+            //set stage back to default
+            stage = 0;
+        }
+    }
 
-    public virtual void OnShutDown(){ }
+    public virtual void WeaponBehaviour(){ ewFuel.fuelLeftEW -= emplacementStats.fuelToDecrease *Time.deltaTime; }
 
-    public virtual void OnRestart(){ }
-
-    private void OnUpgrade(int stage)  { }
-
-    public virtual void OnDisableWeapon(){}
+    public virtual void OnBeforeDisableWeapon(){}
+    public virtual void OnEnableWeapon(){}
 
     //function to update slider value for gas
     public void SliderValueChange() 
     {
         //updating slider value
-        fuelSlier.value = fuelLeft / 100;
+        fuelSlier.value = ewFuel.fuelLeftEW / 100;
         
     }
 
+    public void OnUpgrade()
+    {
+        UpgradeEW();
+        throw new System.NotImplementedException();
+    }
 }

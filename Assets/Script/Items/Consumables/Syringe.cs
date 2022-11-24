@@ -6,7 +6,7 @@ using UnityEngine;
  * Object hold: syringe
  * Content: syringe behaviour
  **************************************/
-public class Syringe : ConsumableItemNNoneGasEMplaceWeaponBase
+public class Syringe : ConsumableItemNEW_NoGasBase
 {
     [Header("Syringe_Info")]
     public float healthAddAmount;//declare float for amount to add to player health
@@ -49,7 +49,7 @@ public class Syringe : ConsumableItemNNoneGasEMplaceWeaponBase
     /// <summary>
     /// function for player to use item
     /// </summary>
-    public override void Onsue()
+    public override void OnsueEWnItem()
     {
         
         //if player able to use item
@@ -59,7 +59,7 @@ public class Syringe : ConsumableItemNNoneGasEMplaceWeaponBase
             GameManagerClass.instanceT.playerStat.health += healthAddAmount;
             //set used to true
             _used = true;
-            base.Onsue();
+            base.OnsueEWnItem();
         }
     }
    

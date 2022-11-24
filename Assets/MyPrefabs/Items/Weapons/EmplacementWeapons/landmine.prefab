@@ -173,7 +173,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9194755495316219574}
         m_TargetAssemblyTypeName: Landmine, Assembly-CSharp
-        m_MethodName: OnActivation
+        m_MethodName: OnsueEWnItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

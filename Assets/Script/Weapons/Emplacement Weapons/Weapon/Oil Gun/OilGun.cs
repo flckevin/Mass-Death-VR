@@ -17,8 +17,10 @@ public class OilGun : EmplacementWeaponBehaviourBaseWithGas
     
     private int _oilID;
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        
+        base.Start();
         //call shoot function
         InvokeRepeating("ShootOil",1,delay);
     }

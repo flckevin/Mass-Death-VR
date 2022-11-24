@@ -9,45 +9,33 @@ using UnityEngine;
  **************************************/
 public class EmplacementWeaponPowerSwitch : MonoBehaviour
 {
-    public BoxCollider pipeCollision;//declare pipe collision to enable trigger
-    public EmplacementWeaponBehaviourBaseWithGas weapon; //declare emplacement wepaon to toggle on and off'
-    public GameObject fuelCap;//declare fuel cap to open them 
-    private void Awake()
-    {
-        //checking whether weapon switcher does exist
-        if(weapon.weaponSwitcher == null) 
-        {
-            //assign weapon switcher to weapon
-            weapon.weaponSwitcher = this;
-        }
-        
-    }
-
     /// <summary>
     /// function to switch power
     /// </summary>
-    public void SwitchFunc() 
+    public void SwitchFunc(EmplacementWeaponBehaviourBaseWithGas weapon) 
     { 
         //if power switcher is being turn off
         if(weapon.enabled == false) 
         {
             
             //open the cap
-            LeanTween.rotateLocal(fuelCap, new Vector3(-10.302f,0,0), 1);
+            LeanTween.rotateLocal(weapon.fuelCap, new Vector3(-10.302f,0,0), 1);
             //turn on weapon
-            weapon.OnDisableWeapon();
+            weapon.enabled = true;
+            weapon.OnEnableWeapon();
             //enable pipe coliision
-            pipeCollision.enabled = false;
+            weapon.pipeCol.enabled = false;
         }
         else //power switcher is already on 
         {
             
-            //open the cap
-            LeanTween.rotateLocal(fuelCap, new Vector3(145,0,0), 1);
+            //close the cap
+            LeanTween.rotateLocal(weapon.fuelCap, new Vector3(145,0,0), 1);
+            weapon.OnBeforeDisableWeapon();
             //turn off weapon
-            weapon.OnDisableWeapon();
+            weapon.enabled = false;
             //enable pipe coliision
-            pipeCollision.enabled = true;
+            weapon.pipeCol.enabled = true;
         }
     }
 

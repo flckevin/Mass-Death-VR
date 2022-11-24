@@ -161,13 +161,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc57815e9b346b4995ea08e77b6d99f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelLeft: 100
-  fuelToDecrease: 0
-  damageAmount: 20
+  emplacementStats: {fileID: 11400000, guid: c24505811b6a48c4cbede953a379180f, type: 2}
   fuelSlier: {fileID: 1913590343578830527}
-  weaponSwitcher: {fileID: 4346853958014762223}
+  fuelCap: {fileID: 3381359562947107156}
+  pipeCol: {fileID: 7017376347104742173}
   barrel: {fileID: 1572492312092887874}
   fireRate: 2
+  damageAmount: 20
 --- !u!1 &1572492312055529414
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,10 +487,11 @@ MonoBehaviour:
       - m_Target: {fileID: 4346853958014762223}
         m_TargetAssemblyTypeName: EmplacementWeaponPowerSwitch, Assembly-CSharp
         m_MethodName: SwitchFunc
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1572492311860541053}
+          m_ObjectArgumentAssemblyTypeName: EmplacementWeaponBehaviourBaseWithGas,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -509,6 +510,7 @@ GameObject:
   - component: {fileID: 1572492313261643612}
   - component: {fileID: 1572492313261643613}
   - component: {fileID: 1572492313261643614}
+  - component: {fileID: 8842879943240449970}
   m_Layer: 5
   m_Name: Weapon_Canvas
   m_TagString: Untagged
@@ -608,6 +610,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ee805472840d5843b863535775bbe97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8842879943240449970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572492313261643600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c87b84c3f970e49a45ceb252cac751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1572492313367594943
@@ -1720,7 +1734,7 @@ GameObject:
   - component: {fileID: 3907476572446868713}
   - component: {fileID: 4346853958014762223}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: Turret_EW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1869,9 +1883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c87b84c3f970e49a45ceb252cac751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipeCollision: {fileID: 7017376347104742173}
-  weapon: {fileID: 1572492311860541053}
-  fuelCap: {fileID: 3747098559009215954}
 --- !u!1 &3747098559009215954
 GameObject:
   m_ObjectHideFlags: 0

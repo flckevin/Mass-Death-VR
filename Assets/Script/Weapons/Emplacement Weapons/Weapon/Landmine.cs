@@ -7,7 +7,7 @@ using UnityEngine;
  * Content: Landmine behaviour
  **************************************/
  [RequireComponent(typeof(Rigidbody))]
-public class Landmine : ConsumableItemNNoneGasEMplaceWeaponBase
+public class Landmine : ConsumableItemNEW_NoGasBase
 {
     private bool _grounded; // declare bool to check whether the landmine is grounded
     private void OnCollisionEnter(Collision obj) 
@@ -47,7 +47,8 @@ public class Landmine : ConsumableItemNNoneGasEMplaceWeaponBase
                 Explode();
             }
         }
-        
+        //function for explosion effect
+        void Explode() => this.gameObject.SetActive(false);
     }
 
     private void OnCollisionExit(Collision obj) 
@@ -60,24 +61,18 @@ public class Landmine : ConsumableItemNNoneGasEMplaceWeaponBase
         }
     }
 
-    //function for explosion
-    private void Explode()
-    {
-          //deactivate object
-            this.gameObject.SetActive(false);
-    }
-
     //activate function
-    public void OnActivation()
+    public override void OnsueEWnItem()
     {
         //activate landmine explostion
         _ableToUse = true;
+        base.OnsueEWnItem();
     }
 
-    public override void OnSetDefault()
+    public override void OnSetDefaultEWnItem()
     {
         //deactivate land mine
         _ableToUse = false;
-        base.OnSetDefault();
+        base.OnSetDefaultEWnItem();
     }
 }

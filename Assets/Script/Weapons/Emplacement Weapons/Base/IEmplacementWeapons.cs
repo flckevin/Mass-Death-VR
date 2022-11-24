@@ -6,9 +6,7 @@ using UnityEngine;
  * Object hold:
  * Content:
  **************************************/
-public interface IZombieStateBase
+public interface IEmplacementWeapons 
 {
-    public void DoState(EnemyBehaviour zombie);
-
-
+    public void OnUpgrade();
 }

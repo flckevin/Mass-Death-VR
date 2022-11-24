@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FSG.MeshAnimator;
 using UnityEngine.AI;
+
 /***************************************
  * Authour: HAN18080038
  * Object hold: Every enemy 
@@ -16,9 +17,10 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
     [Header("Zombie Component")]
     [HideInInspector] public MeshAnimatorBase meshAnimsBase;//declare mesh animator base to controll animation
     [HideInInspector] public NavMeshAgent navAgent;//declare nav mesh agent to chase to target
-    protected IZombieStateBase _currentState;//declare zombie state interface to change state of zombie
+    protected IZombieStateBase _State;//declare zombie state interface to change state of zombie
+    protected string _currentState; //declare current state to identify which state zombie current in
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         //storing navmesh agent class into this class
         navAgent = this.gameObject.GetComponent<NavMeshAgent>();
@@ -29,7 +31,7 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
 
         //DamageReceiver(100);
     }
-
+    
 
     /// <summary>
     /// Function to deal damage to zombie
@@ -92,14 +94,13 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
         }
         #endregion
 
-        //if need to deactivate object instantly
-        if(instantDeactivation == true) 
-        {
-            //deactivate object
-            this.gameObject.SetActive(false);
-        }
+        //deactivate object
+        this.gameObject.SetActive(!instantDeactivation);
+        
     }
 
+
+    #region Interface
 
     public void Damage(float amount, RaycastHit effect, bool deactivateObjectInstant)
     {
@@ -110,4 +111,5 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
     {
         DamageReceiver(amount,instantDeactivate);
     }
+    #endregion
 }

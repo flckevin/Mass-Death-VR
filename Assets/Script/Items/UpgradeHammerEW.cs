@@ -12,7 +12,7 @@ public class UpgradeHammerEW : MonoBehaviour
    {
         if(EW.gameObject.tag == "EmplacementWeapon")
         {
-            EW.transform.GetComponent<IEmplacementWeapons>().OnUpgrade();
+            EW.transform.GetComponent<IHammerAble>().OnUpgrade();
         }
    }
 

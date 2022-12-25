@@ -8,7 +8,7 @@ using UnityEngine.UI;
  * Object hold: every emplacement weapon in game
  * Content:root of every emplacement weapons
  **************************************/
-public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IEmplacementWeapons
+public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IHammerAble
 {
     [Header("General emplacement weapon info")]
 
@@ -16,15 +16,9 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IEmplacementW
     public Slider fuelSlier;//declare slider for fuel slider
     public GameObject fuelCap;
     public BoxCollider pipeCol;
-    public int stage;
-    public int Stage
-    {
-        get{return stage;}
-        set{if(stage > stage + 1)stage = stages_G.Length;}
-    }
-    public GameObject[] stages_G;
-    
-
+    public int amountUpgraded;
+    private int currentStage;
+    public GameObject[] weaponStages;
     public EmplacementWeaponFuel ewFuel;
 
     // Start is called before the first frame update
@@ -57,17 +51,25 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IEmplacementW
 
     public virtual void UpgradeEW()
     {
+        //if stage reach to limit
+        if(amountUpgraded == weaponStages.Length) return; 
         //increase stage of upgrade
-        stage++;
-        if(stage >= emplacementStats.amountToUpgrade)
+        amountUpgraded++;
+        //if stage reach to required amount
+        if(amountUpgraded == emplacementStats.amountToUpgrade)
         {
+            //increase current stage
+            currentStage ++;
             //deactivate last stage
-            stages_G[stage-1].SetActive(false);
+            weaponStages[currentStage-1].SetActive(false);
             //activate next stage
-            stages_G[stage].SetActive(true);
+            weaponStages[currentStage].SetActive(true);
             //set stage back to default
-            stage = 0;
+            amountUpgraded = 0;
+            
         }
+        
+            
     }
 
     public virtual void WeaponBehaviour(){ ewFuel.fuelLeftEW -= emplacementStats.fuelToDecrease *Time.deltaTime; }
@@ -86,6 +88,11 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IEmplacementW
     public void OnUpgrade()
     {
         UpgradeEW();
+       
+    }
+
+    public void OnFix()
+    {
         throw new System.NotImplementedException();
     }
 }

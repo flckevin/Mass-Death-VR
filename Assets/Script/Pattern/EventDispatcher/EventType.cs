@@ -9,6 +9,7 @@ namespace CoreEvent
     public enum EventsType
     {
         Test,
+        CommonOnChangeTarget,
         
     }
  }

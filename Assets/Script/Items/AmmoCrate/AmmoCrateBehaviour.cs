@@ -12,6 +12,8 @@ public class AmmoCrateBehaviour : MonoBehaviour
     //function when player grab
     public void OnSpawn(Transform _spawnPos)
     {
+
+        #region finding which hand have gun
         //declaring new gun root varible to store gun ammo
         GunRoot gun = null;
         
@@ -29,9 +31,12 @@ public class AmmoCrateBehaviour : MonoBehaviour
             if(gun!=null) break;
             
         }
+        #endregion
         
         //if gun does not exist then stop logic
         if(gun == null) return;
+        
+        /*
         //checking whether gun ID has exceed length of gun storage array
         if(gun.gunMagAmmoBoxStorageID + 1 < gun.gunMagsAmmoBoxStorage.Length)
         {
@@ -39,11 +44,11 @@ public class AmmoCrateBehaviour : MonoBehaviour
             //set gun back to beginning
             gun.gunMagAmmoBoxStorageID = 0;
         }
-
+        */
+        
         //spawn gun mag at correct posiiton
-        gun.gunMagsAmmoBoxStorage[gun.gunMagAmmoBoxStorageID].transform.position = _spawnPos.position;
-        //increase ammmo box storage id
-        gun.gunMagAmmoBoxStorageID++;
+        Instantiate(gun.gunMagsAmmoBoxStorage,_spawnPos.transform.position,Quaternion.identity);
+        
         
     }
 }

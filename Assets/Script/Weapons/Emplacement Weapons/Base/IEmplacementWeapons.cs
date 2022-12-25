@@ -6,7 +6,8 @@ using UnityEngine;
  * Object hold:
  * Content:
  **************************************/
-public interface IEmplacementWeapons 
+public interface IHammerAble 
 {
     public void OnUpgrade();
+    public void OnFix();
 }

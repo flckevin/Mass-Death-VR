@@ -40,4 +40,9 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
         base.OnBeforeDisableWeapon();
     }
 
+    public override void UpgradeEW()
+    {
+        base.UpgradeEW();
+    }
+
 }

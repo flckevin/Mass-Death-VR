@@ -9,36 +9,44 @@ using UnityEngine.AI;
  * Object hold: Every enemy 
  * Content: Behaviour of zombie in game
  **************************************/
-public class EnemyBehaviour : MonoBehaviour,IDamageable
+public class EnemyBehaviour : MonoBehaviour
 {
     [Header("Zombie Info")]
+    
     public float zombieHealth;//declare float for zombie health
-    [HideInInspector]public float defaultZombieSpeed;//declare float to store default nav agent speed
-    [Header("Zombie Component")]
+
+    public ZombieStats zombieStats;
+
+    #region zombieComponents
+    protected float _defaultZombieSpeed;//declare float to store default nav agent speed
     [HideInInspector] public MeshAnimatorBase meshAnimsBase;//declare mesh animator base to controll animation
     [HideInInspector] public NavMeshAgent navAgent;//declare nav mesh agent to chase to target
     protected IZombieStateBase _State;//declare zombie state interface to change state of zombie
     protected string _currentState; //declare current state to identify which state zombie current in
+    
+    #endregion
+
     // Start is called before the first frame update
-    public virtual void Start()
+    void Start()
     {
+        
         //storing navmesh agent class into this class
         navAgent = this.gameObject.GetComponent<NavMeshAgent>();
+
         //storing meshanimatorbase class into this class
         meshAnimsBase = this.gameObject.GetComponent<MeshAnimatorBase>();
+
         //storing default speed
-        defaultZombieSpeed = navAgent.speed;
-
-        //DamageReceiver(100);
+        _defaultZombieSpeed = navAgent.speed;
+        
+        VirtualStart();
     }
-    
 
-    /// <summary>
-    /// Function to deal damage to zombie
-    /// </summary>
-    /// <param name="damageDealt"> Value to deal damage to zombie </param>
-    /// /// <param name="posToSquirtBloodRaycast"> Position to squirt out of blood </param>
-    public void SquirtBlood(float damageDealt,RaycastHit posToSquirtBloodRaycast,bool deactivateObject) 
+    public virtual void VirtualStart(){}
+    
+    #region Damage Receive
+    //function to squirt blood and receive damage
+    public void DamageReceiver(float damageDealt,RaycastHit posToSquirtBloodRaycast,bool deactivateObject) 
     {
 
         #region Blood Squirting
@@ -76,6 +84,7 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
         DamageReceiver(damageDealt,deactivateObject);
     }
 
+    //function to receive damage
     public void DamageReceiver(float damageDealt,bool instantDeactivation)
     {
         #region Decrease Health
@@ -84,32 +93,49 @@ public class EnemyBehaviour : MonoBehaviour,IDamageable
         //if zombie health is less than 0
         if (zombieHealth <= 0) 
         {
-            //dsiable navmesh agent
-            navAgent.enabled = false;
-            //play zombie death animation
-            meshAnimsBase.Play("Z_FallingBack");
-            this.gameObject.tag = "DeadEnemy";
-            //disable enemy script
-            this.enabled = false;
+            //call die function
+            OnDie();
         }
         #endregion
 
         //deactivate object
-        this.gameObject.SetActive(!instantDeactivation);
+        this.gameObject.SetActive(instantDeactivation);
         
     }
-
-
-    #region Interface
-
-    public void Damage(float amount, RaycastHit effect, bool deactivateObjectInstant)
-    {
-        SquirtBlood(amount, effect, deactivateObjectInstant);
-    }
-
-    public void Damage(float amount, bool instantDeactivate)
-    {
-        DamageReceiver(amount,instantDeactivate);
-    }
     #endregion
+
+    //funciton for zombie to die
+    public void OnDie()
+    {
+        //dsiable navmesh agent
+        navAgent.enabled = false;
+        //play zombie death animation
+        meshAnimsBase.Play("Z_FallingBack");
+        //set tag to be dead enemy
+        this.gameObject.tag = "DeadEnemy";
+        //disable enemy script
+        this.enabled = false;
+    }
+
+    //function to reveive zombie
+    public void OnRevive()
+    {
+        //set back to default health
+        zombieHealth = zombieStats.zombieHealth;
+        //enable navmesh agent
+        navAgent.enabled = true;
+        //set back to default tag
+        this.gameObject.tag = "Zombie";
+    }
+
+      private void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Bullet"))
+        {
+            //get bullet component to access to amount of damage
+            //call damage function
+        }
+    }
+
+
 }

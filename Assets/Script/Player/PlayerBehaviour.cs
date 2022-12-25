@@ -6,7 +6,7 @@ using UnityEngine;
  * Object hold: player
  * Content: player behaviours
  **************************************/
-public class PlayerBehaviour : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviour,IDamageable
 {
     private PlayerStats _playerStats;//decl
     // Start is called before the first frame update
@@ -46,5 +46,15 @@ public class PlayerBehaviour : MonoBehaviour
             //set to maximum which is 100
             _playerStats.health = 100;
         }
+    }
+
+    void IDamageable.Damage(float amount, RaycastHit effect, bool deactivateObjectInstant)
+    {
+        
+    }
+
+    void IDamageable.Damage(float amount, bool instantDeactivate)
+    {
+        OnDamage(amount);
     }
 }

@@ -30,7 +30,7 @@ public class EmplacementWeaponFuel : MonoBehaviour
             //storing emplacement weapon class into this class
             emplacementWeapon = gameObject.transform.root.transform.GetChild(0).transform.GetComponent<EmplacementWeaponBehaviourBaseWithGas>();
         }
-        Debug.Log(emplacementWeapon);
+        //Debug.Log(emplacementWeapon);
         emplacementWeapon.ewFuel = this;
         fuelLeftEW = emplacementWeapon.emplacementStats.defaultFuel;
     }

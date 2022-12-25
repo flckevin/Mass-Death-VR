@@ -13945,7 +13945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3502225934644108942
 Transform:
   m_ObjectHideFlags: 0
@@ -43546,7 +43546,7 @@ GameObject:
   - component: {fileID: 3502225935332551258}
   m_Layer: 2
   m_Name: UI Trigger
-  m_TagString: Untagged
+  m_TagString: Finger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46490,7 +46490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3502225935414022788
 Transform:
   m_ObjectHideFlags: 0
@@ -57497,7 +57497,7 @@ GameObject:
   - component: {fileID: 3502225935673264012}
   m_Layer: 2
   m_Name: UI Trigger
-  m_TagString: Untagged
+  m_TagString: Finger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61794,7 +61794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3502225935775662289
 Transform:
   m_ObjectHideFlags: 0
@@ -79486,7 +79486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3502225936148105900
 Transform:
   m_ObjectHideFlags: 0

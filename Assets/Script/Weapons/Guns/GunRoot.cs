@@ -11,8 +11,8 @@ public class GunRoot : MonoBehaviour
     [Header ("Gun Info")]
     public Transform gunBarrel; //declare transform for positon of gun barrel
     public float damageDealt;//declare float for damage of the gun
-    public GameObject[] gunMagsAmmoBoxStorage;//declare gun mag for gun ammo box storage and calling for spaw
-    public int gunMagAmmoBoxStorageID;//declare gun mag for gun ammo box storage ID for correct mag to spawn
+    public GameObject gunMagsAmmoBoxStorage;//declare gun mag for gun ammo box storage and calling for spaw
+    //public int gunMagAmmoBoxStorageID;//declare gun mag for gun ammo box storage ID for correct mag to spawn
     // Start is called before the first frame update
     void Start()
     {

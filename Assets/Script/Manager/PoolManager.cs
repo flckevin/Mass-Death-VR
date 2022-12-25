@@ -18,4 +18,6 @@ public class PoolManager : Singleton<PoolManager>
     public int supplyDropID_Supply;
     [Header("Weapon Effects")]
     public GameObject oil;
+    [Header("Zombie")]
+    public EnemyBehaviour[] zombie;
 }

@@ -15,6 +15,10 @@ TagManager:
   - Gun
   - Zombie
   - PlaceableLimit
+  - tool
+  - Finger
+  - Objective
+  - BrokenObjective
   layers:
   - Default
   - TransparentFX
@@ -29,7 +33,7 @@ TagManager:
   - Grabbable
   - AmmoBox
   - Oil
-  - 
+  - Minimap
   - 
   - 
   - 

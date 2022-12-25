@@ -6,7 +6,7 @@ using UnityEngine;
  * Object hold: every consumable items
  * Content:base for items
  **************************************/
-public class ConsumableItemNEW_NoGasBase : MonoBehaviour,IEmplacementWeapons
+public class ConsumableItemNEW_NoGasBase : MonoBehaviour,IHammerAble
 {
 
     // Start is called before the first frame update
@@ -32,5 +32,10 @@ public class ConsumableItemNEW_NoGasBase : MonoBehaviour,IEmplacementWeapons
     {
         UpgradeEW();
         
+    }
+
+    public void OnFix()
+    {
+        throw new System.NotImplementedException();
     }
 }

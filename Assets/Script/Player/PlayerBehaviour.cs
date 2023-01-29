@@ -48,13 +48,10 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
         }
     }
 
-    void IDamageable.Damage(float amount, RaycastHit effect, bool deactivateObjectInstant)
-    {
-        
-    }
-
     void IDamageable.Damage(float amount, bool instantDeactivate)
     {
         OnDamage(amount);
     }
+
+  
 }

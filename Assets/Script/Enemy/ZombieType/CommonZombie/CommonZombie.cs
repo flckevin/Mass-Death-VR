@@ -8,17 +8,14 @@ using UnityEngine.AI;
  * Object hold: Every common zombie in game
  * Content: common zombie behaviour
  **************************************/
-public class CommonZombie : EnemyBehaviour
+public class CommonZombie : EnemyBase
 {
-
-    Common_Chase c_Chase = new Common_Chase(); //create new chase state
-    Common_Attack c_Attack = new Common_Attack(); //create new attack state
-    private Transform _target;
+    Attack c_Attack = new Attack(); //create new attack state
 
     public override void VirtualStart()
     {
         //call set target function
-        this.gameObject.transform.GetChild(0).GetComponent<CommonZombieTargetChanger>().SetTarget();
+        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().SetTarget();
         base.VirtualStart();
         
     }
@@ -72,6 +69,7 @@ public class CommonZombie : EnemyBehaviour
 
     public void Chase(Transform _target)
     {
+        Chase c_Chase = new Chase(); //create new chase state
         //if(_State.ToString() == _currentState && _target == null) return;
       
         navAgent.Resume();
@@ -88,12 +86,16 @@ public class CommonZombie : EnemyBehaviour
         //store state
         _State = c_Chase;
 
+        //play run animation
+        meshAnimsBase.Play("Zombie_Run");
+
         //run the current state
         _State.DoState(this);
     }
 
     public void Attack(IDamageable _damageable)
     {
+       
         //change to attack state
        // _currentState = "Common_Attack";
 
@@ -106,6 +108,10 @@ public class CommonZombie : EnemyBehaviour
             navAgent.Stop();
         }
         
+        //play attack animation
+        meshAnimsBase.Play("Zombie_Attack");
+
+        //giving attack target
         c_Attack.damageAbleTarget = _damageable;
 
         //store state

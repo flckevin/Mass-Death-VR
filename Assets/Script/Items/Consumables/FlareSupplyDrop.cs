@@ -24,19 +24,19 @@ public class FlareSupplyDrop : ConsumableItemNEW_NoGasBase
         if(_ableToUse == true && _dropped == false) 
         { 
             //if supply drop id does exceed the length
-            if(PoolManager.instanceT.supplyDropID_Supply + 1 > PoolManager.instanceT.supplyDropG_Supply.Length) 
+            if(PoolManager.instanceT.supplyDropID + 1 > PoolManager.instanceT.supplyDropG_Supply.Length) 
             {
                 //set supply drop back to beginning
-                PoolManager.instanceT.supplyDropID_Supply = 0;
+                PoolManager.instanceT.supplyDropID = 0;
             }
 
             //transform the supply drop to the flare position
-            PoolManager.instanceT.supplyDropG_Supply[PoolManager.instanceT.supplyDropID_Supply].transform.position = new Vector3(this.transform.position.x, 
+            PoolManager.instanceT.supplyDropG_Supply[PoolManager.instanceT.supplyDropID].transform.position = new Vector3(this.transform.position.x, 
                                                                                                                                 20, this.transform.position.y);
             //activate the supply
-            PoolManager.instanceT.supplyDropG_Supply[PoolManager.instanceT.supplyDropID_Supply].SetActive(true);
+            PoolManager.instanceT.supplyDropG_Supply[PoolManager.instanceT.supplyDropID].SetActive(true);
             //increase the supply drop ID
-            PoolManager.instanceT.supplyDropID_Supply++;
+            PoolManager.instanceT.supplyDropID++;
             //set dropped to true
             _dropped = true;
             //startcouroutine for flare deactivateion

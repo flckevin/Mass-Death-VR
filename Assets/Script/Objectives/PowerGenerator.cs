@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using CoreEvent;
 /***************************************
- * Authour: HAN
- * Object hold:
- * Content:
+ * Authour: HAN 18080038
+ * Object hold: Power generator
+ * Content: Power generator behaviour
  **************************************/
 public class PowerGenerator : MonoBehaviour,IDamageable
 {
     // Start is called before the first frame update
     public float health; //declare float for
     public float timeToDecreased;//float for time to decrease
-    private float _defaultHealth;//float to store default health
+    
     public Extractor extractor;//extractor to decrease time
+    private float _defaultHealth;//float to store default health
+    private BoxCollider boxCol;//declare boxCol to enable and disable
+
     void Start()
     {
         //set default health
@@ -36,59 +39,83 @@ public class PowerGenerator : MonoBehaviour,IDamageable
                 }
             }
         }
+
+        //storing boxcollider into this class
+        boxCol = GetComponent<BoxCollider>();
     }
 
+    
     private void OnCollisionEnter(Collision other) 
     {
-        Debug.Log(other.gameObject.tag);
-        if(other.gameObject.CompareTag("tool"))
+        //Debug.Log(other.gameObject.tag);
+        if(other.gameObject.CompareTag("tool") && health < _defaultHealth)
         {
+            //call fix function
             OnFixGen();
         }
-        else if(other.gameObject.CompareTag("Zombie"))
-        {
-            OnDamage(1);
-        }
+        
     }
 
-    private void OnCollisionStay(Collision other) 
-    {
-        Debug.Log(other.gameObject.tag);
-        if(other.gameObject.CompareTag("Zombie"))
-        {
-            OnDamage(1);
-        }
-    }
-
+    //damage function
     void OnDamage(float amount)
     {
+        //decrease health using given amount
         health -= amount;
+        //if health smaller or less than 0
         if(health <= 0)
         {
+            //increase time to extract
             extractor.timeToExtract -= timeToDecreased;
+            //change tag of object to identify object is broken
             this.gameObject.tag = "BrokenObjective";
-            EventDispatch.instanceT.CallFunction(EventsType.CommonOnChangeTarget);
+            
+            //since the zombie using trigger, by enabling and disabling
+            //the trigger of target system from zombie will be able
+            //to detect the current stage of the power generator whether is broken
+            //and once the tag been change to broken objective and re enable the collider
+            //the zombie will detect the current stage of the power generator and change it target
+            boxCol.enabled = false;
+            boxCol.enabled = true;
+            
+            /*
+            //call function to change target
+            for(int i =0; i<targetChanger.Count ; i++)
+            {
+                if(targetChanger[i]!=null)
+                {
+                    targetChanger[i].SetTarget();
+                    targetChanger.Remove(targetChanger[i]);
+                }
+            }
+            */
+            //need other method to change target for zombie
+            // ========= CHANGE METHOD BELOW ========
+            //EventDispatch.instanceT.CallFunction(EventsType.CommonOnChangeTarget);
         }
     }
 
+    //function on fix
     public void OnFixGen()
     {
+        //increase health
         health += 2;
+        //if health is larger or equak to default health
         if(health >= _defaultHealth)
         {
+            //set health to be default health
             health = _defaultHealth;
+            //decrease time to extract
             extractor.timeToExtract += timeToDecreased;
+            //change tag to objective to identify object is not broken
             this.gameObject.tag = "Objective";
         }
     }
 
-    public void Damage(float amount, RaycastHit effect, bool deactivateObjectInstant)
-    {
-        throw new System.NotImplementedException();
-    }
-
+    //damage function - interface
     public void Damage(float amount = 0, bool instantDeactivate = false)
     {
+        //call damage function
         OnDamage(amount);
     }
+
 }

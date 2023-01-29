@@ -9,8 +9,13 @@ using UnityEngine;
 
 public class CreditCard : MonoBehaviour
 {
-    public int moneyAmont;//declare int to store amount of money
+    public int moneyAmount;//declare int to store amount of money
     // Start is called before the first frame update
 
+    private void Awake() 
+    {
+        //set current object tag to credit card
+        this.gameObject.tag = "CreditCard";
+    }
     
 }

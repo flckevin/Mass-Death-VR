@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 149593658}
   - component: {fileID: 149593660}
   - component: {fileID: 149593659}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 423103555}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 513530516}
   - component: {fileID: 513530518}
   - component: {fileID: 513530519}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Minimap_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 586873608}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 611893502}
   - component: {fileID: 611893501}
   - component: {fileID: 611893500}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 707937100}
   - component: {fileID: 707937102}
   - component: {fileID: 707937101}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 756639769}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Minimap)_Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 868671840}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Extractor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 878522201}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Extractor time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 920614177}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: INFO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 950532949}
   - component: {fileID: 950532951}
   - component: {fileID: 950532950}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 1066903068}
   - component: {fileID: 1066903070}
   - component: {fileID: 1066903069}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 1149931989}
   - component: {fileID: 1149931988}
   - component: {fileID: 1149931987}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: SpawnCoolDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 1200465646}
   - component: {fileID: 1200465648}
   - component: {fileID: 1200465647}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 1410012348}
   - component: {fileID: 1410012350}
   - component: {fileID: 1410012349}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Version
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ GameObject:
   - component: {fileID: 1435520061}
   - component: {fileID: 1435520063}
   - component: {fileID: 1435520062}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1076,7 +1076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1461304272}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1113,7 +1113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1490078394}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: SpawnFlare_Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,7 +1153,7 @@ GameObject:
   - component: {fileID: 1681704679}
   - component: {fileID: 1681704681}
   - component: {fileID: 1681704680}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,7 +1232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1862382033}
   - component: {fileID: 1862382034}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1325,7 +1325,7 @@ GameObject:
   - component: {fileID: 1994281924}
   - component: {fileID: 1994281923}
   - component: {fileID: 1994281922}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: SpawnButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1445,7 +1445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2057521174}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1491,7 +1491,7 @@ GameObject:
   - component: {fileID: 2085638909}
   - component: {fileID: 2085638911}
   - component: {fileID: 83386160}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Flare_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,16 +15,20 @@ public class AmmoCrateBehaviour : MonoBehaviour
 
         #region finding which hand have gun
         //declaring new gun root varible to store gun ammo
-        GunRoot gun = null;
+        GunBehaviour gun = null;
         
         //looping every grab in array
         for(int i = 0;i<GameManagerClass.instanceT.grab.Length; i++)
         {
             //if grabber holding something and that object has tag gun
-            if(GameManagerClass.instanceT.grab[i].HeldGrabbable != null && GameManagerClass.instanceT.grab[i].HeldGrabbable.gameObject.tag == "Gun")
+            if(GameManagerClass.instanceT.grab[i].HeldGrabbable != null)
             {
-                //get gun component from the grabber
-                gun = GameManagerClass.instanceT.grab[i].HeldGrabbable.GetComponent<GunRoot>();
+                if(GameManagerClass.instanceT.grab[i].HeldGrabbable.gameObject.tag == "Gun")
+                {
+                    //get gun component from the grabber
+                    gun = GameManagerClass.instanceT.grab[i].HeldGrabbable.GetComponent<GunBehaviour>();
+                }
+                
             }
             
             //if gun does exist, stop the loop

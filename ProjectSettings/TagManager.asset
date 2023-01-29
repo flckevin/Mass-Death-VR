@@ -19,6 +19,7 @@ TagManager:
   - Finger
   - Objective
   - BrokenObjective
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -34,8 +35,8 @@ TagManager:
   - AmmoBox
   - Oil
   - Minimap
-  - 
-  - 
+  - Ragdoll_Body
+  - Ragdoll_Limbs
   - 
   - 
   - 

@@ -6,7 +6,7 @@ using UnityEngine;
  * Object hold:
  * Content:
  **************************************/
-public class Extractor : MonoBehaviour
+public class Extractor : MonoBehaviour,IDamageable
 {
     [Header("EXTRACTOR EXTRACTION INFO")]
     public float timeToExtract; //declare float for time to progress extraction
@@ -68,7 +68,16 @@ public class Extractor : MonoBehaviour
         health -= 0.1f;
         //setting slider value
         GameManagerClass.instanceT.extractorHealth.value = health/deafultHealth;
+
+        //check if health reach to 0
+        //if it is
+        //game over
+        //set all objective target to null
+        //change objective to player
     }
 
-
+    public void Damage(float amount = 0, bool instantDeactivate = false)
+    {
+        OnDamage();
+    }
 }

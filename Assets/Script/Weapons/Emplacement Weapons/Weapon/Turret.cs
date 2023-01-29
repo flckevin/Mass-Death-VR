@@ -27,7 +27,7 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
             if (ray.transform.CompareTag("Zombie"))
             {
                 //damage to the enemy
-                ray.transform.GetComponent<IDamageable>().Damage(damageAmount, ray, false);
+                //ray.transform.GetComponent<IDamageable>().Damage(damageAmount, ray.transform, false);
             }
         }
         base.WeaponBehaviour();

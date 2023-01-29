@@ -8,7 +8,7 @@ using UnityEngine;
  **************************************/
 public interface IZombieStateBase
 {
-    public void DoState(EnemyBehaviour zombie);
+    public void DoState(EnemyBase zombie);
 
 
 }

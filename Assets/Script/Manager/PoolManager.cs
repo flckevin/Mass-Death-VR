@@ -9,15 +9,38 @@ using CorePattern;
  **************************************/
 public class PoolManager : Singleton<PoolManager>
 {
-    [Header("Blood_Info")]
-    public GameObject[] bloodG_Blood;
-    public int bloodID_Blood;
-
     [Header("SupplyDrop_Infor")]
     public GameObject[] supplyDropG_Supply;
-    public int supplyDropID_Supply;
+    [HideInInspector]public int supplyDropID;
+
     [Header("Weapon Effects")]
     public GameObject oil;
+
     [Header("Zombie")]
-    public EnemyBehaviour[] zombie;
+    public EnemyBase[] zombie;
+
+    [Header("ParticleSystem")]
+    public ParticleSystem[] blood;
+    [HideInInspector]public int bloodID;
+
+    [Header("Bullet")]
+    public Rigidbody[] bullets;
+    private int _bulletID;
+    public int BulletID
+    {   get{return _bulletID;} 
+        set
+        {
+            if(value >= bullets.Length)
+            {
+                _bulletID = 0;
+            } 
+            else
+            {
+                _bulletID = value;
+            }
+        }
+    }
+    [Header("Ragdoll")]
+    public GameObject[] ragdoll;
+    public int ragdollID;
 }

@@ -10,12 +10,15 @@ using BNG;
 public class PageContentHolder : MonoBehaviour
 {
     public GameObject[] pages;//store pages
-    private ShopBehaviour _shop;//shop behaviour class
+   
     [Tooltip("button and obj amount need to be the same")]public BNG.Button[] buttons;//buttons
     [Tooltip("button and obj amount need to be the same")]public GameObject[] objToSpawn;//object to spawn
     
     [Tooltip("price array value need to be the same as item value pos in array")] public int[] price;//price of object
     [Tooltip("Image array value need to be the same as item value pos in array")]public Sprite[] itemImg; // image of each item in shop
+
+    private ShopBehaviour _shop;//shop behaviour class
+
     // Start is called before the first frame update
     void Start()
     {

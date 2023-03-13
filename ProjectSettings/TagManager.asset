@@ -8,7 +8,6 @@ TagManager:
   - DeadEnemy
   - Damageable
   - PlaceableFloor
-  - CreditCard
   - FuelTank
   - Floor
   - PlayerHand
@@ -20,6 +19,7 @@ TagManager:
   - Objective
   - BrokenObjective
   - Bullet
+  - Shop
   layers:
   - Default
   - TransparentFX

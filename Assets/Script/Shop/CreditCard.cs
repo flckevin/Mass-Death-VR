@@ -12,10 +12,17 @@ public class CreditCard : MonoBehaviour
     public int moneyAmount;//declare int to store amount of money
     // Start is called before the first frame update
 
-    private void Awake() 
+    private void OnCollisionEnter(Collision other) 
     {
-        //set current object tag to credit card
-        this.gameObject.tag = "CreditCard";
+        if(other.gameObject.tag == "Shop")
+        {
+            ShopBehaviour shop = other.transform.root.GetComponent<ShopBehaviour>();
+            shop.OnCardInsert();
+            this.gameObject.SetActive(false);
+            
+        }
     }
+
+
     
 }

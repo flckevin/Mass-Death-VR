@@ -27,7 +27,7 @@ public class PageContentHolder : MonoBehaviour
         //if button length or object to spawn length not equal to each other then return
         if(buttons.Length != objToSpawn.Length || objToSpawn.Length != buttons.Length) return;
         //loop every buttons and object in array
-        for(int i = 0;i<objToSpawn.Length;i++)
+        for(int i = 0;i<objToSpawn.Length - 1;i++)
         {
             //add listener to that button in array
             buttons[i].onButtonDown.AddListener(()=>AssignItem(i));
@@ -42,10 +42,12 @@ public class PageContentHolder : MonoBehaviour
         //assign price of the object
         _shop.price = price[value];
         //assign object image to display
+        /*
         if(_shop.img != null)
         {
             _shop.img.sprite = itemImg[value];
         }
+        */
         //assign object price to display
         if(_shop.priceText != null)
         {

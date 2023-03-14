@@ -26,21 +26,28 @@ public class PageContentHolder : MonoBehaviour
         _shop = gameObject.transform.root.GetComponent<ShopBehaviour>();
         //if button length or object to spawn length not equal to each other then return
         if(buttons.Length != objToSpawn.Length || objToSpawn.Length != buttons.Length) return;
+
         //loop every buttons and object in array
-        for(int i = 0;i<objToSpawn.Length - 1;i++)
+        for(int i = 0; i < objToSpawn.Length ;i++)
         {
+            //declare int to store i loop value
+            int x = i;
             //add listener to that button in array
-            buttons[i].onButtonDown.AddListener(()=>AssignItem(i));
+            buttons[i].onButtonDown.AddListener(() => AssignItem(x));
+            
         }
     }
 
     //function to assign item
     void AssignItem(int value)
     {
+        //assign item name to display
+        _shop.nameText.text = "NAME: " + objToSpawn[value].name;
         //assign object to spawn
         _shop.ObjToSpawn = objToSpawn[value];
         //assign price of the object
         _shop.price = price[value];
+        _shop.priceText.text = "PRICE: " + price[value].ToString() + "$";
         //assign object image to display
         /*
         if(_shop.img != null)
@@ -49,11 +56,7 @@ public class PageContentHolder : MonoBehaviour
         }
         */
         //assign object price to display
-        if(_shop.priceText != null)
-        {
-            //set price to display
-            _shop.priceText.text = price[value].ToString();
-        }
+
     }
 
    

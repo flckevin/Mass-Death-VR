@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 7438067468623818416}
   - component: {fileID: 7438067468623818417}
   m_Layer: 10
-  m_Name: AmoBox_03
+  m_Name: AmoBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

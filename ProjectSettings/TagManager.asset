@@ -20,6 +20,8 @@ TagManager:
   - BrokenObjective
   - Bullet
   - Shop
+  - EW_nogas
+  - EW_gas
   layers:
   - Default
   - TransparentFX
@@ -35,8 +37,8 @@ TagManager:
   - AmmoBox
   - Oil
   - Minimap
-  - Ragdoll_Body
-  - Ragdoll_Limbs
+  - Zombie
+  - 
   - 
   - 
   - 

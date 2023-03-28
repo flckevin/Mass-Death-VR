@@ -10,8 +10,8 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
 {
     [Header("Turret Info")]
     public Transform barrel;//declare transform for gun barrel positon
-    public float fireRate;
-    private float _nextFire = 0f;
+    public float fireRate; // gun fire rate
+    private float _nextFire = 0f; // gun fire rate calculation
 
     public int damageAmount;//declare int for damage amount
 
@@ -32,17 +32,10 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
         }
         base.WeaponBehaviour();
     }
-
-    public override void OnBeforeDisableWeapon()
+    
+    public override void OnUpgradeEW()
     {
-        //disable weapon behaviour
-        this.enabled = false;
-        base.OnBeforeDisableWeapon();
-    }
-
-    public override void UpgradeEW()
-    {
-        base.UpgradeEW();
+        base.OnUpgradeEW();
     }
 
 }

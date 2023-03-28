@@ -8,62 +8,110 @@ using UnityEngine.UI;
  * Object hold: every emplacement weapon in game
  * Content:root of every emplacement weapons
  **************************************/
-public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IHammerAble
+public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
 {
     [Header("General emplacement weapon info")]
 
     public EWStats emplacementStats;//declare scriptable object to store weapon stats
     public Slider fuelSlier;//declare slider for fuel slider
-    public GameObject fuelCap;
-    public BoxCollider pipeCol;
-    public int amountUpgraded;
-    private int currentStage;
-    public GameObject[] weaponStages;
-    public EmplacementWeaponFuel ewFuel;
+    public float amountUpgraded;//amount need to reach before upgrade to next level
+    public GameObject[] weaponStages;// all level stages
+    public bool machineTurnedOff; //identify state of machine
+
+    [HideInInspector]public float fuelLeftEW;//store fuel left
+
+    private IEnumerator _cou;//store current couroutine
+    private float timePassedMark;//store root time
+    private int _currentStage;//curent stage emplacement weapon at
+    protected float delay; //delay value
 
     // Start is called before the first frame update
-    public virtual void Start(){}
-
-    private void OnEnable() 
+   
+    public virtual void Start()
     {
-        //update new gas value
-       ewFuel.UpdateGasOnTime();
+        //checking whether delay been set
+        //if not set to 1 as default
+        if(delay == 0){delay = 1f;}
+        //set fuel
+        fuelLeftEW = emplacementStats.defaultFuel;
+        //set emplacement weapon to be ew with gas
+        this.gameObject.tag = "EW_gas";
+        //fire machine
+        _cou = StartEW();
+        //fire machine back up
+        StartCoroutine(_cou);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnEnableSwitch() 
     {
-        //if fuel is larger than 0
-        if(ewFuel.fuelLeftEW >= 0) 
+        //if machine been turned off
+        if(machineTurnedOff == true)
+        {
+            //set bool to identify machine state
+            machineTurnedOff = false;
+            //fire machine back up
+            StartCoroutine(_cou);
+        }
+        else
+        {
+            //set bool to identify machine state
+            machineTurnedOff = true;
+            //update new gas value
+            StopCoroutine(_cou);
+        }
+        
+    }
+
+    IEnumerator StartEW()
+    {
+        while (fuelLeftEW > 0)
         {
             //continue on weapon behaviour
             WeaponBehaviour();
-            SliderValueChange();
+            //decrease fuel
+            fuelLeftEW -= emplacementStats.fuelToDecrease;
+            //updating slider value
+            fuelSlier.value = fuelLeftEW / 100;
+            yield return new WaitForSeconds(delay);
         }
-        else //fuel reach to 0
-        {
-            //turn off weapon
-            EmplacementWeaponPowerSwitch weaponSwitch = new EmplacementWeaponPowerSwitch();
-            weaponSwitch.SwitchFunc(this);
-        }
-           
+        //identify state of machine
+        machineTurnedOff = true;
+        //turn off weapon
+        StopCoroutine(_cou);
     }
 
-    public virtual void UpgradeEW()
+    public virtual void WeaponBehaviour()
+    {
+        //decrease gas
+        fuelLeftEW -= emplacementStats.fuelToDecrease *Time.deltaTime; 
+        
+    }
+
+    private void UpdateGas()
+    {
+         //declare float to calculate time have passed
+        float _currentTime = (int)Time.time - timePassedMark;
+        //marking new time
+        timePassedMark = (int)Time.time;
+        //setting new fuel value using new time
+        fuelLeftEW -= (emplacementStats.fuelToDecrease)* timePassedMark;
+    }
+
+    public virtual void OnUpgradeEW()
     {
         //if stage reach to limit
         if(amountUpgraded == weaponStages.Length) return; 
         //increase stage of upgrade
-        amountUpgraded++;
+        amountUpgraded+=0.2f;
         //if stage reach to required amount
-        if(amountUpgraded == emplacementStats.amountToUpgrade)
+        if(amountUpgraded >= emplacementStats.amountToUpgrade)
         {
             //increase current stage
-            currentStage ++;
+            _currentStage ++;
             //deactivate last stage
-            weaponStages[currentStage-1].SetActive(false);
+            weaponStages[_currentStage-1].SetActive(false);
             //activate next stage
-            weaponStages[currentStage].SetActive(true);
+            weaponStages[_currentStage].SetActive(true);
             //set stage back to default
             amountUpgraded = 0;
             
@@ -72,27 +120,11 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IHammerAble
             
     }
 
-    public virtual void WeaponBehaviour(){ ewFuel.fuelLeftEW -= emplacementStats.fuelToDecrease *Time.deltaTime; }
-
-    public virtual void OnBeforeDisableWeapon(){}
-    public virtual void OnEnableWeapon(){}
-
-    //function to update slider value for gas
-    public void SliderValueChange() 
+    public void OnFixOnUpgrade()
     {
-        //updating slider value
-        fuelSlier.value = ewFuel.fuelLeftEW / 100;
-        
-    }
-
-    public void OnUpgrade()
-    {
-        UpgradeEW();
-       
-    }
-
-    public void OnFix()
-    {
+        OnUpgradeEW();
         throw new System.NotImplementedException();
     }
+
+    //ontrigger enter if it hammer (max health upgrade, low health fix)
 }

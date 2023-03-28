@@ -13,17 +13,15 @@ public class EnemyBase : MonoBehaviour,IDamageable
 {
     [Header("Zombie Info")]
     
-    public float zombieHealth;//declare float for zombie health
-
+    
     public ZombieStats zombieStats;//scriptable object stats for zombie
-    public MeshRagdollConvert ragdollConverter;// ragdoll for zombie
-    public Rigidbody ragdoll;
-
     public GameObject targetChanger;
 
     #region zombieComponents
-    [HideInInspector] public MeshAnimatorBase meshAnimsBase;//declare mesh animator base to controll animation
+    [HideInInspector]public float zombieHealth;//declare float for zombie health
+    [HideInInspector] public MeshAnimatorBase meshAnims;//declare mesh animator base to controll animation
     [HideInInspector] public NavMeshAgent navAgent;//declare nav mesh agent to chase to target
+
     protected IZombieStateBase _State;//declare zombie state interface to change state of zombie
     protected string _currentState; //declare current state to identify which state zombie current in
     
@@ -33,14 +31,18 @@ public class EnemyBase : MonoBehaviour,IDamageable
     void Start()
     {
         
+
         //storing navmesh agent class into this class
         navAgent = this.gameObject.GetComponent<NavMeshAgent>();
 
         //storing meshanimatorbase class into this class
-        meshAnimsBase = this.gameObject.GetComponent<MeshAnimatorBase>();
+        meshAnims = this.gameObject.GetComponent<MeshAnimatorBase>();
+
 
         //setting zombie health
         zombieHealth = zombieStats.zombieHealth;
+        //setting target
+        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().SetTarget();
         
         VirtualStart();
     }
@@ -76,31 +78,28 @@ public class EnemyBase : MonoBehaviour,IDamageable
 
 
     //funciton for zombie to die
-    public void OnDie(float forceToAddToRagdoll,Transform posToPush)
+    public virtual void OnDie(float forceToAddToRagdoll,Transform posToPush)
     {
         //disable target system
         targetChanger.SetActive(false);
 
-        //if zombieragdoll does exist
-        if(ragdollConverter != null)
-        {
-            //activate ragdoll
-            ragdollConverter.gameObject.SetActive(true);
-            //add force to ragdoll
-            ragdoll.AddRelativeForce((posToPush.position - this.transform.position)*forceToAddToRagdoll);
-        }
+        meshAnims.Play("Death_Slashed");
         
+        //if nav aganet have not stop
+        if(navAgent.velocity!=Vector3.zero)
+        {
+            //set velocity of nav agent to be 0 to stop it
+            navAgent.velocity = Vector3.zero;
+            //stop nav agent
+            navAgent.Stop();
+        }
+
         //dsiable navmesh agent
         navAgent.enabled = false;
-
-        //disable mesh render
-        GetComponent<MeshRenderer>().enabled = false;
 
         //set tag to be dead enemy
         this.gameObject.tag = "DeadEnemy";
         
-        //disable enemy script
-        this.enabled = false;
     }
 
     //function to reveive zombie
@@ -122,21 +121,14 @@ public class EnemyBase : MonoBehaviour,IDamageable
         //set back to default tag
         this.gameObject.tag = "Zombie";
 
-        //disable mesh render
-        GetComponent<MeshRenderer>().enabled = true;
-
-        //if zombieragdoll does exist
-        if(ragdollConverter != null)
-        {
-            //set ragdoll back to default
-            ragdollConverter.SetToDefault();
-        }
+        //call set target function
+        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().SetTarget();
     }
 
     private void OnTriggerEnter(Collider other) 
     {
         //if bullet enter to zombie
-        if(other.CompareTag("Bullet"))
+        if(other.CompareTag("Bullet") && this.gameObject.tag == "Zombie")
         {
             //receive damage
             DamageReceiver(int.Parse(other.name),other.transform,true);

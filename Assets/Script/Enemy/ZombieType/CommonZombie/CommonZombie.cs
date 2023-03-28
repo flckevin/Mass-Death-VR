@@ -14,8 +14,7 @@ public class CommonZombie : EnemyBase
 
     public override void VirtualStart()
     {
-        //call set target function
-        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().SetTarget();
+       
         base.VirtualStart();
         
     }
@@ -87,7 +86,7 @@ public class CommonZombie : EnemyBase
         _State = c_Chase;
 
         //play run animation
-        meshAnimsBase.Play("Zombie_Run");
+        meshAnims.Play("Zombie_Run");
 
         //run the current state
         _State.DoState(this);
@@ -109,7 +108,7 @@ public class CommonZombie : EnemyBase
         }
         
         //play attack animation
-        meshAnimsBase.Play("Zombie_Attack");
+        meshAnims.Play("Zombie_Attack");
 
         //giving attack target
         c_Attack.damageAbleTarget = _damageable;

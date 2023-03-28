@@ -7,7 +7,7 @@ using UnityEngine;
  * Content: Landmine behaviour
  **************************************/
  [RequireComponent(typeof(Rigidbody))]
-public class Landmine : ConsumableItemNEW_NoGasBase
+public class Landmine : NonFuelEmplacementWeaponsBase
 {
     private bool _grounded; // declare bool to check whether the landmine is grounded
     private void OnCollisionEnter(Collision obj) 
@@ -34,21 +34,10 @@ public class Landmine : ConsumableItemNEW_NoGasBase
                     damageableCollide[i].GetComponent<IDamageable>().Damage(99999,true);
                 }
             }
-            //play explode function
-            Explode();
+            //explode
+            Destroy(this.gameObject);
         }
-        //if player touched it and landmine already activated
-        else if(obj.gameObject.CompareTag("PlayerHand") || obj.gameObject.CompareTag("Player"))
-        {
-            //if the mine already activated
-            if(_ableToUse == true)
-            {
-                //explode
-                Explode();
-            }
-        }
-        //function for explosion effect
-        void Explode() => this.gameObject.SetActive(false);
+ 
     }
 
     private void OnCollisionExit(Collision obj) 
@@ -62,17 +51,19 @@ public class Landmine : ConsumableItemNEW_NoGasBase
     }
 
     //activate function
-    public override void OnsueEWnItem()
+    public override void OnActivation()
     {
-        //activate landmine explostion
-        _ableToUse = true;
-        base.OnsueEWnItem();
-    }
-
-    public override void OnSetDefaultEWnItem()
-    {
-        //deactivate land mine
-        _ableToUse = false;
-        base.OnSetDefaultEWnItem();
+        //if landmine lying on ground
+        if(_grounded == true)
+        {
+            //activate landmine explostion
+            _ableToUse = true;
+            //set iskinimatic to true to disable rigibody
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            //disable grabble script to prevent from player grabbing it
+            this.gameObject.GetComponent<BNG.Grabbable>().enabled = false;
+            //base
+            base.OnActivation();
+        }
     }
 }

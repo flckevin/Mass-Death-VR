@@ -15,9 +15,10 @@ public class CommonZombie_TargetChanger : TargetChanger_Base
         if(commonZombie == null){commonZombie = GetComponentInParent<CommonZombie>();}
     }
 
-    public override void OnAttack(IDamageable target)
+    public override void OnAttack(IDamageable targetIdmg = null)
     {
-        commonZombie.Attack(target);
+        commonZombie.Attack(targetIdmg);
+        base.OnAttack(targetIdmg);
     }
 
     public override void OnChase(Transform target)

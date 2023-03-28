@@ -6,7 +6,7 @@ using UnityEngine;
  * Object hold: falre
  * Content: falre behaviour
  **************************************/
-public class FlareSupplyDrop : ConsumableItemNEW_NoGasBase
+public class FlareSupplyDrop : ConsumableItem
 {
     private bool _dropped; //declare bool to check whether flare have been dropped on the ground
     public GameObject cap;//declare gameobject to store cap of the flare
@@ -76,7 +76,7 @@ public class FlareSupplyDrop : ConsumableItemNEW_NoGasBase
     /// <summary>
     /// function to reset everything (inherited)
     /// </summary>
-    public override void OnSetDefaultEWnItem()
+    public override void OnSetDefaultItem()
     {
         //set dropped to false
         _dropped = false;

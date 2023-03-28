@@ -9,26 +9,21 @@ using UnityEngine;
 public class OilGun : EmplacementWeaponBehaviourBaseWithGas
 {
     [Header("Oil gun info")]
-    public int delay;
-    public ParticleSystem oilParticle;
-    public GameObject gunBarrel;
-    public OilBehaviour[] oils;
-    public LayerMask mask;
     
-    private int _oilID;
+    public ParticleSystem oilParticle; //oil particle
+    public OilBehaviour[] oils; // oils
+    public LayerMask mask;// layer
+    private int _oilID; // oil ID to store
     // Start is called before the first frame update
+
     public override void Start()
     {
-        
         base.Start();
-        //call shoot function
-        InvokeRepeating("ShootOil",1,delay);
+        delay = 3;
     }
 
     private void ShootOil()
     {
-       
-        
         //if oil ID is larger than oil length
         if(_oilID >= oils.Length - 1)
         {
@@ -40,7 +35,7 @@ public class OilGun : EmplacementWeaponBehaviourBaseWithGas
         RaycastHit ray;
 
         //if raycast hit some thing get info
-        if(Physics.Raycast(gunBarrel.transform.position,gunBarrel.transform.forward,out ray,Mathf.Infinity,mask))
+        if(Physics.Raycast(this.transform.localPosition,this.transform.forward,out ray,Mathf.Infinity,mask))
         {
 
            // Debug.DrawRay(gunBarrel.transform.position,gunBarrel.transform.forward,Color.green,1);
@@ -65,5 +60,11 @@ public class OilGun : EmplacementWeaponBehaviourBaseWithGas
         }
         //increase oil id
         _oilID++;
+    }
+
+    public override void WeaponBehaviour()
+    {
+        ShootOil();
+        base.WeaponBehaviour();
     }
 }

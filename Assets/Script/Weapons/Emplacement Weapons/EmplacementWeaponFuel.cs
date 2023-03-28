@@ -31,7 +31,7 @@ public class EmplacementWeaponFuel : MonoBehaviour
             emplacementWeapon = gameObject.transform.root.transform.GetChild(0).transform.GetComponent<EmplacementWeaponBehaviourBaseWithGas>();
         }
         //Debug.Log(emplacementWeapon);
-        emplacementWeapon.ewFuel = this;
+        
         fuelLeftEW = emplacementWeapon.emplacementStats.defaultFuel;
     }
 
@@ -51,7 +51,7 @@ public class EmplacementWeaponFuel : MonoBehaviour
             //decrease oil value from oil can
             _oil.OilValue--;
             //update oil value
-            emplacementWeapon.SliderValueChange();
+            emplacementWeapon.fuelSlier.value = fuelLeftEW / 100;
         }
     }
 
@@ -70,7 +70,7 @@ public class EmplacementWeaponFuel : MonoBehaviour
             //decrease oil value from oil can
             _oil.OilValue--;
             //update oil value
-            emplacementWeapon.SliderValueChange();
+            emplacementWeapon.fuelSlier.value = fuelLeftEW / 100;
         }
     }
 

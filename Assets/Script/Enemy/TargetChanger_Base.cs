@@ -37,6 +37,7 @@ public class TargetChanger_Base : MonoBehaviour
             //set new target to damage
             ItargetDamageAble = other.GetComponent<IDamageable>();
             OnAttack(ItargetDamageAble);
+            OnAttack(other.transform);
         }
         else if(other.CompareTag("BrokenObjective"))
         {
@@ -105,6 +106,7 @@ public class TargetChanger_Base : MonoBehaviour
         
     }
 
-    public virtual void OnAttack(IDamageable target){}
+    public virtual void OnAttack(IDamageable targetIdmg = null){}
+    public virtual void OnAttack(Transform targetTrans = null){}
     public virtual void OnChase(Transform target){}
 }

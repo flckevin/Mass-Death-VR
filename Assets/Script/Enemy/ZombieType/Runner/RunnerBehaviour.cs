@@ -31,7 +31,7 @@ public class RunnerBehaviour : EnemyBase
             //chase player
             navAgent.SetDestination(GameManagerClass.instanceT.player_G.transform.position);
             //play run animation
-            meshAnimsBase.Play("Z_Run_InPlace");
+            meshAnims.Play("Z_Run_InPlace");
         }
     }
 }

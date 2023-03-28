@@ -13,11 +13,11 @@ namespace ZombieStates
     {
         public Transform target; //transform for target
         //function to chase target
-        public void DoState(EnemyBase commonZombie)
+        public void DoState(EnemyBase zombie)
         {
             
             //chase player
-            commonZombie.navAgent.SetDestination(target.position);
+            zombie.navAgent.SetDestination(target.position);
             
         }
         
@@ -27,47 +27,22 @@ namespace ZombieStates
     {
         public IDamageable damageAbleTarget;//target to damage
 
-        public void DoState(EnemyBase commonZombie)
+        public void DoState(EnemyBase zombie)
         {
             //giving damage
-           damageAbleTarget.Damage(commonZombie.zombieStats.zombieDamageAmount,false);
+           damageAbleTarget.Damage(zombie.zombieStats.zombieDamageAmount,false);
         }
     }
 
     public class Idle : IZombieStateBase
     {
-        public void DoState(EnemyBase commonZombie)
-        {
-            //play run animation
-            commonZombie.meshAnimsBase.Play("Z_Idle");
-        }
-    }
-
-    #endregion
-
-
-    #region Squirter And Tanker
-    public class RadiusDamage : IZombieStateBase
-    {
         public void DoState(EnemyBase zombie)
         {
-            //create a new overlap collider
-            Collider[] damageableCollide = Physics.OverlapSphere(zombie.transform.position,4f);
-            //loop every object in the array of collider
-            for(int i =0;i< damageableCollide.Length;i++)
-            {
-                //if the gameobject has tag damageable
-                if(damageableCollide[i].gameObject.tag == "Zombie" || damageableCollide[i].gameObject.tag == "Damageable")
-                {
-                    //call damage function
-                    damageableCollide[i].GetComponent<IDamageable>().Damage(99999,true);
-                }
-            }
+            //play run animation
+            zombie.meshAnims.Play("Z_Idle");
         }
     }
 
     #endregion
-
-
 
 }

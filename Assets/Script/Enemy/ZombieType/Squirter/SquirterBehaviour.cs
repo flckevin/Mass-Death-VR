@@ -54,7 +54,7 @@ public class SquirterBehaviour : EnemyBase
         //chase latest target
         Chase(_target);
         //start explosion countdown
-        StartCoroutine(Explode(Random.Range(2,3.5f)));
+        StartCoroutine(Explode(2));
 
     }
 
@@ -62,7 +62,7 @@ public class SquirterBehaviour : EnemyBase
     public override void OnDie(float forceToAddToRagdoll, Transform posToPush)
     {
         base.OnDie(forceToAddToRagdoll, posToPush);
-        StartCoroutine(Explode(2));
+        StartCoroutine(Explode(2f));
     }
 
     //on explode event
@@ -79,7 +79,7 @@ public class SquirterBehaviour : EnemyBase
             //stop nav agent
             navAgent.Stop();
         }
-        
+
         //if zombie have not dead yet
         if(this.gameObject.tag != "DeadEnemy")
         {
@@ -87,10 +87,12 @@ public class SquirterBehaviour : EnemyBase
             this.gameObject.tag = "DeadEnemy";
             //play explode animation
             meshAnims.Play("Squirter Explode");
-            //wait for few second
-            yield return new WaitForSeconds(meshAnims.animations[0].Length);
+            
         }
+      
        
+        //wait for few second
+        yield return new WaitForSeconds(2.8f);
 
         #region Radius damage
        //create a new overlap collider
@@ -107,6 +109,28 @@ public class SquirterBehaviour : EnemyBase
         }
         #endregion
         
+        #region Play particle effect
+        //getting pool manager
+        PoolManager poolM = PoolManager.instanceT;
+        
+        //checking if gore explosion effect does exist
+        if(poolM.goreExplosion[poolM.goreExplosionID] == null || poolM.goreExplosionID >= poolM.goreExplosion.Length - 1)
+        {
+            //if it not
+            //take first gore explosion from pool
+            poolM.goreExplosionID = 0;
+        }
+
+        //setting gore explosion effect posiion
+        poolM.goreExplosion[poolM.goreExplosionID].transform.position = new Vector3(this.transform.position.x,this.transform.position.y + 0.5f,this.transform.position.z);
+        //activate explosion effect
+        poolM.goreExplosion[poolM.goreExplosionID].gameObject.SetActive(true);
+        //play that particle effect
+        poolM.goreExplosion[poolM.goreExplosionID].Play();
+        //increase gore id
+        poolM.goreExplosionID++;
+        #endregion
+
         //deactivate zombie
         this.gameObject.SetActive(false);
     }

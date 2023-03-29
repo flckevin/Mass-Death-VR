@@ -13,15 +13,23 @@ public class PoolManager : Singleton<PoolManager>
     public GameObject[] supplyDropG_Supply;
     [HideInInspector]public int supplyDropID;
 
-    [Header("Weapon Effects")]
-    public GameObject oil;
-
+    
     [Header("Zombie")]
     public EnemyBase[] zombie;
+
 
     [Header("ParticleSystem")]
     public ParticleSystem[] blood;
     [HideInInspector]public int bloodID;
+
+    public ParticleSystem[] goreExplosion;
+    [HideInInspector]public int goreExplosionID;
+
+    public ParticleSystem[] groundSlamParticle;
+    [HideInInspector]public int groundSlamParticleID;
+
+    public GameObject oil;
+
 
     [Header("Bullet")]
     public Rigidbody[] bullets;
@@ -40,7 +48,6 @@ public class PoolManager : Singleton<PoolManager>
             }
         }
     }
-    [Header("Ragdoll")]
-    public GameObject[] ragdoll;
-    public int ragdollID;
+   
+  
 }

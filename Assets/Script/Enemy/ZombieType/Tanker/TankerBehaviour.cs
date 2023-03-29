@@ -22,7 +22,7 @@ public class TankerBehaviour : EnemyBase
         //change state to be current state
         _State = _tChase;
         //play animation
-        meshAnims.Play("Zombie_Run");
+        meshAnims.Play("TankWalk");
         //execute state
         _State.DoState(this);
     }
@@ -42,6 +42,23 @@ public class TankerBehaviour : EnemyBase
                 damageableCollide[i].GetComponent<IDamageable>().Damage(zombieStats.zombieDamageAmount,false);
             }
         }
+        #endregion
+
+        #region play particle effect
+
+        PoolManager poolM = PoolManager.instanceT;
+
+        if(poolM.groundSlamParticle[poolM.groundSlamParticleID] == null || poolM.groundSlamParticleID >= poolM.groundSlamParticle.Length - 1)
+        {
+            poolM.groundSlamParticleID = 0;
+        }
+
+        poolM.groundSlamParticle[poolM.groundSlamParticleID].gameObject.transform.position = targetChanger.transform.position;
+        poolM.groundSlamParticle[poolM.groundSlamParticleID].gameObject.SetActive(true);
+        poolM.groundSlamParticle[poolM.groundSlamParticleID].Play();
+
+        poolM.groundSlamParticleID++;
+
         #endregion
     }
 }

@@ -43,6 +43,8 @@ public class EnemyBase : MonoBehaviour,IDamageable
         zombieHealth = zombieStats.zombieHealth;
         //setting target
         this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().SetTarget();
+        //set zombie speed
+        navAgent.speed = zombieStats.zombieSpeed;
         
         VirtualStart();
     }

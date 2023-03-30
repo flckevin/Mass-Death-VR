@@ -77,9 +77,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1572492311860541054}
   - component: {fileID: 1572492311860541053}
+  - component: {fileID: 8988237829531015032}
+  - component: {fileID: 1466384543333643988}
   m_Layer: 0
   m_Name: TurretBase
-  m_TagString: Untagged
+  m_TagString: EW_gas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +128,32 @@ MonoBehaviour:
   barrel: {fileID: 1572492312092887874}
   fireRate: 2
   damageAmount: 20
+--- !u!65 &8988237829531015032
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572492311860541055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.090516, y: 0.90904963, z: 0.09394133}
+  m_Center: {x: 0.0033440143, y: 0.4863701, z: 0.014011204}
+--- !u!65 &1466384543333643988
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572492311860541055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8156518, y: 0.3317294, z: 0.42}
+  m_Center: {x: -0.09217411, y: 0.80267835, z: 0}
 --- !u!1 &1572492312092887875
 GameObject:
   m_ObjectHideFlags: 0

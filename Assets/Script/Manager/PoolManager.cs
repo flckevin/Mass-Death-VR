@@ -9,16 +9,18 @@ using CorePattern;
  **************************************/
 public class PoolManager : Singleton<PoolManager>
 {
-    [Header("SupplyDrop_Infor")]
+    [Header("SUPPLYDROP")]
     public GameObject[] supplyDropG_Supply;
     [HideInInspector]public int supplyDropID;
 
     
-    [Header("Zombie")]
+    [Space(10)]
+    [Header("ZOMBIE")]
     public EnemyBase[] zombie;
 
 
-    [Header("ParticleSystem")]
+    [Space(10)]
+    [Header("PARTICLESYSTEM")]
     public ParticleSystem[] blood;
     [HideInInspector]public int bloodID;
 
@@ -31,7 +33,8 @@ public class PoolManager : Singleton<PoolManager>
     public GameObject oil;
 
 
-    [Header("Bullet")]
+    [Space(10)]
+    [Header("BULLET")]
     public Rigidbody[] bullets;
     private int _bulletID;
     public int BulletID

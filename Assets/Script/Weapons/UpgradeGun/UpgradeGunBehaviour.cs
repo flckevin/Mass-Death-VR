@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /***************************************
  * Authour: HAN 18080038
  * Object hold: upgrade gun
@@ -8,25 +9,27 @@ using UnityEngine;
  **************************************/
 public class UpgradeGunBehaviour : MonoBehaviour
 {
-    public BoxCollider fire; // fire trigger
+    public BoxCollider fireCol; // fire trigger
     public ParticleSystem fireParticle; // fire effect
-    private IUpgradeGun target;//upgrade target
+    public ParticleSystem sparkEffect;// spark effect
+    public  Slider progressSlider;//progress slider
+    private IUpgradeGun _target;//upgrade target
 
     
     public void OnGunTrigger()
     {
         //if fire have not enable
-        if(fire.enabled == false)
+        if(fireCol.enabled == false)
         {
             //enable fire
-            fire.enabled = true;
+            fireCol.enabled = true;
             //play fire particle
             fireParticle.Play();
         }
         else
         {
             //disable fire
-            fire.enabled = false;
+            fireCol.enabled = false;
             //stop fire effect
             fireParticle.Stop();
         }
@@ -36,33 +39,53 @@ public class UpgradeGunBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         //if trigger are into these target
-        if(other.gameObject.tag == "EmplacementWeapon" ||
+        if(other.gameObject.tag == "EW_gas" ||
             other.gameObject.tag == "Objective" ||
             other.gameObject.tag == "BrokenObjective")
         {
             //get upgrade component
-            target = other.gameObject.GetComponent<IUpgradeGun>();
+            _target = other.gameObject.GetComponent<IUpgradeGun>();
         }
     }
 
     private void OnTriggerStay(Collider other) 
     {
         //if target does not exist then stop execute
-        if(target == null) return;
-        //else
-        //call fix function
-        target.OnFixOnUpgrade();
+        if(_target == null) return;
+
+        //if trigger are into these target
+        if(other.gameObject.tag == "EW_gas" ||
+            other.gameObject.tag == "Objective" ||
+            other.gameObject.tag == "BrokenObjective")
+        {
+            //call fix function
+            _target.OnFixOnUpgrade();
+
+            //if particle effect not playing
+            if(sparkEffect.isPlaying == false)
+            {
+                //play
+                sparkEffect.Play();
+            }
+        }
+        
     }
 
     private void OnTriggerExit(Collider other) 
     {
         //if trigger are into these target
-        if(other.gameObject.tag == "EmplacementWeapon" ||
+        if(other.gameObject.tag == "EW_gas" ||
             other.gameObject.tag == "Objective" ||
             other.gameObject.tag == "BrokenObjective")
         {
             //set target to null
-            target = null;
+            _target = null;
+            //if particle effect is playing
+            if(sparkEffect.isPlaying == true)
+            {
+                //stop
+                sparkEffect.Stop();
+            }
         }
     }
 }

@@ -100,9 +100,12 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
     public virtual void OnUpgradeEW()
     {
         //if stage reach to limit
-        if(amountUpgraded == weaponStages.Length) return; 
+        if(_currentStage >= weaponStages.Length - 1) return; 
         //increase stage of upgrade
         amountUpgraded+=0.2f;
+        //update amount upgraded on screen
+        GameManagerClass.instanceT.upgradeGun.progressSlider.value = (Mathf.Round(amountUpgraded)/emplacementStats.amountToUpgrade);
+
         //if stage reach to required amount
         if(amountUpgraded >= emplacementStats.amountToUpgrade)
         {
@@ -117,13 +120,13 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
             
         }
         
+       
             
     }
 
     public void OnFixOnUpgrade()
     {
         OnUpgradeEW();
-        throw new System.NotImplementedException();
     }
 
     //ontrigger enter if it hammer (max health upgrade, low health fix)

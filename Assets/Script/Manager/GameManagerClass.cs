@@ -18,15 +18,20 @@ public class GameManagerClass : Singleton<GameManagerClass>
     public CreditCard playerCreditCard_Class;
     public PlayerStats playerStat;
     public Grabber[] grab;
+    public UpgradeGunBehaviour upgradeGun;
 
-
+    [Space(10)]
     [Header("Objective_INFO")]
     public GameObject[] objective;
+
+
+    [Space(10)]
     [Header("Objective_Tablet_UI")]
     public UnityEngine.UI.Slider extractorHealth;
     public Text extractTimeLeft;
 
 
+    [Space(10)]
     [Header("Spawner_INFO")]
     public Transform[] spawnPos;
 

@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 8800736369087559377}
   - component: {fileID: 8824451794587390976}
   m_Layer: 0
-  m_Name: gas-bottle
+  m_Name: Upgrade Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,37 +8,27 @@ using UnityEngine;
  **************************************/
 public class FlareSupplyDrop : ConsumableItem
 {
-    private bool _dropped; //declare bool to check whether flare have been dropped on the ground
     public GameObject cap;//declare gameobject to store cap of the flare
+    public GameObject supply;//decalre gameobject to spawn supply drop
+    public ParticleSystem flareParticle;//declare particle system to play flare particle
     // Start is called before the first frame update
 
     private void Start()
     {
         //set able to use to false
-        _ableToUse = false;
+        //_ableToUse = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         //checking whether the flare able to use and have not been dropped on the ground
-        if(_ableToUse == true && _dropped == false) 
+        if(_ableToUse == true) 
         { 
-            //if supply drop id does exceed the length
-            if(PoolManager.instanceT.supplyDropID + 1 > PoolManager.instanceT.supplyDropG_Supply.Length) 
-            {
-                //set supply drop back to beginning
-                PoolManager.instanceT.supplyDropID = 0;
-            }
-
-            //transform the supply drop to the flare position
-            PoolManager.instanceT.supplyDropG_Supply[PoolManager.instanceT.supplyDropID].transform.position = new Vector3(this.transform.position.x, 
-                                                                                                                                20, this.transform.position.y);
-            //activate the supply
-            PoolManager.instanceT.supplyDropG_Supply[PoolManager.instanceT.supplyDropID].SetActive(true);
-            //increase the supply drop ID
-            PoolManager.instanceT.supplyDropID++;
+            if(supply == null){Destroy(this.gameObject);return;}
+            //spawn supply drop
+            Instantiate(supply,new Vector3(this.transform.position.x,20,this.transform.position.z),Quaternion.identity);
             //set dropped to true
-            _dropped = true;
+            _ableToUse = false;
             //startcouroutine for flare deactivateion
             StartCoroutine(Deactivate());
         }
@@ -58,6 +48,10 @@ public class FlareSupplyDrop : ConsumableItem
         }
         //set able to use to true to prevent second time of supply drop
         _ableToUse = true;
+        //activate particle
+        flareParticle.gameObject.SetActive(true);
+        //play particle system
+        flareParticle.Play();
     }
 
     /// <summary>
@@ -67,7 +61,7 @@ public class FlareSupplyDrop : ConsumableItem
     IEnumerator Deactivate() 
     {
         //wait for 1 sec
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         //deactivate flare
         this.gameObject.SetActive(false);
 
@@ -78,8 +72,6 @@ public class FlareSupplyDrop : ConsumableItem
     /// </summary>
     public override void OnSetDefaultItem()
     {
-        //set dropped to false
-        _dropped = false;
         //set able to use to false
         _ableToUse = false;
     }

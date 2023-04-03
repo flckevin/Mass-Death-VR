@@ -9,9 +9,19 @@ using BNG;
  **************************************/
 public class AmmoCrateBehaviour : MonoBehaviour
 {
+    public int amountOfTimeSpawn; // amount of time be able to spawn mags
+    private int _defaultAmountOfTime; //store amount of time to spawn mags
+
+    private void Start() 
+    {
+        _defaultAmountOfTime = amountOfTimeSpawn;
+    }
+
     //function when player grab
     public void OnSpawn(Transform _spawnPos)
     {
+        //if player run out of amount of spawning then stop
+        if(amountOfTimeSpawn <= 0) return;
 
         #region finding which hand have gun
         //declaring new gun root varible to store gun ammo
@@ -53,6 +63,12 @@ public class AmmoCrateBehaviour : MonoBehaviour
         //spawn gun mag at correct posiiton
         Instantiate(gun.gunMagsAmmoBoxStorage,_spawnPos.transform.position,Quaternion.identity);
         
-        
+        amountOfTimeSpawn--;
     }
+
+    private void OnCollisionEnter(Collision other) 
+    {
+        if(amountOfTimeSpawn <= 0){Destroy(this.gameObject);}
+    }
+
 }

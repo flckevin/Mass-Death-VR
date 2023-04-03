@@ -29,9 +29,9 @@ public class ShopBehaviour : MonoBehaviour
     
     [Header("SHOP COMPONENTS_SHOP UI")]
     public Text nameText;//name of item
-    public Image img;//image of the item
     public Text priceText;//text to display price
     public Text moneyDisplayText;//text to display current money
+    public Text description;//text to display description
 
     [HideInInspector]public bool machineStarted;
     [HideInInspector]public GameObject ObjToSpawn;//object ot spawn
@@ -199,7 +199,7 @@ public class ShopBehaviour : MonoBehaviour
     public void OnExit()
     {
         //display text
-        moneyDisplayText.text = "0";
+        moneyDisplayText.text = "BALANCE: 0";
     }
 
     public void OnCardInsert()
@@ -207,7 +207,7 @@ public class ShopBehaviour : MonoBehaviour
         //start machine
         machineStarted = true;
         //display amount of money
-        moneyDisplayText.text = GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount.ToString();
+        moneyDisplayText.text = "BALANCE: " + GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount.ToString();
         //display first page of shop
         _currentShopPage = 0;
         //execute

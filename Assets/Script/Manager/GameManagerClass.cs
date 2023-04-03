@@ -23,12 +23,14 @@ public class GameManagerClass : Singleton<GameManagerClass>
     [Space(10)]
     [Header("Objective_INFO")]
     public GameObject[] objective;
+    public int generatorLeft;
 
 
     [Space(10)]
     [Header("Objective_Tablet_UI")]
-    public UnityEngine.UI.Slider extractorHealth;
-    public Text extractTimeLeft;
+    public UnityEngine.UI.Slider extractorHealth_UI;
+    public Text extractTimeLeft_UI;
+    public Text generatorLeft_UI;
 
 
     [Space(10)]

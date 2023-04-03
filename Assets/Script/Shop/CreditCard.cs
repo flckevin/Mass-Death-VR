@@ -16,7 +16,7 @@ public class CreditCard : MonoBehaviour
     {
         if(other.gameObject.tag == "Shop")
         {
-            ShopBehaviour shop = other.transform.root.GetComponent<ShopBehaviour>();
+            ShopBehaviour shop = other.transform.parent.parent.GetComponent<ShopBehaviour>();
             shop.OnCardInsert();
             this.gameObject.SetActive(false);
             

@@ -19,29 +19,49 @@ public class PowerGenerator : MonoBehaviour,IDamageable
 
     void Start()
     {
-        //set default health
-        _defaultHealth = health;
+        
 
         //if extractor have not been assigned
         if(extractor == null)
         {
-            //find object with tag Objective
-            GameObject[] extractObj = GameObject.FindGameObjectsWithTag("Objective");  
-            //loop all object in array
-            for(int i  = 0; i < extractObj.Length ; i++)
+            for(int i =0;i<GameManagerClass.instanceT.objective.Length;i++)
             {
-                //if there is a object has name Extractor
-                if(extractObj[i].name == "Extractor")
+                if(GameManagerClass.instanceT.objective[i].name == "Extractor")
                 {
-                    //get extractor component
-                    extractor = extractObj[i].GetComponent<Extractor>();
-                    break;
+                    extractor = GameManagerClass.instanceT.objective[i].GetComponent<Extractor>();
+                    return;
                 }
             }
+
+            
+            if(extractor == null)
+            {
+                 //find object with tag Objective
+                GameObject[] extractObj = GameObject.FindGameObjectsWithTag("Objective");  
+                //loop all object in array
+                for(int i  = 0; i < extractObj.Length ; i++)
+                {
+                    //if there is a object has name Extractor
+                    if(extractObj[i].name == "Extractor")
+                    {
+                        //get extractor component
+                        extractor = extractObj[i].GetComponent<Extractor>();
+                        break;
+                    }
+                }
+            }
+           
         }
 
         //storing boxcollider into this class
         boxCol = GetComponent<BoxCollider>();
+
+        //update amount of generator
+        GameManagerClass.instanceT.generatorLeft++;
+        //display generator left
+        GameManagerClass.instanceT.generatorLeft_UI.text = "generator left" + GameManagerClass.instanceT.generatorLeft.ToString();
+        //set default health
+        _defaultHealth = health;
     }
 
     
@@ -77,6 +97,10 @@ public class PowerGenerator : MonoBehaviour,IDamageable
             boxCol.enabled = false;
             boxCol.enabled = true;
             
+             //update amount of generator
+            GameManagerClass.instanceT.generatorLeft -= 1;
+            //display generator left
+            GameManagerClass.instanceT.generatorLeft_UI.text = "generator left" + GameManagerClass.instanceT.generatorLeft.ToString();
             /*
             //call function to change target
             for(int i =0; i<targetChanger.Count ; i++)
@@ -88,9 +112,7 @@ public class PowerGenerator : MonoBehaviour,IDamageable
                 }
             }
             */
-            //need other method to change target for zombie
-            // ========= CHANGE METHOD BELOW ========
-            //EventDispatch.instanceT.CallFunction(EventsType.CommonOnChangeTarget);
+
         }
     }
 

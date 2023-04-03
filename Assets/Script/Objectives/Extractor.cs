@@ -22,7 +22,7 @@ public class Extractor : MonoBehaviour,IDamageable
         //storing default health
         deafultHealth = health;
         //setting slider value
-        GameManagerClass.instanceT.extractorHealth.value = health/deafultHealth;
+        GameManagerClass.instanceT.extractorHealth_UI.value = health/deafultHealth;
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class Extractor : MonoBehaviour,IDamageable
             //spawn out sample
         }
         //update progress on ui
-        GameManagerClass.instanceT.extractTimeLeft.text = ("EXTRACTION TIME LEFT: " + Mathf.Round(progressed) + "/" + goal).ToString(); 
+        GameManagerClass.instanceT.extractTimeLeft_UI.text = ("EXTRACTION TIME LEFT: " + Mathf.Round(progressed) + "/" + goal).ToString(); 
     }
 
     private void OnCollisionEnter(Collision other) 
@@ -67,7 +67,7 @@ public class Extractor : MonoBehaviour,IDamageable
         //decrease machine health
         health -= 0.1f;
         //setting slider value
-        GameManagerClass.instanceT.extractorHealth.value = health/deafultHealth;
+        GameManagerClass.instanceT.extractorHealth_UI.value = health/deafultHealth;
 
         //check if health reach to 0
         //if it is

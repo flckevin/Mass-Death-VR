@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b6e563246873764597eb311a1b07849, type: 3}
-  m_Name: Berreta
+  m_Name: SpecialCarbine
   m_EditorClassIdentifier: 
-  objToSpawn: {fileID: 7713327992362837969, guid: da7aef609db0b7a498cf8ac375b9c147,
+  objToSpawn: {fileID: 1266694033245098747, guid: c606cd234c5d9d8429d3456297e59c4d,
     type: 3}
-  price: 200
+  price: 1500
   descriptions: is a gun you can kill zombie or kill yourself

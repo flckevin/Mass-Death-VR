@@ -8,7 +8,7 @@ using UnityEngine;
  **************************************/
 public class GunBehaviour : MonoBehaviour
 {
-    [Header ("Gun Info")]
+    [Header ("General Gun Info")]
     public Transform gunBarrel; //declare transform for positon of gun barrel
     public float damageDealt;//declare float for damage of the gun
     public GameObject gunMagsAmmoBoxStorage;//declare gun mag for gun ammo box storage and calling for spaw
@@ -16,7 +16,7 @@ public class GunBehaviour : MonoBehaviour
     public float bulletForce;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         //if this object not tag gun yet
         if(this.gameObject.tag != "Gun")
@@ -29,7 +29,14 @@ public class GunBehaviour : MonoBehaviour
     //function when gun shoot
     public void OnShoot()
     {
-        
+        //checking if bullet id exceed amount of array
+        if(PoolManager.instanceT.BulletID >= PoolManager.instanceT.bullets.Length - 1)
+        {
+            //if it is
+            //set bullet id back to begining
+            PoolManager.instanceT.BulletID = 0;
+        }
+
         //storing bullet going to shoot
         Rigidbody bullet = PoolManager.instanceT.bullets[PoolManager.instanceT.BulletID];
         //set bullet name to be damage going to be dealing
@@ -40,19 +47,10 @@ public class GunBehaviour : MonoBehaviour
         bullet.gameObject.SetActive(true);
         //add force to bullet
         bullet.AddRelativeForce(this.transform.forward*bulletForce);
+        //increase bullet id
         PoolManager.instanceT.BulletID++;
         
-        /*
-        RaycastHit _rayHit;
-        if(Physics.Raycast(gunBarrel.transform.position,gunBarrel.transform.forward,out _rayHit,Mathf.Infinity))
-        {
-            Debug.Log(_rayHit.transform.name);
-            if(_rayHit.transform.gameObject.tag == "Zombie")
-            {
-                _rayHit.transform.GetComponent<IDamageable>().Damage(damageDealt,false);
-            }
-        }
-        */
-
     }
+
+   
 }

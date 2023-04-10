@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b6e563246873764597eb311a1b07849, type: 3}
-  m_Name: SpecialCarbine
+  m_Name: MP5
   m_EditorClassIdentifier: 
-  objToSpawn: {fileID: 1266694033245098747, guid: c606cd234c5d9d8429d3456297e59c4d,
+  objToSpawn: {fileID: 2897556358725383804, guid: 80e65198a7c1ae041846fdc6710110f8,
     type: 3}
-  price: 1200
+  price: 600
   descriptions: is a gun you can kill zombie or kill yourself

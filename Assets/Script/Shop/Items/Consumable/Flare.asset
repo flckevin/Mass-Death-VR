@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objToSpawn: {fileID: 6153813554993734636, guid: e97ac20cdc9399a4da048233c53eec9d,
     type: 3}
-  price: 2000
+  price: 1700
   descriptions: you better pray that you going to get some good stuff

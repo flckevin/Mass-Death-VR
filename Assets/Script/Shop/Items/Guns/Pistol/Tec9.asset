@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b6e563246873764597eb311a1b07849, type: 3}
-  m_Name: AK
+  m_Name: Tec9
   m_EditorClassIdentifier: 
-  objToSpawn: {fileID: 5743644068212509637, guid: 9f50d16e43d542e45a7fd5af326b5076,
+  objToSpawn: {fileID: 4687541279945479649, guid: 454670ba2c5c3ea4794dba5b895b54f6,
     type: 3}
-  price: 1000
+  price: 430
   descriptions: is a gun you can kill zombie or kill yourself

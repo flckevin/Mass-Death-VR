@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b6e563246873764597eb311a1b07849, type: 3}
-  m_Name: Degal
+  m_Name: M4A1
   m_EditorClassIdentifier: 
-  objToSpawn: {fileID: 1150704861667410584, guid: 9891a47c6452a904ea770978407076ee,
+  objToSpawn: {fileID: 6255453531808392217, guid: 308d9a75ef289154bb34aee16ace422a,
     type: 3}
-  price: 500
+  price: 1000
   descriptions: is a gun you can kill zombie or kill yourself

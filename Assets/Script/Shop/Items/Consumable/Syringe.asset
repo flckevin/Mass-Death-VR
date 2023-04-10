@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objToSpawn: {fileID: 4234480658423768951, guid: d0001374fad09a549ac0dbec6ab26a14,
     type: 3}
-  price: 500
+  price: 300
   descriptions: just mixed drugs to make you feel better about yourself, it can heal
     your health though

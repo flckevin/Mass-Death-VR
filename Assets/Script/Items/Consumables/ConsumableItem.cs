@@ -13,24 +13,13 @@ public class ConsumableItem : MonoBehaviour
    [SerializeField] protected bool _ableToUse;//declare bool to check wheter be able to use
     protected bool _used;//declare bool to check whether player have used item
 
-    protected virtual void Start() {
-        
-    }
+    protected virtual void Start() {}
 
-    public virtual void OnUseItem() 
-    { 
-    
-    }
+    public virtual void OnUseItem() { }
 
-    public virtual void OnSetDefaultItem() 
-    {
-        
-    }
+    public virtual void OnDisableItem(){}
 
-    public virtual void UpgradeEW()
-    {
-
-    }
+    public virtual void OnSetDefaultItem() {}
 
 
 }

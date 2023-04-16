@@ -2516,7 +2516,7 @@ MonoBehaviour:
   MaxInternalAmmo: 10
   AutoChamberRounds: 1
   MustChamberRounds: 1
-  AlwaysFireProjectile: 0
+  AlwaysFireProjectile: 1
   FireProjectileInSlowMo: 1
   SlowMoRateOfFire: 0.3
   ShotForce: 20
@@ -2534,7 +2534,7 @@ MonoBehaviour:
   MuzzleFlashObject: {fileID: 8357483544761356850}
   BulletCasingPrefab: {fileID: 4293907302815737054, guid: f8313a7c0e07bba40ac0f3634a590caf,
     type: 3}
-  ProjectilePrefab: {fileID: 1449094533667961452, guid: 4af46545725f628459794cfc7c0f7d54,
+  ProjectilePrefab: {fileID: 3793421555936178261, guid: 81e0107e970117a49babfe3499da08ff,
     type: 3}
   HitFXPrefab: {fileID: 3454612190511497970, guid: fa39ce2ce96bec94b82f2c8124ce3930,
     type: 3}
@@ -2568,6 +2568,9 @@ MonoBehaviour:
   onRaycastHitEvent:
     m_PersistentCalls:
       m_Calls: []
+  gunMagsAmmoBoxStorage: {fileID: 2485292065508041241, guid: 0bf35d44e1572c84cb0815101a847ffd,
+    type: 3}
+  amountBulletGoThrough: 1
 --- !u!114 &9141494143657443336
 MonoBehaviour:
   m_ObjectHideFlags: 0

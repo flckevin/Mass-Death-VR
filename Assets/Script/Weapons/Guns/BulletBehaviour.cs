@@ -4,12 +4,18 @@ using UnityEngine;
  * Object hold: every bullet in game
  * Content: hold info varible for bullet
  **************************************/
-public class Bullet : MonoBehaviour
+public class BulletBehaviour : MonoBehaviour
 {
+   [HideInInspector]public int amountGoThroughObj;
    private void OnCollisionEnter(Collision other) 
    {
-      //deactivate object
-      this.gameObject.SetActive(false);
+      amountGoThroughObj--;
+      if(amountGoThroughObj <= 0)
+      {
+         //deactivate object
+         this.gameObject.SetActive(false);
+      }
+      
    }
 
 }

@@ -11,14 +11,14 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
 {
     // Start is called before the first frame update
     protected bool grounded;//declare bool to check whether platform is grounded
-
+    public string tagToPlace;
     public GameObject WeaponToActivate;//declare gameobject to activate emplacement weapons
     public GameObject EWComponents;//declare emplacement components to destroy
     
     private void OnCollisionEnter(Collision collision)
     {
         //if object has floor tag
-        if (collision.gameObject.CompareTag("PlaceableFloor"))
+        if (collision.gameObject.CompareTag(tagToPlace))
         {
             //set grounded to true
             grounded = true;
@@ -29,7 +29,7 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         //if object has floor tag
-        if (collision.gameObject.CompareTag("PlaceableFloor"))
+        if (collision.gameObject.CompareTag(tagToPlace))
         {
             //set grounded to false 
             grounded = false;
@@ -39,7 +39,7 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
     /// <summary>
     /// emplacement weapon activation
     /// </summary>
-    public void EmplacementWepaonActivation(bool hasGas)
+    public virtual void EmplacementWepaonActivation(bool hasGas)
     {
         //cehcking whether emplacement weapon is grounded and be able to place down
         if (grounded == true)

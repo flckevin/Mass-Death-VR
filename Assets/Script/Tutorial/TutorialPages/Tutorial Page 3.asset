@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d108a2837f33a134692ba9b91f9490fb, type: 3}
+  m_Name: Tutorial Page 3
+  m_EditorClassIdentifier: 
+  tutorialSectionName: SHOP
+  text:
+  - To use the shop, you will need to get your credit card which you can find it
+    by putting your hand into your bag right underneath you if you look down
+  - 'Once you put your hand into your pocket, the credit card will spawn infront
+    of you '
+  - Once you got your credit card on your hand, you need to put the credit card into
+    the vending machine slot
+  - You can change shop pages and section by pressing buttons
+  - If you like any item in the shop, you can press the button under the display
+    item to see information
+  - You can take a look of information of the item and your own balamce at the tablet
+    that been attached on the shop
+  - If you like the item, you can buy it by pressing buy button
+  - Once you finished shopping, you can press exit from the veding maching to get
+    your credit card back
+  - The shop will be the place where you can buy everything, from gun to consumable
+  - You can locate shop around the battlefield to get more resources
+  images:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

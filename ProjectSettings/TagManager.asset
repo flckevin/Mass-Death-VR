@@ -7,13 +7,11 @@ TagManager:
   - Enemy
   - DeadEnemy
   - Damageable
-  - PlaceableFloor
   - FuelTank
   - Floor
   - PlayerHand
   - Gun
   - Zombie
-  - PlaceableLimit
   - tool
   - Finger
   - Objective
@@ -22,6 +20,9 @@ TagManager:
   - Shop
   - EW_nogas
   - EW_gas
+  - RedEW
+  - YellowEW
+  - PlaceableLimit
   layers:
   - Default
   - TransparentFX

@@ -9,11 +9,11 @@ using UnityEngine;
 public class GunBehaviour : MonoBehaviour
 {
     [Header ("General Gun Info")]
-    public Transform gunBarrel; //declare transform for positon of gun barrel
-    public float damageDealt;//declare float for damage of the gun
+    //public Transform gunBarrel; //declare transform for positon of gun barrel
+    //public float damageDealt;//declare float for damage of the gun
     public GameObject gunMagsAmmoBoxStorage;//declare gun mag for gun ammo box storage and calling for spaw
     //public int gunMagAmmoBoxStorageID;//declare gun mag for gun ammo box storage ID for correct mag to spawn
-    public float bulletForce;
+    //public float bulletForce;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -26,6 +26,7 @@ public class GunBehaviour : MonoBehaviour
         }
     }
 
+    /*
     //function when gun shoot
     public void OnShoot()
     {
@@ -51,6 +52,6 @@ public class GunBehaviour : MonoBehaviour
         PoolManager.instanceT.BulletID++;
         
     }
-
+    */
    
 }

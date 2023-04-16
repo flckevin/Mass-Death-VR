@@ -406,8 +406,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.26872835, y: 0.11144066, z: 0.25566185}
-  m_Center: {x: 0.0058576614, y: 0.0020394325, z: 0.0049682856}
+  m_Size: {x: 0.26872835, y: 0.08145353, z: 0.25566185}
+  m_Center: {x: 0.0058576614, y: 0.017032996, z: 0.0049682856}
 --- !u!114 &8404557454920524938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c2b4bb205b85247a0b4fc74e0b40b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagToPlace: RedEW
   WeaponToActivate: {fileID: 1572492311860541055}
   EWComponents: {fileID: 1572492313367594943}
 --- !u!1 &8131106230449847729

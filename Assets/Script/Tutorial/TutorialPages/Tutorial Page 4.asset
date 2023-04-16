@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d108a2837f33a134692ba9b91f9490fb, type: 3}
+  m_Name: Tutorial Page 4
+  m_EditorClassIdentifier: 
+  tutorialSectionName: EMPLACEMENT WEAPON
+  text:
+  - Being alone on the battlefield to defend objective would be harder if you stay
+    too long
+  - To help yourself with that, you can use emplacement weapon to defend objective
+    with you
+  - There are 3 types of emplacement weapons
+  - Red, Yellow and Green
+  - Red, Yellow, you will need to place them on their own marked position or else
+    you won't be able to activate them
+  - For green you can activate them any where on the map
+  - Once you place the emplacment weapon platform on ground, you can activate them
+    by pressing button on it
+  - Once you press it, emplacement weapon will fall down from sky to the postiion
+  - 'FOR RED EMPLACEMENT WEAPON: you will need to fill up gas if the weapon fuel
+    runs out or else it will shutdown itself '
+  - 'If the emplacement weapon are too weak for you, you can upgrade them to be more
+    deadly by using the upgrade gun '
+  images: []

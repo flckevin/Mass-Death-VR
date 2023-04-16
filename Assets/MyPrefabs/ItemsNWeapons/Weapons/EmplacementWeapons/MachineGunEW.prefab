@@ -3489,6 +3489,8 @@ MonoBehaviour:
   onRaycastHitEvent:
     m_PersistentCalls:
       m_Calls: []
+  gunMagsAmmoBoxStorage: {fileID: 0}
+  amountBulletGoThrough: 1
 --- !u!114 &1263976536145328315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4787,8 +4789,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.26872835, y: 0.11144066, z: 0.25566185}
-  m_Center: {x: 0.0058576614, y: 0.0020394325, z: 0.0049682856}
+  m_Size: {x: 0.26872835, y: 0.082047775, z: 0.25566185}
+  m_Center: {x: 0.0058576614, y: 0.016735874, z: 0.0049682856}
 --- !u!114 &2718207357346838089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5549,7 +5551,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6ecc2563aa0aae7459cbc00902f0e442, type: 2}
+      objectReference: {fileID: 2100000, guid: eebd9230620c13a489915f9d856a57a1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624ef7d780846b342988732cbb919663, type: 3}
 --- !u!4 &2166513418903435912 stripped

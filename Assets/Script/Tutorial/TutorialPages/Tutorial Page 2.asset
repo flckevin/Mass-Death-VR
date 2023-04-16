@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d108a2837f33a134692ba9b91f9490fb, type: 3}
+  m_Name: Tutorial Page 2
+  m_EditorClassIdentifier: 
+  tutorialSectionName: GUN
+  text:
+  - You can pick up the gun using grip button
+  - Once you pick it up, you will need to put gun magazine into ti
+  - ' that let go the grip button then you are ready to shoothold the grip button
+    to hold the slider to hold it down then pull it back, after that let go the grip
+    button then you are ready to shoot'
+  - Some slider on assult rifle you will find it on the right or on the left, some
+    special gun like M4A1 you might find it on the back of the gun
+  - Once you run out of ammo, you can press "B" button on controller which can be
+    locate on top of the right controller to release gun magazine
+  images:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -14,7 +14,7 @@ public class RunnerBehaviour : EnemyBase
     void Update()
     {
         //calculate distance between itself and target
-        float dis = Vector3.Distance(transform.position,GameManagerClass.instanceT.player_G.transform.position);
+        float dis = Vector3.Distance(transform.position,GameManagerClass.instanceT.playerBehaviour_G.transform.position);
         //if distance remain = 0
         if(dis <= 1)
         {
@@ -23,13 +23,13 @@ public class RunnerBehaviour : EnemyBase
             {
                 _next_Fire = Time.time + 1;
                 //attack player
-                GameManagerClass.instanceT.player_G.OnDamage(zombieStats.zombieDamageAmount);
+                GameManagerClass.instanceT.playerBehaviour_G.OnDamage(zombieStats.zombieDamageAmount);
             }
         }
         else // not reach to target
         {
             //chase player
-            navAgent.SetDestination(GameManagerClass.instanceT.player_G.transform.position);
+            navAgent.SetDestination(GameManagerClass.instanceT.playerBehaviour_G.transform.position);
             //play run animation
             meshAnims.Play("Z_Run_InPlace");
         }

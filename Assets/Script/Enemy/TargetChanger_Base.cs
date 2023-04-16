@@ -95,7 +95,7 @@ public class TargetChanger_Base : MonoBehaviour
         if(_nextTarget == null)
         {
             //set target to be player
-            _nextTarget = GameManagerClass.instanceT.player_G.transform;
+            _nextTarget = GameManagerClass.instanceT.playerBehaviour_G.transform;
         }
 
         

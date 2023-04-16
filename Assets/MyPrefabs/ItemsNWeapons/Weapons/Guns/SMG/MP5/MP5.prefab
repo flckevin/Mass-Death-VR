@@ -415,7 +415,7 @@ MonoBehaviour:
   MaxInternalAmmo: 32
   AutoChamberRounds: 1
   MustChamberRounds: 1
-  AlwaysFireProjectile: 0
+  AlwaysFireProjectile: 1
   FireProjectileInSlowMo: 1
   SlowMoRateOfFire: 0.3
   ShotForce: 20
@@ -433,7 +433,7 @@ MonoBehaviour:
   MuzzleFlashObject: {fileID: 2897556359861695225}
   BulletCasingPrefab: {fileID: 1282233564399203881, guid: e6d6d8266008ffe438ce58f774e874fa,
     type: 3}
-  ProjectilePrefab: {fileID: 1449094533667961452, guid: 4af46545725f628459794cfc7c0f7d54,
+  ProjectilePrefab: {fileID: 3793421555936178261, guid: 81e0107e970117a49babfe3499da08ff,
     type: 3}
   HitFXPrefab: {fileID: 3454612190511497970, guid: fa39ce2ce96bec94b82f2c8124ce3930,
     type: 3}
@@ -451,19 +451,7 @@ MonoBehaviour:
   EmptyBulletInChamber: 0
   onShootEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2897556358725383800}
-        m_TargetAssemblyTypeName: GunBehaviour, Assembly-CSharp
-        m_MethodName: OnShoot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onAttachedAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -479,6 +467,9 @@ MonoBehaviour:
   onRaycastHitEvent:
     m_PersistentCalls:
       m_Calls: []
+  gunMagsAmmoBoxStorage: {fileID: 8215321192711194034, guid: 21d1a8128f4ea6c4cb284b8ae748e93d,
+    type: 3}
+  amountBulletGoThrough: 1
 --- !u!114 &2897556358725383795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,10 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1aa856916290b458a0e1a4b781f8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunBarrel: {fileID: 2897556359410026503}
-  damageDealt: 0
   gunMagsAmmoBoxStorage: {fileID: 0}
-  bulletForce: 0
 --- !u!1 &2897556358765385407
 GameObject:
   m_ObjectHideFlags: 0

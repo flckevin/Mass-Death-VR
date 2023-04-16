@@ -25,7 +25,7 @@ public class AmmoCrateBehaviour : MonoBehaviour
 
         #region finding which hand have gun
         //declaring new gun root varible to store gun ammo
-        GunBehaviour gun = null;
+        BNG.RaycastWeapon gun = null;
         
         //looping every grab in array
         for(int i = 0;i<GameManagerClass.instanceT.grab.Length; i++)
@@ -36,7 +36,7 @@ public class AmmoCrateBehaviour : MonoBehaviour
                 if(GameManagerClass.instanceT.grab[i].HeldGrabbable.gameObject.tag == "Gun")
                 {
                     //get gun component from the grabber
-                    gun = GameManagerClass.instanceT.grab[i].HeldGrabbable.GetComponent<GunBehaviour>();
+                    gun = GameManagerClass.instanceT.grab[i].HeldGrabbable.GetComponent<BNG.RaycastWeapon>();
                 }
                 
             }
@@ -48,7 +48,7 @@ public class AmmoCrateBehaviour : MonoBehaviour
         #endregion
         
         //if gun does not exist then stop logic
-        if(gun == null) return;
+        if(gun == null || gun.gunMagsAmmoBoxStorage) return;
         
         /*
         //checking whether gun ID has exceed length of gun storage array

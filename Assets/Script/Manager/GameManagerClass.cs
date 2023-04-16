@@ -13,10 +13,9 @@ public class GameManagerClass : Singleton<GameManagerClass>
 {
    
     [Header("Player_Info")]
-    public PlayerBehaviour player_G;
+    public PlayerBehaviour playerBehaviour_G;
     public bool playerIsDead_B = false;
     public CreditCard playerCreditCard_Class;
-    public PlayerStats playerStat;
     public Grabber[] grab;
     public UpgradeGunBehaviour upgradeGun;
 

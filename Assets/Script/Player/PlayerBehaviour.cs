@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /***************************************
  * Authour: HAN 18080038
  * Object hold: player
@@ -8,11 +9,17 @@ using UnityEngine;
  **************************************/
 public class PlayerBehaviour : MonoBehaviour,IDamageable
 {
-    private PlayerStats _playerStats;//decl
+    [Header("Player General Info")]
+    public float health; // player health
+    public float speed; //player speed
+    [Header("Player Stats UI Info")]
+    public Slider healthSlider; // health slider
+
+    private float _maxHealth;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _maxHealth = health;
     }
 
     /// <summary>
@@ -22,12 +29,16 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
     public void OnDamage(float damage) 
     {
         //decrease player's health
-        _playerStats.health -= damage;
+        health -= damage;
         //checking whether player's health reach to 0
-        if(_playerStats.health <= 0) 
+        if(health <= 0) 
         { 
             //player dies
         }
+
+        if(healthSlider == null) return;
+        healthSlider.value = health/_maxHealth;
+        
     }
 
 
@@ -38,15 +49,19 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
     public void OnReciveHealth(float amount) 
     {
         //adding more health to the player
-        _playerStats.health += amount;
+        health += amount;
         //checking whether player health exceed the limit
-        if(_playerStats.health > 100) 
+        if(health > 100) 
         {
             //if it does
             //set to maximum which is 100
-            _playerStats.health = 100;
+            health = 100;
         }
+
+        if(healthSlider == null) return;
+        healthSlider.value = health/_maxHealth;
     }
+    
 
     void IDamageable.Damage(float amount, bool instantDeactivate)
     {

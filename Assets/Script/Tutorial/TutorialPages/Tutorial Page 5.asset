@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d108a2837f33a134692ba9b91f9490fb, type: 3}
+  m_Name: Tutorial Page 5
+  m_EditorClassIdentifier: 
+  tutorialSectionName: TABLET
+  text:
+  - Operational tablet can be use to look at the amount of generator left, extractor
+    health and the amount of time left to extract zombie fluid
+  - You can also change tab by touching it
+  - You can also spawn a flare for more resources if you are badly lack of resources
+  - Each time you spawn a flare there will be a cool down before you can spawn more
+    of it
+  images: []

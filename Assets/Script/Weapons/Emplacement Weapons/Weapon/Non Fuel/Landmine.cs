@@ -51,7 +51,7 @@ public class Landmine : NonFuelEmplacementWeaponsBase
     }
 
     //activate function
-    public override void OnActivation()
+    public override void OnInitiate(bool _activation)
     {
         //if landmine lying on ground
         if(_grounded == true)
@@ -62,8 +62,8 @@ public class Landmine : NonFuelEmplacementWeaponsBase
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             //disable grabble script to prevent from player grabbing it
             this.gameObject.GetComponent<BNG.Grabbable>().enabled = false;
-            //base
-            base.OnActivation();
+            
         }
+        base.OnInitiate(_activation);
     }
 }

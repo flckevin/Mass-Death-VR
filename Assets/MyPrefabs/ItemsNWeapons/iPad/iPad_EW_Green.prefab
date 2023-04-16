@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 1906115052936129796}
   - component: {fileID: 4438040985868999118}
   m_Layer: 0
-  m_Name: iPad_EW
+  m_Name: iPad_EW_Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

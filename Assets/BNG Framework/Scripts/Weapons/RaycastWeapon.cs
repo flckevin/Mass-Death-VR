@@ -237,7 +237,9 @@ namespace BNG {
 
         [Tooltip("Passes along Raycast Hit info whenever a Raycast hit is successfully detected. Use this to display fx, add force, etc.")]
         public RaycastHitEvent onRaycastHitEvent;
-
+        [Header("Custom_Info")]
+        public GameObject gunMagsAmmoBoxStorage;
+        public int amountBulletGoThrough = 1;
         /// <summary>
         /// Is the slide / receiver forced back due to last shot
         /// </summary>
@@ -378,6 +380,8 @@ namespace BNG {
             bool useProjectile = AlwaysFireProjectile || (FireProjectileInSlowMo && Time.timeScale < 1);
             if (useProjectile) {
                 GameObject projectile = Instantiate(ProjectilePrefab, MuzzlePointTransform.position, MuzzlePointTransform.rotation) as GameObject;
+                projectile.name = Damage.ToString();
+                projectile.GetComponent<BulletBehaviour>().amountGoThroughObj = amountBulletGoThrough;
                 Rigidbody projectileRigid = projectile.GetComponentInChildren<Rigidbody>();
                 projectileRigid.AddForce(MuzzlePointTransform.forward * ShotForce, ForceMode.VelocityChange);
                 

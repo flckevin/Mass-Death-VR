@@ -879,7 +879,7 @@ MonoBehaviour:
   MuzzleFlashObject: {fileID: 4641522108221061011}
   BulletCasingPrefab: {fileID: 1282233564399203881, guid: e6d6d8266008ffe438ce58f774e874fa,
     type: 3}
-  ProjectilePrefab: {fileID: 1449094533667961452, guid: 4af46545725f628459794cfc7c0f7d54,
+  ProjectilePrefab: {fileID: 3793421555936178261, guid: 81e0107e970117a49babfe3499da08ff,
     type: 3}
   HitFXPrefab: {fileID: 3454612190511497970, guid: fa39ce2ce96bec94b82f2c8124ce3930,
     type: 3}
@@ -913,6 +913,9 @@ MonoBehaviour:
   onRaycastHitEvent:
     m_PersistentCalls:
       m_Calls: []
+  gunMagsAmmoBoxStorage: {fileID: 3798034601207255419, guid: 735787491704d2e41acb72cb8e9b17ca,
+    type: 3}
+  amountBulletGoThrough: 6
 --- !u!114 &4641522106936963865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,10 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c8ed86deaafeb42830349b7d6a1503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunBarrel: {fileID: 4641522106529910125}
-  damageDealt: 50
   gunMagsAmmoBoxStorage: {fileID: 0}
-  bulletForce: 0
   sniperCam: {fileID: 5893118734981761473}
   scope: {fileID: 5893118734651385113}
 --- !u!1 &4641522106961381616

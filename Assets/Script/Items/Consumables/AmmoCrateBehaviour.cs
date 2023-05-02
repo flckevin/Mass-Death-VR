@@ -45,10 +45,12 @@ public class AmmoCrateBehaviour : MonoBehaviour
             if(gun!=null) break;
             
         }
+
+        Debug.Log(gun.name + " , " + gun.gunMagsAmmoBoxStorage.name);
         #endregion
         
         //if gun does not exist then stop logic
-        if(gun == null || gun.gunMagsAmmoBoxStorage) return;
+        //if(gun == null || gun.gunMagsAmmoBoxStorage) return;
         
         /*
         //checking whether gun ID has exceed length of gun storage array
@@ -59,7 +61,7 @@ public class AmmoCrateBehaviour : MonoBehaviour
             gun.gunMagAmmoBoxStorageID = 0;
         }
         */
-        
+        Debug.Log("NOTNULL GUN MAG");
         //spawn gun mag at correct posiiton
         Instantiate(gun.gunMagsAmmoBoxStorage,_spawnPos.transform.position,Quaternion.identity);
         

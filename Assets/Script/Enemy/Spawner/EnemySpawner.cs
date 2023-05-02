@@ -18,8 +18,8 @@ public class EnemySpawner : MonoBehaviour
     //ENEMY INFO
     private int _currentPatternHolder;//store current pattern holder
     private int _amountOfSpawnedEnemy; // amount of enemy spawned
-    private int _maxEnemy; // tracker for maximum nemey
-    private int _enemyID; //current enemy in array
+    private int _waveEnemyAmount; // tracker for maximum nemey
+    private int _enemyID = 0; //current enemy in array
     //WAVE INFO
     private int _wavePassedEvent; // passed wave for event
     private int _waveTracker;// track wave
@@ -34,22 +34,24 @@ public class EnemySpawner : MonoBehaviour
         _currentPatternHolder = 0;
         //choose first pattern
         enemies = enemeyPatternHolder[_currentPatternHolder].pattern1;
+        Debug.Log(enemies.Length);
         //storing ienumerator
         _spawner = Spawner();
-        //starting spawner
-        StartCoroutine(_spawner);
+        _waveEnemyAmount = 6;
     }
 
 
     //function for re enabling spawner
-    private void OnEnable() 
+    public void OnReEnable() 
     {
         //increase max enemy
-        _maxEnemy += 4;
+        _waveEnemyAmount += 4;
         //checking if max enemy reach to limit amount
-        if(_maxEnemy >= maxEnemy){_maxEnemy = maxEnemy;}
+        if(_waveEnemyAmount >= maxEnemy){_waveEnemyAmount = maxEnemy;}
         //set spawned enemy back to 0
         _amountOfSpawnedEnemy = 0;
+        //set total amount of enemy in wave manager
+        GameManagerClass.instanceT.waveMode.amountOfEnemyTotal = _waveEnemyAmount;
         //decrease spawner time
         spawnDelay -= 0.1f;
         //if spawn delay is less or equal to 1 then set 1 as maximum
@@ -63,22 +65,27 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator Spawner()
     {
         //while amount of spaned enemy not reach to maximum
-        while(_amountOfSpawnedEnemy != _maxEnemy)
+        while(_amountOfSpawnedEnemy != _waveEnemyAmount)
         {
             //if enemy ID exceed enemy array length
-            if(_enemyID >= enemies.Length - 1){_enemyID = 0;}
+            if(_enemyID >= enemies.Length - 1 || _enemyID == -1){_enemyID = 0;}
+            
             //store chosen enemy to spawn
             EnemyBase _enemy = ZombieSpawn(enemies[_enemyID]);
+            
             //set position
-            _enemy.gameObject.transform.position = this.transform.position;
+            //_enemy.gameObject.transform.position = this.transform.localPosition;
+            _enemy.gameObject.SetActive(true);
             //call revive function
             _enemy.OnRevive();
-            
             //increase enemy ID
             _enemyID++;
             //increase amount of enemy spawned
             _amountOfSpawnedEnemy++;
+
+            Debug.Log("Enemy id: " + _enemyID + " spawned: " + _amountOfSpawnedEnemy + " waveAmount: " + _waveEnemyAmount);
             yield return new WaitForSeconds(spawnDelay);
+            yield return null;
         }
         
         //increase wavepassed and wave tracker
@@ -106,7 +113,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         //disable spawner
-        this.enabled = false;
+        StopCoroutine(_spawner);
     }
 
     private EnemyBase ZombieSpawn(string _zombieType)
@@ -119,21 +126,26 @@ public class EnemySpawner : MonoBehaviour
             //common
             case "C":
             chosenZombie = GameManagerClass.instanceT.common_C[GameManagerClass.instanceT.Common_C_ID];
+            //increase common id
+            GameManagerClass.instanceT.Common_C_ID++;
             break;
 
             //runner
             case "R":
             chosenZombie = GameManagerClass.instanceT.runner_R[GameManagerClass.instanceT.Runner_R_ID];
+            GameManagerClass.instanceT.Runner_R_ID++;
             break;
 
             //tanker
             case "T":
             chosenZombie = GameManagerClass.instanceT.tanker_T[GameManagerClass.instanceT.Tanker_T_ID];
+            GameManagerClass.instanceT.Tanker_T_ID++;
             break;
 
             //squirter
             case "S":
             chosenZombie = GameManagerClass.instanceT.squirter_S[GameManagerClass.instanceT.Squirter_S_ID];
+            GameManagerClass.instanceT.Squirter_S_ID++;
             break;
         }
 

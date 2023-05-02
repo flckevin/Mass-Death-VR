@@ -15,7 +15,7 @@ public class BulletBehaviour : MonoBehaviour
          //deactivate object
          this.gameObject.SetActive(false);
       }
-      
+      Debug.Log(this.gameObject.name);
    }
 
 }

@@ -15,12 +15,10 @@ public class PowerGenerator : MonoBehaviour,IDamageable
     
     public Extractor extractor;//extractor to decrease time
     private float _defaultHealth;//float to store default health
-    private BoxCollider boxCol;//declare boxCol to enable and disable
+    private BoxCollider _boxCol;//declare boxCol to enable and disable
 
     void Start()
     {
-        
-
         //if extractor have not been assigned
         if(extractor == null)
         {
@@ -29,7 +27,7 @@ public class PowerGenerator : MonoBehaviour,IDamageable
                 if(GameManagerClass.instanceT.objective[i].name == "Extractor")
                 {
                     extractor = GameManagerClass.instanceT.objective[i].GetComponent<Extractor>();
-                    return;
+                    break;
                 }
             }
 
@@ -52,10 +50,8 @@ public class PowerGenerator : MonoBehaviour,IDamageable
             }
            
         }
-
         //storing boxcollider into this class
-        boxCol = GetComponent<BoxCollider>();
-
+        _boxCol = this.gameObject.GetComponent<BoxCollider>();
         //update amount of generator
         GameManagerClass.instanceT.generatorLeft++;
         //display generator left
@@ -94,8 +90,8 @@ public class PowerGenerator : MonoBehaviour,IDamageable
             //to detect the current stage of the power generator whether is broken
             //and once the tag been change to broken objective and re enable the collider
             //the zombie will detect the current stage of the power generator and change it target
-            boxCol.enabled = false;
-            boxCol.enabled = true;
+            _boxCol.enabled = false;
+            _boxCol.enabled = true;
             
              //update amount of generator
             GameManagerClass.instanceT.generatorLeft -= 1;

@@ -11,10 +11,11 @@ public class GunBehaviour : MonoBehaviour
     [Header ("General Gun Info")]
     //public Transform gunBarrel; //declare transform for positon of gun barrel
     //public float damageDealt;//declare float for damage of the gun
-    public GameObject gunMagsAmmoBoxStorage;//declare gun mag for gun ammo box storage and calling for spaw
     //public int gunMagAmmoBoxStorageID;//declare gun mag for gun ammo box storage ID for correct mag to spawn
     //public float bulletForce;
-
+    public Transform raycastMuzzle;
+    public LayerMask rayMask;
+    public float damage;
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -26,32 +27,22 @@ public class GunBehaviour : MonoBehaviour
         }
     }
 
-    /*
+  
     //function when gun shoot
     public void OnShoot()
     {
-        //checking if bullet id exceed amount of array
-        if(PoolManager.instanceT.BulletID >= PoolManager.instanceT.bullets.Length - 1)
-        {
-            //if it is
-            //set bullet id back to begining
-            PoolManager.instanceT.BulletID = 0;
-        }
+        RaycastHit rayHit;
 
-        //storing bullet going to shoot
-        Rigidbody bullet = PoolManager.instanceT.bullets[PoolManager.instanceT.BulletID];
-        //set bullet name to be damage going to be dealing
-        bullet.name = damageDealt.ToString();
-        //set bullet position to be at barrel position
-        bullet.transform.position = gunBarrel.position;
-        //activate bullet
-        bullet.gameObject.SetActive(true);
-        //add force to bullet
-        bullet.AddRelativeForce(this.transform.forward*bulletForce);
-        //increase bullet id
-        PoolManager.instanceT.BulletID++;
+        if(Physics.Raycast(raycastMuzzle.transform.position,raycastMuzzle.forward,out rayHit,Mathf.Infinity,rayMask))
+        {
+            Debug.Log(rayHit.transform.name);
+            if(rayHit.transform.tag == "Zombie")
+            {
+                this.transform.GetComponent<IDamageable>().Damage(damage,false);
+            }
+        }
         
     }
-    */
+   
    
 }

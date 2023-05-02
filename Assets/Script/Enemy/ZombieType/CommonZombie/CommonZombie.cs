@@ -12,10 +12,10 @@ public class CommonZombie : EnemyBase
 {
     Attack c_Attack = new Attack(); //create new attack state
 
-    public override void VirtualStart()
+    public override void VirtualAwake()
     {
        
-        base.VirtualStart();
+        base.VirtualAwake();
         
     }
 
@@ -70,7 +70,10 @@ public class CommonZombie : EnemyBase
     {
         Chase c_Chase = new Chase(); //create new chase state
         //if(_State.ToString() == _currentState && _target == null) return;
-      
+
+        //set target
+        c_Chase.target = _target;
+
         navAgent.Resume();
 
         //change to chase state
@@ -79,8 +82,7 @@ public class CommonZombie : EnemyBase
         //look at target
         this.gameObject.transform.LookAt(_target);
 
-        //set target
-        c_Chase.target = _target;
+        
         
         //store state
         _State = c_Chase;

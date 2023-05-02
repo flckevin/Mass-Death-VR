@@ -1785,7 +1785,7 @@ GameObject:
   - component: {fileID: 7551895892548846434}
   m_Layer: 10
   m_Name: AK
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2013,7 +2013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxRange: 25
-  Damage: 25
+  Damage: 100
   FiringMethod: 1
   ReloadMethod: 1
   FiringRate: 0.05
@@ -2024,14 +2024,14 @@ MonoBehaviour:
   MustChamberRounds: 1
   AlwaysFireProjectile: 1
   FireProjectileInSlowMo: 1
-  SlowMoRateOfFire: 0.3
+  SlowMoRateOfFire: 1
   ShotForce: 20
   BulletCasingForce: 3
   RecoilForce: {x: 0, y: 0, z: 0}
   RecoilDuration: 0.3
   ValidLayers:
     serializedVersion: 2
-    m_Bits: 1281
+    m_Bits: 17665
   TriggerTransform: {fileID: 0}
   SlideTransform: {fileID: 5743644068386482953}
   MuzzlePointTransform: {fileID: 5743644068913165758}
@@ -2751,7 +2751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5743644068913165759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.0431, z: 0.5095}
+  m_LocalPosition: {x: -0, y: 0.053, z: 0.601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -25,6 +25,7 @@ public class ShopBehaviour : MonoBehaviour
 
     public Transform lean_ItemSectionDisplayPos;//postion to lean 
     public Transform lean_ItemSectionHidePos;//position to lean
+    public Transform creditCardPosition;
     [Space(10)]
     
     [Header("SHOP COMPONENTS_SHOP UI")]
@@ -198,8 +199,21 @@ public class ShopBehaviour : MonoBehaviour
 
     public void OnExit()
     {
+        //if machine already started
+        if(machineStarted == false)return;
+        //change credit card position
+        GameManagerClass.instanceT.playerCreditCard_Class.gameObject.transform.position = creditCardPosition.position;
+        //activate credit card
+        GameManagerClass.instanceT.playerCreditCard_Class.gameObject.SetActive(true);
         //display text
-        moneyDisplayText.text = "BALANCE: 0";
+        moneyDisplayText.text = "BALANCE: ";
+        nameText.text = "NAME: ";
+        priceText.text = "PRICE: ";
+        description.text = "DES: ";
+        StartCoroutine(ShopDisplayExecute(1,shopPages[_currentShopPage],null));
+
+        machineStarted = false;
+
     }
 
     public void OnCardInsert()

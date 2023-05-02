@@ -10,13 +10,13 @@ using ZombieStates;
 public class SquirterBehaviour : EnemyBase
 {
     private TargetChanger_Base _targetChanger; //change target
-    public override void VirtualStart()
+    public override void VirtualAwake()
     {
         //call set target function
         _targetChanger = this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>();
         //set target
         _targetChanger.SetTarget();
-        base.VirtualStart();
+        base.VirtualAwake();
     }
 
     //on chase event
@@ -59,9 +59,9 @@ public class SquirterBehaviour : EnemyBase
     }
 
     //on die event
-    public override void OnDie(float forceToAddToRagdoll, Transform posToPush)
+    public override void OnDie()
     {
-        base.OnDie(forceToAddToRagdoll, posToPush);
+        base.OnDie();
         StartCoroutine(Explode(2f));
     }
 

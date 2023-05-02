@@ -78,6 +78,7 @@ public class TargetChanger_Base : MonoBehaviour
     {
         //next target to store new target
         Transform _nextTarget = null;
+        /*
         //loop every objective
         for(int i = 0; i< GameManagerClass.instanceT.objective.Length;i++)
         {
@@ -86,6 +87,19 @@ public class TargetChanger_Base : MonoBehaviour
             {
                 //set target to be objective
                 _nextTarget = GameManagerClass.instanceT.objective[i].transform;
+                //stop looping
+                break;
+            }
+        }
+        */
+        for(int i = 0; i< GameManagerClass.instanceT.objective.Length;i++)
+        {
+            //if there is object has tag objective
+            if(GameManagerClass.instanceT.objective[i].tag == "Objective" && GameManagerClass.instanceT.objective[GameManagerClass.instanceT.ObjectiveID])
+            {
+                //set target to be objective
+                _nextTarget = GameManagerClass.instanceT.objective[i].transform;
+                GameManagerClass.instanceT.ObjectiveID++;
                 //stop looping
                 break;
             }

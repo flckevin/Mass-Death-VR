@@ -20,8 +20,32 @@ public class GameManagerClass : Singleton<GameManagerClass>
     public UpgradeGunBehaviour upgradeGun;
 
     [Space(10)]
+    [Header("PlayerUI_INFO")]
+    public Text healthText;
+    public Text currentWaveText;
+
+    [Space(10)]
     [Header("Objective_INFO")]
     public GameObject[] objective;
+    public int objectiveID;
+    public int ObjectiveID
+    {
+        get
+        {
+            return objectiveID;
+        }
+        set
+        {
+            if(objectiveID >= objective.Length - 1)
+            {
+                objectiveID = 0;
+            }
+            else
+            {
+                objectiveID = value;
+            }
+        }
+    }
     public int generatorLeft;
 
 
@@ -31,9 +55,13 @@ public class GameManagerClass : Singleton<GameManagerClass>
     public Text extractTimeLeft_UI;
     public Text generatorLeft_UI;
 
+    [Space(10)]
+    [Header("GAMEMODE")]
+    public GameModeWaveManager waveMode;
 
     [Space(10)]
     [Header("Spawner_INFO")]
+    public EnemySpawner enemySpawner;
     public Transform[] spawnPos;
     public EnemyBase[] common_C;
     [HideInInspector]public int common_C_ID;
@@ -93,8 +121,8 @@ public class GameManagerClass : Singleton<GameManagerClass>
 
     }
     public EnemyBase[] runner_R;
-    [HideInInspector]public int runner_R_ID;
-     public int Runner_R_ID
+    public int runner_R_ID;
+    public int Runner_R_ID
     {
         get{return runner_R_ID;}
 

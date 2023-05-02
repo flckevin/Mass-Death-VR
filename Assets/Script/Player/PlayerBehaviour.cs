@@ -13,7 +13,7 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
     public float health; // player health
     public float speed; //player speed
     [Header("Player Stats UI Info")]
-    public Slider healthSlider; // health slider
+    
 
     private float _maxHealth;
     // Start is called before the first frame update
@@ -30,14 +30,17 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
     {
         //decrease player's health
         health -= damage;
+        GameManagerClass.instanceT.healthText.text = "Health: " + health;
         //checking whether player's health reach to 0
         if(health <= 0) 
         { 
             //player dies
         }
-
+        /*
         if(healthSlider == null) return;
         healthSlider.value = health/_maxHealth;
+        */
+        
         
     }
 
@@ -50,6 +53,7 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
     {
         //adding more health to the player
         health += amount;
+        GameManagerClass.instanceT.healthText.text = "Health: " + health;
         //checking whether player health exceed the limit
         if(health > 100) 
         {
@@ -58,8 +62,6 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
             health = 100;
         }
 
-        if(healthSlider == null) return;
-        healthSlider.value = health/_maxHealth;
     }
     
 

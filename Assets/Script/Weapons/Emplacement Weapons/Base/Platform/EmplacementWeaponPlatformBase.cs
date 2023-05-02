@@ -47,11 +47,14 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
             //activate emplacement wepaon
             WeaponToActivate.SetActive(true);
             //play fall from sky animation
-            if(hasGas == true)
-            {
-                WeaponToActivate.transform.localPosition = new Vector3(WeaponToActivate.transform.localPosition.x
+            WeaponToActivate.transform.localPosition = new Vector3(WeaponToActivate.transform.localPosition.x
                                                                         ,50,
                                                                         WeaponToActivate.transform.localPosition.z);
+            
+            //if emplacement weapon is gas type
+            if(hasGas == true)
+            {
+                
                 //get emplacement weapon behaviour
                 EmplacementWeaponBehaviourBaseWithGas EW = WeaponToActivate.GetComponent<EmplacementWeaponBehaviourBaseWithGas>();
                 //call couroutine to activate weapon behaviour
@@ -78,10 +81,14 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
         }
     }
 
-    IEnumerator EWGasActivation(EmplacementWeaponBehaviourBaseWithGas EW, float duration)
+    IEnumerator EWGasActivation(EmplacementWeaponBehaviourBaseWithGas EW = null, float duration = 0)
     {
         yield return new WaitForSeconds(duration);
-        EW.enabled = true;
+        if(EW != null)
+        {
+            EW.enabled = true;
+        }
+        
     }
     
 

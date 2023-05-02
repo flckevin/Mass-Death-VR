@@ -28,28 +28,25 @@ public class EnemyBase : MonoBehaviour,IDamageable
     #endregion
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
 
+    private void Awake() 
+    {
         //storing navmesh agent class into this class
         navAgent = this.gameObject.GetComponent<NavMeshAgent>();
-
         //storing meshanimatorbase class into this class
         meshAnims = this.gameObject.GetComponent<MeshAnimatorBase>();
-
-
         //setting zombie health
         zombieHealth = zombieStats.zombieHealth;
         //setting target
-        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().SetTarget();
+        //this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().SetTarget();
         //set zombie speed
         navAgent.speed = zombieStats.zombieSpeed;
-        
-        VirtualStart();
+        //deactivate object
+        this.gameObject.SetActive(false);
+        VirtualAwake();
     }
 
-    public virtual void VirtualStart(){}
+    public virtual void VirtualAwake(){}
     
 
     //function to receive damage
@@ -72,7 +69,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
             //deactivate object
             this.gameObject.SetActive(instantDeactivation);
             //call die function
-            OnDie(damageDealt*10,bulletPos);
+            OnDie();
         }
         #endregion
 
@@ -80,7 +77,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
 
 
     //funciton for zombie to die
-    public virtual void OnDie(float forceToAddToRagdoll,Transform posToPush)
+    public virtual void OnDie()
     {
         //disable target system
         targetChanger.SetActive(false);
@@ -101,6 +98,8 @@ public class EnemyBase : MonoBehaviour,IDamageable
 
         //set tag to be dead enemy
         this.gameObject.tag = "DeadEnemy";
+        //call zombie on kill event
+        GameManagerClass.instanceT.waveMode.ZombieOnKill();
         
     }
 
@@ -112,13 +111,10 @@ public class EnemyBase : MonoBehaviour,IDamageable
 
         //set back to default health
         zombieHealth = zombieStats.zombieHealth;
+
+        //enable navmesh agent
+        navAgent.enabled = true;
         
-        //check whether nav agent does exist
-        if(navAgent != null)
-        {
-            //enable navmesh agent
-            navAgent.enabled = true;
-        }
 
         //set back to default tag
         this.gameObject.tag = "Zombie";

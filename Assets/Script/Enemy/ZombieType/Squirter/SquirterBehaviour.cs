@@ -22,7 +22,7 @@ public class SquirterBehaviour : EnemyBase
     //on chase event
      public void Chase(Transform _target)
     {
-        Chase c_Chase = new Chase(); //create new chase state
+        Chase c_Chase = new Chase(_target,this,zombieStats.zombieSpeed); //create new chase state
         //if(_State.ToString() == _currentState && _target == null) return;
       
         navAgent.Resume();
@@ -34,7 +34,7 @@ public class SquirterBehaviour : EnemyBase
         this.gameObject.transform.LookAt(_target);
 
         //set target
-        c_Chase.target = _target;
+        //c_Chase.target = _target;
         
         //store state
         _State = c_Chase;

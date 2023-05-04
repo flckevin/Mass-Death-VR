@@ -36,11 +36,6 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
         { 
             //player dies
         }
-        /*
-        if(healthSlider == null) return;
-        healthSlider.value = health/_maxHealth;
-        */
-        
         
     }
 

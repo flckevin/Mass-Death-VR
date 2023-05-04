@@ -8,16 +8,26 @@ using UnityEngine;
  **************************************/
 namespace ZombieStates 
 {
-    #region Common Zombie and Runner
+    #region Zombie state - except for runner
     public class Chase : IZombieStateBase
     {
-        public Transform target; //transform for target
+        Transform target; //transform for target
+        float chaseSpeed;
+
+        public Chase (Transform _target, EnemyBase _zombie, float _speed = 0)
+        {
+            target = _target;
+            DoState(_zombie);
+            chaseSpeed = _speed;
+        }
+        
         //function to chase target
         public void DoState(EnemyBase zombie)
         {
             
             //chase player
             zombie.navAgent.SetDestination(target.position);
+            zombie.navAgent.speed = chaseSpeed;
             
         }
         

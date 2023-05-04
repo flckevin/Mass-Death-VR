@@ -68,22 +68,17 @@ public class CommonZombie : EnemyBase
 
     public void Chase(Transform _target)
     {
-        Chase c_Chase = new Chase(); //create new chase state
+        Chase c_Chase = new Chase(_target,this,zombieStats.zombieSpeed); //create new chase state
         //if(_State.ToString() == _currentState && _target == null) return;
-
-        //set target
-        c_Chase.target = _target;
 
         navAgent.Resume();
 
         //change to chase state
-        _currentState = "Common_Chase";
+       // _currentState = "Common_Chase";
 
         //look at target
         this.gameObject.transform.LookAt(_target);
 
-        
-        
         //store state
         _State = c_Chase;
 
@@ -111,6 +106,9 @@ public class CommonZombie : EnemyBase
         
         //play attack animation
         meshAnims.Play("Zombie_Attack");
+
+        //if target does not exist then stop
+        if(_damageable == null) return;
 
         //giving attack target
         c_Attack.damageAbleTarget = _damageable;

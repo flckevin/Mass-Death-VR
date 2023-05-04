@@ -10,11 +10,20 @@ using UnityEngine.UI;
 public class UpgradeGunBehaviour : MonoBehaviour
 {
     public BoxCollider fireCol; // fire trigger
-    public ParticleSystem fireParticle; // fire effect
+    public ParticleSystem fireParticle_Upgrade; // fire effect
+    public ParticleSystem fireParticle_Destroy; // fire effect
     public ParticleSystem sparkEffect;// spark effect
     public  Slider progressSlider;//progress slider
+    private ParticleSystem _particleMain;
     private IUpgradeGun _target;//upgrade target
-
+    private int _destroyVal;
+    private int _mode = 0;
+    
+    private void Awake() 
+    {
+        _mode = 0;
+        _particleMain = fireParticle_Upgrade;
+    }
     
     public void OnGunTrigger()
     {
@@ -24,14 +33,14 @@ public class UpgradeGunBehaviour : MonoBehaviour
             //enable fire
             fireCol.enabled = true;
             //play fire particle
-            fireParticle.Play();
+            _particleMain.Play();
         }
         else
         {
             //disable fire
             fireCol.enabled = false;
             //stop fire effect
-            fireParticle.Stop();
+            _particleMain.Stop();
         }
         
     }
@@ -50,24 +59,38 @@ public class UpgradeGunBehaviour : MonoBehaviour
 
     private void OnTriggerStay(Collider other) 
     {
-        //if target does not exist then stop execute
-        if(_target == null) return;
-
-        //if trigger are into these target
-        if(other.gameObject.tag == "EW_gas" ||
-            other.gameObject.tag == "Objective" ||
-            other.gameObject.tag == "BrokenObjective")
+        if(_mode == 0)
         {
-            //call fix function
-            _target.OnFixOnUpgrade();
+            //if target does not exist then stop execute
+            if(_target == null) return;
 
-            //if particle effect not playing
-            if(sparkEffect.isPlaying == false)
+            //if trigger are into these target
+            if(other.gameObject.tag == "EW_gas" ||
+                other.gameObject.tag == "Objective" ||
+                other.gameObject.tag == "BrokenObjective")
             {
-                //play
-                sparkEffect.Play();
+                //call fix function
+                _target.OnFixOnUpgrade();
+
+                //if particle effect not playing
+                if(sparkEffect.isPlaying == false)
+                {
+                    //play
+                    sparkEffect.Play();
+                }
             }
         }
+        else
+        {
+            _destroyVal ++;
+            progressSlider.value = _destroyVal / 100;
+            if(_destroyVal >= 100)
+            {
+                Destroy(other);
+                _destroyVal = 0;
+            }
+        }
+        
         
     }
 
@@ -86,6 +109,24 @@ public class UpgradeGunBehaviour : MonoBehaviour
                 //stop
                 sparkEffect.Stop();
             }
+
+            if(_mode == 0) return;
+            _destroyVal = 0;
+        }
+    }
+
+    public void ChangeMode()
+    {
+        switch(_mode)
+        {
+            case 0:
+            _mode = 1;
+            _particleMain = fireParticle_Destroy;
+            break;
+            case 1:
+            _mode = 0;
+            _particleMain = fireParticle_Upgrade;
+            break;
         }
     }
 }

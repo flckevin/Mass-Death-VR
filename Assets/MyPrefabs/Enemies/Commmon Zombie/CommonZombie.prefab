@@ -131,7 +131,7 @@ MonoBehaviour:
   nextTick: 0
   meshFilter: {fileID: 2804756165459235404}
   meshRenderer: {fileID: 408540828399338995}
-  currentAnimation: {fileID: 11400000, guid: 24fb8010e16f1b44587ddd164f4b6fb1, type: 2}
+  currentAnimation: {fileID: 11400000, guid: 2f92f086ee07e4345b44f909203f1fc5, type: 2}
   defaultMeshAnimation: {fileID: 11400000, guid: 24fb8010e16f1b44587ddd164f4b6fb1,
     type: 2}
   meshAnimations:

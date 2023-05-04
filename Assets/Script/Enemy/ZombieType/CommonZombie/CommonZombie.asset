@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieHealth: 50
   zombieDamageAmount: 5
-  zombieSpeed: 3.5
+  zombieSpeed: 2

@@ -12,11 +12,11 @@ public class TankerBehaviour : EnemyBase
     public void OnChase(Transform _target)
     {
         //create new state
-        Chase _tChase = new Chase();
+        Chase _tChase = new Chase(_target,this,zombieStats.zombieSpeed);
         //resume navmesh chasing
         navAgent.Resume();
         //set target for zombie
-        _tChase.target = _target;
+        //_tChase.target = _target;
         //look at target
         this.gameObject.transform.LookAt(_target);
         //change state to be current state

@@ -41,11 +41,10 @@ public class AmmoCrateBehaviour : MonoBehaviour
                 
             }
             
-            //if gun does exist, stop the loop
-            if(gun!=null) break;
-            
         }
 
+        if(gun == null) return;
+        
         Debug.Log(gun.name + " , " + gun.gunMagsAmmoBoxStorage.name);
         #endregion
         
@@ -61,7 +60,7 @@ public class AmmoCrateBehaviour : MonoBehaviour
             gun.gunMagAmmoBoxStorageID = 0;
         }
         */
-        Debug.Log("NOTNULL GUN MAG");
+        //Debug.Log(gun.gunMagsAmmoBoxStorage);
         //spawn gun mag at correct posiiton
         Instantiate(gun.gunMagsAmmoBoxStorage,_spawnPos.transform.position,Quaternion.identity);
         

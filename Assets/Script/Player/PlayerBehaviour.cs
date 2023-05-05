@@ -12,6 +12,8 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
     [Header("Player General Info")]
     public float health; // player health
     public float speed; //player speed
+
+    public BNG.SmoothLocomotion playerVRController;
     [Header("Player Stats UI Info")]
     
 
@@ -20,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
     void Start()
     {
         _maxHealth = health;
+        playerVRController.MovementSpeed = speed;
     }
 
     /// <summary>

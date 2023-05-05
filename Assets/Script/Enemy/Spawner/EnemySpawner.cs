@@ -22,8 +22,8 @@ public class EnemySpawner : MonoBehaviour
     private int _enemyID = 0; //current enemy in array
     //WAVE INFO
     private int _wavePassedEvent; // passed wave for event
-    private int _waveTracker;// track wave
-    private IEnumerator _spawner; // store ienumerator
+    private int _waveTracker = 0;// track wave
+    private Coroutine _spawnerCou; // store ienumerator
 
 
     private void Start() 
@@ -35,8 +35,6 @@ public class EnemySpawner : MonoBehaviour
         //choose first pattern
         enemies = enemeyPatternHolder[_currentPatternHolder].pattern1;
         Debug.Log(enemies.Length);
-        //storing ienumerator
-        _spawner = Spawner();
         _waveEnemyAmount = 6;
     }
 
@@ -44,35 +42,46 @@ public class EnemySpawner : MonoBehaviour
     //function for re enabling spawner
     public void OnReEnable() 
     {
+        //increase wave 
+        _waveTracker++;
+        GameManagerClass.instanceT.currentWaveText.text = "WAVE: " + _waveTracker;
         //increase max enemy
         _waveEnemyAmount += 4;
         //checking if max enemy reach to limit amount
         if(_waveEnemyAmount >= maxEnemy){_waveEnemyAmount = maxEnemy;}
         //set spawned enemy back to 0
         _amountOfSpawnedEnemy = 0;
+        //reset enemy ID
+        _enemyID = 0;
         //set total amount of enemy in wave manager
         GameManagerClass.instanceT.waveMode.amountOfEnemyTotal = _waveEnemyAmount;
         //decrease spawner time
         spawnDelay -= 0.1f;
         //if spawn delay is less or equal to 1 then set 1 as maximum
         if(spawnDelay <= 1){spawnDelay = 1;}
+        
+        Debug.Log("NEW WAVE: " + _waveTracker);
         //starting spawner
-        StartCoroutine(_spawner);
+        _spawnerCou = StartCoroutine(SpawnerIE());
+
+        Debug.Log("SPAWNED ENEMY: " + _amountOfSpawnedEnemy + " ENEMYID: " + _enemyID);
     }
 
 
     //spawner function
-    IEnumerator Spawner()
+    IEnumerator SpawnerIE()
     {
+        Debug.Log("Wave: " + _waveTracker + " AMOUNT: " + _amountOfSpawnedEnemy + " ENEMYAMOUNT: " + _waveEnemyAmount);
         //while amount of spaned enemy not reach to maximum
-        while(_amountOfSpawnedEnemy != _waveEnemyAmount)
+        while(_amountOfSpawnedEnemy < _waveEnemyAmount)
         {
             //if enemy ID exceed enemy array length
             if(_enemyID >= enemies.Length - 1 || _enemyID == -1){_enemyID = 0;}
             
             //store chosen enemy to spawn
             EnemyBase _enemy = ZombieSpawn(enemies[_enemyID]);
-            
+            //setting enemy position
+            _enemy.transform.position = new Vector3(this.transform.position.x,_enemy.transform.position.y,this.transform.position.z);
             //set position
             //_enemy.gameObject.transform.position = this.transform.localPosition;
             _enemy.gameObject.SetActive(true);
@@ -82,16 +91,16 @@ public class EnemySpawner : MonoBehaviour
             _enemyID++;
             //increase amount of enemy spawned
             _amountOfSpawnedEnemy++;
+            
 
             Debug.Log("Enemy id: " + _enemyID + " spawned: " + _amountOfSpawnedEnemy + " waveAmount: " + _waveEnemyAmount);
             yield return new WaitForSeconds(spawnDelay);
-            yield return null;
+            
         }
         
         //increase wavepassed and wave tracker
         _wavePassedEvent++;
-        _waveTracker++;
-
+    
         //checking how many wave passed
         //to change enemy pattern
         switch(_wavePassedEvent)
@@ -112,8 +121,9 @@ public class EnemySpawner : MonoBehaviour
             
         }
 
+        StopCoroutine(_spawnerCou);
         //disable spawner
-        StopCoroutine(_spawner);
+        //StopCoroutine(_spawner);
     }
 
     private EnemyBase ZombieSpawn(string _zombieType)

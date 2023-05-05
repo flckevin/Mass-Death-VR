@@ -250,6 +250,7 @@ namespace BNG {
         protected bool readyToShoot = true;
 
         void Start() {
+            this.gameObject.tag = "Gun";
             weaponRigid = GetComponent<Rigidbody>();
 
             if (MuzzleFlashObject) {

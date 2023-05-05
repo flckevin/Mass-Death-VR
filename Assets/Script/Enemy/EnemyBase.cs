@@ -57,10 +57,18 @@ public class EnemyBase : MonoBehaviour,IDamageable
         zombieHealth -= damageDealt;
 
         #region Squirt blood
+        //declare pool manager
+        PoolManager poolM = PoolManager.instanceT;
+        //if pool manager exceed pool blood length
+        if(poolM.bloodID >= poolM.blood.Length - 1)
+        {
+            //set pool id back to 0
+            poolM.bloodID = 0;
+        }
         //playing blood particle
-        ParticleSystemPlayer.instanceT.PlayeParticle(PoolManager.instanceT.blood[PoolManager.instanceT.bloodID],bulletPos.transform);
+        ParticleSystemPlayer.instanceT.PlayeParticle(poolM.blood[poolM.bloodID],bulletPos.transform);
         //increase blood ID
-        PoolManager.instanceT.bloodID++;
+        poolM.bloodID++;
         #endregion
 
         //if zombie health is less than 0
@@ -100,7 +108,14 @@ public class EnemyBase : MonoBehaviour,IDamageable
         this.gameObject.tag = "DeadEnemy";
         //call zombie on kill event
         GameManagerClass.instanceT.waveMode.ZombieOnKill();
-        
+        //deactivate zombie corpse
+        StartCoroutine(OnDeactivation(2));
+    }
+
+    IEnumerator OnDeactivation(float _time = 0)
+    {
+        yield return new WaitForSeconds(_time);
+        this.gameObject.SetActive(false);
     }
 
     //function to reveive zombie
@@ -121,6 +136,8 @@ public class EnemyBase : MonoBehaviour,IDamageable
 
         //call set target function
         this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().SetTarget();
+
+        Debug.Log("REVIVED: " + this.gameObject.name);
     }
 
     private void OnTriggerEnter(Collider other) 

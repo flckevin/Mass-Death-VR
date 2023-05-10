@@ -27,7 +27,7 @@ public class GameManagerClass : Singleton<GameManagerClass>
     [Space(10)]
     [Header("Objective_INFO")]
     public GameObject[] objective;
-    public int objectiveID;
+    public int objectiveID = 0;
     public int ObjectiveID
     {
         get
@@ -36,7 +36,7 @@ public class GameManagerClass : Singleton<GameManagerClass>
         }
         set
         {
-            if(objectiveID >= objective.Length - 1)
+            if(objectiveID >= objective.Length)
             {
                 objectiveID = 0;
             }

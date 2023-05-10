@@ -27,7 +27,7 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
 
     // Start is called before the first frame update
    
-    public virtual void Start()
+    private void Start()
     {
         //checking whether delay been set
         //if not set to 1 as default
@@ -40,6 +40,14 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
         _cou = StartEW();
         //fire machine back up
         StartCoroutine(_cou);
+        VStart();
+    }
+
+    public virtual void VStart(){}
+
+    private void Update() 
+    {
+        WeaponBehaviourUpdate();
     }
 
     public void OnEnableSwitch() 
@@ -86,6 +94,8 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
         fuelLeftEW -= emplacementStats.fuelToDecrease *Time.deltaTime; 
         
     }
+
+    public virtual void WeaponBehaviourUpdate(){}
 
     private void UpdateGas()
     {

@@ -16,9 +16,9 @@ public class OilGun : EmplacementWeaponBehaviourBaseWithGas
     private int _oilID; // oil ID to store
     // Start is called before the first frame update
 
-    public override void Start()
+    public override void VStart()
     {
-        base.Start();
+        base.VStart();
         delay = 3;
     }
 

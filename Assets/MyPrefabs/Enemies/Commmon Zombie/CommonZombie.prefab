@@ -131,7 +131,7 @@ MonoBehaviour:
   nextTick: 0
   meshFilter: {fileID: 2804756165459235404}
   meshRenderer: {fileID: 408540828399338995}
-  currentAnimation: {fileID: 11400000, guid: 2f92f086ee07e4345b44f909203f1fc5, type: 2}
+  currentAnimation: {fileID: 11400000, guid: 24fb8010e16f1b44587ddd164f4b6fb1, type: 2}
   defaultMeshAnimation: {fileID: 11400000, guid: 24fb8010e16f1b44587ddd164f4b6fb1,
     type: 2}
   meshAnimations:
@@ -195,8 +195,8 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5672160043827497279}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_AgentTypeID: -334000983
+  m_Radius: 0.7
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -208,7 +208,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 2
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &1911503676
 MonoBehaviour:
   m_ObjectHideFlags: 0

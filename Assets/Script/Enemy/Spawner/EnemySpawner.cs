@@ -80,8 +80,10 @@ public class EnemySpawner : MonoBehaviour
             
             //store chosen enemy to spawn
             EnemyBase _enemy = ZombieSpawn(enemies[_enemyID]);
+            //random x
+            float randX = Random.Range(-5,5);
             //setting enemy position
-            _enemy.transform.position = new Vector3(this.transform.position.x,_enemy.transform.position.y,this.transform.position.z);
+            _enemy.transform.position = new Vector3(this.transform.position.x + randX,_enemy.transform.position.y,this.transform.position.z);
             //set position
             //_enemy.gameObject.transform.position = this.transform.localPosition;
             _enemy.gameObject.SetActive(true);

@@ -6,20 +6,29 @@ using UnityEngine;
  * Object hold: every non fuel emplacement weapons
  * Content: non fuel emplacement weapons base
  **************************************/
-public class NonFuelEmplacementWeaponsBase : MonoBehaviour
+public class NonFuelEmplacementWeaponsBase : MonoBehaviour,IUpgradeGun
 {
     // Start is called before the first frame update
    [SerializeField] protected bool _ableToUse;//declare bool to check wheter be able to use
     protected bool _used;//declare bool to check whether player have used item
+    protected int _newWeaponID;
+    protected float _upgraded;
+    protected int _NewWeaponID
+    {
+        get{return _newWeaponID;}
+        set{ if(_newWeaponID >= newWeapon.Length -1){_newWeaponID = newWeapon.Length;} }
+    }
 
-    [Header("EW INFO")]
-    public float initiationLength;// declare float for initiation length
-    public float activationLength; // activation length
-    public float delay;//float for delay length
+    [Header("EW GENERAL INFO")]
+    public NonFuelEwStats ewStats;
+
+    [Header("EW UPGRADE INFO")]
+    
+    public GameObject[] newWeapon;
+    
+
     public virtual void Start() 
     {
-        //if delay not been set, set to 5
-        if(delay == 0){delay = 5;}
         //start machine behaviour
         StartCoroutine(MachineHandler());
     }
@@ -34,6 +43,32 @@ public class NonFuelEmplacementWeaponsBase : MonoBehaviour
     
     }
 
+    private void Upgrade()
+    {
+        //increase upgrade percentage
+        _upgraded++;
+        //displaying upgrade progress on upgrade gun screen
+        GameManagerClass.instanceT.upgradeGun.progressSlider.value = (Mathf.Round(_upgraded)/ewStats.upgradeCost);
+        //if upgrade value reach enough
+        if(_upgraded >= ewStats.upgradeCost)
+        {
+            //call upgrade function
+            OnUpgrade();   
+        }
+    }
+
+    public virtual void OnUpgrade()
+    {
+        //activate new weapons
+        newWeapon[_NewWeaponID].SetActive(true);
+        //deactivate old weapon
+        newWeapon[_NewWeaponID - 1].SetActive(false);
+        //set upgrade percentage back to 0
+        _upgraded = 0;
+        
+        
+    }
+
     IEnumerator MachineHandler()
     {
 
@@ -41,22 +76,25 @@ public class NonFuelEmplacementWeaponsBase : MonoBehaviour
         {
             //initiate
             OnInitiate(true);
-            yield return new WaitForSeconds(initiationLength + 0.3f);
+            yield return new WaitForSeconds(ewStats.initiationLength + 0.3f);
             //activate
             OnActivation(true);
             
             //deactivate
-            yield return new WaitForSeconds(activationLength);
+            yield return new WaitForSeconds(ewStats.activationLength);
             OnActivation(false);
             OnInitiate(false);
 
             //delay
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(ewStats.delay);
         }
         
         
         
     }
 
-   
+    public void OnFixOnUpgrade()
+    {
+        Upgrade();
+    }
 }

@@ -23,6 +23,7 @@ TagManager:
   - RedEW
   - YellowEW
   - PlaceableLimit
+  - Melee
   layers:
   - Default
   - TransparentFX

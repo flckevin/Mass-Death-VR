@@ -22,11 +22,13 @@ public class TutorialBehaviour : MonoBehaviour
     private int instrtuctionImageID; //currennt instruciton image 
     private int instructionTextID; // currennt instruction text
     private int _currentTutorial = 0; // current tutorial
-  
+    private AudioSource audioSrc; // audio source
 
     // Start is called before the first frame update
     void Start()
     {
+        //get audio source
+        audioSrc = this.gameObject.GetComponent<AudioSource>();
         //if lenght array of every item not euqal to each other
         if(tutorialSection.Length != instructionPages.Length || instructionPages.Length != tutorialSection.Length )
         {
@@ -81,6 +83,12 @@ public class TutorialBehaviour : MonoBehaviour
             //disable image
             instructionImage.enabled = false;
         }
+
+        if(instructionPages[_pageToChange].tutorialClip[_pageToChange] == null || 
+           instructionPages[_pageToChange].tutorialClip.Length <= 0 || 
+           instructionPages[_pageToChange].tutorialClip.Length != instructionPages[_pageToChange].text.Length) return;
+           
+        audioSrc.PlayOneShot(instructionPages[_pageToChange].tutorialClip[_pageToChange],1);
     }
 
     public void Exit()

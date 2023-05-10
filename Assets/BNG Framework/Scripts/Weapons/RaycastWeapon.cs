@@ -381,8 +381,10 @@ namespace BNG {
             bool useProjectile = AlwaysFireProjectile || (FireProjectileInSlowMo && Time.timeScale < 1);
             if (useProjectile) {
                 GameObject projectile = Instantiate(ProjectilePrefab, MuzzlePointTransform.position, MuzzlePointTransform.rotation) as GameObject;
-                projectile.name = Damage.ToString();
-                projectile.GetComponent<BulletBehaviour>().amountGoThroughObj = amountBulletGoThrough;
+                BulletBehaviour bulBehave = projectile.GetComponent<BulletBehaviour>();
+                bulBehave.amountGoThroughObj = amountBulletGoThrough;
+                bulBehave.damage = Damage;
+
                 Rigidbody projectileRigid = projectile.GetComponentInChildren<Rigidbody>();
                 projectileRigid.AddForce(MuzzlePointTransform.forward * ShotForce, ForceMode.VelocityChange);
                 

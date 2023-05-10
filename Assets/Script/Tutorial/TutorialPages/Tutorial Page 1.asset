@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialSectionName: MOVEMENT
   text:
-  - You can use left joystick to move around
-  - Right joy stick to look or you can look around to look
-  - Notice when you come close to an item if there's a ring appear on it, it means
-    that you can pick it up and you can use grip button to pick up items
+  - Let's start with movement shall we, you can use your joystick on your left controller
+    to move around
+  - You can use your joystick on your right controller to look around or you can
+    rotate your own body
+  - 'Notice when you come close to an item if there''s a ring appear on it, it means
+    that you can pick it up by using grip button '
   - Once you pick up an item or a gun, you can press triggers to use it
   images:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  tutorialClip: {fileID: 0}

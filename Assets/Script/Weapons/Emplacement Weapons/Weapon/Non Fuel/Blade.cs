@@ -23,6 +23,7 @@ public class Blade : NonFuelEmplacementWeaponsBase
                                             return c;};
 
         _spinDir = tempFunc();
+        
         base.Start();
     }
 
@@ -30,16 +31,17 @@ public class Blade : NonFuelEmplacementWeaponsBase
     {
         if(_activation == false)
         {
-            LeanTween.rotateZ(blade1,0,initiationLength);
-            LeanTween.rotateZ(blade2,0,initiationLength);        
+            LeanTween.rotateZ(blade1,0,ewStats.initiationLength);
+            LeanTween.rotateZ(blade2,0,ewStats.initiationLength);        
         }
         else
         {
-            LeanTween.rotateZ(blade1,-90,initiationLength);
-            LeanTween.rotateZ(blade2,-90,initiationLength);
+            LeanTween.rotateZ(blade1,-90,ewStats.initiationLength);
+            LeanTween.rotateZ(blade2,-90,ewStats.initiationLength);
         }
         base.OnInitiate(_activation);
     }
+
 
     public override void OnActivation(bool _activation)
     {
@@ -55,6 +57,14 @@ public class Blade : NonFuelEmplacementWeaponsBase
         }
 
         base.OnActivation(_activation);
+    }
+
+    public override void OnUpgrade()
+    {
+        this.gameObject.name = "7";
+        blade1 = newWeapon[_NewWeaponID].transform.GetChild(0).gameObject;
+        blade2 = newWeapon[_NewWeaponID].transform.GetChild(1).gameObject;
+        base.OnUpgrade();
     }
 
     

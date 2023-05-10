@@ -50,7 +50,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
     
 
     //function to receive damage
-    public void DamageReceiver(float damageDealt,Transform bulletPos,bool instantDeactivation)
+    public void DamageReceiver(float damageDealt,Transform bulletPosNMelee,bool instantDeactivation)
     {
         #region Decrease Health
         //decreasing zombie health
@@ -66,7 +66,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
             poolM.bloodID = 0;
         }
         //playing blood particle
-        ParticleSystemPlayer.instanceT.PlayeParticle(poolM.blood[poolM.bloodID],bulletPos.transform);
+        ParticleSystemPlayer.instanceT.PlayeParticle(poolM.blood[poolM.bloodID],bulletPosNMelee.transform);
         //increase blood ID
         poolM.bloodID++;
         #endregion
@@ -142,11 +142,22 @@ public class EnemyBase : MonoBehaviour,IDamageable
 
     private void OnTriggerEnter(Collider other) 
     {
+        //if zombie not alive
+        if(this.gameObject.tag != "Zombie") return;
+
         //if bullet enter to zombie
-        if(other.CompareTag("Bullet") && this.gameObject.tag == "Zombie")
+        if(other.CompareTag("Bullet"))
         {
+            //get bullet behaviour
+            BulletBehaviour bullet = other.GetComponent<BulletBehaviour>();
             //receive damage
-            DamageReceiver(int.Parse(other.name),other.transform,true);
+            DamageReceiver(bullet.damage,other.transform,false);
+            bullet.OnCollision();
+        }
+        //if it melee
+        else if(other.CompareTag("Melee"))
+        {
+            DamageReceiver(int.Parse(other.name),other.transform,false);
         }
     }
 

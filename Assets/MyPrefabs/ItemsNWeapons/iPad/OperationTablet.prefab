@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 1200465648}
   - component: {fileID: 1200465647}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Generator left text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1154,7 +1154,7 @@ GameObject:
   - component: {fileID: 1681704681}
   - component: {fileID: 1681704680}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Extraction time left text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1861,7 +1861,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &6735530721751602735
 GameObject:
   m_ObjectHideFlags: 0

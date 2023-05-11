@@ -14,20 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialSectionName: EMPLACEMENT WEAPON
   text:
-  - Being alone on the battlefield to defend objective would be harder if you stay
-    too long
-  - To help yourself with that, you can use emplacement weapon to defend objective
-    with you
-  - There are 3 types of emplacement weapons
-  - Red, Yellow and Green
+  - The longer you stay on the battlefield, the more amount of zombie you will get,
+    to help you with that problem, the military  have invented emplacement weapon
+    system which can help you reduce some amount of zombie on the battlefield
+  - 'There are 3 types of emplacement weapons, which are: red, yellow and green'
   - Red, Yellow, you will need to place them on their own marked position or else
-    you won't be able to activate them
-  - For green you can activate them any where on the map
-  - Once you place the emplacment weapon platform on ground, you can activate them
+    you won't be able to activate them but for green you can activate them any where
+    on the map
+  - Once you place the emplacement weapon platform on ground, you can activate them
     by pressing button on it
-  - Once you press it, emplacement weapon will fall down from sky to the postiion
-  - 'FOR RED EMPLACEMENT WEAPON: you will need to fill up gas if the weapon fuel
-    runs out or else it will shutdown itself '
-  - 'If the emplacement weapon are too weak for you, you can upgrade them to be more
-    deadly by using the upgrade gun '
-  images: []
+  - 'FOR RED EMPLACEMENT WEAPONS: you will need to fill up gas if the weapon fuel
+    runs out or else it will shutdown itself, you can check the red emplacement weapon
+    fuel on the tablet that been attached on itself '
+  - If the emplacement weapon are too weak for you, you can fire up the upgrade by
+    pressing trigger button on the controller, then put the flame into the emplacement
+    weapon that you wish to upgrade, once the upgrade finished, the weapon will be
+    more powerful
+  - other than upgrade, the upgrade gun has another mode called destroy mode, which
+    it will destroy an emplacement weapon, to perform this, you will need to press
+    the B button which located on the right controller to change mode on the gun,
+    once that done, you can put the fire near to the weapon that you wish to destroy,
+    once the progress finished, the emplacement weapon that you chosen shall be destroy
+  images:
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  tutorialClip:
+  - {fileID: 8300000, guid: 4ce2146e22731c5458a10b43ec6c6853, type: 3}
+  - {fileID: 8300000, guid: 8aaa32388815ad841b5f9c4ca29b1ee7, type: 3}
+  - {fileID: 8300000, guid: 65a31d3e55f4881419019fa5890222d2, type: 3}
+  - {fileID: 8300000, guid: ea14c15bfaacccc4b95cc4d613e82d56, type: 3}
+  - {fileID: 8300000, guid: a3e1d393f76eb404caa182dbaf829dec, type: 3}
+  - {fileID: 8300000, guid: bc63c50822b133a43a7e52d5622c7841, type: 3}
+  - {fileID: 8300000, guid: 991b2e68daec09b4a9d3535d8a4b963c, type: 3}

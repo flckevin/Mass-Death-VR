@@ -33,10 +33,10 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
     public override void WeaponBehaviourUpdate()
     {
         //checking whether ray cast hit anything
-        if (Physics.Raycast(barrel.position, barrel.forward, out RaycastHit ray, Mathf.Infinity,layer))
+        if (Physics.Raycast(barrel.transform.position, barrel.transform.forward, out RaycastHit ray, Mathf.Infinity))
         {
            
-           // Debug.Log(ray.transform.gameObject.name);
+            Debug.Log(ray.transform.gameObject.name);
             PoolManager poolM = PoolManager.instanceT;
             //checking tag whether is a damage able object
             if (ray.transform.gameObject.tag == "Zombie")
@@ -44,16 +44,8 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
                 if(Time.time > _nextFire)
                 {
                     _nextFire = Time.time + fireRate;
-                    //reposition of bullet position
-                    poolM.bullets[poolM.BulletID].transform.position = barrel.transform.position;
-                    //rotate bullet to correct position
-                    poolM.bullets[poolM.BulletID].transform.rotation = Quaternion.identity;
-                    //activate bullet
-                    poolM.bullets[poolM.BulletID].gameObject.SetActive(true);
-                    //rename bullet to be same as gun damage
-                    poolM.bullets[poolM.BulletID].name = damageAmount.ToString();
-                    //addforce to bullet
-                    poolM.bullets[poolM.BulletID].AddRelativeForce(barrel.transform.forward*bulletForce);
+                    //deal damage to zombie
+                    ray.transform.GetComponent<EnemyBase>().DamageReceiver(damageAmount,ray.transform,false);
                 }
                 /*
                 target = ray.transform;
@@ -145,6 +137,8 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
 
     public override void OnUpgradeEW()
     {
+        barrel = weaponStages[_currentStage].transform.GetChild(0).transform;
+        damageAmount += 5;
         base.OnUpgradeEW();
     }
 

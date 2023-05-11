@@ -95,11 +95,10 @@ public class TargetChanger_Base : MonoBehaviour
         for(int i = 0; i< GameManagerClass.instanceT.objective.Length;i++)
         {
             //if there is object has tag objective
-            if(GameManagerClass.instanceT.objective[i].tag == "Objective" && i == GameManagerClass.instanceT.ObjectiveID)
+            if(GameManagerClass.instanceT.objective[i].tag == "Objective")
             {
                 //set target to be objective
                 _nextTarget = GameManagerClass.instanceT.objective[i].transform;
-                GameManagerClass.instanceT.ObjectiveID++;
                 //stop looping
                 break;
             }

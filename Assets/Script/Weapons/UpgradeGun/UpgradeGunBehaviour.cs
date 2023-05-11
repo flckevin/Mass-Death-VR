@@ -42,6 +42,13 @@ public class UpgradeGunBehaviour : MonoBehaviour
             //stop fire effect
             _particleMain.Stop();
         }
+
+        //if particle effect is playing
+        if(sparkEffect.isPlaying == true)
+        {
+            //stop
+            sparkEffect.Stop();
+        }
         
     }
 
@@ -50,15 +57,18 @@ public class UpgradeGunBehaviour : MonoBehaviour
         //if trigger are into these target
         if(other.gameObject.tag == "EW_gas" ||
             other.gameObject.tag == "Objective" ||
-            other.gameObject.tag == "BrokenObjective")
+            other.gameObject.tag == "BrokenObjective"||
+            other.gameObject.tag == "EW_nogas")
         {
             //get upgrade component
             _target = other.gameObject.GetComponent<IUpgradeGun>();
+            Debug.Log(other.name);
         }
     }
 
     private void OnTriggerStay(Collider other) 
     {
+        //fix mode
         if(_mode == 0)
         {
             //if target does not exist then stop execute
@@ -67,28 +77,55 @@ public class UpgradeGunBehaviour : MonoBehaviour
             //if trigger are into these target
             if(other.gameObject.tag == "EW_gas" ||
                 other.gameObject.tag == "Objective" ||
-                other.gameObject.tag == "BrokenObjective")
+                other.gameObject.tag == "BrokenObjective" ||
+                other.gameObject.tag == "EW_nogas")
             {
                 //call fix function
                 _target.OnFixOnUpgrade();
-
                 //if particle effect not playing
                 if(sparkEffect.isPlaying == false)
                 {
                     //play
                     sparkEffect.Play();
                 }
+                
             }
         }
-        else
+        else // destroy mode
         {
-            _destroyVal ++;
-            progressSlider.value = _destroyVal / 100;
-            if(_destroyVal >= 100)
+            //if target does not exist then stop execute
+            if(_target == null) return;
+
+            //if trigger are into these target
+            if(other.gameObject.tag == "EW_gas" ||
+                other.gameObject.tag == "Objective" ||
+                other.gameObject.tag == "EW_nogas")
             {
-                Destroy(other);
-                _destroyVal = 0;
+                //if particle effect not playing
+                if(sparkEffect.isPlaying == false)
+                {
+                    //play
+                    sparkEffect.Play();
+                }
+                _destroyVal ++;
+                progressSlider.value = _destroyVal / 100;
+                if(_destroyVal >= 100)
+                {
+                    Destroy(other.transform.root.gameObject);
+                    _destroyVal = 0;
+                }
+                
+                //if particle effect not playing
+                if(sparkEffect.isPlaying == false)
+                {
+                    //play
+                    sparkEffect.Play();
+                }
+                
             }
+
+            
+
         }
         
         
@@ -99,7 +136,8 @@ public class UpgradeGunBehaviour : MonoBehaviour
         //if trigger are into these target
         if(other.gameObject.tag == "EW_gas" ||
             other.gameObject.tag == "Objective" ||
-            other.gameObject.tag == "BrokenObjective")
+            other.gameObject.tag == "BrokenObjective" ||
+            other.gameObject.tag == "EW_nogas")
         {
             //set target to null
             _target = null;
@@ -117,6 +155,11 @@ public class UpgradeGunBehaviour : MonoBehaviour
 
     public void ChangeMode()
     {
+        //disable fire
+        fireCol.enabled = false;
+        //stop fire effect
+        _particleMain.Stop();
+
         switch(_mode)
         {
             case 0:
@@ -128,5 +171,13 @@ public class UpgradeGunBehaviour : MonoBehaviour
             _particleMain = fireParticle_Upgrade;
             break;
         }
+
+        //if particle effect is playing
+        if(sparkEffect.isPlaying == true)
+        {
+            //stop
+            sparkEffect.Stop();
+        }
+        //OnGunTrigger();
     }
 }

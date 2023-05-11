@@ -33,6 +33,7 @@ public class ShopBehaviour : MonoBehaviour
     public Text priceText;//text to display price
     public Text moneyDisplayText;//text to display current money
     public Text description;//text to display description
+    public Text catagory; // text to display catagory
 
     [HideInInspector]public bool machineStarted;
     [HideInInspector]public GameObject ObjToSpawn;//object ot spawn
@@ -121,7 +122,8 @@ public class ShopBehaviour : MonoBehaviour
 
         //store new section value
         _currentShopSectionPage = _newSection;
-
+        //displaying text
+        catagory.text = shopSections[_newSection].gameObject.name;
     }
 
     public void ChangePage(int value)

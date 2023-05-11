@@ -15,26 +15,26 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
     public GameObject WeaponToActivate;//declare gameobject to activate emplacement weapons
     public GameObject EWComponents;//declare emplacement components to destroy
     
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other) 
     {
         //if object has floor tag
-        if (collision.gameObject.CompareTag(tagToPlace))
+        if (other.CompareTag(tagToPlace))
         {
             //set grounded to true
             grounded = true;
         }
-        
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other) 
     {
         //if object has floor tag
-        if (collision.gameObject.CompareTag(tagToPlace))
+        if (other.CompareTag(tagToPlace))
         {
             //set grounded to false 
             grounded = false;
         }
     }
+
 
     /// <summary>
     /// emplacement weapon activation
@@ -66,7 +66,7 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
             LeanTween.moveLocal(WeaponToActivate,new Vector3(WeaponToActivate.transform.localPosition.x,0,WeaponToActivate.transform.localPosition.z),3);
             //destroy emplacement components
             Destroy(EWComponents);
-
+            Destroy(this.gameObject.GetComponent<Rigidbody>());
             
             //disable grabble component
             this.gameObject.GetComponent<Grabbable>().enabled = false;
@@ -90,6 +90,7 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
         }
         
     }
+    
     
 
     //======================================== FOR TABLET ===============================================

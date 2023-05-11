@@ -14,8 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialSectionName: OBJECTIVE
   text:
-  - You will need to protect the power generator and extractor
+  - Your main mission is to protect the military  extractor and power generator
   - If a power generator goes out, it will takes more time to extract zombie fluid
-  - If the extractor goes out, it will be gameover for the player
-  - That's it for now, goodluck in the battlefield
-  images: []
+  - If the extractor goes out, the mission shall be abort, a helicopter will come
+    to pick you up
+  - That's it for now, goodluck in the battlefield soldier
+  images:
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  tutorialClip:
+  - {fileID: 8300000, guid: 3790d3ce26fa72d4c96fbdf2c71655a9, type: 3}
+  - {fileID: 8300000, guid: e65488fcfb2f6bd46aae24dc11bceb61, type: 3}
+  - {fileID: 8300000, guid: 4a8ec2ede0d46e846b1320e709da9fe1, type: 3}
+  - {fileID: 8300000, guid: 1f7b1c7732eab81499f8f1d35e74e1df, type: 3}

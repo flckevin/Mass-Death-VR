@@ -14,8 +14,8 @@ public class CommonZombie : EnemyBase
 
     public override void VirtualAwake()
     {
-       
-        base.VirtualAwake();
+
+
         
     }
 

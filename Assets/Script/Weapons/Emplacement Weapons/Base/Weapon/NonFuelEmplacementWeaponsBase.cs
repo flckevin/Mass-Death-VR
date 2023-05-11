@@ -11,7 +11,7 @@ public class NonFuelEmplacementWeaponsBase : MonoBehaviour,IUpgradeGun
     // Start is called before the first frame update
    [SerializeField] protected bool _ableToUse;//declare bool to check wheter be able to use
     protected bool _used;//declare bool to check whether player have used item
-    protected int _newWeaponID;
+    protected int _newWeaponID = 0;
     protected float _upgraded;
     protected int _NewWeaponID
     {
@@ -59,10 +59,11 @@ public class NonFuelEmplacementWeaponsBase : MonoBehaviour,IUpgradeGun
 
     public virtual void OnUpgrade()
     {
+        //deactivate old weapon
+        newWeapon[_NewWeaponID].SetActive(false);
+        _NewWeaponID++;
         //activate new weapons
         newWeapon[_NewWeaponID].SetActive(true);
-        //deactivate old weapon
-        newWeapon[_NewWeaponID - 1].SetActive(false);
         //set upgrade percentage back to 0
         _upgraded = 0;
         

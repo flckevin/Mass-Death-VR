@@ -22,8 +22,12 @@ MonoBehaviour:
     that you can pick it up by using grip button '
   - Once you pick up an item or a gun, you can press triggers to use it
   images:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  tutorialClip: {fileID: 0}
+  - {fileID: 21300000, guid: c2e5d92e725bff3439a8d124adcbb63f, type: 3}
+  - {fileID: 21300000, guid: c2e5d92e725bff3439a8d124adcbb63f, type: 3}
+  - {fileID: 21300000, guid: 53ef9c3da2058f244afa8eb6e4c6d8e4, type: 3}
+  - {fileID: 21300000, guid: 923e68880a1a10c4286d3cd8ffe5f071, type: 3}
+  tutorialClip:
+  - {fileID: 8300000, guid: b15beca167af2444c9d0e1074faeb357, type: 3}
+  - {fileID: 8300000, guid: 880d53a8e7678554a8960f4e5a13e38c, type: 3}
+  - {fileID: 8300000, guid: d4ef24ca98204964b8a2a715a99b4c67, type: 3}
+  - {fileID: 8300000, guid: 7505e23720eece345989e615f770edcb, type: 3}

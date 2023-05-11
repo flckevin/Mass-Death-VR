@@ -12,6 +12,7 @@ public class Blade : NonFuelEmplacementWeaponsBase
     [Header("Blade Info")]
     public GameObject blade1;
     public GameObject blade2;
+    public GameObject bladeRoot;
     private Vector3 _spinDir;
 
     public override void Start()
@@ -49,11 +50,11 @@ public class Blade : NonFuelEmplacementWeaponsBase
         {
             
             //rotate balde
-            LeanTween.rotateAround(this.gameObject, _spinDir, 360, 2.5f).setLoopClamp();
+            LeanTween.rotateAround(bladeRoot, _spinDir, 360, 2.5f).setLoopClamp();
         }
         else
         {
-            LeanTween.pause(this.gameObject);
+            LeanTween.pause(bladeRoot);
         }
 
         base.OnActivation(_activation);

@@ -22,7 +22,7 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
 
     private IEnumerator _cou;//store current couroutine
     private float timePassedMark;//store root time
-    private int _currentStage;//curent stage emplacement weapon at
+    protected int _currentStage;//curent stage emplacement weapon at
     protected float delay; //delay value
 
     // Start is called before the first frame update

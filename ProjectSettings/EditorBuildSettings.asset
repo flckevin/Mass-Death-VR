@@ -6,20 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/BNG Framework/Scenes/XR Demo.unity
-    guid: a1360534006d3f845bc79b46b93cfec5
+    path: Assets/Scenes/GAME LEVELS/Tutorial.unity
+    guid: f588def50996c8c44983c73cb27df745
   - enabled: 1
-    path: Assets/BNG Framework/Scenes/Scene Transitioning.unity
-    guid: 9d7c9629abf9c99449e358b0938b47d0
+    path: Assets/Scenes/GAME LEVELS/PlayerHub.unity
+    guid: 9c2a273511780ea46a091dbe008bf2c1
   - enabled: 1
-    path: Assets/BNG Framework/Scenes/Physics Hands.unity
-    guid: 34a4579517c578e4080d0a6ef2c96294
-  - enabled: 1
-    path: Assets/BNG Framework/Scenes/Rigidbody Player.unity
-    guid: 57fc97c5771a777449aa8bd02514df22
-  - enabled: 1
-    path: Assets/BNG Framework/Scenes/Vehicle Example.unity
-    guid: d96233ee44d985d4fb8dc23a907c06eb
+    path: Assets/Scenes/GAME LEVELS/Level.unity
+    guid: 683a0490b69ba9f469b5fc6a6b994812
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: dc733203e758045469f1de2fbcc0667d,
       type: 2}

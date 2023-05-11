@@ -14,30 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialSectionName: SHOP
   text:
-  - To use the shop, you will need to get your credit card which you can find it
-    by putting your hand into your bag right underneath you if you look down
-  - 'Once you put your hand into your pocket, the credit card will spawn infront
-    of you '
+  - To use the shop, you will need your credit card which you can find it on the
+    desk, and you can pick it up by pressing grip button on the controller
   - Once you got your credit card on your hand, you need to put the credit card into
-    the vending machine slot
-  - You can change shop pages and section by pressing buttons
-  - If you like any item in the shop, you can press the button under the display
-    item to see information
+    the vending machine's credit card slot which can be located on the right of the
+    vending machine
+  - You can change shop pages and section by pressing buttons which can be located
+    underneath of the vending machine display
+  - If you like any item in the shop, you can press the button under the item on
+    display to see their information
   - You can take a look of information of the item and your own balamce at the tablet
-    that been attached on the shop
-  - If you like the item, you can buy it by pressing buy button
-  - Once you finished shopping, you can press exit from the veding maching to get
-    your credit card back
+    that been attached on the shop, which can be locate on top of the right corner
+    of the vending machine
+  - If you like the item that you selected, you can buy it by pressing buy button
+    which can be located on the bottom of the right corner of the vending machine
+  - Once you finished shopping, you can press exit button from the vending maching
+    which can be located on the bottom of the right corner of the vending machine
+    to get your credit card back
   - The shop will be the place where you can buy everything, from gun to consumable
   - You can locate shop around the battlefield to get more resources
+  - If you accidentally lose your credit card on battlefield, do not worry, you can
+    use your bag which located below you if you look down, you can grab it, then
+    interact with it by pressing trigger to get another card
   images:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  tutorialClip:
+  - {fileID: 8300000, guid: 8a8674c2071d62e42a62ed7d5f7b061c, type: 3}
+  - {fileID: 8300000, guid: 3f69f0b2e085991419477b3d7bd19128, type: 3}
+  - {fileID: 8300000, guid: 37d339038cadb354d9fc97c706aecc84, type: 3}
+  - {fileID: 8300000, guid: d3812c98ca5d09540af49a65963049dd, type: 3}
+  - {fileID: 8300000, guid: 75c611dc9b4fc8b4ca6481d585907ab9, type: 3}
+  - {fileID: 8300000, guid: 7175a62939e2ef44682b2a3e3859bc2c, type: 3}
+  - {fileID: 8300000, guid: eff9f52fc363e9b4d83db49b81c108af, type: 3}
+  - {fileID: 8300000, guid: 2f8f3083ba71f6c48ab0a8a25ec1c95b, type: 3}
+  - {fileID: 8300000, guid: 345263815f0c9dd438c620f97e654261, type: 3}
+  - {fileID: 8300000, guid: 11ba1b2b5b60655468c3cd14aa815090, type: 3}

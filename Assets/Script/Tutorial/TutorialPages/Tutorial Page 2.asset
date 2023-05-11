@@ -19,14 +19,26 @@ MonoBehaviour:
   - Once you pick it up, you will need to put some ammo into it by inserting gun
     magazine into the gun magazine slot.
   - After that you will need to load up the bullet to the gun by pulling down the
-    gun's slider, after that you are ready to shoot some zombies
+    gun's slider, you can find the slider of the gun be on the side of it, for pistol,
+    usually it would be on top of it
+  - You can pull down the slider by hovering your hand to the slider, Once your hand
+    position have been on the slider, you can hold the grip button to lock your hand
+    on the slider, then pull the slider down, after that you will need to release
+    your grip button to load up your gun
   - Some sliders on assault rifle you will find it on the right or on the left, some
-    special gun like M4A1 you will find it on the back of the gun.
-  - "If you run out of ammo, you can press \"B\" button on controller\_to release
-    gun magazine which can be locate on buttons part of the right controller.\_"
+    special gun like M4A1 or sniper rifle you will find it on the back of the gun.
+  - "If you run out of ammo, you can press \"B\" button on right controller\_to release
+    gun magazine, then you need to find new magazine for the gun then repeat the
+    process"
   images:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  tutorialClip: []
+  - {fileID: 21300000, guid: 923e68880a1a10c4286d3cd8ffe5f071, type: 3}
+  - {fileID: 21300000, guid: 19114ad0bea47a8488c99a9ce35bc1e4, type: 3}
+  - {fileID: 21300000, guid: d2102bce3c853da4c9912ae0c67b7e5a, type: 3}
+  - {fileID: 21300000, guid: d2102bce3c853da4c9912ae0c67b7e5a, type: 3}
+  tutorialClip:
+  - {fileID: 8300000, guid: e9edb6a189e65f646bfe012fc99a6e81, type: 3}
+  - {fileID: 8300000, guid: c81df1f0b3881b94898a908093155477, type: 3}
+  - {fileID: 8300000, guid: cfe2931d8261d6140b5d19b8e12369b9, type: 3}
+  - {fileID: 8300000, guid: 108663b3722dec94792b1e220caece8c, type: 3}
+  - {fileID: 8300000, guid: 5ce56791d2ac1f74495742f209a95acb, type: 3}
+  - {fileID: 8300000, guid: b020f0ceb72d6c241a39703db6fb0c56, type: 3}

@@ -108,6 +108,8 @@ public class EnemyBase : MonoBehaviour,IDamageable
         this.gameObject.tag = "DeadEnemy";
         //call zombie on kill event
         GameManagerClass.instanceT.waveMode.ZombieOnKill();
+        //add more money to player
+        GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount += zombieStats.moneyReceive;
         //deactivate zombie corpse
         StartCoroutine(OnDeactivation(2));
     }

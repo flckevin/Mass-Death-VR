@@ -12,4 +12,5 @@ public class ZombieStats : ScriptableObject
     public float zombieHealth;
     public float zombieDamageAmount;
     public float zombieSpeed;
+    public int moneyReceive;
 }

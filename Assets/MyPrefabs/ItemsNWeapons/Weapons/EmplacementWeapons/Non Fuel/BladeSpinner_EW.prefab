@@ -191,7 +191,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2877201513616652150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,8 +217,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6787569736687950314}
   - component: {fileID: 2201015478558489073}
+  - component: {fileID: 1346511378517351579}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: Weapon_Blade
   m_TagString: EW_nogas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,6 +257,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.11702818, y: 0.5629164, z: 0.10893202}
   m_Center: {x: 0.011750549, y: 0.28169703, z: 0.012441397}
+--- !u!114 &1346511378517351579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007498883481576875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6561547e6b584764a99748a5794c01a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ableToUse: 0
+  ewStats: {fileID: 11400000, guid: ec36bfc7f7a1318499ebb091654c6492, type: 2}
+  newWeapon:
+  - {fileID: 1201520288060319904}
+  - {fileID: 6317271207418133082}
+  blade1: {fileID: 7340044463701817885}
+  blade2: {fileID: 7340044463523538645}
+  bladeRoot: {fileID: 2786840350201868901}
 --- !u!1 &1201520288060319904
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +470,6 @@ GameObject:
   - component: {fileID: 2786840350201868900}
   - component: {fileID: 2786840350201868920}
   - component: {fileID: 2786840350201868923}
-  - component: {fileID: 2786840350201868922}
   m_Layer: 0
   m_Name: 5
   m_TagString: Melee
@@ -503,25 +523,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2786840350201868922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2786840350201868901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6561547e6b584764a99748a5794c01a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ableToUse: 0
-  ewStats: {fileID: 11400000, guid: ec36bfc7f7a1318499ebb091654c6492, type: 2}
-  newWeapon:
-  - {fileID: 1201520288060319904}
-  - {fileID: 6317271207418133082}
-  blade1: {fileID: 7340044463701817885}
-  blade2: {fileID: 7340044463523538645}
 --- !u!1 &4875493956992285099
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,7 +809,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2786840350201868922}
+      objectReference: {fileID: 0}
     - target: {fileID: 364518689470124506, guid: 624ef7d780846b342988732cbb919663,
         type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -897,7 +898,7 @@ PrefabInstance:
     - target: {fileID: 6396212367946863591, guid: 624ef7d780846b342988732cbb919663,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0555
+      value: 0.0774
       objectReference: {fileID: 0}
     - target: {fileID: 6396212367946863591, guid: 624ef7d780846b342988732cbb919663,
         type: 3}

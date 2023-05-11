@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 6995583755252835643}
   m_Layer: 0
   m_Name: Spike platform
-  m_TagString: Untagged
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -802,7 +802,7 @@ PrefabInstance:
     - target: {fileID: 6396212367946863591, guid: 624ef7d780846b342988732cbb919663,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0552
+      value: 0.0765
       objectReference: {fileID: 0}
     - target: {fileID: 6396212367946863591, guid: 624ef7d780846b342988732cbb919663,
         type: 3}

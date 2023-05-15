@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 6787569736687950314}
   - component: {fileID: 2201015478558489073}
   - component: {fileID: 1346511378517351579}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Weapon_Blade
   m_TagString: EW_nogas
   m_Icon: {fileID: 0}

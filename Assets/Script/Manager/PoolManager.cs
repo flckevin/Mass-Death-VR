@@ -51,6 +51,20 @@ public class PoolManager : Singleton<PoolManager>
             }
         }
     }
-   
+    [Space(10)]
+    [Header("BATTERY")]
+    public GameObject[] battery;
+    private int _batteryID;
+    public int BatteryID
+    {
+        get{return _batteryID;}
+        set
+        {
+            if(_batteryID >= battery.Length)
+            {
+                _batteryID = 0;
+            }
+        }
+    }
   
 }

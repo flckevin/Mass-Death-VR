@@ -16,7 +16,7 @@ public class BagBehaviour : MonoBehaviour
     private int ItemID
     {
         get{return itemID;}
-        set{if(itemID >= items.Length){itemID = 0;}}
+        set{if(itemID > items.Length){itemID = 0;}}
     }
     private Rigidbody _bagRigi;
 
@@ -26,7 +26,7 @@ public class BagBehaviour : MonoBehaviour
 
     public void Onspawn()
     {
-        if(items.Length <= 0) return;
+        if(items.Length < 0) return;
         ItemID++;
         items[ItemID].transform.position = spawnPos.position;
         items[ItemID].AddRelativeForce(spawnPos.up*50);
@@ -34,7 +34,7 @@ public class BagBehaviour : MonoBehaviour
 
     public void OnRelease()
     {
-        _bagRigi.isKinematic = true;
+        _bagRigi.isKinematic = true; 
         this.transform.localPosition = bagRootPosition.localPosition;
     }
 

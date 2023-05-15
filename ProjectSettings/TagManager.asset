@@ -37,11 +37,11 @@ TagManager:
   - Player
   - Grabbable
   - AmmoBox
-  - Oil
+  - UpgradeGun
   - Minimap
   - Zombie
-  - 
-  - 
+  - EmplacementWeapons
+  - Oil
   - 
   - 
   - 

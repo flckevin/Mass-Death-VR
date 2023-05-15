@@ -36,7 +36,7 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
         if (Physics.Raycast(barrel.transform.position, barrel.transform.forward, out RaycastHit ray, Mathf.Infinity))
         {
            
-            Debug.Log(ray.transform.gameObject.name);
+            //Debug.Log(ray.transform.gameObject.name);
             PoolManager poolM = PoolManager.instanceT;
             //checking tag whether is a damage able object
             if (ray.transform.gameObject.tag == "Zombie")

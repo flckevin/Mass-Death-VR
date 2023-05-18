@@ -14,13 +14,11 @@ public class SquirterBehaviour : EnemyBase
     {
         //call set target function
         _targetChanger = this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>();
-        //set target
-        _targetChanger.SetTarget();
         base.VirtualAwake();
     }
 
     //on chase event
-     public void Chase(Transform _target)
+     public void Chase(Vector3 _target)
     {
         Chase c_Chase = new Chase(_target,this,zombieStats.zombieSpeed); //create new chase state
         //if(_State.ToString() == _currentState && _target == null) return;
@@ -52,7 +50,7 @@ public class SquirterBehaviour : EnemyBase
         //disable target changer
         _targetChanger.enabled = false;
         //chase latest target
-        Chase(_target);
+        Chase(_target.position);
         //start explosion countdown
         StartCoroutine(Explode(2));
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CoreEvent;
+using UnityEngine.UI;
 /***************************************
  * Authour: HAN 18080038
  * Object hold: Power generator
@@ -16,7 +17,7 @@ public class PowerGenerator : MonoBehaviour,IDamageable
     public Extractor extractor;//extractor to decrease time
     private float _defaultHealth;//float to store default health
     private BoxCollider _boxCol;//declare boxCol to enable and disable
-
+    public Text healthText;
     void Start()
     {
         //if extractor have not been assigned
@@ -77,6 +78,7 @@ public class PowerGenerator : MonoBehaviour,IDamageable
     {
         //decrease health using given amount
         health -= amount;
+        healthText.text = health + "%";
         //if health smaller or less than 0
         if(health <= 0)
         {
@@ -117,6 +119,7 @@ public class PowerGenerator : MonoBehaviour,IDamageable
     {
         //increase health
         health += 2;
+        healthText.text = health + "%";
         //if health is larger or equak to default health
         if(health >= _defaultHealth)
         {

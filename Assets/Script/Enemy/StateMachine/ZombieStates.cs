@@ -11,10 +11,10 @@ namespace ZombieStates
     #region Zombie state - except for runner
     public class Chase : IZombieStateBase
     {
-        Transform target; //transform for target
+        Vector3 target; //transform for target
         float chaseSpeed;
 
-        public Chase (Transform _target, EnemyBase _zombie, float _speed = 0)
+        public Chase (Vector3 _target, EnemyBase _zombie, float _speed = 0)
         {
             target = _target;
             DoState(_zombie);
@@ -26,7 +26,7 @@ namespace ZombieStates
         {
             
             //chase player
-            zombie.navAgent.SetDestination(target.position);
+            zombie.navAgent.SetDestination(target);
             zombie.navAgent.speed = chaseSpeed;
             
         }

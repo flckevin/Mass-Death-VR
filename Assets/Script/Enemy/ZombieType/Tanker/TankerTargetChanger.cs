@@ -29,7 +29,7 @@ public class TankerTargetChanger : TargetChanger_Base
         attacking = false;
     }
 
-    public override void OnChase(Transform target)
+    public override void OnChase(Vector3 target)
     {
         if(attacking == false)
         {
@@ -45,7 +45,7 @@ public class TankerTargetChanger : TargetChanger_Base
 
     }
 
-    IEnumerator Chase(Transform _target)
+    IEnumerator Chase(Vector3 _target)
     {
         yield return new WaitForSeconds(tankBhaviour.meshAnims.animations[0].Length);
         tankBhaviour.OnChase(_target);

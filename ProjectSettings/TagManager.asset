@@ -22,13 +22,14 @@ TagManager:
   - EW_gas
   - RedEW
   - YellowEW
-  - PlaceableLimit
   - Melee
+  - PlaceableFloor
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - TopLayerRender
   - Water
   - UI
   - Post Processing
@@ -42,9 +43,9 @@ TagManager:
   - Zombie
   - EmplacementWeapons
   - Oil
-  - 
-  - 
-  - 
+  - AI_Obstacles
+  - CheckPoint
+  - TargetChanger
   - 
   - 
   - 

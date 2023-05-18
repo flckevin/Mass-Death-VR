@@ -21,7 +21,7 @@ public class CommonZombie_TargetChanger : TargetChanger_Base
         base.OnAttack(targetIdmg);
     }
 
-    public override void OnChase(Transform target)
+    public override void OnChase(Vector3 target)
     {
         commonZombie.Chase(target);
     }

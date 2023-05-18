@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc8967141dcdb642a8171554e91a3fd, type: 3}
-  m_Name: CommonZombie
+  m_Script: {fileID: 11500000, guid: 654e717f7267e304b9bb986c74e7398f, type: 3}
+  m_Name: ZombieTest
   m_EditorClassIdentifier: 
-  zombieHealth: 50
-  zombieDamageAmount: 5
-  zombieSpeed: 0.8
-  moneyReceive: 0
+  speed: 1

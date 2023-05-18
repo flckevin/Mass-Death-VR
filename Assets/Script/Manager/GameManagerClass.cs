@@ -13,7 +13,11 @@ public class GameManagerClass : Singleton<GameManagerClass>
 {
    
     [Header("Player_Info")]
+    public GameObject playerRoot;
     public PlayerBehaviour playerBehaviour_G;
+    public Rigidbody playerRigi;
+    public CharacterController playerController; 
+    public Transform playerStartPos;
     public bool playerIsDead_B = false;
     public CreditCard playerCreditCard_Class;
     public Grabber[] grab;
@@ -26,28 +30,50 @@ public class GameManagerClass : Singleton<GameManagerClass>
 
     [Space(10)]
     [Header("Objective_INFO")]
-    public GameObject[] objective;
-    public int objectiveID = 0;
+    public AIPosGeneration[] objective;
+    
+    private int _objectiveID = 0;
     public int ObjectiveID
     {
         get
         {
-            return objectiveID;
+            return _objectiveID;
         }
         set
         {
-            if(objectiveID >= objective.Length)
+            if(_objectiveID >= objective.Length - 1)
             {
-                objectiveID = 0;
+                _objectiveID = 0;
             }
             else
             {
-                objectiveID = value;
+                _objectiveID = value;
             }
         }
     }
+    
     public int generatorLeft;
 
+    [Space(10)]
+    [Header("AI CHECKPOINTS")]
+    public Transform[] checkPoints;
+    public int _checkPointsID = 0;
+    public int CheckPointsID
+    {
+        get{return _checkPointsID;}
+
+        set
+        {
+            if(_checkPointsID >= checkPoints.Length - 1)
+            {
+                _checkPointsID = 0;
+            }
+            else
+            {
+                _checkPointsID = value;
+            }
+        }
+    }
 
     [Space(10)]
     [Header("Objective_Tablet_UI")]
@@ -58,6 +84,7 @@ public class GameManagerClass : Singleton<GameManagerClass>
     [Space(10)]
     [Header("GAMEMODE")]
     public GameModeWaveManager waveMode;
+    public HelicopterMove helicopterBehaviour;
 
     [Space(10)]
     [Header("Spawner_INFO")]

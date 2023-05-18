@@ -9,7 +9,7 @@ using ZombieStates;
  **************************************/
 public class TankerBehaviour : EnemyBase
 {
-    public void OnChase(Transform _target)
+    public void OnChase(Vector3 _target)
     {
         //create new state
         Chase _tChase = new Chase(_target,this,zombieStats.zombieSpeed);

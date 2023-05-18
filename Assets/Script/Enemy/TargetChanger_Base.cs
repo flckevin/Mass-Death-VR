@@ -12,9 +12,9 @@ public class TargetChanger_Base : MonoBehaviour
 
     public IDamageable ItargetDamageAble;//Idamageable for damageable object ahead 
     //public Transform target;//transform for target to chase
-   
-
-    private Transform _mainTarget;//transform store main target
+    public int fireRate;
+    private float _nextFireRate;
+    public Vector3 mainTarget;//transform store main target
 
 
     private void Start() 
@@ -39,11 +39,20 @@ public class TargetChanger_Base : MonoBehaviour
             OnAttack(ItargetDamageAble);
             OnAttack(other.transform);
         }
+        else if(other.CompareTag("CheckPoint"))
+        {
+            //resume from here 16 MAY 01:51
+            if(other.transform.position != mainTarget) return;
+            CheckpointBehaviour _newPos = other.GetComponent<CheckpointBehaviour>();
+            Vector3 _nextPos = _newPos.objective.GetPos();
+            SetTarget(_nextPos);
+            
+        }
         else if(other.CompareTag("BrokenObjective"))
         {
             //set target to damage to be empty
             ItargetDamageAble = null;
-            SetTarget();
+            MoveToMainTarget();
         }
 
     }
@@ -55,7 +64,12 @@ public class TargetChanger_Base : MonoBehaviour
         {
             if(ItargetDamageAble != null)
             {
-                OnAttack(ItargetDamageAble);
+                if(Time.time > _nextFireRate)
+                {
+                    _nextFireRate = Time.time + fireRate;
+                    OnAttack(ItargetDamageAble);
+                }
+                
             }
         }
     }
@@ -67,17 +81,36 @@ public class TargetChanger_Base : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             //change target
-            OnChase(_mainTarget);
+            SetTarget(mainTarget);
             //set target to damage to be empty
             ItargetDamageAble = null;
+        }
+        else if(other.CompareTag("BrokenObjective"))
+        {
+            //set target to damage to be empty
+            ItargetDamageAble = null;
+            MoveToMainTarget();
         }
     }
 
     //function to set target
-    public void SetTarget()
+    public void SetTarget(Vector3 _target)
     {
+        
+        //change main target to new target
+        mainTarget = _target;
+        //execute common zombie chase behaviour
+        OnChase(mainTarget);
+        
+    }
+
+    private void MoveToMainTarget()
+    {
+        Transform target = null;
+        /*
+        GameManagerClass _GM = GameManagerClass.instanceT;
         //next target to store new target
-        Transform _nextTarget = null;
+        Vector3 _nextTarget = Vector3.zero;
         /*
         //loop every objective
         for(int i = 0; i< GameManagerClass.instanceT.objective.Length;i++)
@@ -91,35 +124,55 @@ public class TargetChanger_Base : MonoBehaviour
                 break;
             }
         }
-        */
-        for(int i = 0; i< GameManagerClass.instanceT.objective.Length;i++)
-        {
-            //if there is object has tag objective
-            if(GameManagerClass.instanceT.objective[i].tag == "Objective")
-            {
-                //set target to be objective
-                _nextTarget = GameManagerClass.instanceT.objective[i].transform;
-                //stop looping
-                break;
-            }
-        }
+        
+        int _objectiveID = _GM.ObjectiveID;
+        int _aiPosID =  _GM.objective[_objectiveID].AIPosID;
+
+        Vector3 targetPos = _GM.objective[_objectiveID].AIPos[_aiPosID];
+
+        _GM.objective[_objectiveID].AIPosID++;
+        _GM.ObjectiveID++;
+        Debug.Log(_GM.ObjectiveID);
+        //set target to be objective
+        _nextTarget = new Vector3(targetPos.x,targetPos.y,targetPos.z);
 
         //target still empty
         if(_nextTarget == null)
         {
             //set target to be player
-            _nextTarget = GameManagerClass.instanceT.playerBehaviour_G.transform;
+            _nextTarget = _GM.playerBehaviour_G.transform.position;
         }
 
-        
-        //change main target to new target
-        _mainTarget = _nextTarget;
-        //execute common zombie chase behaviour
-        OnChase(_mainTarget);
-        
+        SetTarget(_nextTarget);
+        */
+        for(int i =0;i<GameManagerClass.instanceT.objective.Length - 1;i++)
+        {
+            if(GameManagerClass.instanceT.objective[i].gameObject.tag != "BrokenObjective")
+            {
+                target = GameManagerClass.instanceT.objective[i].transform;
+                
+                Vector3 _pos = target.GetComponent<AIPosGeneration>().GetPos();
+                mainTarget = _pos;
+                SetTarget(_pos);
+                break;
+            }
+        }
+
+        if(target == null)
+        {
+            target = GameManagerClass.instanceT.playerBehaviour_G.transform;
+            mainTarget = target.position;
+            //enable player chasing script
+        }
+    }
+
+    public void MoveToCheckpoint()
+    {
+        GameManagerClass.instanceT.CheckPointsID++;
+        SetTarget(GameManagerClass.instanceT.checkPoints[GameManagerClass.instanceT.CheckPointsID].position);
     }
 
     public virtual void OnAttack(IDamageable targetIdmg = null){}
     public virtual void OnAttack(Transform targetTrans = null){}
-    public virtual void OnChase(Transform target){}
+    public virtual void OnChase(Vector3 target){}
 }

@@ -17,7 +17,7 @@ public class SquirterTargetChanger : TargetChanger_Base
         base.OnStart();
     }
 
-    public override void OnChase(Transform target)
+    public override void OnChase(Vector3 target)
     {
         //call squirter chase function
         sqrtZombie.Chase(target);

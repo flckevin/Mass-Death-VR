@@ -15,7 +15,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
     
     
     public ZombieStats zombieStats;//scriptable object stats for zombie
-    public GameObject targetChanger;
+    public TargetChanger_Base targetChanger;
 
     #region zombieComponents
     [HideInInspector]public float zombieHealth;//declare float for zombie health
@@ -24,6 +24,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
 
     protected IZombieStateBase _State;//declare zombie state interface to change state of zombie
     protected string _currentState; //declare current state to identify which state zombie current in
+    
     
     #endregion
 
@@ -35,6 +36,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
         navAgent = this.gameObject.GetComponent<NavMeshAgent>();
         //storing meshanimatorbase class into this class
         meshAnims = this.gameObject.GetComponent<MeshAnimatorBase>();
+        
         //setting zombie health
         zombieHealth = zombieStats.zombieHealth;
         //setting target
@@ -52,6 +54,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
     //function to receive damage
     public void DamageReceiver(float damageDealt,Transform bulletPosNMelee,bool instantDeactivation)
     {
+        
         #region Decrease Health
         //decreasing zombie health
         zombieHealth -= damageDealt;
@@ -75,7 +78,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
         if (zombieHealth <= 0) 
         {
             //deactivate object
-            this.gameObject.SetActive(instantDeactivation);
+            //this.gameObject.SetActive(instantDeactivation);
             //call die function
             OnDie();
         }
@@ -87,8 +90,11 @@ public class EnemyBase : MonoBehaviour,IDamageable
     //funciton for zombie to die
     public virtual void OnDie()
     {
+        
+        //set tag to be dead enemy
+        this.gameObject.tag = "DeadEnemy";
         //disable target system
-        targetChanger.SetActive(false);
+        targetChanger.gameObject.SetActive(false);
 
         meshAnims.Play("Death_Slashed");
         
@@ -104,8 +110,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
         //dsiable navmesh agent
         navAgent.enabled = false;
 
-        //set tag to be dead enemy
-        this.gameObject.tag = "DeadEnemy";
+        
         //call zombie on kill event
         GameManagerClass.instanceT.waveMode.ZombieOnKill();
         //add more money to player
@@ -124,7 +129,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
     public void OnRevive()
     {
         //enable target system
-        targetChanger.SetActive(true);
+        targetChanger.gameObject.SetActive(true);
 
         //set back to default health
         zombieHealth = zombieStats.zombieHealth;
@@ -137,7 +142,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
         this.gameObject.tag = "Zombie";
 
         //call set target function
-        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().SetTarget();
+        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().MoveToCheckpoint();
 
         Debug.Log("REVIVED: " + this.gameObject.name);
     }
@@ -155,13 +160,17 @@ public class EnemyBase : MonoBehaviour,IDamageable
             //receive damage
             DamageReceiver(bullet.damage,other.transform,false);
             bullet.OnCollision();
+          
         }
         //if it melee
         else if(other.CompareTag("Melee"))
         {
             DamageReceiver(int.Parse(other.name),other.transform,false);
         }
+        
+        
     }
+
 
     void IDamageable.Damage(float amount, bool instantDeactivate)
     {

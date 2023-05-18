@@ -66,7 +66,7 @@ public class CommonZombie : EnemyBase
     }
     */
 
-    public void Chase(Transform _target)
+    public void Chase(Vector3 _target)
     {
         Chase c_Chase = new Chase(_target,this,zombieStats.zombieSpeed); //create new chase state
         //if(_State.ToString() == _currentState && _target == null) return;

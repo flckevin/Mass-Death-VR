@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff3bfe0d0d5c6e4baffda52685e6ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireRate: 0
+  mainTarget: {x: 0, y: 0, z: 0}
   sqrtZombie: {fileID: 7783068396890440814}
 --- !u!65 &9208294464981660573
 BoxCollider:
@@ -168,7 +170,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4dd75e5b66c8d954b8eab11c598c83d2, type: 2}
+  - {fileID: 2100000, guid: 3320eddb81c46db4fb11e66a0676b5da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -203,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieStats: {fileID: 11400000, guid: 814fc1992d9c7004f955ff0ffb8e5580, type: 2}
-  targetChanger: {fileID: 3890858641300658847}
+  targetChanger: {fileID: 5490153469185172102}
   zombieHealth: 0
   meshAnims: {fileID: 0}
   navAgent: {fileID: 0}

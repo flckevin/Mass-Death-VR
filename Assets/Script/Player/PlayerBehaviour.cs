@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 /***************************************
  * Authour: HAN 18080038
  * Object hold: player
@@ -12,7 +13,16 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
     [Header("Player General Info")]
     public float health; // player health
     public float speed; //player speed
-
+    public GameObject ragdoll; // player ragdoll
+    public float poison;
+    private float _Poison
+    {
+        get{return poison;}
+        set{
+            if(poison >= 5){poison = 5;}
+            else if(poison <= 0){poison = 0;}
+        }
+    }
     public BNG.SmoothLocomotion playerVRController;
     [Header("Player Stats UI Info")]
     
@@ -38,8 +48,30 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
         if(health <= 0) 
         { 
             //player dies
+            //if ragdoll does exist
+            if(ragdoll != null)
+            {
+                //activate it
+                ragdoll.SetActive(true);
+            }
+            //disable controller
+            GameManagerClass.instanceT.playerController.enabled = false;
+            //set time to slow motion
+            Time.timeScale = 0.3f;
+            //call back to safehouse function
+            StartCoroutine(BackToSafeHouse());
         }
         
+    }
+
+    //back to safe house
+    IEnumerator BackToSafeHouse()
+    {
+        //wait for few seconds
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 1;
+        //load back to safe house
+        SceneManager.LoadScene("PlayerHub");
     }
 
 

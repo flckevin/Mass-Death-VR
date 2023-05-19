@@ -23,6 +23,11 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
             //set grounded to true
             grounded = true;
         }
+        else
+        {
+            //set grounded to true
+            grounded = true;
+        }
     }
 
     private void OnTriggerExit(Collider other) 
@@ -31,6 +36,11 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
         if (other.CompareTag(tagToPlace))
         {
             //set grounded to false 
+            grounded = false;
+        }
+        else
+        {
+            //set grounded to false
             grounded = false;
         }
     }

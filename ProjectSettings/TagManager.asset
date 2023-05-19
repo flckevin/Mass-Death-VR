@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - DeadEnemy
   - Damageable
-  - FuelTank
   - Floor
   - PlayerHand
   - Gun
@@ -25,6 +24,8 @@ TagManager:
   - Melee
   - PlaceableFloor
   - CheckPoint
+  - PlaceableLimit
+  - PlayerHead
   layers:
   - Default
   - TransparentFX

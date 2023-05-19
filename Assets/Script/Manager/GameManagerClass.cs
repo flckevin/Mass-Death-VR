@@ -17,6 +17,7 @@ public class GameManagerClass : Singleton<GameManagerClass>
     public PlayerBehaviour playerBehaviour_G;
     public Rigidbody playerRigi;
     public CharacterController playerController; 
+    public Camera playerCam;
     public Transform playerStartPos;
     public bool playerIsDead_B = false;
     public CreditCard playerCreditCard_Class;

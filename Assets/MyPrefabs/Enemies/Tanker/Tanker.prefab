@@ -58,6 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4135aa7c1731f7a47acea77876082987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireRate: 0
+  mainTarget: {x: 0, y: 0, z: 0}
   tankBhaviour: {fileID: 831444194811163006}
 --- !u!1 &3074880065947967572
 GameObject:
@@ -196,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieStats: {fileID: 11400000, guid: 4986d007c307ba848a22f9a129330969, type: 2}
-  targetChanger: {fileID: 1690188305}
+  targetChanger: {fileID: 5693743276952103304}
   zombieHealth: 0
   meshAnims: {fileID: 0}
   navAgent: {fileID: 0}

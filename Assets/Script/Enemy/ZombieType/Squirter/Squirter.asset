@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc8967141dcdb642a8171554e91a3fd, type: 3}
   m_Name: Squirter
   m_EditorClassIdentifier: 
-  zombieHealth: 100
-  zombieDamageAmount: 50
+  zombieHealth: 20
+  zombieDamageAmount: 25
   zombieSpeed: 3.5
+  moneyReceive: 40

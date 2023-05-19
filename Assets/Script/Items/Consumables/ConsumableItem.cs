@@ -17,6 +17,7 @@ public class ConsumableItem : MonoBehaviour
 
     public virtual void OnUseItem() { }
 
+    public virtual void OnEnable(){}
     public virtual void OnDisableItem(){}
 
     public virtual void OnSetDefaultItem() {}

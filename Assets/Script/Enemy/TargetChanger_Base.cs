@@ -98,9 +98,9 @@ public class TargetChanger_Base : MonoBehaviour
     {
         
         //change main target to new target
-        mainTarget = _target;
+        Vector3 correctPos = new Vector3(_target.x,this.transform.position.y,_target.z);
         //execute common zombie chase behaviour
-        OnChase(mainTarget);
+        OnChase(correctPos);
         
     }
 
@@ -162,14 +162,26 @@ public class TargetChanger_Base : MonoBehaviour
         {
             target = GameManagerClass.instanceT.playerBehaviour_G.transform;
             mainTarget = target.position;
+            StartCoroutine(ChasePlayer());
             //enable player chasing script
         }
     }
 
     public void MoveToCheckpoint()
     {
+        Vector3 targetPos = GameManagerClass.instanceT.checkPoints[GameManagerClass.instanceT.CheckPointsID].position;
         GameManagerClass.instanceT.CheckPointsID++;
-        SetTarget(GameManagerClass.instanceT.checkPoints[GameManagerClass.instanceT.CheckPointsID].position);
+        mainTarget = targetPos;
+        SetTarget(targetPos);
+    }
+
+    public IEnumerator ChasePlayer()
+    {
+        while(GameManagerClass.instanceT.playerBehaviour_G.health > 0)
+        {
+            SetTarget(mainTarget);
+            yield return null;
+        }
     }
 
     public virtual void OnAttack(IDamageable targetIdmg = null){}

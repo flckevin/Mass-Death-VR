@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0da006482bfeb6e40b98f6b032e4c476, type: 3}
-  m_Name: Wavetest
+  m_Name: Temp3
   m_EditorClassIdentifier: 
   pattern1:
   - C
+  - S
+  - R
   - C
-  - C
-  - C
-  - C
+  - R
   pattern2:
   - C
-  - C
-  - C
-  - C
-  - C
+  - T
+  - R
+  - R
+  - S
   pattern3:
   - C
-  - C
-  - C
-  - C
-  - C
+  - T
+  - T
+  - R
+  - R

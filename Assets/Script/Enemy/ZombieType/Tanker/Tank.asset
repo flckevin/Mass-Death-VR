@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc8967141dcdb642a8171554e91a3fd, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
-  zombieHealth: 1000
-  zombieDamageAmount: 20
-  zombieSpeed: 1
+  zombieHealth: 250
+  zombieDamageAmount: 30
+  zombieSpeed: 0.7
+  moneyReceive: 120

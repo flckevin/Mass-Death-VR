@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /***************************************
  * Authour: HAN 18080038
  * Object hold: consumable items drinks
@@ -8,89 +9,124 @@ using UnityEngine;
  **************************************/
 public class Alcolhol : ConsumableItem
 {
-    [Range(0,500)]public float amountInDrinkLeft;
-    public float shakeSpeed;
-    private float ShakeSpeed
+    [Range(0,50)]public float amountInDrinkLeft; // amount of drinks left
+    public GameObject cap; // acohol cap
+    private bool drunkCouActivated; // identify whether coroutine activated
+    [Range(0,2)]public float healthRegenerate; // health that able to regenerate
+    protected override void Start()
     {
-        get{return ShakeSpeed;} 
-        set{if(ShakeSpeed >= 0.5f){ShakeSpeed = 0.5f;}}
-    } 
-    public GameObject cap;
-    
-    private float shakePose;
-    private float _ShakePose
+        
+        base.Start();
+    }
+    public override void OnEnable()
     {
-        get{return _ShakePose;} 
-        set{if(_ShakePose > 1){_ShakePose = 1;}}
-    } 
-    private float shakeLength;
-    private IEnumerator side;
-
-    public override void OnUseItem()
-    {
+        // if there still drink left
         if(amountInDrinkLeft > 0)
         {
+            //able to drink
             _ableToUse = true;
+            //deactivate cap as opened
             if(cap == null)return;
             cap.SetActive(false);
         }
-        base.OnUseItem();
+
+        base.OnEnable();
     }
 
     public override void OnDisableItem()
     {
+        //not able to drink
         _ableToUse = false;
+        //deactivate cap
         if(cap == null)return;
         cap.SetActive(true);
-
         base.OnDisableItem();
     }
 
-    private void OnCollisionEnter(Collision other) 
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            Drink();
-            if(side == null) return;
-            side = SideEffect();
-            StartCoroutine(side);
-        }
+    
 
+    private void OnTriggerEnter(Collider other) 
+    {
+    
+        Debug.Log("NAME: " + other.gameObject.name +" TAG: " + other.gameObject.tag);
+        //if it touch player mouth
+        if(other.gameObject.tag == "MainCamera" && _ableToUse == true)
+        {
+            //drink
+            OnUseItem();
+            //start drunk behaviour
+            if(drunkCouActivated == true) return;
+            StartCoroutine(SideEffect());
+        }
+        //if there is not drink left
         if(amountInDrinkLeft <= 0)
         {
-            this.gameObject.SetActive(false);
-            if(side == null)Destroy(this.gameObject);
-        }
-    }
-    
-    private void OnCollisionStay(Collision other) 
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            Drink();
+            //destroy object on next touch
+            Destroy(this.gameObject);
         }
     }
 
-    private void Drink()
+    private void OnTriggerStay(Collider other) 
     {
-        amountInDrinkLeft--;
-        shakeLength++;
-        shakeSpeed++;
-        _ShakePose++;
+        //if it touch player mouth
+        if(other.gameObject.tag == "MainCamera" && _ableToUse == true)
+        {
+            //drink
+            OnUseItem();
+            Debug.Log(amountInDrinkLeft);
+        }
     }
+
+    //drink behaviour
+    public override void OnUseItem()
+    {
+        //increase player posioness
+        GameManagerClass.instanceT.playerBehaviour_G.poison++;
+        //decrease amount of liquid in acolhol
+        amountInDrinkLeft-=1;
+        //regenerate player's health
+        GameManagerClass.instanceT.playerBehaviour_G.health += healthRegenerate*Time.deltaTime;
+        //start drunk behaviour
+        if(drunkCouActivated == true) return;
+        //increase health
+        StartCoroutine(SideEffect());
+        base.OnUseItem();
+    }
+
+    
 
     IEnumerator SideEffect()
     {
-        while(shakeLength < 1)
+        //set drunk activated to true to prevent second time of calling
+        drunkCouActivated = true;
+        //while player still have position
+        while(GameManagerClass.instanceT.playerBehaviour_G.poison > 0)
         {
-            //lean tween cam for shake effect
-            shakeLength--;
-            shakeSpeed--;
-            shakePose--;
+            //random vomit next delay
+            float rand = UnityEngine.Random.Range(10,15);
+            //wait with given delay
+            yield return new WaitForSeconds(rand);
+            //disable player controller
+            GameManagerClass.instanceT.playerController.enabled = false;
+            //set vomit position
+            PoolManager.instanceT.vomit[PoolManager.instanceT.VomitID].transform.position = GameManagerClass.instanceT.playerCam.transform.position;
+            //activate vomit
+            PoolManager.instanceT.vomit[PoolManager.instanceT.VomitID].gameObject.SetActive(true);
+            //play vomit
+            PoolManager.instanceT.vomit[PoolManager.instanceT.VomitID].Play();
+            //wait until vomit effect finished
+            yield return new WaitForSeconds(PoolManager.instanceT.vomit[PoolManager.instanceT.VomitID].main.duration + 0.5f);
+            //increase vomit ID
+            PoolManager.instanceT.VomitID++;
+            //enable player controller again
+            GameManagerClass.instanceT.playerController.enabled = true;
+            //decrease player poision
+            GameManagerClass.instanceT.playerBehaviour_G.poison -= 1;
             yield return null;
+
         }
-        side = null;
-        if(amountInDrinkLeft <= 0)  Destroy(this.gameObject);
+        //deactivate so it can call it again
+        drunkCouActivated = false;
        //set cam back to default
     }
 

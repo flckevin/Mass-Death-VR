@@ -30,6 +30,24 @@ public class PoolManager : Singleton<PoolManager>
     public ParticleSystem[] groundSlamParticle;
     [HideInInspector]public int groundSlamParticleID;
 
+    public ParticleSystem[] vomit;
+    private int vomitID;
+    public int VomitID
+    {
+        get{return vomitID;}
+        set
+        {
+            if(vomitID >= vomit.Length)
+            {
+                vomitID = 0;
+            }
+            else
+            {
+                vomitID = value;
+            }
+        }
+    }
+
     public GameObject oil;
 
 

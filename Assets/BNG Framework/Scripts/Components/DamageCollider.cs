@@ -45,6 +45,7 @@ namespace BNG {
         Damageable thisDamageable;
 
         private void Start() {
+            this.gameObject.name = Damage.ToString();
             if (ColliderRigidbody == null) {
                 ColliderRigidbody = GetComponent<Rigidbody>();
             }

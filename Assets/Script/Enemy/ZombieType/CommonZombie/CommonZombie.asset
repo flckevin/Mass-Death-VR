@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc8967141dcdb642a8171554e91a3fd, type: 3}
   m_Name: CommonZombie
   m_EditorClassIdentifier: 
-  zombieHealth: 50
+  zombieHealth: 75
   zombieDamageAmount: 5
-  zombieSpeed: 0.8
-  moneyReceive: 0
+  zombieSpeed: 2
+  moneyReceive: 20

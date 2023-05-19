@@ -120,4 +120,11 @@ public class CommonZombie : EnemyBase
         _State.DoState(this);
     }
 
+    public override void OnRevive()
+    {
+        base.OnRevive();
+        //call set target function
+        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().MoveToCheckpoint();
+    }
+
 }

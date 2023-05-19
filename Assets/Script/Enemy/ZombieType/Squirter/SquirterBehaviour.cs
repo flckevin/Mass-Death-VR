@@ -63,6 +63,13 @@ public class SquirterBehaviour : EnemyBase
         StartCoroutine(Explode(2f));
     }
 
+    public override void OnRevive()
+    {
+        base.OnRevive();
+        //call set target function
+        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().MoveToCheckpoint();
+    }
+
     //on explode event
     IEnumerator Explode(float delay)
     {

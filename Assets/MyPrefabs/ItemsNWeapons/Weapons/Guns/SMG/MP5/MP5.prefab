@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxRange: 25
-  Damage: 25
+  Damage: 21
   FiringMethod: 1
   ReloadMethod: 1
   FiringRate: 0.05
@@ -594,7 +594,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1aa856916290b458a0e1a4b781f8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunMagsAmmoBoxStorage: {fileID: 0}
+  raycastMuzzle: {fileID: 0}
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 0
+  damage: 0
 --- !u!1 &2897556358765385407
 GameObject:
   m_ObjectHideFlags: 0

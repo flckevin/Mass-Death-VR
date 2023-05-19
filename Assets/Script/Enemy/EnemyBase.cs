@@ -126,7 +126,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
     }
 
     //function to reveive zombie
-    public void OnRevive()
+    public virtual void OnRevive()
     {
         //enable target system
         targetChanger.gameObject.SetActive(true);
@@ -141,10 +141,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
         //set back to default tag
         this.gameObject.tag = "Zombie";
 
-        //call set target function
-        this.gameObject.transform.GetChild(0).GetComponent<TargetChanger_Base>().MoveToCheckpoint();
-
-        Debug.Log("REVIVED: " + this.gameObject.name);
+        
     }
 
     private void OnTriggerEnter(Collider other) 

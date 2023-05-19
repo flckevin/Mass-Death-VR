@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c2b4bb205b85247a0b4fc74e0b40b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagToPlace: YellowEW
+  tagToPlace: 
   WeaponToActivate: {fileID: 1007498883481576875}
   EWComponents: {fileID: 2786840348426879909}
 --- !u!1 &1007498883481576875
@@ -944,7 +944,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0f878d7c072865a4c9ba2f1897b67250, type: 2}
+      objectReference: {fileID: 2100000, guid: eebd9230620c13a489915f9d856a57a1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624ef7d780846b342988732cbb919663, type: 3}
 --- !u!4 &4403136510537216371 stripped

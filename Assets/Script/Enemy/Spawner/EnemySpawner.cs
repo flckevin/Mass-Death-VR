@@ -17,6 +17,12 @@ public class EnemySpawner : MonoBehaviour
 
     //ENEMY INFO
     private int _currentPatternHolder;//store current pattern holder
+    private int CurrentPatternHolder
+    {
+        get{return _currentPatternHolder;}
+        set{if(_currentPatternHolder>=enemeyPatternHolder.Length){_currentPatternHolder = enemeyPatternHolder.Length;}
+                else{_currentPatternHolder = value;}}
+    }
     private int _amountOfSpawnedEnemy; // amount of enemy spawned
     private int _waveEnemyAmount; // tracker for maximum nemey
     private int _enemyID = 0; //current enemy in array
@@ -109,14 +115,14 @@ public class EnemySpawner : MonoBehaviour
         {
             case 2:
             //randomize pattern from pattern holder
-            enemies = enemeyPatternHolder[_currentPatternHolder].RandommizedPattern();
+            enemies = enemeyPatternHolder[CurrentPatternHolder].RandommizedPattern();
             break;
 
             case 8:
             //increase pattern holder to change whole new pattern holder
-            _currentPatternHolder++;
+            CurrentPatternHolder++;
             //set new pattern holder
-            enemies = enemeyPatternHolder[_currentPatternHolder].pattern1;
+            enemies = enemeyPatternHolder[CurrentPatternHolder].pattern1;
             //set wave passed back to 0
             _wavePassedEvent = 0;
             break;

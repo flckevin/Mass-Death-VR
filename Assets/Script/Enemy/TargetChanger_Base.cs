@@ -31,7 +31,7 @@ public class TargetChanger_Base : MonoBehaviour
     {
         //Debug.Log(other.name + "" + other.gameObject.tag);
         //if it enter to tag player or objective
-        if(other.CompareTag("Player") || other.CompareTag("Objective"))
+        if(other.CompareTag("Player") || other.CompareTag("Objective") || other.CompareTag("Damageable"))
         {
            
             //set new target to damage
@@ -54,13 +54,20 @@ public class TargetChanger_Base : MonoBehaviour
             ItargetDamageAble = null;
             MoveToMainTarget();
         }
+        else if(other.CompareTag("BrokenDamageable"))
+        {
+            //change target
+            SetTarget(mainTarget);
+            //set target to damage to be empty
+            ItargetDamageAble = null;
+        }
 
     }
 
     private void OnTriggerStay(Collider other)
     {
         //if it enter to tag player or objective
-        if(other.CompareTag("Player") || other.CompareTag("Objective"))
+        if(other.CompareTag("Player") || other.CompareTag("Objective") || other.CompareTag("Damageable"))
         {
             if(ItargetDamageAble != null)
             {
@@ -77,9 +84,10 @@ public class TargetChanger_Base : MonoBehaviour
     private void OnTriggerExit(Collider other) 
     {
         //Debug.Log(other.name + "" + other.gameObject.tag);  
-        
+        Debug.Log(other.gameObject.tag);
         if(other.CompareTag("Player"))
         {
+            
             //change target
             SetTarget(mainTarget);
             //set target to damage to be empty

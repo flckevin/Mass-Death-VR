@@ -26,6 +26,7 @@ TagManager:
   - CheckPoint
   - PlaceableLimit
   - PlayerHead
+  - BrokenDamageable
   layers:
   - Default
   - TransparentFX

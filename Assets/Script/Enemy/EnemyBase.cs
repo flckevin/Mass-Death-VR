@@ -58,7 +58,8 @@ public class EnemyBase : MonoBehaviour,IDamageable
         #region Decrease Health
         //decreasing zombie health
         zombieHealth -= damageDealt;
-
+        //play audio clip
+        AudioManager.instanceT.PlayOneShot(AudioManager.instanceT.commonClip[0].clip,1);
         #region Squirt blood
         //declare pool manager
         PoolManager poolM = PoolManager.instanceT;
@@ -90,7 +91,8 @@ public class EnemyBase : MonoBehaviour,IDamageable
     //funciton for zombie to die
     public virtual void OnDie()
     {
-        
+        //play audio clip
+        AudioManager.instanceT.PlayOneShot(AudioManager.instanceT.commonClip[1].clip,1);
         //set tag to be dead enemy
         this.gameObject.tag = "DeadEnemy";
         //disable target system
@@ -166,6 +168,28 @@ public class EnemyBase : MonoBehaviour,IDamageable
         }
         
         
+    }
+
+    private void OnTriggerStay(Collider other) 
+    {
+         //if zombie not alive
+        if(this.gameObject.tag != "Zombie") return;
+
+        //if bullet enter to zombie
+        if(other.CompareTag("Bullet"))
+        {
+            //get bullet behaviour
+            BulletBehaviour bullet = other.GetComponent<BulletBehaviour>();
+            //receive damage
+            DamageReceiver(bullet.damage,other.transform,false);
+            bullet.OnCollision();
+          
+        }
+        //if it melee
+        else if(other.CompareTag("Melee"))
+        {
+            DamageReceiver(int.Parse(other.name),other.transform,false);
+        }
     }
 
 

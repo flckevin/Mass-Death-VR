@@ -80,21 +80,14 @@ public class SupplyBoxBehaviour : MonoBehaviour
         //get pool manager
         PoolManager poolM = PoolManager.instanceT;
 
-        //if ground slam particle does not exist or it exceed array
-        if(poolM.groundSlamParticle[poolM.groundSlamParticleID] == null || poolM.groundSlamParticleID >= poolM.groundSlamParticle.Length - 1)
-        {
-            //set back to first item in array
-            poolM.groundSlamParticleID = 0;
-        }
-
         //set particle to be at crate position
-        poolM.groundSlamParticle[poolM.groundSlamParticleID].gameObject.transform.position = this.transform.position;
+        poolM.groundSlamParticle[poolM.GroundSlamParticleID].gameObject.transform.position = this.transform.position;
         //activate particle
-        poolM.groundSlamParticle[poolM.groundSlamParticleID].gameObject.SetActive(true);
+        poolM.groundSlamParticle[poolM.GroundSlamParticleID].gameObject.SetActive(true);
         //play particle
-        poolM.groundSlamParticle[poolM.groundSlamParticleID].Play();
+        poolM.groundSlamParticle[poolM.GroundSlamParticleID].Play();
         //increase particle id
-        poolM.groundSlamParticleID++;
+        poolM.GroundSlamParticleID++;
 
         #endregion
         

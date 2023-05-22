@@ -10,7 +10,7 @@ using BNG;
 public class EmplacementWeaponPlatformBase : MonoBehaviour
 {
     // Start is called before the first frame update
-    protected bool grounded;//declare bool to check whether platform is grounded
+    [SerializeField]protected bool grounded;//declare bool to check whether platform is grounded
     public string tagToPlace;
     public GameObject WeaponToActivate;//declare gameobject to activate emplacement weapons
     public GameObject EWComponents;//declare emplacement components to destroy
@@ -18,29 +18,39 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         //if object has floor tag
-        if (other.CompareTag(tagToPlace))
+        if (tagToPlace != string.Empty && other.CompareTag(tagToPlace))
         {
             //set grounded to true
             grounded = true;
         }
-        else
-        {
-            //set grounded to true
-            grounded = true;
-        }
+       
     }
 
     private void OnTriggerExit(Collider other) 
     {
         //if object has floor tag
-        if (other.CompareTag(tagToPlace))
+        if (tagToPlace != string.Empty && other.CompareTag(tagToPlace))
         {
             //set grounded to false 
             grounded = false;
         }
-        else
+        
+    }
+
+    private void OnCollisionEnter(Collision other) 
+    {
+        if(tagToPlace == string.Empty)
         {
-            //set grounded to false
+            //set grounded to true 
+            grounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision other) 
+    {
+         if(tagToPlace == string.Empty)
+        {
+            //set grounded to false 
             grounded = false;
         }
     }
@@ -74,21 +84,28 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
 
             //lean to gun position
             LeanTween.moveLocal(WeaponToActivate,new Vector3(WeaponToActivate.transform.localPosition.x,0,WeaponToActivate.transform.localPosition.z),3);
-            //destroy emplacement components
-            Destroy(EWComponents);
-            Destroy(this.gameObject.GetComponent<Rigidbody>());
             
-            //disable grabble component
-            this.gameObject.GetComponent<Grabbable>().enabled = false;
-            //disable rigibody
-            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            //disable emplacement platform behaviour class
-            this.enabled = false;
+            StartCoroutine(EWBaseDeactivation());
         }
         else
         {
             //play a feedback sound as player not be able to place the weapon
         }
+    }
+
+    IEnumerator EWBaseDeactivation()
+    {
+        //destroy emplacement components
+        Destroy(EWComponents);
+        Destroy(this.gameObject.GetComponent<Rigidbody>());
+        Destroy(this.gameObject.GetComponent<BoxCollider>());
+        //disable grabble component
+        this.gameObject.GetComponent<Grabbable>().enabled = false;
+
+        yield return new WaitForSeconds(3f);
+        ParticleSystemPlayer.instanceT.PlayeParticleFromPool(PoolManager.instanceT.groundSlamParticle,PoolManager.instanceT.GroundSlamParticleID,this.transform);
+        //disable emplacement platform behaviour class
+        this.enabled = false;
     }
 
     IEnumerator EWGasActivation(EmplacementWeaponBehaviourBaseWithGas EW = null, float duration = 0)

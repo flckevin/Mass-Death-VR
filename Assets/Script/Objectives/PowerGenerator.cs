@@ -8,16 +8,21 @@ using UnityEngine.UI;
  * Object hold: Power generator
  * Content: Power generator behaviour
  **************************************/
-public class PowerGenerator : MonoBehaviour,IDamageable
+public class PowerGenerator : MonoBehaviour,IDamageable,IUpgradeGun
 {
     // Start is called before the first frame update
     public float health; //declare float for
     public float timeToDecreased;//float for time to decrease
-    
+    public ParticleSystem smoke; // particle for feed back
+    public Text healthText; // text to display
     public Extractor extractor;//extractor to decrease time
+    
+
     private float _defaultHealth;//float to store default health
     private BoxCollider _boxCol;//declare boxCol to enable and disable
-    public Text healthText;
+    private int _amountOfTimeAbleToRestore = 3; //amount of time able to restore 
+
+
     void Start()
     {
         //if extractor have not been assigned
@@ -94,8 +99,13 @@ public class PowerGenerator : MonoBehaviour,IDamageable
             //the zombie will detect the current stage of the power generator and change it target
             _boxCol.enabled = false;
             _boxCol.enabled = true;
+            //play smoke particle
+            if(smoke != null)
+            {
+                smoke.Play();
+            }
             
-             //update amount of generator
+            //update amount of generator
             GameManagerClass.instanceT.generatorLeft -= 1;
             //display generator left
             GameManagerClass.instanceT.generatorLeft_UI.text = "generator left" + GameManagerClass.instanceT.generatorLeft.ToString();
@@ -110,15 +120,16 @@ public class PowerGenerator : MonoBehaviour,IDamageable
                 }
             }
             */
-
+            _amountOfTimeAbleToRestore--;
         }
     }
 
     //function on fix
     public void OnFixGen()
     {
+        if(_amountOfTimeAbleToRestore <= 0) return;
         //increase health
-        health += 2;
+        health += 2*Time.deltaTime;
         healthText.text = health + "%";
         //if health is larger or equak to default health
         if(health >= _defaultHealth)
@@ -127,6 +138,16 @@ public class PowerGenerator : MonoBehaviour,IDamageable
             health = _defaultHealth;
             //decrease time to extract
             extractor.timeToExtract += timeToDecreased;
+            
+        }
+        //player restoring generator
+        else if(health > 0)
+        {
+            //stop playing smoke
+            if(smoke != null)
+            {
+                smoke.Stop();
+            }
             //change tag to objective to identify object is not broken
             this.gameObject.tag = "Objective";
         }
@@ -139,4 +160,8 @@ public class PowerGenerator : MonoBehaviour,IDamageable
         OnDamage(amount);
     }
 
+    public void OnFixOnUpgrade()
+    {
+        OnFixGen();
+    }
 }

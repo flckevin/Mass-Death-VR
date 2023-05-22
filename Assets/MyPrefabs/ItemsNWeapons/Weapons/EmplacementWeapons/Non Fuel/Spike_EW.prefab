@@ -545,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c2b4bb205b85247a0b4fc74e0b40b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grounded: 0
   tagToPlace: 
   WeaponToActivate: {fileID: 7849233988266364291}
   EWComponents: {fileID: 5168327885697215373}

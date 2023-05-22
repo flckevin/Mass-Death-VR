@@ -13,6 +13,7 @@ public class GameManagerClass : Singleton<GameManagerClass>
 {
    
     [Header("Player_Info")]
+    public BNG.SmoothLocomotion playerVRController;
     public GameObject playerRoot;
     public PlayerBehaviour playerBehaviour_G;
     public Rigidbody playerRigi;

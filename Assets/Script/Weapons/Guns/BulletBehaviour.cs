@@ -14,6 +14,7 @@ public class BulletBehaviour : MonoBehaviour
       this.gameObject.SetActive(false);
    }
 
+
    public void OnCollision()
    {
       amountGoThroughObj--;
@@ -23,6 +24,8 @@ public class BulletBehaviour : MonoBehaviour
          //deactivate object
          this.gameObject.SetActive(false);
       }
+
+      
    }
 
 }

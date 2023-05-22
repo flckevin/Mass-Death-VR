@@ -12,7 +12,7 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
     private bool isRotating = false; // check whether turret is rotating
     //private bool ableToPatrol = true;
     //private Transform target;
-    
+    private AudioSource _audioSrc;
 
     [Header("Turret Info")]
     public Transform barrel;//declare transform for gun barrel positon
@@ -24,9 +24,14 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
     public int rotateSpeed; // rotation speed
     public float maxRotate; // max axis that turret can rotate
     public LayerMask layer; // layer detection
+    public ParticleSystem muzzleFlash;
+
+    [Header("Turret audio info")]
+    [Tooltip("0 = rotate /n 1 = shoot")]public AudioClip[] audioClip;
     public override void VStart()
     {
         if(rotateSpeed <= 0){rotateSpeed = 3;}
+        _audioSrc = this.gameObject.GetComponent<AudioSource>();
         base.VStart();
     }
 
@@ -43,6 +48,18 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
             {
                 if(Time.time > _nextFire)
                 {
+                    //if muzzle flash does exist and not playing
+                    if(muzzleFlash != null && !muzzleFlash.isPlaying)
+                    {
+                        //play muzzle flash
+                        muzzleFlash.Play();
+                    }
+                    //play shoot audio
+                    if(_audioSrc.isPlaying == false)
+                    {
+                        _audioSrc.PlayOneShot(audioClip[1],1);
+                    }
+                    
                     _nextFire = Time.time + fireRate;
                     //deal damage to zombie
                     ray.transform.GetComponent<EnemyBase>().DamageReceiver(damageAmount,ray.transform,false);
@@ -62,30 +79,7 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
 
     public override void WeaponBehaviour()
     {
-        /*
-        if(target != null)
-        {
-            //this.transform.LookAt(target.position - turret.transform.position);
-            _nextFire = Time.time + fireRate;
-            LeanTween.rotateLocal(turret,(target.position - turret.transform.position),1);
-            if(Time.time > _nextFire)
-            {
-                Debug.Log("SHOOTING: " + target.name);
-            }
-            Debug.Log("SHOOTING: " + target.name);
-
-
-            if(turret.transform.localEulerAngles.y >= maxRotate || EuAngleNegConverter(turret.transform.localEulerAngles.y) <= - maxRotate)
-            {
-                LeanTween.rotateLocal(turret,new Vector3(turret.transform.rotation.x,0,turret.transform.rotation.z),rotateSpeed);
-                target = null;
-                StartCoroutine(Reset("Patrol"));
-            }
-        }
-        */
-
-        //if(target != null && ableToPatrol == true) return;
-
+ 
         RotateYTo();
         
         base.WeaponBehaviour();
@@ -108,27 +102,19 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
             //rotate other side
             LeanTween.rotateLocal(turret,new Vector3(turret.transform.rotation.x,maxRotate,turret.transform.rotation.z),rotateSpeed);
         }
-        
+        //play rotation audio
+        if(_audioSrc.isPlaying == false)
+        {
+            _audioSrc.PlayOneShot(audioClip[0],1);
+        }
+
         isRotating = true;
         StartCoroutine(Reset("Rotate"));
     }
 
     IEnumerator Reset(string _stateToReset)
     {
-        /*
-        switch(_stateToReset)
-        {
-            case "Rotate":
-            
-            break;
-
-            case "Patrol":
-            yield return new WaitForSeconds(rotateSpeed + 2);
-            ableToPatrol = true;
-            break;
-        }
-        */
-
+   
         yield return new WaitForSeconds(rotateSpeed + 1.5f);
         isRotating = false;
         //Debug.Log(EuAngleNegConverter(turret.transform.localEulerAngles.y));

@@ -14,7 +14,9 @@ public class EnemySpawner : MonoBehaviour
     public EnemySpawnPatternScriptable[] enemeyPatternHolder; // pattern
     [Range(0,8)]public float spawnDelay; // spawn delay
     public int maxEnemy;//declare float for max enemy
-
+    public AudioClip onFinishedWave;
+    public ParticleSystem fireWorks;
+    
     //ENEMY INFO
     private int _currentPatternHolder;//store current pattern holder
     private int CurrentPatternHolder
@@ -30,10 +32,12 @@ public class EnemySpawner : MonoBehaviour
     private int _wavePassedEvent; // passed wave for event
     private int _waveTracker = 0;// track wave
     private Coroutine _spawnerCou; // store ienumerator
-
-
+    private AudioSource _audioSrc; // storing audio source
+    
     private void Start() 
     {
+        //storing audio source into this class
+        _audioSrc = this.gameObject.GetComponent<AudioSource>();
         //if max enemy have not been set 
         //then set 200 as default
         if(maxEnemy == 0){maxEnemy = 200;}
@@ -105,7 +109,10 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnDelay);
             
         }
-        
+        //play fire works particle
+        fireWorks.Play();
+        //play finished wave
+        _audioSrc.PlayOneShot(onFinishedWave,1);
         //increase wavepassed and wave tracker
         _wavePassedEvent++;
     

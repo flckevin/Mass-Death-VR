@@ -65,7 +65,7 @@ public class Extractor : MonoBehaviour,IDamageable
     private void OnDamage()
     {
         //decrease machine health
-        health -= 0.1f;
+        health -= 0.5f;
         //setting slider value
         GameManagerClass.instanceT.extractorHealth_UI.value = health/deafultHealth;
 

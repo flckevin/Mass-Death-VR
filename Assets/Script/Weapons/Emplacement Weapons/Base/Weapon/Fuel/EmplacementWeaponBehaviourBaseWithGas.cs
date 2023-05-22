@@ -17,18 +17,20 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
     public float amountUpgraded;//amount need to reach before upgrade to next level
     public GameObject[] weaponStages;// all level stages
     public bool machineTurnedOff; //identify state of machine
-
+    public float delay; //delay value
     [HideInInspector]public float fuelLeftEW;//store fuel left
 
     private IEnumerator _cou;//store current couroutine
     private float timePassedMark;//store root time
     protected int _currentStage;//curent stage emplacement weapon at
-    protected float delay; //delay value
+    
 
     // Start is called before the first frame update
    
     private void Start()
     {
+
+        VStart();
         //checking whether delay been set
         //if not set to 1 as default
         if(delay == 0){delay = 1f;}
@@ -40,7 +42,7 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
         _cou = StartEW();
         //fire machine back up
         StartCoroutine(_cou);
-        VStart();
+        
     }
 
     public virtual void VStart(){}

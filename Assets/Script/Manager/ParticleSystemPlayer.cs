@@ -7,13 +7,24 @@ using CorePattern;
  **************************************/
 public class ParticleSystemPlayer : Singleton<ParticleSystemPlayer>
 {
-    public void PlayeParticle(ParticleSystem particle,Transform position)
+    public void PlayeParticle(ParticleSystem _particle,Transform _position)
     {
-        if(particle != null)
+        if(_particle != null)
         {
-            particle.gameObject.SetActive(true);
-            particle.transform.position = position.position;
-            particle.Play();
+            _particle.gameObject.SetActive(true);
+            _particle.transform.position = _position.position;
+            _particle.Play();
         }
     }
+    public void PlayeParticleFromPool(ParticleSystem[] _particle,int _ID,Transform _position)
+    {
+        if(_particle[_ID] != null)
+        {
+            _particle[_ID].gameObject.SetActive(true);
+            _particle[_ID].transform.position = _position.position;
+            _particle[_ID].Play();
+        }
+        _ID++;
+    }
+
 }

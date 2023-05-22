@@ -14,13 +14,13 @@ public class OilBehaviour : MonoBehaviour
     public float timeExits; //declare float for time of existance
 
     
-    private void OnEnable() 
-    {
+     private void OnEnable() 
+     {
           //scale down current object
           LeanTween.scale(this.gameObject,new Vector3(0,0,0),timeExits);
           //start couroutine of dissapearance
           StartCoroutine(Disappear());
-    }
+     }
 
    private void OnTriggerEnter(Collider _obj) 
    {
@@ -28,7 +28,7 @@ public class OilBehaviour : MonoBehaviour
         //check whether object has tag zombie
         if(_obj.gameObject.tag == "Zombie")
         {
-            
+            //Debug.Log("Zombie");
             //decrease nav mesh agent
             _obj.GetComponent<NavMeshAgent>().speed -= slowdownValue;
             

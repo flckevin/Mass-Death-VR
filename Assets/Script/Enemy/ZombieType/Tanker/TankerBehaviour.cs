@@ -55,16 +55,11 @@ public class TankerBehaviour : EnemyBase
 
         PoolManager poolM = PoolManager.instanceT;
 
-        if(poolM.groundSlamParticle[poolM.groundSlamParticleID] == null || poolM.groundSlamParticleID >= poolM.groundSlamParticle.Length - 1)
-        {
-            poolM.groundSlamParticleID = 0;
-        }
+        poolM.groundSlamParticle[poolM.GroundSlamParticleID].gameObject.transform.position = targetChanger.transform.position;
+        poolM.groundSlamParticle[poolM.GroundSlamParticleID].gameObject.SetActive(true);
+        poolM.groundSlamParticle[poolM.GroundSlamParticleID].Play();
 
-        poolM.groundSlamParticle[poolM.groundSlamParticleID].gameObject.transform.position = targetChanger.transform.position;
-        poolM.groundSlamParticle[poolM.groundSlamParticleID].gameObject.SetActive(true);
-        poolM.groundSlamParticle[poolM.groundSlamParticleID].Play();
-
-        poolM.groundSlamParticleID++;
+        poolM.GroundSlamParticleID++;
 
         #endregion
     }

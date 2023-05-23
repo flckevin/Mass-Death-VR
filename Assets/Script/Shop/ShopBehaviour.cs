@@ -196,7 +196,7 @@ public class ShopBehaviour : MonoBehaviour
         //decrease amount of money
         GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount -= price;
         //display text
-        moneyDisplayText.text = GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount.ToString();
+        moneyDisplayText.text = "BALANCE: " + GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount.ToString();
     }
 
     public void OnExit()

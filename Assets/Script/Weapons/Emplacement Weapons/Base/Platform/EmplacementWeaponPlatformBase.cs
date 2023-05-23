@@ -14,7 +14,8 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
     public string tagToPlace;
     public GameObject WeaponToActivate;//declare gameobject to activate emplacement weapons
     public GameObject EWComponents;//declare emplacement components to destroy
-    
+    public GameObject feedback;//feedback
+
     private void OnTriggerEnter(Collider other) 
     {
         //if object has floor tag
@@ -165,5 +166,9 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
 
     //==========================================================================================================
 
-
+    //====================================== UNITY EVENT ==================================================
+    public void OnFeedback(bool turnOnFeedback)
+    {
+        feedback.SetActive(turnOnFeedback);
+    }
 }

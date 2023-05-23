@@ -17,7 +17,8 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
     public float amountUpgraded;//amount need to reach before upgrade to next level
     public GameObject[] weaponStages;// all level stages
     public bool machineTurnedOff; //identify state of machine
-    public float delay; //delay value
+    public float activationLength; //delay value
+    public float deactivationLength; //delay value
     [HideInInspector]public float fuelLeftEW;//store fuel left
 
     private IEnumerator _cou;//store current couroutine
@@ -33,7 +34,7 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
         VStart();
         //checking whether delay been set
         //if not set to 1 as default
-        if(delay == 0){delay = 1f;}
+        if(activationLength == 0){activationLength = 1f;}
         //set fuel
         fuelLeftEW = emplacementStats.defaultFuel;
         //set emplacement weapon to be ew with gas
@@ -46,11 +47,6 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
     }
 
     public virtual void VStart(){}
-
-    private void Update() 
-    {
-        WeaponBehaviourUpdate();
-    }
 
     public void OnEnableSwitch() 
     {
@@ -82,7 +78,9 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
             fuelLeftEW -= emplacementStats.fuelToDecrease;
             //updating slider value
             fuelSlier.value = fuelLeftEW / 100;
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(activationLength);
+            OnDisableWeapon();
+            yield return new WaitForSeconds(deactivationLength);
         }
         //identify state of machine
         machineTurnedOff = true;
@@ -97,7 +95,7 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
         
     }
 
-    public virtual void WeaponBehaviourUpdate(){}
+    public virtual void OnDisableWeapon(){}
 
     private void UpdateGas()
     {

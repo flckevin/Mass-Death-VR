@@ -52,9 +52,25 @@ public class PoolManager : Singleton<PoolManager>
             }
         }
     }
+    
+    public ParticleSystem[] explosion;
+    private int _eplosionID;
+    public int ExplosionID
+    {
+        get{return _eplosionID;}
 
-    public GameObject oil;
-
+        set
+        {
+            if(_eplosionID >= explosion.Length - 1)
+            {
+                _eplosionID = 0;
+            }
+            else
+            {
+                _eplosionID = value;
+            }
+        }
+    }
 
     [Space(10)]
     [Header("BULLET")]

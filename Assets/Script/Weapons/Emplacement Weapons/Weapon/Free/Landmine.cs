@@ -7,8 +7,9 @@ using UnityEngine;
  * Content: Landmine behaviour
  **************************************/
  [RequireComponent(typeof(Rigidbody))]
-public class Landmine : NonFuelEmplacementWeaponsBase
+public class Landmine : MonoBehaviour
 {
+    private bool _ableToUse;
     private bool _grounded; // declare bool to check whether the landmine is grounded
     private void OnCollisionEnter(Collision obj) 
     {
@@ -18,10 +19,18 @@ public class Landmine : NonFuelEmplacementWeaponsBase
             //set grounded to true
             _grounded = true;
         }
-
+       
         //if object has tag damageable
         if(obj.gameObject.CompareTag("Zombie") && _ableToUse == true)
         {
+             //set explosion position
+            PoolManager.instanceT.explosion[PoolManager.instanceT.ExplosionID].transform.position = this.transform.position;
+            //activate explosion explosion
+            PoolManager.instanceT.explosion[PoolManager.instanceT.ExplosionID].gameObject.SetActive(true);
+            //play explosion
+            PoolManager.instanceT.explosion[PoolManager.instanceT.ExplosionID].Play();
+            //increase explosion ID
+            PoolManager.instanceT.ExplosionID++;
             //create a new overlap collider
             Collider[] damageableCollide = Physics.OverlapSphere(this.transform.position,4f);
             //loop every object in the array of collider
@@ -51,7 +60,7 @@ public class Landmine : NonFuelEmplacementWeaponsBase
     }
 
     //activate function
-    public override void OnInitiate(bool _activation)
+    public void OnInitiate()
     {
         //if landmine lying on ground
         if(_grounded == true)
@@ -64,6 +73,6 @@ public class Landmine : NonFuelEmplacementWeaponsBase
             this.gameObject.GetComponent<BNG.Grabbable>().enabled = false;
             
         }
-        base.OnInitiate(_activation);
+        
     }
 }

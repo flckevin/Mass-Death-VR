@@ -246,7 +246,8 @@ MonoBehaviour:
   - {fileID: 2920613321958817794}
   - {fileID: 3897429951962320640}
   machineTurnedOff: 0
-  delay: 8
+  activationLength: 0
+  deactivationLength: 10
   fuelLeftEW: 0
   oilParticle: {fileID: 0}
   oilBullet: {fileID: 3897429952122464129}

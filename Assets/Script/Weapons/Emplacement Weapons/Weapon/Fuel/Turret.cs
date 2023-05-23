@@ -35,9 +35,9 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
         base.VStart();
     }
 
-    public override void WeaponBehaviourUpdate()
+    private void Update() 
     {
-        //checking whether ray cast hit anything
+         //checking whether ray cast hit anything
         if (Physics.Raycast(barrel.transform.position, barrel.transform.forward, out RaycastHit ray, Mathf.Infinity))
         {
            
@@ -73,8 +73,7 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
                 
             
             }
-        }
-        base.WeaponBehaviourUpdate();
+        }    
     }
 
     public override void WeaponBehaviour()

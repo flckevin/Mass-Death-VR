@@ -11,6 +11,8 @@ public class EnergyDrink : MonoBehaviour
     public float speedToIncrease; // speed to increase
     public float _drinkLeft; // amount of drink left
     public float delay; // delay amount between speed decrease
+    public GameObject cap;
+
     private bool _mouthTouched; // identify whether mouth touched
     private bool _opened; // identify whether player opened the drink
     private bool _startedCou; // identify whether couroutine started
@@ -47,8 +49,11 @@ public class EnergyDrink : MonoBehaviour
     //function to open bottle
     public void Open(bool _enable)
     {
+        if(_opened == true) return;
         //set open boolian
         _opened = _enable;
+        //deactivate cap
+        cap.SetActive(false);
     }
 
     //function to check liquid left

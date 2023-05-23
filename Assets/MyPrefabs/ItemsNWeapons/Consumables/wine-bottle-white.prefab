@@ -61,7 +61,7 @@ MonoBehaviour:
   _ableToUse: 1
   amountInDrinkLeft: 500
   cap: {fileID: 1400213669577625813}
-  shakeSpeed: 0
+  healthRegenerate: 2
 --- !u!1 &1400213669577625813
 GameObject:
   m_ObjectHideFlags: 0

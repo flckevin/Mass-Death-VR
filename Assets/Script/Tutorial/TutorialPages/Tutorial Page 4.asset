@@ -17,15 +17,14 @@ MonoBehaviour:
   - The longer you stay on the battlefield, the more amount of zombie you will get,
     to help you with that problem, the military  have invented emplacement weapon
     system which can help you reduce some amount of zombie on the battlefield
-  - 'There are 3 types of emplacement weapons, which are: red, yellow and green'
-  - Red, Yellow, you will need to place them on their own marked position or else
-    you won't be able to activate them but for green you can activate them any where
-    on the map
-  - Once you place the emplacement weapon platform on ground, you can activate them
-    by pressing button on it
+  - 'There are two types of emplacement weapons, which are: red and green'
   - 'FOR RED EMPLACEMENT WEAPONS: you will need to fill up gas if the weapon fuel
     runs out or else it will shutdown itself, you can check the red emplacement weapon
     fuel on the tablet that been attached on itself '
+  - 'FOR GREEN EMPLACEMENT WEAPONS: you can place anywhere on the level and you won''t
+    need to fill up it fuel'
+  - Once you place the emplacement weapon platform on ground, you can activate them
+    by pressing button on it
   - If the emplacement weapon are too weak for you, you can fire up the upgrade by
     pressing trigger button on the controller, then put the flame into the emplacement
     weapon that you wish to upgrade, once the upgrade finished, the weapon will be
@@ -45,9 +44,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
   tutorialClip:
   - {fileID: 8300000, guid: 4ce2146e22731c5458a10b43ec6c6853, type: 3}
-  - {fileID: 8300000, guid: 8aaa32388815ad841b5f9c4ca29b1ee7, type: 3}
-  - {fileID: 8300000, guid: 65a31d3e55f4881419019fa5890222d2, type: 3}
+  - {fileID: 8300000, guid: 1f281dc8a9cf56146a0f225de533f073, type: 3}
+  - {fileID: 8300000, guid: 9a5055d72a0b1134ba1ffd26284536d8, type: 3}
+  - {fileID: 8300000, guid: fc36b9b2bd0914146b7a551c4ab65660, type: 3}
   - {fileID: 8300000, guid: ea14c15bfaacccc4b95cc4d613e82d56, type: 3}
-  - {fileID: 8300000, guid: a3e1d393f76eb404caa182dbaf829dec, type: 3}
-  - {fileID: 8300000, guid: bc63c50822b133a43a7e52d5622c7841, type: 3}
+  - {fileID: 8300000, guid: 4455020753596024ea2940cbeba21924, type: 3}
   - {fileID: 8300000, guid: 991b2e68daec09b4a9d3535d8a4b963c, type: 3}

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6e563246873764597eb311a1b07849, type: 3}
   m_Name: Syringe
   m_EditorClassIdentifier: 
-  objToSpawn: {fileID: 4234480658423768951, guid: d0001374fad09a549ac0dbec6ab26a14,
+  objToSpawn: {fileID: 6814096728374305959, guid: 559bdd94f831b734a9c9656d8f35958f,
     type: 3}
   price: 300
-  descriptions: just mixed drugs to make you feel better about yourself, it can heal
-    your health though
+  descriptions: 'Some weird mixed drug that can heal yourself like wolverine | INSTRUCTION:
+    You need to stab yourself with the needle, after that, press trigger to inject
+    weird mixed drugs to heal your sefl'

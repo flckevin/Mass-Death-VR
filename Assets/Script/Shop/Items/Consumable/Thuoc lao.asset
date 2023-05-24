@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6e563246873764597eb311a1b07849, type: 3}
+  m_Name: Thuoc lao
+  m_EditorClassIdentifier: 
+  objToSpawn: {fileID: 555641508881101930, guid: 69fa33cda3b23fe4f8eeaa44e16d8f5e,
+    type: 3}
+  price: 1800
+  descriptions: 'Vietnamese authentic smoking pipe, 1 hit you see heaven | INSTRUCTION
+    : when the player pick up thuoc lao, they need to put it into their mouth first,
+    after that, press trigger to lit it up, then release the trigger to smoke it,
+    thuoc lao shall give you power to slow down time with side effect of huge FOV
+    and vina house music playing in the background'

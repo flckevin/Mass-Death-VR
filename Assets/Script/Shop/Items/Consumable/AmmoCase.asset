@@ -15,4 +15,6 @@ MonoBehaviour:
   objToSpawn: {fileID: 9097673816498894672, guid: 79f6d3fd387cffa4a908f60215744fc7,
     type: 3}
   price: 750
-  descriptions: More mags for your gun
+  descriptions: 'more magazine, more dead zombie | INSTRUCTION: one of your hand
+    need to hold a gun, after that, you need to press trigger on the hand that you
+    holding the ammo box to spawn ammo'

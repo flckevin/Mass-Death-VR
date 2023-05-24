@@ -8,43 +8,55 @@ using UnityEngine;
  **************************************/
 public class TabletEvents : MonoBehaviour
 {
-    [Header("Tablet Section info")]
-    public GameObject minimap_Sec; //declare gameobject for minimap section
-    public GameObject flare_Sec;//declare gameobject for flare section
-    
     [Header("Flare Info")]
-    public GameObject flare_G; // declare gameobject for flare to spawn
-    public GameObject flareTouchScreen; //declare gameobject for flare touch screen
-    public GameObject flareCoolDown; //declare gameobject for flare cool down screen
-    
-    public void MinimapActivate()
-    {
-        //activate minimap section
-        minimap_Sec.SetActive(true);
-        //deactivate flare section
-        flare_Sec.SetActive(false);
-        
-    }
+    public GameObject flareSpawn_G;
+    public GameObject flareWarningScreen;
+    public float flareDelay;
+    public Transform falreSpawnPos;
+    private float _defaultFlareDelay;
+    private bool _ableToSpawn;
 
-    public void FlareActivate()
+    private void Start() 
     {
-        //deactivate minimap section
-        minimap_Sec.SetActive(false);
-        //activate flare section
-        flare_Sec.SetActive(true);
+        _defaultFlareDelay = flareDelay;
     }
-
+   
     public void SpawnFlare()
     {
         //if object to spawn does exist
-        if(flare_G!=null)
+        if(flareSpawn_G!=null && _ableToSpawn == true)
         {
+            _ableToSpawn = false;
+            flareDelay = _defaultFlareDelay;
             //spawn it
-            Instantiate(flare_G,this.transform.position,Quaternion.identity);
+            Instantiate(flareSpawn_G,falreSpawnPos.localPosition,Quaternion.identity);
+            StartCoroutine(FlareDelay());
         }
-        //deactivate flare touch screen
-        flareTouchScreen.SetActive(false);
-        //activate flare cooldown
-        flareCoolDown.SetActive(true);
+        else // not able to spawn flare
+        {
+            //if not able to spawn flare
+            if(flareWarningScreen == null || flareWarningScreen.activeSelf == true) return;
+            StartCoroutine(FlareWarningScreen());
+        }
+        
+    }
+
+    IEnumerator FlareWarningScreen()
+    {
+        flareWarningScreen.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        flareWarningScreen.SetActive(false);
+    }
+
+    IEnumerator FlareDelay()
+    {
+        while(flareDelay > 0)
+        {
+            flareDelay -= 1 *Time.deltaTime;
+            yield return null;
+        }
+
+        _ableToSpawn = true;
+
     }
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6e563246873764597eb311a1b07849, type: 3}
+  m_Name: carbattery
+  m_EditorClassIdentifier: 
+  objToSpawn: {fileID: 1941826566644523734, guid: 5b5971955628e7143b2e520fce45aebf,
+    type: 3}
+  price: 500
+  descriptions: 'Battery so you can refill those red emplacement weapons | INSTRUCTION:
+    when you hold the car battery, press trigger to spawn battery, after that, you
+    can pickup the battery then throw it to a red EW to refill it gas'

@@ -15,4 +15,7 @@ MonoBehaviour:
   objToSpawn: {fileID: 6153813554993734636, guid: e97ac20cdc9399a4da048233c53eec9d,
     type: 3}
   price: 1700
-  descriptions: you better pray that you going to get some good stuff
+  descriptions: 'you better pray that you going to get some good stuff | INSTRUCTION:
+    when you pick up the flare, you need to press trigger to activate the flare,
+    after it activation, you need to throw it on the floor, after it been threw on
+    the floor, a supply box shall drop from the sky to the flare posiiton'

@@ -21,7 +21,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         _audioSrc = this.gameObject.GetComponent<AudioSource>();
     }
-    public void PlayOneShot(AudioClip _audio, float volume)
+    public void PlayOneShot(AudioClip _audio = null, float volume = 1)
     {
        _audioSrc.PlayOneShot(_audio,volume);
     }

@@ -7,47 +7,37 @@ using UnityEngine;
  * Object hold: consumable items drinks
  * Content: alcolhol behaviour
  **************************************/
+ [RequireComponent(typeof(AudioSource))]
 public class Alcolhol : ConsumableItem
 {
     [Range(0,50)]public float amountInDrinkLeft; // amount of drinks left
     public GameObject cap; // acohol cap
+    public MeshRenderer drinkMesh; // mesh of drink
+    public BoxCollider drinkCol; // collider of drink
+    public AudioClip drinkClip;
+    public AudioClip vommitClip;
+
     private bool drunkCouActivated; // identify whether coroutine activated
+    private AudioSource _audioSrc; // audio source to play drinking and vomit
     [Range(0,2)]public float healthRegenerate; // health that able to regenerate
     protected override void Start()
     {
-        
+        _audioSrc = this.gameObject.GetComponent<AudioSource>();
         base.Start();
+
     }
     public override void OnEnable()
     {
-        // if there still drink left
-        if(amountInDrinkLeft > 0)
-        {
-            //able to drink
-            _ableToUse = true;
-            //deactivate cap as opened
-            if(cap == null)return;
-            cap.SetActive(false);
-        }
-
+        //able to drink
+        _ableToUse = true;
+        //deactivate cap as opened
+        if(cap == null)return;
+        cap.SetActive(false);
         base.OnEnable();
     }
 
-    public override void OnDisableItem()
-    {
-        //not able to drink
-        _ableToUse = false;
-        //deactivate cap
-        if(cap == null)return;
-        cap.SetActive(true);
-        base.OnDisableItem();
-    }
-
-    
-
     private void OnTriggerEnter(Collider other) 
     {
-    
         Debug.Log("NAME: " + other.gameObject.name +" TAG: " + other.gameObject.tag);
         //if it touch player mouth
         if(other.gameObject.tag == "MainCamera" && _ableToUse == true)
@@ -58,12 +48,7 @@ public class Alcolhol : ConsumableItem
             if(drunkCouActivated == true) return;
             StartCoroutine(SideEffect());
         }
-        //if there is not drink left
-        if(amountInDrinkLeft <= 0)
-        {
-            //destroy object on next touch
-            Destroy(this.gameObject);
-        }
+        CheckLiquid();
     }
 
     private void OnTriggerStay(Collider other) 
@@ -73,7 +58,33 @@ public class Alcolhol : ConsumableItem
         {
             //drink
             OnUseItem();
+            //play drinking audio
+            if(_audioSrc != null && !_audioSrc.isPlaying){_audioSrc.PlayOneShot(drinkClip,1);}
             Debug.Log(amountInDrinkLeft);
+        }
+    }
+
+    private void OnTriggerExit(Collider other) 
+    {
+        CheckLiquid();
+    }
+
+    void CheckLiquid()
+    {
+        //if there is still drink left then stop execute down here
+        if(amountInDrinkLeft > 0) return;
+        //if there aren't any drinks left
+        if(drunkCouActivated == false)
+        {
+            Destroy(this.gameObject);
+        }
+        //if there arent' any drink left but the couroutine still being active (side effect)
+        else if(drunkCouActivated == true)
+        {
+            //deactivate collision
+            drinkCol.enabled = false;
+            //deactivate mesh
+            drinkMesh.enabled = false;
         }
     }
 
@@ -88,8 +99,6 @@ public class Alcolhol : ConsumableItem
         GameManagerClass.instanceT.playerBehaviour_G.health += healthRegenerate*Time.deltaTime;
         //start drunk behaviour
         if(drunkCouActivated == true) return;
-        //increase health
-        StartCoroutine(SideEffect());
         base.OnUseItem();
     }
 
@@ -114,6 +123,8 @@ public class Alcolhol : ConsumableItem
             PoolManager.instanceT.vomit[PoolManager.instanceT.VomitID].gameObject.SetActive(true);
             //play vomit
             PoolManager.instanceT.vomit[PoolManager.instanceT.VomitID].Play();
+            //play vommit audio
+            if(_audioSrc != null){_audioSrc.PlayOneShot(vommitClip,1);}
             //wait until vomit effect finished
             yield return new WaitForSeconds(PoolManager.instanceT.vomit[PoolManager.instanceT.VomitID].main.duration + 0.5f);
             //increase vomit ID
@@ -127,6 +138,7 @@ public class Alcolhol : ConsumableItem
         }
         //deactivate so it can call it again
         drunkCouActivated = false;
+        CheckLiquid();
        //set cam back to default
     }
 

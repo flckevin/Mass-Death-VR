@@ -37,16 +37,16 @@ MonoBehaviour:
     use your bag which located below you if you look down, you can grab it, then
     interact with it by pressing trigger to get another card
   images:
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: 9dbd7408dc8ef6b4e86b2ea5a841f0f7, type: 3}
+  - {fileID: 21300000, guid: 1d84c4a8017673841b0bcdd5a63e4996, type: 3}
+  - {fileID: 21300000, guid: 0cc92759a2ba1024fbd1ceebbb385ba9, type: 3}
+  - {fileID: 21300000, guid: 4ae8caa1001b5374ab36ac885bc46549, type: 3}
+  - {fileID: 21300000, guid: 9463e767a8ab8494e9b19758721795b5, type: 3}
+  - {fileID: 21300000, guid: 7385946332cf62c4b8e6f8c27eee10fa, type: 3}
+  - {fileID: 21300000, guid: a262e8976297d124195c4920e238f794, type: 3}
+  - {fileID: 21300000, guid: 6252546dbb35bb04f8fbcb5cd3d006d3, type: 3}
+  - {fileID: 21300000, guid: 85ff20c2bc8132a458285521bc3ccfff, type: 3}
+  - {fileID: 21300000, guid: 1c3e5fa50582b6e4d800a9931cd7df82, type: 3}
   tutorialClip:
   - {fileID: 8300000, guid: 8a8674c2071d62e42a62ed7d5f7b061c, type: 3}
   - {fileID: 8300000, guid: 3f69f0b2e085991419477b3d7bd19128, type: 3}

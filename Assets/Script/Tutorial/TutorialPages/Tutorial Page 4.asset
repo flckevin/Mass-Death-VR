@@ -18,9 +18,10 @@ MonoBehaviour:
     to help you with that problem, the military  have invented emplacement weapon
     system which can help you reduce some amount of zombie on the battlefield
   - 'There are two types of emplacement weapons, which are: red and green'
-  - 'FOR RED EMPLACEMENT WEAPONS: you will need to fill up gas if the weapon fuel
-    runs out or else it will shutdown itself, you can check the red emplacement weapon
-    fuel on the tablet that been attached on itself '
+  - 'FOR RED EMPLACEMENT WEAPONS: you will need to give more battery for the weapon
+    to prevent it from shutting down, if the weapon fuel runs out, it will shutdown
+    itself, you can check the red emplacement weapon fuel on the tablet that been
+    attached on itself '
   - 'FOR GREEN EMPLACEMENT WEAPONS: you can place anywhere on the level and you won''t
     need to fill up it fuel'
   - Once you place the emplacement weapon platform on ground, you can activate them
@@ -35,17 +36,17 @@ MonoBehaviour:
     once that done, you can put the fire near to the weapon that you wish to destroy,
     once the progress finished, the emplacement weapon that you chosen shall be destroy
   images:
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: d5d7fb1634a759a4a8f57b3192a974a6, type: 3}
+  - {fileID: 21300000, guid: c4f69bb8bc35548429e425d2f949d51b, type: 3}
+  - {fileID: 21300000, guid: 39708cab8c75df1499064d1f34ff7594, type: 3}
+  - {fileID: 21300000, guid: d5a2c20a2ca73054c9d16ee9ece21610, type: 3}
+  - {fileID: 21300000, guid: aecf79e06019a2e4e99dafac8f79bf5d, type: 3}
+  - {fileID: 21300000, guid: 86f072c6a3ea426448706710b943c908, type: 3}
+  - {fileID: 21300000, guid: 8f57666152cd67f469ea17b3fc84dc9b, type: 3}
   tutorialClip:
   - {fileID: 8300000, guid: 4ce2146e22731c5458a10b43ec6c6853, type: 3}
   - {fileID: 8300000, guid: 1f281dc8a9cf56146a0f225de533f073, type: 3}
-  - {fileID: 8300000, guid: 9a5055d72a0b1134ba1ffd26284536d8, type: 3}
+  - {fileID: 8300000, guid: 35e8f6168b56c034a9daf63c51d26c74, type: 3}
   - {fileID: 8300000, guid: fc36b9b2bd0914146b7a551c4ab65660, type: 3}
   - {fileID: 8300000, guid: ea14c15bfaacccc4b95cc4d613e82d56, type: 3}
   - {fileID: 8300000, guid: 4455020753596024ea2940cbeba21924, type: 3}

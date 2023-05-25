@@ -15,19 +15,21 @@ MonoBehaviour:
   tutorialSectionName: TABLET
   text:
   - Operation tablet can be use to look at the amount of generator left, extractor
-    health, the amount of time left to extract zombie fluid, mini map and spawning
-    flare
-  - If you don't know the exact amount of zombie on the level, you can change to
-    mini map section by touching the tablet then you can see the amount of zombie
-    on the map and position on each of them
-  - If you running out of resources, you can change to flare tab by touching the
-    tablet, the flare shall be spawn on the back of the tablet, after that, there
-    will be cool down for this section
+    health, the amount of time left to extract zombie fluid, you can also check where
+    you at and where the zombie at by looking at the minimap, other than that, you
+    can use the operation tablet to spawn a flare to help you get more resources
+    during the battle
+  - 'If you don''t know the exact amount of zombie on the level, you can check it
+    by looking on the minimap '
+  - If you running out of resources, you can press the flare button which locate
+    on the right of the tablet to spawn a flare, however there will be a delay before
+    you can spawn another one, if you don't like waiting for it, you can also buy
+    a flare from the shop at the consumable section
   images:
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
-  - {fileID: 21300000, guid: d0b969af59cbcc444afa6201816cffc8, type: 3}
+  - {fileID: 21300000, guid: fa89294d1be56ce49813c9db8fb2201e, type: 3}
+  - {fileID: 21300000, guid: 303c710ea47447949bde2d3beb9754bd, type: 3}
+  - {fileID: 21300000, guid: 2270ad7e90446a24fbf64d1e16537137, type: 3}
   tutorialClip:
-  - {fileID: 8300000, guid: 1a1e2a47ae6506d4da4527a5737dbffd, type: 3}
-  - {fileID: 8300000, guid: 3b18b15105ceb6647bb2b55f46112d00, type: 3}
-  - {fileID: 8300000, guid: 2952efe1cfd9215459148444375be8eb, type: 3}
+  - {fileID: 8300000, guid: ad136fec03d893c428d8b521267bc8a7, type: 3}
+  - {fileID: 8300000, guid: d98eb7112bd46084c89bfb4ffc928f32, type: 3}
+  - {fileID: 8300000, guid: 6dafb650de4251a4aa9423f6ff16bd1c, type: 3}

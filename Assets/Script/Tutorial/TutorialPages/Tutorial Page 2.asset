@@ -31,10 +31,12 @@ MonoBehaviour:
     gun magazine, then you need to find new magazine for the gun then repeat the
     process"
   images:
-  - {fileID: 21300000, guid: 923e68880a1a10c4286d3cd8ffe5f071, type: 3}
-  - {fileID: 21300000, guid: 19114ad0bea47a8488c99a9ce35bc1e4, type: 3}
-  - {fileID: 21300000, guid: d2102bce3c853da4c9912ae0c67b7e5a, type: 3}
-  - {fileID: 21300000, guid: d2102bce3c853da4c9912ae0c67b7e5a, type: 3}
+  - {fileID: 21300000, guid: 5666aeba7ba69a343b9ea1befbb105fb, type: 3}
+  - {fileID: 21300000, guid: 25610af0bcea95146a7a0298d8a416b1, type: 3}
+  - {fileID: 21300000, guid: 8fe0444c4dd4c4c4792d2a297ca5ed2f, type: 3}
+  - {fileID: 21300000, guid: 6b5c06ee81c367a4ba95ec539e50348f, type: 3}
+  - {fileID: 21300000, guid: bc9faf46c4c05034194b3f3110776b90, type: 3}
+  - {fileID: 21300000, guid: 71c34de4836cf4348985a7f9fa607586, type: 3}
   tutorialClip:
   - {fileID: 8300000, guid: e9edb6a189e65f646bfe012fc99a6e81, type: 3}
   - {fileID: 8300000, guid: c81df1f0b3881b94898a908093155477, type: 3}

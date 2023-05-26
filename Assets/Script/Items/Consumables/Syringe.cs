@@ -6,14 +6,19 @@ using UnityEngine;
  * Object hold: syringe
  * Content: syringe behaviour
  **************************************/
+[RequireComponent(typeof(AudioSource))]
 public class Syringe : ConsumableItem
 {
     [Header("Syringe_Info")]
     public float healthAddAmount;//declare float for amount to add to player health
-
+    public AudioClip stabbed;
+    public AudioClip injeceted;
+    private AudioSource _src;
+    
     private void Start()
     {
         _ableToUse = false;
+        _src = this.gameObject.GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision player)
@@ -31,6 +36,7 @@ public class Syringe : ConsumableItem
         }
         else if (player.gameObject.CompareTag("Player")) 
         {
+            _src.PlayOneShot(stabbed,1);
             //set able to use to true
             _ableToUse = true;
         }
@@ -55,6 +61,7 @@ public class Syringe : ConsumableItem
         //if player able to use item
         if (_ableToUse == true && _used == false)
         {
+            _src.PlayOneShot(injeceted,1);
             //add health to the player
             GameManagerClass.instanceT.playerBehaviour_G.OnReciveHealth(healthAddAmount);
             //set used to true

@@ -6,7 +6,7 @@ using UnityEngine;
  * Object hold: enemy spawner
  * Content: spawn enemy
  **************************************/
-
+[RequireComponent(typeof(AudioSource))]
 public class EnemySpawner : MonoBehaviour
 {
 
@@ -14,9 +14,8 @@ public class EnemySpawner : MonoBehaviour
     public EnemySpawnPatternScriptable[] enemeyPatternHolder; // pattern
     [Range(0,8)]public float spawnDelay; // spawn delay
     public int maxEnemy;//declare float for max enemy
-    public AudioClip onFinishedWave;
-    public ParticleSystem fireWorks;
-    
+    public AudioClip spawnSoundEffect; // declare audio clip for spawning sound effect
+
     //ENEMY INFO
     private int _currentPatternHolder;//store current pattern holder
     private int CurrentPatternHolder
@@ -70,11 +69,11 @@ public class EnemySpawner : MonoBehaviour
         //if spawn delay is less or equal to 1 then set 1 as maximum
         if(spawnDelay <= 1){spawnDelay = 1;}
         
-        Debug.Log("NEW WAVE: " + _waveTracker);
+        //Debug.Log("NEW WAVE: " + _waveTracker);
         //starting spawner
         _spawnerCou = StartCoroutine(SpawnerIE());
 
-        Debug.Log("SPAWNED ENEMY: " + _amountOfSpawnedEnemy + " ENEMYID: " + _enemyID);
+        //Debug.Log("SPAWNED ENEMY: " + _amountOfSpawnedEnemy + " ENEMYID: " + _enemyID);
     }
 
 
@@ -99,20 +98,23 @@ public class EnemySpawner : MonoBehaviour
             _enemy.gameObject.SetActive(true);
             //call revive function
             _enemy.OnRevive();
+            //play sapwn effect
+            PoolManager.instanceT.spawnEffect[PoolManager.instanceT.SpawnEffectID].transform.position = _enemy.transform.position;
+            PoolManager.instanceT.spawnEffect[PoolManager.instanceT.SpawnEffectID].gameObject.SetActive(true);
+            PoolManager.instanceT.spawnEffect[PoolManager.instanceT.SpawnEffectID].Play();
+            PoolManager.instanceT.SpawnEffectID++;
             //increase enemy ID
             _enemyID++;
             //increase amount of enemy spawned
             _amountOfSpawnedEnemy++;
-            
+            //play spawn sound effect
+            _audioSrc.PlayOneShot(spawnSoundEffect,1);
 
-            Debug.Log("Enemy id: " + _enemyID + " spawned: " + _amountOfSpawnedEnemy + " waveAmount: " + _waveEnemyAmount);
+            //Debug.Log("Enemy id: " + _enemyID + " spawned: " + _amountOfSpawnedEnemy + " waveAmount: " + _waveEnemyAmount);
             yield return new WaitForSeconds(spawnDelay);
             
         }
-        //play fire works particle
-        fireWorks.Play();
-        //play finished wave
-        _audioSrc.PlayOneShot(onFinishedWave,1);
+
         //increase wavepassed and wave tracker
         _wavePassedEvent++;
     

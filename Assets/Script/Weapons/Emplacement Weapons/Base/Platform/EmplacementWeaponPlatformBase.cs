@@ -7,6 +7,7 @@ using BNG;
  * Object hold: every gas emplacement weapons
  * Content: emplacement weapon platform behaviour
  **************************************/
+ [RequireComponent(typeof(AudioSource))]
 public class EmplacementWeaponPlatformBase : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -15,6 +16,13 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
     public GameObject WeaponToActivate;//declare gameobject to activate emplacement weapons
     public GameObject EWComponents;//declare emplacement components to destroy
     public GameObject feedback;//feedback
+    public AudioClip groundSlamClip;
+    private AudioSource _src;
+
+    private void Awake() 
+    {
+        _src = this.gameObject.GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other) 
     {
@@ -105,6 +113,9 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         ParticleSystemPlayer.instanceT.PlayeParticleFromPool(PoolManager.instanceT.groundSlamParticle,PoolManager.instanceT.GroundSlamParticleID,this.transform);
+        _src.PlayOneShot(groundSlamClip,1);
+        yield return new WaitForSeconds(groundSlamClip.length + 0.3f);
+        Destroy(_src);
         //disable emplacement platform behaviour class
         this.enabled = false;
     }

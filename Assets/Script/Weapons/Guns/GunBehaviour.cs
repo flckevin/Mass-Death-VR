@@ -13,9 +13,9 @@ public class GunBehaviour : MonoBehaviour
     //public float damageDealt;//declare float for damage of the gun
     //public int gunMagAmmoBoxStorageID;//declare gun mag for gun ammo box storage ID for correct mag to spawn
     //public float bulletForce;
-    public Transform raycastMuzzle;
+
     public LayerMask rayMask;
-    public float damage;
+    private BNG.RaycastWeapon rayWeapon;
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -25,24 +25,26 @@ public class GunBehaviour : MonoBehaviour
             //set tag to be gun
             this.gameObject.tag = "Gun";
         }
+        rayWeapon = this.gameObject.GetComponent<BNG.RaycastWeapon>();
     }
 
   
     //function when gun shoot
     public void OnShoot()
     {
+        
         RaycastHit rayHit;
 
-        if(Physics.Raycast(raycastMuzzle.transform.position,raycastMuzzle.forward,out rayHit,Mathf.Infinity,rayMask))
+        if(Physics.Raycast(rayWeapon.MuzzlePointTransform.position,rayWeapon.MuzzlePointTransform.forward,out rayHit,Mathf.Infinity,rayMask))
         {
             Debug.Log(rayHit.transform.name);
             if(rayHit.transform.tag == "Zombie")
             {
-                this.transform.GetComponent<IDamageable>().Damage(damage,false);
+                rayHit.transform.GetComponent<EnemyBase>().DamageReceiver(rayWeapon.Damage,rayHit.point,false);
             }
         }
         
     }
-   
+
    
 }

@@ -17,80 +17,111 @@ public class ThuocLaoAuthenticVietNam : MonoBehaviour
     public float _thuocLaoLeft;
 
     private AudioSource _audiosourceBacSiHai;
-    private float _camFoV;
-    private float CamFov
+    private bool activated;
+    private bool _thuocLaoCouIsPlaying;
+    private bool _smoking = false;
+    private float _sideEffectLength;
+    private float SideEffectLength
     {
-        get{return _camFoV;}
+        get{return _sideEffectLength;}
         set
         {
-            if(_camFoV >= 150)
+            if(_sideEffectLength >= 300 )
             {
-                _camFoV = 150;
+                _sideEffectLength = 300;
             }
-            else if(_camFoV <= 90)
+            else if(_sideEffectLength <= 0)
             {
-                _camFoV = 90;
+                _sideEffectLength = 0;
             }
             else
             {
-                _camFoV = value;
+                _sideEffectLength = value;
             }
         }
     }
-    private bool _mouthTouched;
-    private bool _thuocLaoCouIsPlaying;
-    private float sideEffectLength;
-
 
     private void Start() 
     {
         _audiosourceBacSiHai = this.gameObject.GetComponent<AudioSource>();
-        _mouthTouched = false;
+        activated = false;
         _thuocLaoCouIsPlaying = false;
+        Debug.Log("CALLED");
+        //NhaKhoi();
+        
     }
 
     // Start is called before the first frame update
 
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.gameObject.tag == "MainCamera")
+        Debug.Log(other.name);
+        if(activated == true && other.gameObject.tag == "MainCamera")
         {
-            _mouthTouched = true;
-        }
+            _smoking = true;
+            OnSmoke();
+        }  
+    }
+
+    private void OnTriggerStay(Collider other) 
+    {
+        if(activated == true && other.gameObject.tag == "MainCamera")
+        {
+            OnSmoke();
+            _smoking = true;
+        }    
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        if(other.gameObject.tag == "MainCamera")
+        if(other.gameObject.tag == "MainCamera" && _smoking == true)
         {
-            if(_mouthTouched == true)
-            {
-                NhaKhoi();
-            }
-            _mouthTouched = false;
+            
+            NhaKhoi();
+            activated = false;
+            _smoking = false;
         }
     }
 
     public void OnSmoke()
     {
-        if(_mouthTouched == true && _thuocLaoLeft >= 0)
+        if(_thuocLaoLeft >= 0)
         {
-            AudioManager.instanceT.PlayOneShot(ritThuocLaoClip);
-            if(!smoke.isPlaying){smoke.Play();}
-            CamFov+=1*Time.deltaTime;
-            GameManagerClass.instanceT.playerCam.fieldOfView = CamFov;
+            if(!AudioManager.instanceT.audioSrc.isPlaying)
+            {
+                AudioManager.instanceT.PlayOneShot(ritThuocLaoClip,1);
+            }
+            SideEffectLength+=10*Time.deltaTime;
             _thuocLaoLeft -= 1 *Time.deltaTime;
         }
     }
 
+    public void Onactivate()
+    {
+        activated = true;
+        if(!smoke.isPlaying)
+        {
+            smoke.gameObject.SetActive(true);
+            smoke.Play();
+        }
+        Debug.Log("ACTIVATED");
+    }
+
     public void NhaKhoi()
     {
-        AudioManager.instanceT.PlayOneShot(nhaKhoiClip);
-        if(smoke.isPlaying){smoke.Stop();}
-        if(!_audiosourceBacSiHai.isPlaying){_audiosourceBacSiHai.Play();}
+        //AudioManager.instanceT.PlayOneShot(nhaKhoiClip,1);
+        if(smoke.isPlaying)
+        {
+            smoke.Stop();
+            smoke.gameObject.SetActive(false);
+        }
+        
+       _audiosourceBacSiHai.Play();
+        Debug.Log("BAC SI HAI");
+        
         Time.timeScale = 0.5f;
+        Debug.Log("NHA KHOI");
         if(_thuocLaoCouIsPlaying == true) return;
-        sideEffectLength++;
         StartCoroutine(ThuocLaoEffectRunningOut());
     }
 
@@ -110,14 +141,11 @@ public class ThuocLaoAuthenticVietNam : MonoBehaviour
 
     IEnumerator ThuocLaoEffectRunningOut()
     {
-        while(sideEffectLength > 0)
+        while(SideEffectLength > 0)
         {
-            CamFov -= 0.1f*Time.deltaTime;
-            sideEffectLength -= 0.5f*Time.deltaTime;
+            SideEffectLength -= 0.1f*Time.deltaTime;
             yield return null;
         }
-
-        CamFov = 90;
         Time.timeScale = 1;
         _audiosourceBacSiHai.Pause();
         CheckThuocLaoLeft();

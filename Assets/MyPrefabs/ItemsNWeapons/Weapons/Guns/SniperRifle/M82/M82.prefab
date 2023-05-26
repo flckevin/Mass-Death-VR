@@ -1423,6 +1423,7 @@ GameObject:
   - component: {fileID: 5521749073333055487}
   - component: {fileID: 7771257007207016281}
   - component: {fileID: 49181464}
+  - component: {fileID: 1825168067356920955}
   m_Layer: 10
   m_Name: M82
   m_TagString: Untagged
@@ -1662,10 +1663,10 @@ MonoBehaviour:
   MaxInternalAmmo: 32
   AutoChamberRounds: 0
   MustChamberRounds: 1
-  AlwaysFireProjectile: 1
+  AlwaysFireProjectile: 0
   FireProjectileInSlowMo: 0
   SlowMoRateOfFire: 0.3
-  ShotForce: 900
+  ShotForce: 250
   BulletCasingForce: 3
   RecoilForce: {x: 0, y: 25, z: 15}
   RecoilDuration: 0.2
@@ -1680,8 +1681,7 @@ MonoBehaviour:
   MuzzleFlashObject: {fileID: 5521749072318376827}
   BulletCasingPrefab: {fileID: 1282233564399203881, guid: e6d6d8266008ffe438ce58f774e874fa,
     type: 3}
-  ProjectilePrefab: {fileID: 3793421555936178261, guid: 81e0107e970117a49babfe3499da08ff,
-    type: 3}
+  ProjectilePrefab: {fileID: 0}
   HitFXPrefab: {fileID: 3454612190511497970, guid: fa39ce2ce96bec94b82f2c8124ce3930,
     type: 3}
   GunShotSound: {fileID: 8300000, guid: 2fb7e2d23ab62034582ff845de9c795b, type: 3}
@@ -1698,7 +1698,19 @@ MonoBehaviour:
   EmptyBulletInChamber: 0
   onShootEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 49181464}
+        m_TargetAssemblyTypeName: GunBehaviour, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAttachedAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1841,13 +1853,101 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c8ed86deaafeb42830349b7d6a1503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastMuzzle: {fileID: 0}
   rayMask:
     serializedVersion: 2
     m_Bits: 0
-  damage: 0
   sniperCam: {fileID: 1175098712}
   scope: {fileID: 1775991168}
+--- !u!114 &1825168067356920955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521749073333055486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad179a9e83dba5142adaaf7737678e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrab:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 49181464}
+        m_TargetAssemblyTypeName: SniperGunBehaviour, Assembly-CSharp
+        m_MethodName: SniperCamEnabler
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onRelease:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 49181464}
+        m_TargetAssemblyTypeName: SniperGunBehaviour, Assembly-CSharp
+        m_MethodName: SniperCamEnabler
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onBecomesClosestGrabbable:
+    m_PersistentCalls:
+      m_Calls: []
+  onNoLongerClosestGrabbable:
+    m_PersistentCalls:
+      m_Calls: []
+  onBecomesClosestRemoteGrabbable:
+    m_PersistentCalls:
+      m_Calls: []
+  onNoLongerClosestRemoteGrabbable:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrip:
+    m_PersistentCalls:
+      m_Calls: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton1:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton1Down:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton1Up:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton2:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton2Down:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton2Up:
+    m_PersistentCalls:
+      m_Calls: []
+  onSnapZoneEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onSnapZoneExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5521749073364340541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,6 +2914,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3638402698759414551}
     m_Modifications:
+    - target: {fileID: 189159460777099439, guid: fe1f55dc90618bc4f8a405b5fab804c6,
+        type: 3}
+      propertyPath: field of view
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6856198302283309553, guid: fe1f55dc90618bc4f8a405b5fab804c6,
         type: 3}
       propertyPath: m_Name

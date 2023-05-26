@@ -26,7 +26,7 @@ public class Food : ConsumableItem
         if(other.CompareTag("MainCamera"))
         {
             // add player health
-            GameManagerClass.instanceT.playerBehaviour_G.health += amountOfHealthToAdd;
+            GameManagerClass.instanceT.playerBehaviour_G.OnReciveHealth(amountOfHealthToAdd);
             //play audio
             _audioSrc.PlayOneShot(eatClip,1);
             //disable food render

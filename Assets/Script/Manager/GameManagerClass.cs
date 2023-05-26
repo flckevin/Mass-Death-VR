@@ -169,5 +169,8 @@ public class GameManagerClass : Singleton<GameManagerClass>
 
     }
 
-    
+    [Space(10)]
+    [Header("Others")]
+    public GameModeWaveManager modeManager;
+
 }

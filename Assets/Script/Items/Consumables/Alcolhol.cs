@@ -96,7 +96,8 @@ public class Alcolhol : ConsumableItem
         //decrease amount of liquid in acolhol
         amountInDrinkLeft-=1;
         //regenerate player's health
-        GameManagerClass.instanceT.playerBehaviour_G.health += healthRegenerate*Time.deltaTime;
+        float healthReceived = healthRegenerate*Time.deltaTime;
+        GameManagerClass.instanceT.playerBehaviour_G.OnReciveHealth(healthReceived);
         //start drunk behaviour
         if(drunkCouActivated == true) return;
         base.OnUseItem();

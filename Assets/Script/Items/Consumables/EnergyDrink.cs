@@ -16,10 +16,12 @@ public class EnergyDrink : MonoBehaviour
     public MeshRenderer drinkMesh; // drink mesh
     public BoxCollider drinkCol; // drink collision
     public AudioClip _drinkClip;
+    public AudioClip sodaOpenSound;
 
     private bool _opened; // identify whether player opened the drink
     private bool _startedCou; // identify whether couroutine started
     private AudioSource _audioSrc; //audio source
+    
 
     private void Start() 
     {
@@ -31,6 +33,7 @@ public class EnergyDrink : MonoBehaviour
     {
         if(other.CompareTag("MainCamera"))
         {
+           
            if(_opened == false) return;
            if(_audioSrc != null && !_audioSrc.isPlaying) _audioSrc.PlayOneShot(_drinkClip,1);
             OnDrink();
@@ -78,6 +81,7 @@ public class EnergyDrink : MonoBehaviour
         _opened = _enable;
         //deactivate cap
         cap.SetActive(false);
+        _audioSrc.PlayOneShot(sodaOpenSound,1);
     }
 
     //function to check liquid left
@@ -104,8 +108,11 @@ public class EnergyDrink : MonoBehaviour
         //while player speed not = to default speed
         while(GameManagerClass.instanceT.playerVRController.MovementSpeed != GameManagerClass.instanceT.playerBehaviour_G.speed)
         {
-            //decrease speed
             GameManagerClass.instanceT.playerVRController.MovementSpeed -= 1;
+            if(GameManagerClass.instanceT.playerVRController.MovementSpeed < GameManagerClass.instanceT.playerBehaviour_G.speed)
+            {
+                GameManagerClass.instanceT.playerVRController.MovementSpeed = GameManagerClass.instanceT.playerBehaviour_G.speed;
+            }
             yield return new WaitForSeconds(delay);
         }
         //check liquid amount

@@ -16,7 +16,17 @@ public class BagBehaviour : MonoBehaviour
     private int ItemID
     {
         get{return itemID;}
-        set{if(itemID > items.Length){itemID = 0;}}
+        set
+        {
+            if(itemID > items.Length -1 )
+            {
+                itemID = 0;
+            }
+            else
+            {
+                itemID = value;
+            }
+        }
     }
     private Rigidbody _bagRigi;
 
@@ -40,7 +50,7 @@ public class BagBehaviour : MonoBehaviour
 
     public void OnGrab()
     {
-        _bagRigi.isKinematic = false;
+         _bagRigi.isKinematic = false; 
     }
     
 }

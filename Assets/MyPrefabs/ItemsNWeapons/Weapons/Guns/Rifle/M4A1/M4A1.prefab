@@ -1337,6 +1337,7 @@ GameObject:
   - component: {fileID: 6255453531808392219}
   - component: {fileID: 6255453531808392216}
   - component: {fileID: 8194274559691320510}
+  - component: {fileID: 6127332332996358624}
   m_Layer: 10
   m_Name: M4A1
   m_TagString: Untagged
@@ -1576,10 +1577,10 @@ MonoBehaviour:
   MaxInternalAmmo: 32
   AutoChamberRounds: 1
   MustChamberRounds: 1
-  AlwaysFireProjectile: 1
+  AlwaysFireProjectile: 0
   FireProjectileInSlowMo: 1
   SlowMoRateOfFire: 0.3
-  ShotForce: 500
+  ShotForce: 200
   BulletCasingForce: 3
   RecoilForce: {x: 0, y: 0, z: 0}
   RecoilDuration: 0.3
@@ -1594,8 +1595,7 @@ MonoBehaviour:
   MuzzleFlashObject: {fileID: 6255453532822708380}
   BulletCasingPrefab: {fileID: 1282233564399203881, guid: e6d6d8266008ffe438ce58f774e874fa,
     type: 3}
-  ProjectilePrefab: {fileID: 3793421555936178261, guid: 81e0107e970117a49babfe3499da08ff,
-    type: 3}
+  ProjectilePrefab: {fileID: 0}
   HitFXPrefab: {fileID: 3454612190511497970, guid: fa39ce2ce96bec94b82f2c8124ce3930,
     type: 3}
   GunShotSound: {fileID: 8300000, guid: f1dced91758cbae46aa4e11f29fff262, type: 3}
@@ -1612,7 +1612,19 @@ MonoBehaviour:
   EmptyBulletInChamber: 0
   onShootEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6127332332996358624}
+        m_TargetAssemblyTypeName: GunBehaviour, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAttachedAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1743,6 +1755,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019911647, y: 0.123686254, z: 0.13658571}
   m_Center: {x: 0.0003091693, y: -0.007283181, z: -0.28395247}
+--- !u!114 &6127332332996358624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255453531808392217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1aa856916290b458a0e1a4b781f8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!1 &6255453531867783167
 GameObject:
   m_ObjectHideFlags: 0

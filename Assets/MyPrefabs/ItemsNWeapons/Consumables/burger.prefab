@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 4960456049164123200}
   - component: {fileID: 4960456049164123201}
   - component: {fileID: 4960456049164123202}
-  m_Layer: 0
+  - component: {fileID: 6407578036276089526}
+  m_Layer: 10
   m_Name: burger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,9 +124,9 @@ MonoBehaviour:
   GrabPhysics: 4
   GrabMechanic: 1
   GrabSpeed: 15
-  RemoteGrabbable: 0
+  RemoteGrabbable: 1
   RemoteGrabMechanic: 0
-  RemoteGrabDistance: 2
+  RemoteGrabDistance: 2.5
   ThrowForceMultiplier: 2
   ThrowForceMultiplierAngular: 1.5
   BreakDistance: 0
@@ -201,7 +202,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -299,7 +300,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ableToUse: 0
-  eatClip: {fileID: 0}
+  eatClip: {fileID: 8300000, guid: 6c52e0da93428704bbb4e72bdf430f9d, type: 3}
   amountOfHealthToAdd: 5
   foodGrabbable: {fileID: 4960456049164123207}
   foodRend: {fileID: 4936568023862450526}
+--- !u!114 &6407578036276089526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4959738257323129090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5b1b54556836a49948cf0f09394c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RingOnValidPickup: 1
+  RingOnValidRemotePickup: 1
+  RingHelperScale: 0.2

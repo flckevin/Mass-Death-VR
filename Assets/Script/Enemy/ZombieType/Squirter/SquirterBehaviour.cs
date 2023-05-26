@@ -57,10 +57,10 @@ public class SquirterBehaviour : EnemyBase
     }
 
     //on die event
-    public override void OnDie()
+    public override void OnDie(Vector3 bulletPos)
     {
-        base.OnDie();
         StartCoroutine(Explode(2f));
+        base.OnDie(bulletPos);
     }
 
     public override void OnRevive()

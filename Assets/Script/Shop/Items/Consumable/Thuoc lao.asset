@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6e563246873764597eb311a1b07849, type: 3}
   m_Name: Thuoc lao
   m_EditorClassIdentifier: 
-  objToSpawn: {fileID: 555641508881101930, guid: 69fa33cda3b23fe4f8eeaa44e16d8f5e,
+  objToSpawn: {fileID: 4619510431141755461, guid: 69fa33cda3b23fe4f8eeaa44e16d8f5e,
     type: 3}
   price: 1800
   descriptions: 'Vietnamese authentic smoking pipe, 1 hit you see heaven | INSTRUCTION
-    : when the player pick up thuoc lao, they need to put it into their mouth first,
-    after that, press trigger to lit it up, then release the trigger to smoke it,
-    thuoc lao shall give you power to slow down time with side effect of huge FOV
-    and vina house music playing in the background'
+    : When the player picked up the thuoc lao they will need to lit it up by pressing
+    trigger, after that, you will need to put it to their mouth to smoke it, then
+    you need to pull it out of your mouth to smoke it and enjoy the good feling it
+    gives '

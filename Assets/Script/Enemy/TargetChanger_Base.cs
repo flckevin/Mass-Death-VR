@@ -84,7 +84,7 @@ public class TargetChanger_Base : MonoBehaviour
     private void OnTriggerExit(Collider other) 
     {
         //Debug.Log(other.name + "" + other.gameObject.tag);  
-        Debug.Log(other.gameObject.tag);
+        //Debug.Log(other.gameObject.tag);
         if(other.CompareTag("Player"))
         {
             

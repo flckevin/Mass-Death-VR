@@ -2269,6 +2269,7 @@ GameObject:
   - component: {fileID: 3262688257710157531}
   - component: {fileID: 3262688257710157530}
   - component: {fileID: 3262688257654535648}
+  - component: {fileID: -6412070258795231768}
   m_Layer: 10
   m_Name: Mac10
   m_TagString: Untagged
@@ -2516,10 +2517,10 @@ MonoBehaviour:
   MaxInternalAmmo: 10
   AutoChamberRounds: 1
   MustChamberRounds: 1
-  AlwaysFireProjectile: 1
+  AlwaysFireProjectile: 0
   FireProjectileInSlowMo: 1
   SlowMoRateOfFire: 0.3
-  ShotForce: 500
+  ShotForce: 200
   BulletCasingForce: 3
   RecoilForce: {x: 0, y: 0, z: 0}
   RecoilDuration: 0.3
@@ -2534,8 +2535,7 @@ MonoBehaviour:
   MuzzleFlashObject: {fileID: 8357483544761356850}
   BulletCasingPrefab: {fileID: 4293907302815737054, guid: f8313a7c0e07bba40ac0f3634a590caf,
     type: 3}
-  ProjectilePrefab: {fileID: 3793421555936178261, guid: 81e0107e970117a49babfe3499da08ff,
-    type: 3}
+  ProjectilePrefab: {fileID: 0}
   HitFXPrefab: {fileID: 3454612190511497970, guid: fa39ce2ce96bec94b82f2c8124ce3930,
     type: 3}
   GunShotSound: {fileID: 8300000, guid: d2816c9cfa56eb745a43d5197ded702a, type: 3}
@@ -2552,7 +2552,19 @@ MonoBehaviour:
   EmptyBulletInChamber: 0
   onShootEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -6412070258795231768}
+        m_TargetAssemblyTypeName: GunBehaviour, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAttachedAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2768,6 +2780,21 @@ MonoBehaviour:
   onSnapZoneExit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-6412070258795231768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141494143657443341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1aa856916290b458a0e1a4b781f8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!1 &9141494143717551196
 GameObject:
   m_ObjectHideFlags: 0

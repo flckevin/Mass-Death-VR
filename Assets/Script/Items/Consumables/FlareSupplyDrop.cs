@@ -6,15 +6,18 @@ using UnityEngine;
  * Object hold: falre
  * Content: falre behaviour
  **************************************/
+ [RequireComponent(typeof(AudioSource))]
 public class FlareSupplyDrop : ConsumableItem
 {
     public GameObject cap;//declare gameobject to store cap of the flare
     public GameObject supply;//decalre gameobject to spawn supply drop
     public ParticleSystem flareParticle;//declare particle system to play flare particle
     // Start is called before the first frame update
-
+    public AudioClip flareClip;
+    private AudioSource _src;
     private void Start()
     {
+        _src = this.gameObject.GetComponent<AudioSource>();
         //set able to use to false
         //_ableToUse = false;
     }
@@ -39,6 +42,7 @@ public class FlareSupplyDrop : ConsumableItem
     /// </summary>
     public void TurnOnLight()
     {
+        _src.PlayOneShot(flareClip,1);
         //if cap does exist
         if (cap != null)
         {

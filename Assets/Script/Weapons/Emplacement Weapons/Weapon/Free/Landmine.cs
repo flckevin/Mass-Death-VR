@@ -9,8 +9,18 @@ using UnityEngine;
  [RequireComponent(typeof(Rigidbody))]
 public class Landmine : MonoBehaviour
 {
+    public AudioClip explosionClip;
+    public MeshRenderer mesh;
+    public BoxCollider boxCol;
     private bool _ableToUse;
     private bool _grounded; // declare bool to check whether the landmine is grounded
+    private AudioSource _src;
+
+    private void Awake() 
+    {
+        _src = this.gameObject.GetComponent<AudioSource>();
+    }
+
     private void OnCollisionEnter(Collision obj) 
     {
         //checking whether landmine touched on the floor
@@ -43,8 +53,12 @@ public class Landmine : MonoBehaviour
                     damageableCollide[i].GetComponent<IDamageable>().Damage(99999,true);
                 }
             }
+
+            mesh.enabled = false;
+            boxCol.enabled = false;
+            _src.PlayOneShot(explosionClip,1);
             //explode
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,explosionClip.length + 0.5f);
         }
  
     }

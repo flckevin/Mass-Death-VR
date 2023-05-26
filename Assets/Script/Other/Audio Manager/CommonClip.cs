@@ -10,4 +10,8 @@ public enum CommonClip
 {
     onZombieDamage,
     onZombieDie,
+    onEnterBattlefield,
+    onWaveStart,
+    onFinishedWave,
+    onExtractorDestoyed,
 }

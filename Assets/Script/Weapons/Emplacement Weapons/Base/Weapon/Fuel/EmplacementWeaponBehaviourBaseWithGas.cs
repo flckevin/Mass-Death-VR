@@ -8,6 +8,7 @@ using UnityEngine.UI;
  * Object hold: every emplacement weapon in game
  * Content:root of every emplacement weapons
  **************************************/
+ [RequireComponent(typeof(AudioSource))]
 public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
 {
     [Header("General emplacement weapon info")]
@@ -19,12 +20,13 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
     public bool machineTurnedOff; //identify state of machine
     public float activationLength; //delay value
     public float deactivationLength; //delay value
+    public AudioClip weaponSound;
     [HideInInspector]public float fuelLeftEW;//store fuel left
 
     private IEnumerator _cou;//store current couroutine
     private float timePassedMark;//store root time
     protected int _currentStage;//curent stage emplacement weapon at
-    
+    protected AudioSource _src;
 
     // Start is called before the first frame update
    
@@ -32,6 +34,8 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
     {
 
         VStart();
+        //storing audio source into this class
+        _src = this.gameObject.GetComponent<AudioSource>();
         //checking whether delay been set
         //if not set to 1 as default
         if(activationLength == 0){activationLength = 1f;}
@@ -110,7 +114,7 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
     public virtual void OnUpgradeEW()
     {
         //if stage reach to limit
-        if(_currentStage >= weaponStages.Length - 1) return; 
+        if(_currentStage >= weaponStages.Length - 1 && weaponStages.Length != 0) return; 
         //increase stage of upgrade
         amountUpgraded+=0.2f;
         //update amount upgraded on screen
@@ -119,14 +123,15 @@ public class EmplacementWeaponBehaviourBaseWithGas : MonoBehaviour,IUpgradeGun
         //if stage reach to required amount
         if(amountUpgraded >= emplacementStats.amountToUpgrade)
         {
+            //set stage back to default
+            amountUpgraded = 0;
             //increase current stage
             _currentStage ++;
             //deactivate last stage
             weaponStages[_currentStage-1].SetActive(false);
             //activate next stage
             weaponStages[_currentStage].SetActive(true);
-            //set stage back to default
-            amountUpgraded = 0;
+            
             
         }
         

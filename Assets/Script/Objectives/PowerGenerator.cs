@@ -83,7 +83,7 @@ public class PowerGenerator : MonoBehaviour,IDamageable,IUpgradeGun
     {
         //decrease health using given amount
         health -= amount;
-        healthText.text = health + "%";
+        healthText.text = Mathf.Round(health) + "%";
         //if health smaller or less than 0
         if(health <= 0)
         {

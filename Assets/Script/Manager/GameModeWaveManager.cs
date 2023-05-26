@@ -7,14 +7,29 @@ using UnityEngine.SceneManagement;
  * Object hold: game mode manager
  * Content: wave game mode manager
  **************************************/
+ [RequireComponent(typeof(AudioSource))]
 public class GameModeWaveManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject barricadeDoor; // gameobject for huge door to start wave
     [HideInInspector]public int amountOfEnemyTotal; // total amount of kills
+    public ParticleSystem fireworks;
+    public AudioClip fireWorksClip;
+    public AudioClip onFinishedWave;
+    public AudioClip onStartWave;
+    public AudioClip onDestroyedExtractor;
+   
+    private AudioSource _audioSrc;
     private int _currentWave; // current wave
     private bool _activated; // make sure that there won't be a duplication
     private bool ableToSpawn = true; // able to spawn
+    
+    private void Start() 
+    {
+        //storing audio source
+        _audioSrc = this.gameObject.GetComponent<AudioSource>();
+    }
+    
     public void OnStartWave()
     {
         //if able to spawn
@@ -26,19 +41,7 @@ public class GameModeWaveManager : MonoBehaviour
         //move barricade door
         LeanTween.moveY(barricadeDoor,12,5);
         StartCoroutine(SpawnAfter());
-
-    }
-
-    public void OnsetDefault()
-    {
-        LeanTween.moveY(barricadeDoor,-0.2f,5);
-    }
-
-    IEnumerator SpawnAfter()
-    {
-        yield return new WaitForSeconds(5.5f);
-        _activated = false;
-        GameManagerClass.instanceT.enemySpawner.OnReEnable();
+        AudioManager.instanceT.PlayOneShot(onStartWave,1);
     }
 
     public void ZombieOnKill()
@@ -49,10 +52,25 @@ public class GameModeWaveManager : MonoBehaviour
             _currentWave++;
             GameManagerClass.instanceT.currentWaveText.text = "Current wave: " + _currentWave;
             amountOfEnemyTotal = 0;
-            OnsetDefault();
+            OnFinishedWave();
         }
     }
 
+    public void OnFinishedWave()
+    {
+        LeanTween.moveY(barricadeDoor,-0.2f,5);
+        fireworks.gameObject.SetActive(true);
+        fireworks.Play();
+        _audioSrc.PlayOneShot(fireWorksClip,1);
+        AudioManager.instanceT.PlayOneShot(onFinishedWave,1);
+    }
+
+    IEnumerator SpawnAfter()
+    {
+        yield return new WaitForSeconds(5.5f);
+        _activated = false;
+        GameManagerClass.instanceT.enemySpawner.OnReEnable();
+    }
 
     public void Extract()
     {
@@ -61,14 +79,10 @@ public class GameModeWaveManager : MonoBehaviour
         _GM.helicopterBehaviour.gameObject.SetActive(true);
         _GM.helicopterBehaviour.Move(_GM.helicopterBehaviour.pos[0],_GM.helicopterBehaviour.pos[1],_GM.helicopterBehaviour.pos[2],-90,2);
         _GM.helicopterBehaviour.callType = "Extract";
-        StartCoroutine(loadBackToSafeHouse());
+        
     }
 
-    IEnumerator loadBackToSafeHouse()
-    {
-        yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene("PlayerHub");
-    }
+    
 
     
 }

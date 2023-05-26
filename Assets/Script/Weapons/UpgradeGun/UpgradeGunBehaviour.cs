@@ -14,6 +14,10 @@ public class UpgradeGunBehaviour : MonoBehaviour
     public ParticleSystem fireParticle_Destroy; // fire effect
     public ParticleSystem sparkEffect;// spark effect
     public  Slider progressSlider;//progress slider
+    public Text textMode;
+    public Rigidbody rigiRoot;
+    public Transform rootGun;
+
     private ParticleSystem _particleMain;
     private IUpgradeGun _target;//upgrade target
     private int _destroyVal;
@@ -62,7 +66,7 @@ public class UpgradeGunBehaviour : MonoBehaviour
         {
             //get upgrade component
             _target = other.gameObject.GetComponent<IUpgradeGun>();
-            Debug.Log(other.name);
+            //Debug.Log(other.name);
         }
     }
 
@@ -98,7 +102,6 @@ public class UpgradeGunBehaviour : MonoBehaviour
 
             //if trigger are into these target
             if(other.gameObject.tag == "EW_gas" ||
-                other.gameObject.tag == "Objective" ||
                 other.gameObject.tag == "EW_nogas")
             {
                 //if particle effect not playing
@@ -164,10 +167,12 @@ public class UpgradeGunBehaviour : MonoBehaviour
         {
             case 0:
             _mode = 1;
+            textMode.text = "Mode: Destroy";
             _particleMain = fireParticle_Destroy;
             break;
             case 1:
             _mode = 0;
+            textMode.text = "Mode: Upgrade";
             _particleMain = fireParticle_Upgrade;
             break;
         }
@@ -180,4 +185,19 @@ public class UpgradeGunBehaviour : MonoBehaviour
         }
         //OnGunTrigger();
     }
+
+
+    public void Onrelease()
+    {
+        rigiRoot.isKinematic = true;
+        rigiRoot.transform.localPosition = rootGun.localPosition;
+        
+    }
+
+    public void OnGrab()
+    {
+        rigiRoot.isKinematic = false;
+    }
+
+    
 }

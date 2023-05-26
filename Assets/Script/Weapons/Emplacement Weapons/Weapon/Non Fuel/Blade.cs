@@ -62,7 +62,7 @@ public class Blade : NonFuelEmplacementWeaponsBase
 
     public override void OnUpgrade()
     {
-        this.gameObject.name = "7";
+        this.gameObject.name = "10";
         blade1 = newWeapon[_NewWeaponID].transform.GetChild(0).gameObject;
         blade2 = newWeapon[_NewWeaponID].transform.GetChild(1).gameObject;
         base.OnUpgrade();

@@ -226,6 +226,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieStats: {fileID: 11400000, guid: e3340b5a06f682248be97a21e61cf45a, type: 2}
   targetChanger: {fileID: 5986509589251768856}
+  deathAnimations:
+  - Death_Slashed
+  - 'Death_Stabbed '
+  - FallingBackDeath
+  - FlyingBackDeath
+  - FowardDeath
+  - LeftDeath
   zombieHealth: 50
   meshAnims: {fileID: 0}
   navAgent: {fileID: 0}

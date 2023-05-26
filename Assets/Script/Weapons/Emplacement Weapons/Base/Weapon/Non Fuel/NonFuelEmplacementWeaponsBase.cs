@@ -59,13 +59,14 @@ public class NonFuelEmplacementWeaponsBase : MonoBehaviour,IUpgradeGun
 
     public virtual void OnUpgrade()
     {
+        //set upgrade percentage back to 0
+        _upgraded = 0;
         //deactivate old weapon
         newWeapon[_NewWeaponID].SetActive(false);
         _NewWeaponID++;
         //activate new weapons
         newWeapon[_NewWeaponID].SetActive(true);
-        //set upgrade percentage back to 0
-        _upgraded = 0;
+        
         
         
     }

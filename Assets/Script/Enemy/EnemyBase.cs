@@ -16,7 +16,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
     
     public ZombieStats zombieStats;//scriptable object stats for zombie
     public TargetChanger_Base targetChanger;
-
+    public string[]deathAnimations;
     #region zombieComponents
     [HideInInspector]public float zombieHealth;//declare float for zombie health
     [HideInInspector] public MeshAnimatorBase meshAnims;//declare mesh animator base to controll animation
@@ -52,7 +52,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
     
 
     //function to receive damage
-    public void DamageReceiver(float damageDealt,Transform bulletPosNMelee,bool instantDeactivation)
+    public void DamageReceiver(float damageDealt,Vector3 bulletPosNMelee,bool instantDeactivation)
     {
         
         #region Decrease Health
@@ -64,15 +64,11 @@ public class EnemyBase : MonoBehaviour,IDamageable
         //declare pool manager
         PoolManager poolM = PoolManager.instanceT;
         //if pool manager exceed pool blood length
-        if(poolM.bloodID >= poolM.blood.Length - 1)
-        {
-            //set pool id back to 0
-            poolM.bloodID = 0;
-        }
+        
         //playing blood particle
-        ParticleSystemPlayer.instanceT.PlayeParticle(poolM.blood[poolM.bloodID],bulletPosNMelee.transform);
-        //increase blood ID
-        poolM.bloodID++;
+        poolM.blood[poolM.BloodID].transform.position = bulletPosNMelee;
+        poolM.blood[poolM.BloodID].gameObject.SetActive(true);
+        poolM.blood[poolM.BloodID].Play();
         #endregion
 
         //if zombie health is less than 0
@@ -81,7 +77,7 @@ public class EnemyBase : MonoBehaviour,IDamageable
             //deactivate object
             //this.gameObject.SetActive(instantDeactivation);
             //call die function
-            OnDie();
+            OnDie(bulletPosNMelee);
         }
         #endregion
 
@@ -89,8 +85,13 @@ public class EnemyBase : MonoBehaviour,IDamageable
 
 
     //funciton for zombie to die
-    public virtual void OnDie()
+    public virtual void OnDie(Vector3 bulletPos)
     {
+        //play money particle
+        PoolManager poolM = PoolManager.instanceT;
+        poolM.money[poolM.MoneyID].transform.position = bulletPos;
+        poolM.money[poolM.MoneyID].gameObject.SetActive(true);
+        poolM.money[poolM.MoneyID].Play();
         //play audio clip
         AudioManager.instanceT.PlayOneShot(AudioManager.instanceT.commonClip[1].clip,1);
         //set tag to be dead enemy
@@ -98,7 +99,9 @@ public class EnemyBase : MonoBehaviour,IDamageable
         //disable target system
         targetChanger.gameObject.SetActive(false);
 
-        meshAnims.Play("Death_Slashed");
+        //play death animation
+        int _rand = UnityEngine.Random.Range(0,deathAnimations.Length);
+        meshAnims.Play(deathAnimations[_rand]);
         
         //if nav aganet have not stop
         if(navAgent.velocity!=Vector3.zero)
@@ -157,14 +160,14 @@ public class EnemyBase : MonoBehaviour,IDamageable
             //get bullet behaviour
             BulletBehaviour bullet = other.GetComponent<BulletBehaviour>();
             //receive damage
-            DamageReceiver(bullet.damage,other.transform,false);
+            DamageReceiver(bullet.damage,other.transform.position,false);
             bullet.OnCollision();
           
         }
         //if it melee
         else if(other.CompareTag("Melee"))
         {
-            DamageReceiver(int.Parse(other.name),other.transform,false);
+            DamageReceiver(int.Parse(other.name),other.transform.position,false);
         }
         
         
@@ -181,20 +184,20 @@ public class EnemyBase : MonoBehaviour,IDamageable
             //get bullet behaviour
             BulletBehaviour bullet = other.GetComponent<BulletBehaviour>();
             //receive damage
-            DamageReceiver(bullet.damage,other.transform,false);
+            DamageReceiver(bullet.damage,other.transform.position,false);
             bullet.OnCollision();
           
         }
         //if it melee
         else if(other.CompareTag("Melee"))
         {
-            DamageReceiver(int.Parse(other.name),other.transform,false);
+            DamageReceiver(int.Parse(other.name),other.transform.position,false);
         }
     }
 
 
     void IDamageable.Damage(float amount, bool instantDeactivate)
     {
-        DamageReceiver(amount,this.transform,instantDeactivate);
+        DamageReceiver(amount,this.transform.position,instantDeactivate);
     }
 }

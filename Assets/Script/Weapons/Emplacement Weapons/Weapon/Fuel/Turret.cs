@@ -62,7 +62,7 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
                     
                     _nextFire = Time.time + fireRate;
                     //deal damage to zombie
-                    ray.transform.GetComponent<EnemyBase>().DamageReceiver(damageAmount,ray.transform,false);
+                    ray.transform.GetComponent<EnemyBase>().DamageReceiver(damageAmount,ray.transform.position,false);
                 }
                 /*
                 target = ray.transform;
@@ -122,7 +122,6 @@ public class Turret : EmplacementWeaponBehaviourBaseWithGas
 
     public override void OnUpgradeEW()
     {
-        barrel = weaponStages[_currentStage].transform.GetChild(0).transform;
         damageAmount += 5;
         base.OnUpgradeEW();
     }

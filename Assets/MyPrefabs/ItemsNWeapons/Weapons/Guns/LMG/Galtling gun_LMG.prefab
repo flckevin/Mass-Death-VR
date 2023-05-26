@@ -1925,7 +1925,7 @@ MonoBehaviour:
   AlwaysFireProjectile: 0
   FireProjectileInSlowMo: 1
   SlowMoRateOfFire: 0.3
-  ShotForce: 20
+  ShotForce: 150
   BulletCasingForce: 3
   RecoilForce: {x: 0, y: 0, z: 0}
   RecoilDuration: 0.3
@@ -1974,6 +1974,8 @@ MonoBehaviour:
   onRaycastHitEvent:
     m_PersistentCalls:
       m_Calls: []
+  gunMagsAmmoBoxStorage: {fileID: 0}
+  amountBulletGoThrough: 1
 --- !u!114 &5983846571191484917
 MonoBehaviour:
   m_ObjectHideFlags: 0

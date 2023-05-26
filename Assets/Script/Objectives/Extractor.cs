@@ -74,6 +74,13 @@ public class Extractor : MonoBehaviour,IDamageable
         //game over
         //set all objective target to null
         //change objective to player
+
+        if(health <= 0)
+        {
+            this.gameObject.tag = "BrokenObjective";
+            AudioManager.instanceT.PlayOneShot(AudioManager.instanceT.commonClip[3].clip,1);
+            GameManagerClass.instanceT.modeManager.Extract();
+        }
     }
 
     public void Damage(float amount = 0, bool instantDeactivate = false)

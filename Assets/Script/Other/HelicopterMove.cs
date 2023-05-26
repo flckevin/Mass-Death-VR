@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 /***************************************
  * Authour: HAN
  * Object hold:
@@ -12,18 +13,28 @@ public class HelicopterMove : MonoBehaviour
     public Transform[] pos; // destinations
     public float speed; //speed
     public string callType; // call types extract or start missions
-
+    public GameObject playerUltilities;
+    public GameObject lHand;
+    public GameObject Rhand;
     public Transform heliInt;
     // Start is called before the first frame update
     void Start()
     {
+        playerUltilities.SetActive(false);
+        lHand.SetActive(false);
+        Rhand.SetActive(false);
+        
         Move(pos[0],pos[1],pos[2],0,1,() =>
         {GameManagerClass.instanceT.playerRoot.transform.parent = null;
         GameManagerClass.instanceT.playerBehaviour_G.transform.position = GameManagerClass.instanceT.playerStartPos.position;
         GameManagerClass.instanceT.playerRigi.isKinematic = true;
         GameManagerClass.instanceT.playerRigi.useGravity = true;
         GameManagerClass.instanceT.playerController.enabled = true;
-        this.gameObject.SetActive(false);},0.6f);
+        AudioManager.instanceT.PlayOneShot(AudioManager.instanceT.commonClip[2].clip,1);
+        playerUltilities.SetActive(true);
+        this.gameObject.SetActive(false);
+        lHand.SetActive(true);
+        Rhand.SetActive(true);},0.6f);
     }
 
 
@@ -59,12 +70,7 @@ public class HelicopterMove : MonoBehaviour
         {
             if(callType == "Extract")
             {
-                Move(pos[0],pos[1],pos[2],-90,-2,() =>
-                {GameManagerClass.instanceT.playerRoot.transform.parent = this.transform;
-                GameManagerClass.instanceT.playerBehaviour_G.transform.position = heliInt.position;
-                GameManagerClass.instanceT.playerRigi.isKinematic = false;
-                GameManagerClass.instanceT.playerRigi.useGravity = false;
-                GameManagerClass.instanceT.playerController.enabled = false;}, + 0.6f);
+                SceneManager.LoadScene("PlayerHub");
             }
         }
     }

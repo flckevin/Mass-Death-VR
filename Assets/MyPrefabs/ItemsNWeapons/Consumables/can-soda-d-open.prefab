@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4610032854048234179}
   - component: {fileID: 4610032854048234177}
   - component: {fileID: 4610032854048234178}
-  m_Layer: 0
+  - component: {fileID: 2470620519690139468}
+  m_Layer: 10
   m_Name: Drinkarea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +63,106 @@ MonoBehaviour:
   _drinkLeft: 200
   delay: 2
   cap: {fileID: 4610032855265145727}
+  drinkMesh: {fileID: 5905877366018847078}
+  drinkCol: {fileID: 4610032853951786113}
+  _drinkClip: {fileID: 8300000, guid: 2596e1119a70cec44b18ed44f221a8ad, type: 3}
+  sodaOpenSound: {fileID: 8300000, guid: b4b1aa62a3228984c9403e02c4d05f3a, type: 3}
+--- !u!82 &2470620519690139468
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4610032854048234180}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4610032855265145727
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +176,7 @@ GameObject:
   - component: {fileID: 4610032855265145723}
   - component: {fileID: 4610032855265145724}
   - component: {fileID: 4610032855265145725}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +807,8 @@ GameObject:
   - component: {fileID: 4610032853951786114}
   - component: {fileID: 4610032853951786115}
   - component: {fileID: 4610032853951786112}
-  m_Layer: 0
+  - component: {fileID: 6886648951589327846}
+  m_Layer: 10
   m_Name: can-soda-d-open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,9 +929,9 @@ MonoBehaviour:
   GrabPhysics: 4
   GrabMechanic: 1
   GrabSpeed: 15
-  RemoteGrabbable: 0
+  RemoteGrabbable: 1
   RemoteGrabMechanic: 0
-  RemoteGrabDistance: 2
+  RemoteGrabDistance: 2.5
   ThrowForceMultiplier: 2
   ThrowForceMultiplierAngular: 1.5
   BreakDistance: 0
@@ -956,3 +1058,18 @@ MonoBehaviour:
   onSnapZoneExit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6886648951589327846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401250112829460659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5b1b54556836a49948cf0f09394c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RingOnValidPickup: 1
+  RingOnValidRemotePickup: 1
+  RingHelperScale: 0.2

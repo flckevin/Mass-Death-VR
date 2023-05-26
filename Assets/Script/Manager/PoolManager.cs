@@ -22,7 +22,40 @@ public class PoolManager : Singleton<PoolManager>
     [Space(10)]
     [Header("PARTICLESYSTEM")]
     public ParticleSystem[] blood;
-    [HideInInspector]public int bloodID;
+    [HideInInspector]private int _bloodID;
+    public int BloodID
+    {
+        get{return _bloodID;}
+        set
+        {
+            if(_bloodID >= blood.Length)
+            {
+                _bloodID = 0;
+            }
+            else
+            {
+                _bloodID = value;
+            }
+        }
+    }
+    
+    public ParticleSystem[] money;
+    private int _moneyID;
+    public int MoneyID
+    {
+        get{return _moneyID;}
+        set
+        {
+            if(_moneyID >= money.Length)
+            {
+                _moneyID = 0;
+            }
+            else
+            {
+                _moneyID = value;
+            }
+        }
+    }
 
     public ParticleSystem[] goreExplosion;
     [HideInInspector]public int goreExplosionID;
@@ -32,7 +65,7 @@ public class PoolManager : Singleton<PoolManager>
     public int GroundSlamParticleID
     {
         get{return _groundSlamParticleID;}
-        set{if(_groundSlamParticleID >= groundSlamParticle.Length){_groundSlamParticleID = 0;}else{_groundSlamParticleID = value;}}
+        set{if(_groundSlamParticleID >= groundSlamParticle.Length - 1){_groundSlamParticleID = 0;}else{_groundSlamParticleID = value;}}
     }
 
     public ParticleSystem[] vomit;
@@ -42,7 +75,7 @@ public class PoolManager : Singleton<PoolManager>
         get{return vomitID;}
         set
         {
-            if(vomitID >= vomit.Length)
+            if(vomitID >= vomit.Length - 1)
             {
                 vomitID = 0;
             }
@@ -72,6 +105,24 @@ public class PoolManager : Singleton<PoolManager>
         }
     }
 
+    public ParticleSystem[] spawnEffect;
+    private int _spawnEffectID;
+    public int SpawnEffectID
+    {
+        get{return _spawnEffectID;}
+        set
+        {
+            if(_spawnEffectID >= spawnEffect.Length - 1)
+            {
+                _spawnEffectID = 0;
+            }
+            else
+            {
+                _spawnEffectID = value;
+            }
+        }
+    }
+    
     [Space(10)]
     [Header("BULLET")]
     public Rigidbody[] bullets;
@@ -80,7 +131,7 @@ public class PoolManager : Singleton<PoolManager>
     {   get{return _bulletID;} 
         set
         {
-            if(value >= bullets.Length)
+            if(value >= bullets.Length - 1)
             {
                 _bulletID = 0;
             } 
@@ -90,6 +141,7 @@ public class PoolManager : Singleton<PoolManager>
             }
         }
     }
+    
     [Space(10)]
     [Header("BATTERY")]
     public GameObject[] battery;
@@ -99,9 +151,13 @@ public class PoolManager : Singleton<PoolManager>
         get{return _batteryID;}
         set
         {
-            if(_batteryID >= battery.Length)
+            if(_batteryID >= battery.Length - 1)
             {
                 _batteryID = 0;
+            }
+            else
+            {
+                _batteryID = value;
             }
         }
     }

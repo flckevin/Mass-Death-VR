@@ -24,6 +24,8 @@ public class SniperGunBehaviour : GunBehaviour
             //apply to scope and cam
             sniperCam.targetTexture = rendTex;
             scope.texture = rendTex;
+            rendTex.width = 300;
+            rendTex.height = 300;
         }
         
         base.Start();

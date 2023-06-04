@@ -83,7 +83,7 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
     {
         //adding more health to the player
         health += amount;
-        GameManagerClass.instanceT.healthText.text = "Health: " + health;
+        GameManagerClass.instanceT.healthText.text = "Health: " + (int)health;
         //checking whether player health exceed the limit
         if(health > 100) 
         {

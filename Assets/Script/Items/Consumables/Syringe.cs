@@ -21,9 +21,9 @@ public class Syringe : ConsumableItem
         _src = this.gameObject.GetComponent<AudioSource>();
     }
 
-    private void OnCollisionEnter(Collision player)
+
+    private void OnTriggerEnter(Collider player) 
     {
-        
         //check whether the object collide with the floor
         if (player.gameObject.CompareTag("Floor") || player.gameObject.CompareTag("PlaceableFloor")) 
         { 
@@ -42,7 +42,7 @@ public class Syringe : ConsumableItem
         }
     }
 
-    private void OnCollisionExit(Collision player)
+    private void OnTriggerExit(Collider player) 
     {
         //checking whether the object exit player collision
         if (player.gameObject.CompareTag("Player"))

@@ -115,9 +115,9 @@ public class EmplacementWeaponPlatformBase : MonoBehaviour
         ParticleSystemPlayer.instanceT.PlayeParticleFromPool(PoolManager.instanceT.groundSlamParticle,PoolManager.instanceT.GroundSlamParticleID,this.transform);
         _src.PlayOneShot(groundSlamClip,1);
         yield return new WaitForSeconds(groundSlamClip.length + 0.3f);
-        Destroy(_src);
+        //Destroy(_src);
         //disable emplacement platform behaviour class
-        this.enabled = false;
+        //this.enabled = false;
     }
 
     IEnumerator EWGasActivation(EmplacementWeaponBehaviourBaseWithGas EW = null, float duration = 0)

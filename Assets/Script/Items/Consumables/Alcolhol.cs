@@ -16,7 +16,7 @@ public class Alcolhol : ConsumableItem
     public BoxCollider drinkCol; // collider of drink
     public AudioClip drinkClip;
     public AudioClip vommitClip;
-
+    public AudioClip openingSound;
     private bool drunkCouActivated; // identify whether coroutine activated
     private AudioSource _audioSrc; // audio source to play drinking and vomit
     [Range(0,2)]public float healthRegenerate; // health that able to regenerate
@@ -28,6 +28,7 @@ public class Alcolhol : ConsumableItem
     }
     public override void OnEnable()
     {
+        _audioSrc.PlayOneShot(openingSound,1);
         //able to drink
         _ableToUse = true;
         //deactivate cap as opened

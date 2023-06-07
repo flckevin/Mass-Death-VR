@@ -35,7 +35,7 @@ namespace BNG {
             initialize();
         }
 
-        protected virtual void initialize() {
+        public virtual void initialize() {
             // Create a Canvas that will be placed directly over the camera
             if (fadeObject == null) {
                 Canvas childCanvas = GetComponentInChildren<Canvas>();

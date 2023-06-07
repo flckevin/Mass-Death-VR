@@ -15,6 +15,7 @@ public class PowerGenerator : MonoBehaviour,IDamageable,IUpgradeGun
     public float timeToDecreased;//float for time to decrease
     public ParticleSystem smoke; // particle for feed back
     public Text healthText; // text to display
+    public Text restoreLeft;
     public Extractor extractor;//extractor to decrease time
     
 
@@ -83,15 +84,15 @@ public class PowerGenerator : MonoBehaviour,IDamageable,IUpgradeGun
     {
         //decrease health using given amount
         health -= amount;
-        healthText.text = Mathf.Round(health) + "%";
+        healthText.text = (int)health + "%";
         //if health smaller or less than 0
-        if(health <= 0)
+        if (health <= 0)
         {
             //increase time to extract
             extractor.timeToExtract -= timeToDecreased;
             //change tag of object to identify object is broken
             this.gameObject.tag = "BrokenObjective";
-            
+
             //since the zombie using trigger, by enabling and disabling
             //the trigger of target system from zombie will be able
             //to detect the current stage of the power generator whether is broken
@@ -99,12 +100,8 @@ public class PowerGenerator : MonoBehaviour,IDamageable,IUpgradeGun
             //the zombie will detect the current stage of the power generator and change it target
             _boxCol.enabled = false;
             _boxCol.enabled = true;
-            //play smoke particle
-            if(smoke != null)
-            {
-                smoke.Play();
-            }
-            
+
+
             //update amount of generator
             GameManagerClass.instanceT.generatorLeft -= 1;
             //display generator left
@@ -120,7 +117,19 @@ public class PowerGenerator : MonoBehaviour,IDamageable,IUpgradeGun
                 }
             }
             */
+            //decrease amount to restore
             _amountOfTimeAbleToRestore--;
+            //display amount that able to restore
+            restoreLeft.text = "RESTORE LEFT: " + _amountOfTimeAbleToRestore;
+        }
+        else if (health < 100) 
+        {
+            //play smoke particle
+            if (smoke != null && smoke.gameObject.activeSelf == false)
+            {
+                smoke.gameObject.SetActive(true);
+                smoke.Play();
+            }
         }
     }
 

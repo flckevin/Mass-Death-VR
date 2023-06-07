@@ -17,9 +17,12 @@ public class HelicopterMove : MonoBehaviour
     public GameObject lHand;
     public GameObject Rhand;
     public Transform heliInt;
+    public GameObject indicator;
+    public BNG.ScreenFader screenFader;
     // Start is called before the first frame update
     void Start()
     {
+        callType = "Intro";
         playerUltilities.SetActive(false);
         lHand.SetActive(false);
         Rhand.SetActive(false);
@@ -51,13 +54,16 @@ public class HelicopterMove : MonoBehaviour
         //enable player hands
         lHand.SetActive(true);
         Rhand.SetActive(true);
+        //enable mission indicator
+        indicator.SetActive(true);
         yield return new WaitForSeconds(1f);
         Move(pos[2],pos[1],pos[0],0,()=>{this.gameObject.SetActive(false);});
+        callType = "Home";
         LeanTween.rotate(this.gameObject,new Vector3(0,-90,0),speed);
         yield return new WaitForSeconds(1.5f);
         //polay audio clip of player onstart wave
         AudioManager.instanceT.PlayOneShot(AudioManager.instanceT.commonClip[2].clip,1);
-      
+        
        
     }
 
@@ -71,21 +77,34 @@ public class HelicopterMove : MonoBehaviour
 
     IEnumerator MoveExecute(Transform _start,Transform _mid, Transform _end,float _startRotationY = 0, Action _action = null,float _extraTime = 0)
     {
+        
         //transform heli back to start
         this.transform.position = _start.localPosition;
         
 
         //move to mid
         LeanTween.move(this.gameObject,_mid.localPosition,speed);
+        
         //wait to reach to goal
         yield return new WaitForSeconds(speed+_extraTime);
 
+        if (callType == "Intro")
+        {
+            StartCoroutine(LerpColor(1, true, speed - 0.5f));
+
+        }
+        
         //move to end
         LeanTween.move(this.gameObject,_end.localPosition,speed);
+
         //wait to finish
         yield return new WaitForSeconds(speed+_extraTime);
+        if (callType == "Intro")
+        {
+            StartCoroutine(LerpColor(0,false,0));
 
-        if(_action != null)
+        }
+        if (_action != null)
         {
             //call extra function
             _action();
@@ -93,16 +112,42 @@ public class HelicopterMove : MonoBehaviour
         
     }
 
+    IEnumerator LerpColor(float _to , bool fadeIn, float delay) 
+    {
+
+        yield return new WaitForSeconds(delay);
+        screenFader.FadeColor = new Color(screenFader.FadeColor.r,
+                                                  screenFader.FadeColor.g,
+                                                   screenFader.FadeColor.b,
+                                                   _to);
+        
+
+        switch (fadeIn) 
+        {
+            case true:
+                screenFader.DoFadeIn();
+                break;
+
+            case false:
+                screenFader.DoFadeOut();
+                break;
+            
+        }
+    }
+
+
     private void OnTriggerEnter(Collider other) 
     {
         if(other.CompareTag("Player"))
         {
             if(callType == "Extract")
             {
-                SceneManager.LoadScene("PlayerHub");
+                
             }
         }
     }
+
+    
     
    
 }

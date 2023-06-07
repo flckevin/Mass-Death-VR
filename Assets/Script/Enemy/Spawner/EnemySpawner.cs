@@ -21,8 +21,13 @@ public class EnemySpawner : MonoBehaviour
     private int CurrentPatternHolder
     {
         get{return _currentPatternHolder;}
-        set{if(_currentPatternHolder>=enemeyPatternHolder.Length){_currentPatternHolder = enemeyPatternHolder.Length;}
-                else{_currentPatternHolder = value;}}
+        set
+        {
+            if(_currentPatternHolder >= enemeyPatternHolder.Length - 1)
+            {_currentPatternHolder = 0;}
+            else
+            {_currentPatternHolder = value;}
+        }
     }
     private int _amountOfSpawnedEnemy; // amount of enemy spawned
     private int _waveEnemyAmount; // tracker for maximum nemey
@@ -43,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
         _currentPatternHolder = 0;
         //choose first pattern
         enemies = enemeyPatternHolder[_currentPatternHolder].pattern1;
-        Debug.Log(enemies.Length);
+        //Debug.Log(enemies.Length);
         _waveEnemyAmount = 6;
     }
 

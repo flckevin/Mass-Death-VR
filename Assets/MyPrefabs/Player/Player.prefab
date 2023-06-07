@@ -287,8 +287,8 @@ Camera:
   m_GameObject: {fileID: 377805722336219721}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.5109291, g: 0.84737164, b: 0.8679245, a: 0.019607844}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeOnSceneLoaded: 1
-  FadeColor: {r: 0, g: 0, b: 0, a: 0.9882353}
+  FadeColor: {r: 0, g: 0, b: 0, a: 1}
   FadeInSpeed: 6
   FadeOutSpeed: 6
   SceneFadeInDelay: 1
@@ -588,7 +588,7 @@ Transform:
   m_GameObject: {fileID: 377805722363829281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.9191008, y: 1.593, z: -1.770005}
-  m_LocalScale: {x: 0.33333334, y: 1, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4399468156779010380}
@@ -5436,7 +5436,7 @@ PrefabInstance:
     - target: {fileID: 5863429272715006200, guid: 741aaacac454dba42bc1aa0d92d9597d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1451
+      value: 1475
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 741aaacac454dba42bc1aa0d92d9597d, type: 3}
@@ -6103,7 +6103,7 @@ PrefabInstance:
     - target: {fileID: 5863429272715006200, guid: df6912187b38ab6418ff794d261ce902,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1355
+      value: 1379
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df6912187b38ab6418ff794d261ce902, type: 3}

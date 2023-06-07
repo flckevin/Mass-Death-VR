@@ -11,6 +11,17 @@ public class MainMenu : MonoBehaviour
 {
    public void load(string _scene)
    {
-        SceneManager.LoadScene(_scene);
+        switch (_scene) 
+        {
+            case "Level":
+                LoadScene.Load(LoadScene.Scene.Level);
+                break;
+            case "Tutorial":
+                LoadScene.Load(LoadScene.Scene.Tutorial);
+                break;
+        
+        }
+        
+
    }
 }

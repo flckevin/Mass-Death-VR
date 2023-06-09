@@ -10,6 +10,7 @@ using UnityEngine;
 public class CreditCard : MonoBehaviour
 {
     public int moneyAmount;//declare int to store amount of money
+    public bool insertedToMachine;
     // Start is called before the first frame update
 
     private void OnCollisionEnter(Collision other) 
@@ -17,11 +18,15 @@ public class CreditCard : MonoBehaviour
         if(other.gameObject.tag == "Shop")
         {
             ShopBehaviour shop = other.transform.parent.parent.GetComponent<ShopBehaviour>();
+            insertedToMachine = true;
+            shop.creditInserted = this;
             shop.OnCardInsert();
             this.gameObject.SetActive(false);
             
         }
     }
+
+
 
 
     

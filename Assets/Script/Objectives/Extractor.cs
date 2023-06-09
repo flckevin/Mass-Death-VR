@@ -15,6 +15,7 @@ public class Extractor : MonoBehaviour,IDamageable
     [Header("EXTRACTOR INFO")]
     public float health;//declare float for health of machine
     private float deafultHealth;//declare float to store default health to display on slider
+    public ParticleSystem[] extractorParticle;
     // Start is called before the first frame update
 
     private void Start() 
@@ -77,10 +78,18 @@ public class Extractor : MonoBehaviour,IDamageable
 
         if(health <= 0)
         {
-            this.gameObject.tag = "BrokenObjective";
-            AudioManager.instanceT.PlayOneShot(AudioManager.instanceT.commonClip[3].clip,1);
-            GameManagerClass.instanceT.modeManager.Extract();
+            StartCoroutine(OnDestroyEvent());
         }
+    }
+
+    IEnumerator OnDestroyEvent() 
+    {
+        this.gameObject.tag = "BrokenObjective";
+        AudioManager.instanceT.PlayOneShot(AudioManager.instanceT.commonClip[3].clip, 1);
+        GameManagerClass.instanceT.modeManager.Extract();
+        extractorParticle[0].Play();
+        yield return new WaitForSeconds(extractorParticle[0].time + 0.3f);
+        extractorParticle[1].Play();
     }
 
     public void Damage(float amount = 0, bool instantDeactivate = false)

@@ -16,13 +16,13 @@ public class GameModeWaveManager : MonoBehaviour
     public ParticleSystem fireworks; // fire works on finished wave
     public AudioClip fireWorksClip; // fire works audio clip
     public AudioClip onStartWave; // audio clip on start wave
-    public AudioClip onDestroyedExtractor; // audio clip on destroy extractor
+    public AudioClip onExtract; // audio clip on destroy extractor
    
     private AudioSource _audioSrc;// audio source
     private int _currentWave; // current wave
     private bool _activated; // make sure that there won't be a duplication
     private bool ableToSpawn = true; // able to spawn
-    
+    private bool _extracting = false; // bool to identify whether is extracting
     private void Start() 
     {
         //storing audio source
@@ -90,6 +90,10 @@ public class GameModeWaveManager : MonoBehaviour
 
     public void Extract()
     {
+        //if player is already extracting then stop execute
+        if (_extracting == true) return;
+        //set extracting to true to identify player is extracting
+        _extracting = true;
         //player extracting so player wont be able to spawn anymore
         ableToSpawn = false;
         //get gamemamanger class
@@ -102,7 +106,13 @@ public class GameModeWaveManager : MonoBehaviour
         _GM.helicopterBehaviour.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x,90,this.transform.eulerAngles.z);
         //set call type
         _GM.helicopterBehaviour.callType = "Extract";
-        
+
+        //if audio manager does not play on extractor event destroy sound
+        if (AudioManager.instanceT.audioSrc.clip == null || AudioManager.instanceT.audioSrc.clip.name != AudioManager.instanceT.commonClip[3].clip.name) 
+        {
+            //play on extract event sound
+            _audioSrc.PlayOneShot(onExtract, 1);
+        }
     }
 
     

@@ -2919,6 +2919,31 @@ PrefabInstance:
       propertyPath: field of view
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 189159461529054344, guid: fe1f55dc90618bc4f8a405b5fab804c6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.000002562999
+      objectReference: {fileID: 0}
+    - target: {fileID: 189159461529054344, guid: fe1f55dc90618bc4f8a405b5fab804c6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 189159461529054344, guid: fe1f55dc90618bc4f8a405b5fab804c6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 189159461529054344, guid: fe1f55dc90618bc4f8a405b5fab804c6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 189159461529054344, guid: fe1f55dc90618bc4f8a405b5fab804c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
+      objectReference: {fileID: 0}
     - target: {fileID: 6856198302283309553, guid: fe1f55dc90618bc4f8a405b5fab804c6,
         type: 3}
       propertyPath: m_Name

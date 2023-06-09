@@ -7,18 +7,23 @@ using UnityEngine.UI;
  * Object hold: shop
  * Content: shop behaviour
  **************************************/
+[RequireComponent(typeof(AudioSource))]
 public class ShopBehaviour : MonoBehaviour
 {
     [Header("SHOP INFO")]
     public PageContentHolder[] shopSections;//array of shop sections
     private int _currentShopSectionPage;//current shop section page
-    
+
     public GameObject[] shopPages;//array of shop pages
     [SerializeField]private int _currentShopPage;//shop current page
 
     public Transform posToSpawnObject;//position to spawn objects
-    [Space(10)]
+    public ParticleSystem buyParticle;//on buy particle
+    private AudioSource _src; // audio source
+    public AudioClip onBuyClip;//on buy sound
+    public AudioClip onInsufficentBalanceClip;//on insufficent balance sound
 
+    [Space(10)]
     [Header("SHOP COMPONENTS")]
     public GameObject shopCurtain;//shop curtain
     //public Transform lean_CurtainPos;//shop curtain leantweenPos
@@ -26,8 +31,10 @@ public class ShopBehaviour : MonoBehaviour
     public Transform lean_ItemSectionDisplayPos;//postion to lean 
     public Transform lean_ItemSectionHidePos;//position to lean
     public Transform creditCardPosition;
-    [Space(10)]
+
+    public CreditCard creditInserted;
     
+    [Space(10)]
     [Header("SHOP COMPONENTS_SHOP UI")]
     public Text nameText;//name of item
     public Text priceText;//text to display price
@@ -44,6 +51,8 @@ public class ShopBehaviour : MonoBehaviour
 
     private void Start()
     {
+        //storing audiosource
+        _src = this.gameObject.GetComponent<AudioSource>();
         //assign shop page and section
         _currentShopSectionPage = 0;
         _currentShopPage = 0;
@@ -188,21 +197,34 @@ public class ShopBehaviour : MonoBehaviour
     {
         //if machine have not started
         if(machineStarted == false) return;
-        
+
         //if there aren't anything in shop section
-        if(ObjToSpawn == null || GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount < price) return;
-        //spawning object
-        Instantiate(ObjToSpawn,posToSpawnObject.position,Quaternion.identity);
-        //decrease amount of money
-        GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount -= price;
-        //display text
-        moneyDisplayText.text = "BALANCE: " + GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount.ToString();
+        if (ObjToSpawn == null || GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount < price)
+        {
+            //spawning object
+            Instantiate(ObjToSpawn, posToSpawnObject.position, Quaternion.identity);
+            //decrease amount of money
+            GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount -= price;
+            //display text
+            moneyDisplayText.text = "BALANCE: " + GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount.ToString();
+            //play buy sound
+            if (onBuyClip == null) return;
+            _src.PlayOneShot(onBuyClip, 1);
+        }
+        else if (GameManagerClass.instanceT.playerCreditCard_Class.moneyAmount > price) 
+        {
+            if (onInsufficentBalanceClip == null) return;
+            //play rejected sound
+            _src.PlayOneShot(onInsufficentBalanceClip, 1);
+        
+        }
+        
     }
 
     public void OnExit()
     {
         //if machine already started
-        if(machineStarted == false)return;
+        if(machineStarted == false || creditInserted == null)return;
         //change credit card position
         GameManagerClass.instanceT.playerCreditCard_Class.gameObject.transform.position = creditCardPosition.position;
         //activate credit card
@@ -215,7 +237,8 @@ public class ShopBehaviour : MonoBehaviour
         StartCoroutine(ShopDisplayExecute(1,shopPages[_currentShopPage],null));
 
         machineStarted = false;
-
+        creditInserted.insertedToMachine = false;
+        creditInserted = null;
     }
 
     public void OnCardInsert()

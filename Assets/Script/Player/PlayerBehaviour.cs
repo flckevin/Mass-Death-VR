@@ -71,7 +71,7 @@ public class PlayerBehaviour : MonoBehaviour,IDamageable
         yield return new WaitForSeconds(2f);
         Time.timeScale = 1;
         //load back to safe house
-        SceneManager.LoadScene("PlayerHub");
+        LoadScene.Load(LoadScene.Scene.PlayerHub);
     }
 
 

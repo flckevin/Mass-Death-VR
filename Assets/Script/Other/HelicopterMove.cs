@@ -142,7 +142,7 @@ public class HelicopterMove : MonoBehaviour
         {
             if(callType == "Extract")
             {
-                
+                LoadScene.Load(LoadScene.Scene.PlayerHub);
             }
         }
     }

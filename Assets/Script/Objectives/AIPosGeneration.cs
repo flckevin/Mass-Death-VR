@@ -87,7 +87,7 @@ public class AIPosGeneration : MonoBehaviour
         Vector3 _pos = new Vector3();
         PosID++;
         _pos = positions[PosID].position;
-        Debug.Log(PosID);
+        //Debug.Log(PosID);
         return _pos;
     }
 }

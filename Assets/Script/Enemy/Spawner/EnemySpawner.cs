@@ -85,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
     //spawner function
     IEnumerator SpawnerIE()
     {
-        Debug.Log("Wave: " + _waveTracker + " AMOUNT: " + _amountOfSpawnedEnemy + " ENEMYAMOUNT: " + _waveEnemyAmount);
+      //  Debug.Log("Wave: " + _waveTracker + " AMOUNT: " + _amountOfSpawnedEnemy + " ENEMYAMOUNT: " + _waveEnemyAmount);
         //while amount of spaned enemy not reach to maximum
         while(_amountOfSpawnedEnemy < _waveEnemyAmount)
         {
